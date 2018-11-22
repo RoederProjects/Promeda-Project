@@ -1,0 +1,1051 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="generator" content="HelpNDoc Personal Edition 5.9.0.711">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="favicon.ico"/>
+
+  <title>Configuration</title>
+  <meta name="description" content="" /> 
+  <meta name="keywords" content="">
+
+
+
+  
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Configuration">
+  <meta name="twitter:description" content="">
+
+  <!-- Open Graph data -->
+  <meta property="og:title" content="Configuration" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="Promeda" /> 
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendors/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <link href="vendors/bootstrap-3.3.6/css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="vendors/html5shiv-3.7.2/html5shiv.min.js"></script>
+      <script src="vendors/respond-1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <!-- JsTree styles -->
+  <link href="vendors/jstree-3.3.2/themes/default/style.min.css" rel="stylesheet"/>
+
+  <!-- Hnd styles -->
+  <link href="css/layout.min.css" rel="stylesheet" />
+  <link href="css/effects.min.css" rel="stylesheet" />
+  <link href="css/theme-light-blue.min.css" rel="stylesheet" />
+  <link href="css/print.min.css" rel="stylesheet" media="print" />
+  <style type="text/css">nav { width: 350px} @media screen and (min-width:769px) { body.md-nav-expanded div#main { margin-left: 350px} body.md-nav-expanded header { padding-left: 364px} }</style>
+
+  <!-- Content style -->
+  <link href="css/hnd.content.css" rel="stylesheet" />
+
+  
+
+
+
+</head>
+
+<body class="md-nav-expanded">
+
+
+
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible">Skip to main content</a>
+  </div>
+
+  <header class="headroom">
+    <button class="hnd-toggle btn btn-default">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>        
+    </button>
+    <h1>Promeda</h1>
+    
+  </header>
+
+  <nav class="md-nav-expanded">
+    <!-- Nav tabs -->
+    <ul class="tab-tabs nav nav-tabs" role="tablist">
+      <li id="nav-close"> 
+        <button class="hnd-toggle btn btn-default">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button>
+      </li>
+      
+	  
+        <li role="presentation" class="tab active">
+            <a href="#contents" id="tab-contents" aria-controls="contents" role="tab" data-toggle="tab">
+                <i class="glyphicon glyphicon-list"></i>
+                Contents
+            </a>
+        </li>
+      
+        <li role="presentation" class="tab">
+            <a href="#index" id="tab-index" aria-controls="index" role="tab" data-toggle="tab">
+                <i class="glyphicon glyphicon-asterisk"></i>
+                Index
+            </a>
+        </li>
+      
+        <li role="presentation" class="tab">
+            <a href="#search" id="tab-search" aria-controls="search" role="tab" data-toggle="tab">
+                <i class="glyphicon glyphicon-search"></i>
+                Search
+            </a>
+        </li>
+      
+    </ul>  <!-- /Nav tabs -->
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+	  
+      <div role="tabpanel" class="tab-pane active" id="contents">
+        <div id="toc" class="tree-container unselectable"
+            data-url="_toc.json"
+            data-openlvl="1"
+        >
+            
+        </div>
+      </div>  <!-- /contents-->
+      
+      <div role="tabpanel" class="tab-pane" id="index">
+        <div id="keywords" class="tree-container unselectable"
+            data-url="_keywords.json"
+            data-openlvl="1"
+        >
+            
+        </div>
+      </div>  <!-- /index-->
+      
+      <div role="tabpanel" class="tab-pane" id="search">
+        <div class="search-content">
+          <div class="search-input">
+            <form id="search-form">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="input-search" name="input-search" placeholder="Search..." />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </form>
+          </div>  <!-- /search-input -->
+          <div class="search-result">
+            <div id="search-info"></div>
+            <div class="tree-container unselectable" id="search-tree"></div>
+          </div>  <!-- /search-result -->
+        </div>  <!-- /search-content -->
+      </div>  <!-- /search-->
+      
+    </div>  <!-- /Tab panes -->
+
+  </nav>
+
+  <div id="main">
+
+    <article>
+        <div id="topic-content" class="container-fluid" 
+		  data-hnd-id="Configuration"
+		  data-hnd-context="5"
+		  data-hnd-title="Configuration"
+		>
+            
+                <div class="navigation">
+                    <ol class="breadcrumb">
+                        
+                    </ol>
+                    <div class="nav-arrows">
+                        <div class="btn-group btn-group-xs" role="group"><a class="btn btn-default" href="LocalMediaArchive.html" title="Local Media Archive" role="button"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></a><a class="btn btn-default" href="App.html" title="App" role="button"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></div>
+                    </div>
+                </div> 
+            
+
+            <a id="main-content"></a>
+
+            <h2>Configuration</h2>
+
+            <div class="main-content">
+                
+<p></p>
+<p class="rvps3"><span class="rvts8"><html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="ProgId" content="Excel.Sheet">
+<meta name="Generator" content="Microsoft Excel 15">
+<link rel="File-List" href="store-Dateien/filelist.xml">
+<style id="store.properties._15398_Styles">
+<!--table
+	{mso-displayed-decimal-separator:"\,";
+	mso-displayed-thousand-separator:"\.";}
+.xl6315398
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+.xl6415398
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl6515398
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:#44546A;
+	font-size:18.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Calibri Light", sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl6615398
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:white;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:italic;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	background:#548235;
+	mso-pattern:black none;
+	white-space:normal;}
+.xl6715398
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	background:#548235;
+	mso-pattern:black none;
+	white-space:normal;}
+.xl6815398
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:#548235;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border-top:1.0pt solid windowtext;
+	border-right:none;
+	border-bottom:none;
+	border-left:1.0pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl6915398
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:#548235;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border-top:1.0pt solid windowtext;
+	border-right:1.0pt solid windowtext;
+	border-bottom:none;
+	border-left:none;
+	background:#E7E6E6;
+	mso-pattern:black none;
+	white-space:normal;}
+.xl7015398
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border-top:none;
+	border-right:none;
+	border-bottom:none;
+	border-left:1.0pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl7115398
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:#548235;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border-top:none;
+	border-right:1.0pt solid windowtext;
+	border-bottom:none;
+	border-left:none;
+	background:#E7E6E6;
+	mso-pattern:black none;
+	white-space:normal;}
+.xl7215398
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:#548235;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border-top:none;
+	border-right:none;
+	border-bottom:none;
+	border-left:1.0pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl7315398
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border-top:none;
+	border-right:none;
+	border-bottom:1.0pt solid windowtext;
+	border-left:1.0pt solid windowtext;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+.xl7415398
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:#548235;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border-top:none;
+	border-right:1.0pt solid windowtext;
+	border-bottom:1.0pt solid windowtext;
+	border-left:none;
+	background:#E7E6E6;
+	mso-pattern:black none;
+	white-space:normal;}
+.xl7515398
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:#548235;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Calibri, sans-serif;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:normal;}
+-->
+</style>
+</head>
+
+<body>
+<!-- [if !excel]>&nbsp;&nbsp;<![endif] -->
+<!-- Die folgenden Informationen wurden durch den Web-Formular-Assistenten von
+Microsoft Excel erstellt. -->
+<!-- Falls das gleiche Element mit Excel veröffentlicht wird, werden alle
+Informationen zwischen den DIV-Etiketten ersetzt. -->
+<!--  -->
+<!-- START OF OUTPUT FROM EXCEL PUBLISH AS WEB PAGE WIZARD  -->
+<!--  -->
+
+<div id="store.properties._15398" align="center" x:publishsource="Excel">
+
+<table border="0" cellpadding="0" cellspacing="0" width="765" class="xl6315398" style="border-collapse:collapse;table-layout:fixed;width:574pt">
+ <col class="xl6315398" width="5" style="mso-width-source:userset;mso-width-alt:
+ 256;width:4pt">
+ <col class="xl6315398" width="281" style="mso-width-source:userset;mso-width-alt:
+ 13226;width:211pt">
+ <col class="xl6315398" width="471" style="mso-width-source:userset;mso-width-alt:
+ 22186;width:353pt">
+ <col class="xl6315398" width="8" style="mso-width-source:userset;mso-width-alt:
+ 384;width:6pt">
+ <tr height="32" style="height:23.8pt">
+  <td height="32" class="xl6415398" width="5" style="height:23.8pt;width:4pt"><a name="RANGE!A1:D76"></a></td>
+  <td class="xl6515398" width="281" style="width:211pt">Property Reference</td>
+  <td class="xl6415398" width="471" style="width:353pt"></td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="20" style="height:14.95pt">
+  <td height="20" class="xl6415398" width="5" style="height:14.95pt;width:4pt"></td>
+  <td class="xl6615398" width="281" style="width:211pt">properties/stores/store.properties</td>
+  <td class="xl6715398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl6815398" width="281" style="width:211pt"># GENERAL</td>
+  <td class="xl6915398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">url:promondo.de<span style="mso-spacerun:yes"> </span></td>
+  <td class="xl7115398" width="471" style="width:353pt">displayname</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">&nbsp;</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7215398" width="281" style="width:211pt"># SFTP/FTP CONNECTION</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">ftp.host:****</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">ftp.port:****</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">ftp.user:****</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">ftp.pswd:****</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">ftp.protocol:sftp</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="38" style="height:28.55pt">
+  <td height="38" class="xl6415398" width="5" style="height:28.55pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">ftp.dir.default:websale8_shop-promondo/produkte/medien/bilder</td>
+  <td class="xl7115398" width="471" style="width:353pt">path to product images</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="57" style="height:42.8pt">
+  <td height="57" class="xl6415398" width="5" style="height:42.8pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">ftp.dir.banner:websale8_shop-promondo/benutzer/templates/images/banner</td>
+  <td class="xl7115398" width="471" style="width:353pt">path to template images</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">&nbsp;</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7215398" width="281" style="width:211pt"># PRODUCT IMAGE COMPRESSION</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">product.image.compression.enabled:yes</td>
+  <td class="xl7115398" width="471" style="width:353pt">useful, if shopsystem
+  supports compression/optimization itself</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">&nbsp;</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">&nbsp;</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7215398" width="281" style="width:211pt"># PRODUCT IMAGE SIZES</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="38" style="height:28.55pt">
+  <td height="38" class="xl6415398" width="5" style="height:28.55pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">product.image.size:2200\,2200\,superzoom</td>
+  <td class="xl7115398" width="471" style="width:353pt">#
+  image.size:{{widthInPixel: integer}}\,{{heightInPixel: integer}},{{name:
+  String}}</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">product.image.size:720\,720\,720px</td>
+  <td class="xl7115398" width="471" style="width:353pt">## {{name: String}} is
+  used:</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">product.image.size:278\,278\,278px</td>
+  <td class="xl7115398" width="471" style="width:353pt">##-&gt; as sub-dir(-name)
+  for generated files of specified image.size within the<span style="mso-spacerun:yes"> </span></td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">product.image.size:110\,110\,110px</td>
+  <td class="xl7115398" width="471" style="width:353pt">##<span style="mso-spacerun:yes">   </span>top-dir of given ftp-user. Sub-dir will be
+  created, when it does not exist.</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">&nbsp;</td>
+  <td class="xl7115398" width="471" style="width:353pt">##<span style="mso-spacerun:yes">   </span>To store generated files within the
+  top-dir of given ftp-user and not in a<span style="mso-spacerun:yes"> </span></td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="38" style="height:28.55pt">
+  <td height="38" class="xl6415398" width="5" style="height:28.55pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">&nbsp;</td>
+  <td class="xl7115398" width="471" style="width:353pt">##<span style="mso-spacerun:yes">   </span>sub-dir (e.g. when there is only one
+  image.size), use &quot;/&quot; (without quotes) as value.</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">&nbsp;</td>
+  <td class="xl7115398" width="471" style="width:353pt">##<span style="mso-spacerun:yes">   </span>Samples:</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">&nbsp;</td>
+  <td class="xl7115398" width="471" style="width:353pt">##<span style="mso-spacerun:yes">   </span>image.size:66\,66\,thumb</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">&nbsp;</td>
+  <td class="xl7115398" width="471" style="width:353pt">##<span style="mso-spacerun:yes">   </span>image.size:378\,378\,378px</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">&nbsp;</td>
+  <td class="xl7115398" width="471" style="width:353pt">##<span style="mso-spacerun:yes">   </span>image.size:1280\,1280\,/</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="20" style="height:14.95pt">
+  <td height="20" class="xl6415398" width="5" style="height:14.95pt;width:4pt"></td>
+  <td class="xl7315398" width="281" style="width:211pt">&nbsp;</td>
+  <td class="xl7415398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl6415398" width="281" style="width:211pt"></td>
+  <td class="xl7515398" width="471" style="width:353pt"></td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="32" style="height:23.8pt">
+  <td height="32" class="xl6415398" width="5" style="height:23.8pt;width:4pt"></td>
+  <td class="xl6515398" width="281" style="width:211pt">Property Reference</td>
+  <td class="xl6415398" width="471" style="width:353pt"></td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="20" style="height:14.95pt">
+  <td height="20" class="xl6415398" width="5" style="height:14.95pt;width:4pt"></td>
+  <td class="xl6615398" width="281" style="width:211pt">properties/banner/banner.properties</td>
+  <td class="xl6715398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl6815398" width="281" style="width:211pt">&nbsp;</td>
+  <td class="xl6915398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7215398" width="281" style="width:211pt"># full-screen</td>
+  <td class="xl7115398" width="471" style="width:353pt"># structure:</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">template:full-screen</td>
+  <td class="xl7115398" width="471" style="width:353pt">#</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt"><span style="mso-spacerun:yes">  </span>full-screen.dirname:fs</td>
+  <td class="xl7115398" width="471" style="width:353pt">#<span style="mso-spacerun:yes">   </span>type.dirname:{value:STRING}</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt"><span style="mso-spacerun:yes">  </span>full-screen.md.width:1080</td>
+  <td class="xl7115398" width="471" style="width:353pt">#<span style="mso-spacerun:yes">   </span>type.breakpoint.width:{value:INTEGER}</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt"><span style="mso-spacerun:yes">  </span>full-screen.md.height:450</td>
+  <td class="xl7115398" width="471" style="width:353pt">#<span style="mso-spacerun:yes">   </span>type.breakpoint.height:{value:INTEGER}</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt"><span style="mso-spacerun:yes">  </span>full-screen.lg.width:1900</td>
+  <td class="xl7115398" width="471" style="width:353pt">#</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt"><span style="mso-spacerun:yes">  </span>full-screen.lg.height:713</td>
+  <td class="xl7115398" width="471" style="width:353pt">#<span style="mso-spacerun:yes">     </span>Note:</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt"><span style="mso-spacerun:yes">  </span></td>
+  <td class="xl7115398" width="471" style="width:353pt">#<span style="mso-spacerun:yes">     </span>The bannertype's name is placed as the
+  key 'template'.</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7215398" width="281" style="width:211pt"># full-screen-sm</td>
+  <td class="xl7115398" width="471" style="width:353pt">#<span style="mso-spacerun:yes">     </span>The bannertype's name should be unique.</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">template:full-screen-sm</td>
+  <td class="xl7115398" width="471" style="width:353pt">#</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt"><span style="mso-spacerun:yes">  </span>full-screen-sm.dirname:fs</td>
+  <td class="xl7115398" width="471" style="width:353pt"># sample:</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt"><span style="mso-spacerun:yes">  </span>full-screen-sm.sm.width:720</td>
+  <td class="xl7115398" width="471" style="width:353pt">#<span style="mso-spacerun:yes">   </span>full-width.dirname:full</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt"><span style="mso-spacerun:yes">  </span>full-screen-sm.sm.height:420</td>
+  <td class="xl7115398" width="471" style="width:353pt">#<span style="mso-spacerun:yes">   </span>full-width.sm.width:480</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">&nbsp;</td>
+  <td class="xl7115398" width="471" style="width:353pt">#<span style="mso-spacerun:yes">   </span>full-width.sm.height:300</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7215398" width="281" style="width:211pt"># 1500er-flex-banner</td>
+  <td class="xl7115398" width="471" style="width:353pt">#<span style="mso-spacerun:yes">   </span>full-width.md.width:1080</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">template:flex-banner-1500</td>
+  <td class="xl7115398" width="471" style="width:353pt">#<span style="mso-spacerun:yes">   </span>full-width.md.height:350</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt"><span style="mso-spacerun:yes">  </span>flex-banner-1500.dirname:1500</td>
+  <td class="xl7115398" width="471" style="width:353pt">#<span style="mso-spacerun:yes">   </span>full-width.lg.width:1900</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt"><span style="mso-spacerun:yes">  </span>flex-banner-1500.lg.width:1500</td>
+  <td class="xl7115398" width="471" style="width:353pt">#<span style="mso-spacerun:yes">   </span>full-width.lg.height:550</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt"><span style="mso-spacerun:yes">  </span>flex-banner-1500.lg.height:auto</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt"><span style="mso-spacerun:yes">  </span>flex-banner-1500.md.width:1080</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt"><span style="mso-spacerun:yes">  </span>flex-banner-1500.md.height:auto</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">&nbsp;</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7215398" width="281" style="width:211pt"># 1500er-flex-banner-sm</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">template:flex-banner-1500-sm</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt"><span style="mso-spacerun:yes">  </span>flex-banner-1500-sm.dirname:1500</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt"><span style="mso-spacerun:yes">  </span>flex-banner-1500-sm.sm.width:720</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt"><span style="mso-spacerun:yes">  </span>flex-banner-1500-sm.sm.height:auto</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="20" style="height:14.95pt">
+  <td height="20" class="xl6415398" width="5" style="height:14.95pt;width:4pt"></td>
+  <td class="xl7315398" width="281" style="width:211pt">&nbsp;</td>
+  <td class="xl7415398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl6415398" width="281" style="width:211pt"></td>
+  <td class="xl6415398" width="471" style="width:353pt"></td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl6415398" width="281" style="width:211pt"></td>
+  <td class="xl7515398" width="471" style="width:353pt"></td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="32" style="height:23.8pt">
+  <td height="32" class="xl6415398" width="5" style="height:23.8pt;width:4pt"></td>
+  <td class="xl6515398" width="281" style="width:211pt">Property Reference</td>
+  <td class="xl6415398" width="471" style="width:353pt"></td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="20" style="height:14.95pt">
+  <td height="20" class="xl6415398" width="5" style="height:14.95pt;width:4pt"></td>
+  <td class="xl6615398" width="281" style="width:211pt">properties/app.properties</td>
+  <td class="xl6715398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl6815398" width="281" style="width:211pt"># Properties Files Location</td>
+  <td class="xl6915398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">locNetworkRes:properties/</td>
+  <td class="xl7115398" width="471" style="width:353pt">URL to properties files
+  (root-dir)</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">locMediaBackup:dist/</td>
+  <td class="xl7115398" width="471" style="width:353pt">(e.g.:
+  //SVR-APP-11/EC/Promeda.local-working-dir/Promeda-bin/properties/)</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">&nbsp;</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7215398" width="281" style="width:211pt"># Local Media Archive</td>
+  <td class="xl7115398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">locMediaBackup:dist/</td>
+  <td class="xl7115398" width="471" style="width:353pt">URL to Local Media Archive
+  (root-dir)</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">mediaBackupDirOriginals:psd/</td>
+  <td class="xl7115398" width="471" style="width:353pt">URL to subfolder for copies
+  of original inputfiles</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl7015398" width="281" style="width:211pt">mediaBackupDirLive:images/</td>
+  <td class="xl7115398" width="471" style="width:353pt">URL to subfolder for
+  generated outputfiles</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="20" style="height:14.95pt">
+  <td height="20" class="xl6415398" width="5" style="height:14.95pt;width:4pt"></td>
+  <td class="xl7315398" width="281" style="width:211pt">&nbsp;</td>
+  <td class="xl7415398" width="471" style="width:353pt">&nbsp;</td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ <tr height="19" style="height:14.3pt">
+  <td height="19" class="xl6415398" width="5" style="height:14.3pt;width:4pt"></td>
+  <td class="xl6415398" width="281" style="width:211pt"></td>
+  <td class="xl6415398" width="471" style="width:353pt"></td>
+  <td class="xl6415398" width="8" style="width:6pt"></td>
+ </tr>
+ [if supportMisalignedColumns]
+ <tr height="0" style="display:none">
+  <td width="5" style="width:4pt"></td>
+  <td width="281" style="width:211pt"></td>
+  <td width="471" style="width:353pt"></td>
+  <td width="8" style="width:6pt"></td>
+ </tr>
+ [endif]
+</table>
+
+</div>
+
+
+<!--  -->
+<!-- END OF OUTPUT FROM EXCEL PUBLISH AS WEB PAGE WIZARD -->
+<!--  -->
+</body>
+
+</html>
+</span></p>
+<p></p>
+<p class="rvps2" style="clear: both;"><span class="rvts6">Created with the Personal Edition of HelpNDoc: </span><a class="rvts7" href="https://www.helpndoc.com/create-epub-ebooks">Produce electronic books easily</a></p>
+
+            </div>
+            
+            <div id="topic_footer"><div id="topic_footer_content">Copyright &copy; &lt;Dates&gt; by &lt;Authors&gt;. All Rights Reserved.</div></div>
+        </div>  <!-- /#topic-content -->
+    </article>
+
+    <footer></footer>
+
+  </div>  <!-- /#main -->
+
+  <div class="mask" data-toggle="sm-nav-expanded"></div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="hndModal" tabindex="-1" role="dialog" aria-labelledby="hndModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="hndModalLabel"></h4>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary modal-btn-close" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="vendors/jquery-1.11.3/jquery.min.js"></script>
+  <script src="vendors/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+  <script src="vendors/fastclick-1.0.6/fastclick.min.js"></script>
+  <script src="vendors/markjs-8.8.3/jquery.mark.min.js"></script>
+  <script src="vendors/uri-1.18.9/uri.min.js"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="vendors/bootstrap-3.3.6/js/ie10-viewport-bug-workaround.js"></script>
+  
+  <!-- Headroom -->
+  <script src="vendors/headroom-0.9.3/headroom.min.js"></script>
+  <script src="vendors/headroom-0.9.3/jquery.headroom.min.js"></script>
+
+  <!-- JsTree -->
+  <script src="vendors/jstree-3.3.2/jstree.min.js"></script>
+
+  <!-- HelpNDoc scripts -->
+  <script src="_translations.js"></script>
+  <script src="js/hndsd.min.js"></script>
+  <script src="js/hndse.min.js"></script>
+  <script src="js/app.min.js"></script>
+
+  <!-- Scripts -->
+  <script>
+    $(function() {
+      // Instanciate FastClick
+      Origami.fastclick(document.body);
+      // Create the app
+      var app = new Hnd.App();
+      // Update translations
+      hnd_ut(app);
+	  // Custom JS
+	  
+      // Boot the app
+      app.Boot();
+    });
+  </script>
+
+
+
+</body>
+
+</html>
+
