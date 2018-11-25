@@ -46,6 +46,12 @@
 			<attribute name="javadoc_location" value="jar:platform:/resource/Promeda/lib/sanselan-0.97-incubator-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="lib/turbojpeg.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/turbojpeg.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/libjpeg-turbo-gcc/bin"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/Filters.jar"/>
+	<classpathentry kind="lib" path="lib/swingx-core-1.6.5-1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

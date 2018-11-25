@@ -11,6 +11,8 @@ import javax.swing.ListCellRenderer;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 
+import org.jdesktop.swingx.JXList;
+
 public class DirList extends JList {
 	
 	private final ImageIcon psdFileIcon = new ImageIcon(CheckBoxList.class.getResource("/img/psd-file-32px.png"));

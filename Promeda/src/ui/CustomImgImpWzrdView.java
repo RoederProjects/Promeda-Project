@@ -54,12 +54,11 @@ public class CustomImgImpWzrdView extends JFrame {
 	public JPanel panel_1;
 	public JLabel labelPreviewPsdImage;
 	public BannerCheckBoxList listBannerModels;
-	private JScrollPane scrollPane;
-	private JPanel panelCardRemoteDir;
-	private JLabel label;
-	private JLabel label_1;
-	private JTextField textField;
-	private JPanel panel_3;
+	public JScrollPane scrollPane;
+	public JPanel panelCardRemoteDir;
+	public JLabel lblThemenweltOptions;
+	public JLabel lblSetupAnExisting;
+	public JPanel panel_3;
 
 	/**
 	 * Create the frame.
@@ -129,41 +128,32 @@ public class CustomImgImpWzrdView extends JFrame {
 		panelCardRemoteDir.setBackground(Color.WHITE);
 		panelContentContainer.add(panelCardRemoteDir, "name_2229379929100");
 		
-		label = new JLabel("Banner Options");
-		label.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		label.setBounds(10, 11, 410, 27);
-		panelCardRemoteDir.add(label);
+		lblThemenweltOptions = new JLabel("Themenwelt Options");
+		lblThemenweltOptions.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		lblThemenweltOptions.setBounds(10, 11, 410, 27);
+		panelCardRemoteDir.add(lblThemenweltOptions);
 		
-		label_1 = new JLabel("Setup your preferred image sizes.");
-		label_1.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-		label_1.setBounds(10, 40, 410, 23);
-		panelCardRemoteDir.add(label_1);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBorder(new TitledBorder(null, "Banner Filename", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		textField.setBounds(10, 74, 399, 39);
-		panelCardRemoteDir.add(textField);
+		lblSetupAnExisting = new JLabel("Select an existing 'Themenwelt' or add a new one.");
+		lblSetupAnExisting.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		lblSetupAnExisting.setBounds(10, 40, 410, 23);
+		panelCardRemoteDir.add(lblSetupAnExisting);
 		
 		panel_3 = new JPanel();
 		panel_3.setLayout(null);
-		panel_3.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Banner Templates", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_3.setBounds(10, 124, 399, 195);
+		panel_3.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Themenwelten", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_3.setBounds(10, 74, 399, 245);
 		panelCardRemoteDir.add(panel_3);
 		
 		JScrollPane scrollPane_4 = new JScrollPane();
-		scrollPane_4.setBounds(10, 24, 175, 160);
+		scrollPane_4.setBounds(10, 24, 283, 210);
 		panel_3.add(scrollPane_4);
 		
 		DirList dirList = new DirList();
 		scrollPane_4.setViewportView(dirList);
 		
-		JScrollPane scrollPane_5 = new JScrollPane();
-		scrollPane_5.setBounds(195, 26, 194, 158);
-		panel_3.add(scrollPane_5);
-		
-		DirList dirList_1 = new DirList();
-		scrollPane_5.setViewportView(dirList_1);
+		JButton btnNewButton = new JButton("Add new");
+		btnNewButton.setBounds(300, 22, 89, 23);
+		panel_3.add(btnNewButton);
 		panelCardImageOptions.setLayout(null);
 		panelCardImageOptions.setBackground(Color.WHITE);
 		panelContentContainer.add(panelCardImageOptions, "name_1656368493048464");

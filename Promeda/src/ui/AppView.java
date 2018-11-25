@@ -137,12 +137,15 @@ public class AppView extends JFrame {
 		addPopup(btnMenuImageImport, popupMenuImageImport);
 		
 		mntmProduct = new JMenuItem("Product");
+		mntmProduct.addActionListener(controller);
 		popupMenuImageImport.add(mntmProduct);
 		
 		mntmBanner = new JMenuItem("Banner");
+		mntmBanner.addActionListener(controller);
 		popupMenuImageImport.add(mntmBanner);
 		
 		mntmThemenwelt = new JMenuItem("Themenwelt");
+		mntmThemenwelt.addActionListener(controller);
 		popupMenuImageImport.add(mntmThemenwelt);
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {
