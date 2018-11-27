@@ -16,6 +16,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AppView extends JFrame {
 
@@ -33,6 +35,7 @@ public class AppView extends JFrame {
 	public JMenuItem mntmBanner;
 	public JMenuItem mntmThemenwelt;
 	public JButton btnMenuImageImport;
+	public JButton btnImageProcessingSandBox;
 
 	/**
 	 * Create the frame.
@@ -147,6 +150,14 @@ public class AppView extends JFrame {
 		mntmThemenwelt = new JMenuItem("Themenwelt");
 		mntmThemenwelt.addActionListener(controller);
 		popupMenuImageImport.add(mntmThemenwelt);
+		
+		btnImageProcessingSandBox = new JButton("Image Processing SandBox");
+		btnImageProcessingSandBox.addActionListener(controller);
+		btnImageProcessingSandBox.setSize(new Dimension(225, 40));
+		btnImageProcessingSandBox.setPreferredSize(new Dimension(300, 23));
+		btnImageProcessingSandBox.setAlignmentX(0.5f);
+		btnImageProcessingSandBox.setBounds(10, 401, 225, 40);
+		contentPane.add(btnImageProcessingSandBox);
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {

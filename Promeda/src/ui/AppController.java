@@ -43,6 +43,8 @@ public class AppController implements ActionListener {
 			new SettingsController();
 		} else if (ae.getSource() == view.btnSearch || ae.getSource() == view.textFieldProdNr) {
 			new ArticleController(view.textFieldProdNr.getText());
+		} else if (ae.getSource() == view.btnImageProcessingSandBox) {
+			new ImageProcessingSandBoxController();
 		}
 	}
 }

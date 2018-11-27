@@ -7,9 +7,9 @@ import java.io.File;
 import model.singleton.ImageHandler;
 
 public class ImportController {
-	private ImageHandler imageHandler;
-	private File srcFile;
-	private BufferedImage srcImage;
+	public ImageHandler imageHandler;
+	public File srcFile;
+	public BufferedImage srcImage;
 
 	public Dimension lockAspectRatioWidth(Dimension dim, int newHeight) {
 		float factor = (float) newHeight / (float) dim.getHeight();

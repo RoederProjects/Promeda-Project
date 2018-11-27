@@ -70,7 +70,7 @@ public class CustomImgImpWzrdController implements ActionListener, ComponentList
 	public CustomImgImpWzrdController() {
 		initProperties();
 		initView();
-		initThemenwelten(propApp.get(key));
+		//initThemenwelten(propApp.get(key));
 		initStores();
 	}
 
