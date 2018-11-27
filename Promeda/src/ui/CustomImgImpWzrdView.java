@@ -32,7 +32,6 @@ public class CustomImgImpWzrdView extends JFrame {
 	public JButton btnCardNext;
 	public JPanel panelContentContainer;
 	public CardLayout cardLayoutContentContainer;
-	public JPanel panelCardSourceFiles;
 	public JPanel panelCardImageOptions;
 	public JPanel panelCardTargetStores;
 	public JPanel panelCardSummary;
@@ -43,8 +42,6 @@ public class CustomImgImpWzrdView extends JFrame {
 	public CheckBoxList checkBoxListStores;
 	public JButton btnSelectAll;
 	public JButton btnDeselectAll;
-	public JTextField fileListSourceFiles;
-	public JButton btnAddFiles;
 	public FileList fileListSourceFilesSummary;
 	public StoreList storeListTargetStoresSummary;
 	public JLabel labelLoadManMoving;
@@ -52,13 +49,20 @@ public class CustomImgImpWzrdView extends JFrame {
 	public JLabel lblSetupYourPreferred;
 	public JTextField textFieldBannerFileName;
 	public JPanel panel_1;
-	public JLabel labelPreviewPsdImage;
 	public BannerCheckBoxList listBannerModels;
 	public JScrollPane scrollPane;
 	public JPanel panelCardRemoteDir;
 	public JLabel lblThemenweltOptions;
 	public JLabel lblSetupAnExisting;
 	public JPanel panel_3;
+	public JPanel panelCardSourceFiles;
+	public JButton btnAddFiles;
+	public JButton button_1;
+	public JLabel label;
+	public JLabel label_1;
+	public JButton button_2;
+	public FileList fileListSourceFiles;
+	public JScrollPane scrollPane_5;
 
 	/**
 	 * Create the frame.
@@ -80,45 +84,43 @@ public class CustomImgImpWzrdView extends JFrame {
 		contentPane.add(panelContentContainer);
 		cardLayoutContentContainer = new CardLayout();
 		panelContentContainer.setLayout(cardLayoutContentContainer);
-
-		panelCardSourceFiles = new JPanel();
-		panelCardSourceFiles.addComponentListener(controller);
-		panelContentContainer.add(panelCardSourceFiles, "panelCardSourceFiles");
-		panelCardSourceFiles.setBackground(new Color(255, 255, 255));
-		panelCardSourceFiles.setLayout(null);
 		
-				fileListSourceFiles = new JTextField();
-				fileListSourceFiles.setBounds(10, 74, 260, 25);
-				panelCardSourceFiles.add(fileListSourceFiles);
-				fileListSourceFiles.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
-				fileListSourceFiles.setFont(new Font("Segoe UI", Font.BOLD, 12));
-				fileListSourceFiles.setBackground(new Color(240, 248, 255));
-
+		panelCardSourceFiles = new JPanel();
+		panelCardSourceFiles.setLayout(null);
+		panelCardSourceFiles.setBackground(Color.WHITE);
+		panelContentContainer.add(panelCardSourceFiles, "name_64781240858208");
+		
+		scrollPane_5 = new JScrollPane();
+		scrollPane_5.setBounds(20, 76, 241, 208);
+		panelCardSourceFiles.add(scrollPane_5);
+		
+		fileListSourceFiles = new FileList();
+		scrollPane_5.setViewportView(fileListSourceFiles);
+		fileListSourceFiles.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		fileListSourceFiles.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fileListSourceFiles.setBackground(new Color(240, 248, 255));
+		
 		btnAddFiles = new JButton("Add");
-		btnAddFiles.addActionListener(controller);
 		btnAddFiles.setBounds(280, 74, 119, 23);
 		panelCardSourceFiles.add(btnAddFiles);
-
-		JLabel lblSelectImages = new JLabel("Add Source");
-		lblSelectImages.setBorder(new MatteBorder(0, 0, 2, 0, (Color) UIManager.getColor("Label.disabledForeground")));
-		lblSelectImages.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		lblSelectImages.setBounds(10, 11, 410, 27);
-		panelCardSourceFiles.add(lblSelectImages);
-
-		JLabel lblAddYourSourcefiles = new JLabel("Select image file (.psd, jpeg) .");
-		lblAddYourSourcefiles.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-		lblAddYourSourcefiles.setBounds(10, 40, 410, 23);
-		panelCardSourceFiles.add(lblAddYourSourcefiles);
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Preview", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_2.setBounds(10, 110, 389, 209);
-		panelCardSourceFiles.add(panel_2);
-		panel_2.setLayout(null);
+		button_1 = new JButton("Remove");
+		button_1.setBounds(280, 108, 119, 23);
+		panelCardSourceFiles.add(button_1);
 		
-		labelPreviewPsdImage = new JLabel("");
-		labelPreviewPsdImage.setBounds(6, 16, 373, 182);
-		panel_2.add(labelPreviewPsdImage);
+		label = new JLabel("Select Images");
+		label.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		label.setBounds(10, 11, 410, 27);
+		panelCardSourceFiles.add(label);
+		
+		label_1 = new JLabel("Add your source-files (.psd) to the import-list");
+		label_1.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		label_1.setBounds(10, 40, 410, 23);
+		panelCardSourceFiles.add(label_1);
+		
+		button_2 = new JButton("Clear List");
+		button_2.setBounds(280, 261, 119, 23);
+		panelCardSourceFiles.add(button_2);
 
 		panelCardImageOptions = new JPanel();
 		panelCardImageOptions.addComponentListener(controller);

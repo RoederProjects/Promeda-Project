@@ -11,9 +11,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
@@ -68,17 +70,16 @@ public class CustomImgImpWzrdController implements ActionListener, ComponentList
 	public CustomImgImpWzrdController() {
 		initProperties();
 		initView();
-		//initBannerDim();
+		initThemenwelten(propApp.get(key));
 		initStores();
 	}
 
-	public CustomImgImpWzrdController(File psdFile) {
+	public CustomImgImpWzrdController(File srcFile) {
 		initProperties();
-		//initBannerDim();
 		initView();
 		initStores();
-		this.srcFile = psdFile;
-		view.fileListSourceFiles.setText(psdFile.getAbsolutePath());
+		this.srcFileList.add(srcFile);
+		view.fileListSourceFiles.setListData(srcFileList);
 	}
 
 	private void initProperties() {
@@ -144,23 +145,6 @@ public class CustomImgImpWzrdController implements ActionListener, ComponentList
 		}
 	}
 
-	public void parsePsdLayers() {
-
-		// view.labelPreviewPsdImage.setIcon(new
-		// ImageIcon(Sanselan.getBufferedImage(psdFile)));
-		Psd psd;
-		Layer layer;
-		try {
-			psd = new Psd(srcFile);
-			for (int i = 0; i <= psd.getLayersCount(); i++) {
-				layer = psd.getLayer(i);
-				view.labelPreviewPsdImage.setIcon(new ImageIcon(layer.getImage()));
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * 
@@ -341,7 +325,26 @@ public class CustomImgImpWzrdController implements ActionListener, ComponentList
 		}
 		return files;
 	}
+	
+	public File[] initThemenwelten(File psdFilesPath) {
+	
+		File[] files = psdFilesPath.listFiles();
+		return files;
+	}
+	
+	
+	public File[] initRemainingFolder(final String productID, File psdFilesPath) {
+		FilenameFilter filter = new FilenameFilter() {
 
+			@Override
+			public boolean accept(File dir, String name) {
+				return name.matches("^((?!(banner|themenwelten)).)*$");
+			}
+		};
+		File[] files = psdFilesPath.listFiles(filter);
+		return files;
+	}
+	
 	public void initSelectedBannerList() {
 		selectedBannerTemplates = new Vector<BannerModel>();
 		for (BannerModel banner : bannerTemplates) {
@@ -358,30 +361,22 @@ public class CustomImgImpWzrdController implements ActionListener, ComponentList
 		}
 	}
 
-	public void initSrcFile(File srcFile) {
-		System.out.println(srcFile.getName());
+	public BufferedImage initSrcFile(File srcFile) {
 		String fileExt = FilenameUtils.getExtension(srcFile.getName());
-		System.out.println(fileExt);
+		BufferedImage srcImage = null;
 		try {
 			if (fileExt.equalsIgnoreCase("psd") || fileExt.equalsIgnoreCase("psb")) {
 				Psd psd = new Psd(srcFile);
 				srcImage = psd.getImage();
-				view.labelPreviewPsdImage.setIcon(new ImageIcon(srcImage));
-				float factor = (float)300 / (float)srcImage.getHeight();
-				System.out.println(factor);
-				int newWidth = Math.round((float)srcImage.getWidth()*factor);
-				System.out.println(newWidth);
-				ImageIcon iconHelper = new ImageIcon(imgHandler.resizeImage2(newWidth, 300, srcImage));
-				view.labelPreviewPsdImage.setIcon(iconHelper);
 			} else if (fileExt.equalsIgnoreCase("jpg") || fileExt.equalsIgnoreCase("jpeg")) {
-				System.out.println(srcFile.getName());
 				srcImage = ImageIO.read(srcFile);
-				view.labelPreviewPsdImage.setIcon(new ImageIcon(srcImage));
+
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return srcImage;
 	}
 
 	public void progressBarUpdate(int progressStepSize) {
@@ -411,13 +406,9 @@ public class CustomImgImpWzrdController implements ActionListener, ComponentList
 				view.cardLayoutContentContainer.next(view.panelContentContainer);
 			}
 		} else if (ae.getSource() == view.btnAddFiles) {
-			srcFile = openFile();
-			srcFileList.add(srcFile);
-			// srcFileList = new Vector<File>(Arrays.asList(openFiles()));
+			srcFileList = new Vector<File>(Arrays.asList(openFiles()));
 			initSrcFile(srcFile);
-			view.fileListSourceFiles.setText(srcFile.getAbsolutePath());
-			view.textFieldBannerFileName.setText(FilenameUtils.getBaseName(srcFile.getName()));
-			initBannerDim();
+			view.fileListSourceFiles.setListData(srcFileList);
 		} else if (ae.getSource() == view.btnSelectAll) {
 			view.checkBoxListStores.selectAll();
 		} else if (ae.getSource() == view.btnDeselectAll) {

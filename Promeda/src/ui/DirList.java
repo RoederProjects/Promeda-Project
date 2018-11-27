@@ -15,7 +15,7 @@ import org.jdesktop.swingx.JXList;
 
 public class DirList extends JList {
 	
-	private final ImageIcon psdFileIcon = new ImageIcon(CheckBoxList.class.getResource("/img/psd-file-32px.png"));
+	private final ImageIcon psdFileIcon = new ImageIcon(CheckBoxList.class.getResource("/img/icon-folder.png"));
 
 	public DirList() {
 		setCellRenderer(new CellRenderer());
@@ -31,7 +31,7 @@ public class DirList extends JList {
 			JLabel label = new JLabel(file.getName(), psdFileIcon, SwingConstants.LEFT);
 			if(isSelected) {
 				label.setOpaque(true);
-				label.setBackground(Color.BLUE);
+				label.setBackground(Color.cyan);
 				label.setForeground(Color.WHITE);
 			}
 			return label;

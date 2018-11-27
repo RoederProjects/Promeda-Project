@@ -37,6 +37,8 @@ import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import com.jhlabs.image.ScaleFilter;
+
 import model.prototype.BannerModel;
 
 // import com.enterprisedt.net.ftp.FTPException;
@@ -375,7 +377,9 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 				srcImage = psd.getImage();
 				float factor = (float) 300 / (float) srcImage.getHeight();
 				int newWidth = Math.round((float) srcImage.getWidth() * factor);
-				ImageIcon iconHelper = new ImageIcon(imgHandler.resizeImage(newWidth, 300, srcImage));
+				ScaleFilter scaleFilter=new ScaleFilter(newWidth, 300);
+				ImageIcon iconHelper = new ImageIcon(scaleFilter.filter(new BufferedImage(newWidth, 300, srcImage.getType()), srcImage));
+				//ImageIcon iconHelper = new ImageIcon(imgHandler.resizeImage(newWidth, 300, srcImage));
 				view.labelPreviewPsdImage.setIcon(iconHelper);
 			} else if (fileExt.equalsIgnoreCase("jpg") || fileExt.equalsIgnoreCase("jpeg")) {
 				srcImage = ImageIO.read(srcFile);
