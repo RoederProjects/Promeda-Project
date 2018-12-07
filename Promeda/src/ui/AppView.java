@@ -3,33 +3,28 @@ package ui;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class AppView extends JFrame {
 
-	private AppController controller;
-	private JPanelWithBackgroundImage contentPane;
-	public JButton btnProdImgImpWzrd;
+	public AppController controller;
+	public JPanelWithBackgroundImage contentPane;
 	public JButton btnSearch;
 	public JButton btnSettings;
 	public JButton btnExit;
 	public JTextField textFieldProdNr;
-	public JButton btnPageImgImpWzrd;
-	public JButton btnNewButton;
 	public JPopupMenu popupMenuImageImport;
 	public JMenuItem mntmProduct;
 	public JMenuItem mntmBanner;
@@ -41,12 +36,11 @@ public class AppView extends JFrame {
 	 * Create the frame.
 	 */
 	public AppView(AppController controller) {
+		setResizable(false);
 
 		this.controller = controller;
-
-		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 251, 580);
+		setBounds(100, 100, 250, 477);
 		contentPane = new JPanelWithBackgroundImage(getClass().getResource("/img/promeda-app-bg3.jpg"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -76,20 +70,12 @@ public class AppView extends JFrame {
 		btnSearch.addActionListener(controller);
 		panel.add(btnSearch);
 
-		btnProdImgImpWzrd = new JButton("Product Image Import");
-		btnProdImgImpWzrd.addActionListener(controller);
-		btnProdImgImpWzrd.setLocation(10, 147);
-		btnProdImgImpWzrd.setSize(new Dimension(225, 40));
-		btnProdImgImpWzrd.setPreferredSize(new Dimension(300, 23));
-		btnProdImgImpWzrd.setAlignmentX(Component.CENTER_ALIGNMENT);
-		contentPane.add(btnProdImgImpWzrd);
-
 		btnSettings = new JButton("Settings");
 		btnSettings.addActionListener(controller);
 		btnSettings.setSize(new Dimension(225, 40));
 		btnSettings.setPreferredSize(new Dimension(300, 23));
 		btnSettings.setAlignmentX(0.5f);
-		btnSettings.setBounds(10, 300, 225, 40);
+		btnSettings.setBounds(10, 312, 225, 40);
 		contentPane.add(btnSettings);
 
 		btnExit = new JButton("");
@@ -100,65 +86,53 @@ public class AppView extends JFrame {
 		btnExit.setSize(new Dimension(225, 40));
 		btnExit.setPreferredSize(new Dimension(300, 23));
 		btnExit.setAlignmentX(0.5f);
-		btnExit.setBounds(93, 474, 64, 64);
+		btnExit.setBounds(91, 364, 64, 64);
 		contentPane.add(btnExit);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Promondo Media Administration");
 		lblNewLabel_1.setFont(new Font("Gill Sans MT", Font.PLAIN, 12));
 		lblNewLabel_1.setVerticalAlignment(SwingConstants.TOP);
 		lblNewLabel_1.setBounds(72, 49, 163, 36);
 		contentPane.add(lblNewLabel_1);
-		
+
 		JLabel label = new JLabel("");
 		label.setHorizontalAlignment(SwingConstants.RIGHT);
 		label.setIcon(new ImageIcon(AppView.class.getResource("/img/logo.png")));
 		label.setBounds(10, 5, 52, 80);
 		contentPane.add(label);
-		
-		btnPageImgImpWzrd = new JButton("Banner Import");
-		btnPageImgImpWzrd.addActionListener(controller);
-		btnPageImgImpWzrd.setSize(new Dimension(225, 40));
-		btnPageImgImpWzrd.setPreferredSize(new Dimension(300, 23));
-		btnPageImgImpWzrd.setAlignmentX(0.5f);
-		btnPageImgImpWzrd.setBounds(10, 198, 225, 40);
-		contentPane.add(btnPageImgImpWzrd);
-		
-		btnNewButton = new JButton("Mass Restore Import");
-		btnNewButton.addActionListener(controller);
-		btnNewButton.setBounds(10, 249, 225, 40);
-		contentPane.add(btnNewButton);
-		
+
 		btnMenuImageImport = new JButton("Image Imports");
 		btnMenuImageImport.addActionListener(controller);
 		btnMenuImageImport.setSize(new Dimension(225, 40));
 		btnMenuImageImport.setPreferredSize(new Dimension(300, 23));
 		btnMenuImageImport.setAlignmentX(0.5f);
-		btnMenuImageImport.setBounds(10, 351, 225, 40);
+		btnMenuImageImport.setBounds(10, 148, 225, 40);
 		contentPane.add(btnMenuImageImport);
-		
+
 		popupMenuImageImport = new JPopupMenu();
 		addPopup(btnMenuImageImport, popupMenuImageImport);
-		
+
 		mntmProduct = new JMenuItem("Product");
 		mntmProduct.addActionListener(controller);
 		popupMenuImageImport.add(mntmProduct);
-		
+
 		mntmBanner = new JMenuItem("Banner");
 		mntmBanner.addActionListener(controller);
 		popupMenuImageImport.add(mntmBanner);
-		
+
 		mntmThemenwelt = new JMenuItem("Themenwelt");
 		mntmThemenwelt.addActionListener(controller);
 		popupMenuImageImport.add(mntmThemenwelt);
-		
+
 		btnImageProcessingSandBox = new JButton("Image Processing SandBox");
 		btnImageProcessingSandBox.addActionListener(controller);
 		btnImageProcessingSandBox.setSize(new Dimension(225, 40));
 		btnImageProcessingSandBox.setPreferredSize(new Dimension(300, 23));
 		btnImageProcessingSandBox.setAlignmentX(0.5f);
-		btnImageProcessingSandBox.setBounds(10, 401, 225, 40);
+		btnImageProcessingSandBox.setBounds(10, 200, 225, 40);
 		contentPane.add(btnImageProcessingSandBox);
 	}
+
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -166,11 +140,13 @@ public class AppView extends JFrame {
 					showMenu(e);
 				}
 			}
+
 			public void mouseReleased(MouseEvent e) {
 				if (e.isPopupTrigger()) {
 					showMenu(e);
 				}
 			}
+
 			private void showMenu(MouseEvent e) {
 				popup.show(e.getComponent(), e.getX(), e.getY());
 			}

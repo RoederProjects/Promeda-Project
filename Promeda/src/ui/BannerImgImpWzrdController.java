@@ -51,7 +51,7 @@ import model.singleton.SFTPClientModel;
 import psd.model.Layer;
 import psd.model.Psd;
 
-public class BannerImgImpWzrdController extends ImportController implements ActionListener, ComponentListener  {
+public class BannerImgImpWzrdController extends ImportController implements ActionListener, ComponentListener {
 
 	private BannerImgImpWzrdView view;
 	private PropertiesModel propApp;
@@ -139,7 +139,8 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 					stores.add(new StoreDataModel(config.getString("url"), config.getString("ftp.host"),
 							Integer.parseInt(config.getString("ftp.port")), config.getString("ftp.protocol"),
 							config.getString("ftp.user"), config.getString("ftp.pswd"),
-							config.getString("ftp.dir.banner"), config.getList("product.image.size")));
+							config.getString("ftp.dir.banner"), config.getBoolean("product.image.compression.enabled"),
+							config.getList("product.image.size")));
 				}
 			}
 		} catch (ConfigurationException cex) {
@@ -234,7 +235,7 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 						// ImageIO.write(scaledImage, "jpg", imgFile);
 
 						// COMPRESS and WRITE JPEG FILE
-						compress(rgbImage, imgFile);
+						compress(rgbImage, imgFile, store.isCompressionEnabled());
 
 						// UPLOAD TO (REMOTE-)WEBSERVER
 						progressLabelUpdate(
@@ -274,9 +275,7 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 				progressBarUpdate(progressStepSize);
 			}
 
-		} catch (
-
-		IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
@@ -286,7 +285,7 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 		view.btnCardNext.setText("Done");
 	}
 
-	public void compress(BufferedImage srcImage, File destFile) throws IOException {
+	public void compress(BufferedImage srcImage, File destFile, boolean isCompressionEnabled) throws IOException {
 		OutputStream os = new FileOutputStream(destFile);
 		Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName("jpeg");
 		ImageWriter writer = (ImageWriter) writers.next();
@@ -296,16 +295,17 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 
 		ImageWriteParam param = writer.getDefaultWriteParam();
 
-		if (param.canWriteProgressive()) {
-			param.setProgressiveMode(ImageWriteParam.MODE_DEFAULT);
+		if(isCompressionEnabled) {
+			if (param.canWriteProgressive()) {
+				param.setProgressiveMode(ImageWriteParam.MODE_DEFAULT);
+			}
+	
+			if (param.canWriteCompressed()) {
+				param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+				// param.setCompressionType("JPEG-LS");
+				param.setCompressionQuality(0.85f); // Change the quality value you prefer
+			}
 		}
-
-		if (param.canWriteCompressed()) {
-			param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
-			// param.setCompressionType("JPEG-LS");
-			param.setCompressionQuality(0.85f); // Change the quality value you prefer
-		}
-
 		writer.write(writer.getDefaultStreamMetadata(param), new IIOImage(srcImage, null, null), param);
 
 		os.close();
@@ -377,9 +377,11 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 				srcImage = psd.getImage();
 				float factor = (float) 300 / (float) srcImage.getHeight();
 				int newWidth = Math.round((float) srcImage.getWidth() * factor);
-				ScaleFilter scaleFilter=new ScaleFilter(newWidth, 300);
-				ImageIcon iconHelper = new ImageIcon(scaleFilter.filter(new BufferedImage(newWidth, 300, srcImage.getType()), srcImage));
-				//ImageIcon iconHelper = new ImageIcon(imgHandler.resizeImage(newWidth, 300, srcImage));
+				ScaleFilter scaleFilter = new ScaleFilter(newWidth, 300);
+				ImageIcon iconHelper = new ImageIcon(
+						scaleFilter.filter(new BufferedImage(newWidth, 300, srcImage.getType()), srcImage));
+				// ImageIcon iconHelper = new ImageIcon(imgHandler.resizeImage(newWidth, 300,
+				// srcImage));
 				view.labelPreviewPsdImage.setIcon(iconHelper);
 			} else if (fileExt.equalsIgnoreCase("jpg") || fileExt.equalsIgnoreCase("jpeg")) {
 				srcImage = ImageIO.read(srcFile);

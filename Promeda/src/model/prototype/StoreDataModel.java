@@ -13,10 +13,6 @@ import java.util.Vector;
  *
  * @author troeder
  */
-/**
- * @author troeder
- *
- */
 public class StoreDataModel {
 
 	private String storeName;
@@ -26,6 +22,7 @@ public class StoreDataModel {
 	private String storeFtpPass;
 	private String storeFtpProtocol;
 	private String dirDefault;
+	private boolean compressionEnabled;
 	private ImageSize[] storeImageSizes;
 	private Vector<ImageSize> storeImageSizeList = new Vector<ImageSize>();;
 	private List<ImageSize> storeImageSizeListNew = new Vector<ImageSize>();
@@ -74,7 +71,7 @@ public class StoreDataModel {
 	}
 
 	public StoreDataModel(String storeName, String storeFtpServer, int storeFtpPort, String storeFtpProtocol,
-			String storeFtpUser, String storeFtpPass, String dirDefault, List<Object> storeImageSizeList) {
+			String storeFtpUser, String storeFtpPass, String dirDefault, boolean compressionEnabled, List<Object> storeImageSizeList) {
 
 		this.storeName = storeName;
 		this.storeFtpServer = storeFtpServer;
@@ -83,6 +80,7 @@ public class StoreDataModel {
 		this.storeFtpUser = storeFtpUser;
 		this.storeFtpPass = storeFtpPass;
 		this.dirDefault = dirDefault;
+		this.compressionEnabled = compressionEnabled;
 		for (Object imageSizeParams : storeImageSizeList) {
 			storeImageSizeListNew.add(new ImageSize(imageSizeParams.toString().split(",")));
 			System.out.println("xyz" + new ImageSize(imageSizeParams.toString().split(",")).getHeight());
@@ -176,6 +174,14 @@ public class StoreDataModel {
 
 	public void setStoreImageSizeListNew(List<ImageSize> storeImageSizeListNew) {
 		this.storeImageSizeListNew = storeImageSizeListNew;
+	}
+
+	public boolean isCompressionEnabled() {
+		return compressionEnabled;
+	}
+
+	public void setCompressionEnabled(boolean compressionEnabled) {
+		this.compressionEnabled = compressionEnabled;
 	}
 
 }

@@ -25,12 +25,6 @@ public class AppController implements ActionListener {
 
 		if (ae.getSource() == view.btnExit) {
 			System.exit(0);
-		} else if (ae.getSource() == view.btnProdImgImpWzrd) {
-			new ProdImgImpWzrdController();
-		} else if (ae.getSource() == view.btnPageImgImpWzrd) {
-			new BannerImgImpWzrdController();
-		} else if (ae.getSource() == view.btnNewButton) {
-			new MassImgImpWzrdController();
 		} else if (ae.getSource() == view.btnMenuImageImport) {
 			view.popupMenuImageImport.show(view.getContentPane(), view.btnMenuImageImport.getX(), view.btnMenuImageImport.getY() + view.btnMenuImageImport.getHeight());
 		} else if (ae.getSource() == view.mntmProduct) {

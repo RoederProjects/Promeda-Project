@@ -113,7 +113,8 @@ public class MassImgImpWzrdController implements ActionListener, ComponentListen
 					stores.add(new StoreDataModel(config.getString("url"), config.getString("ftp.host"),
 							Integer.parseInt(config.getString("ftp.port")), config.getString("ftp.protocol"),
 							config.getString("ftp.user"), config.getString("ftp.pswd"),
-							config.getString("ftp.dir.default"), config.getList("product.image.size")));
+							config.getString("ftp.dir.default"), config.getBoolean("product.image.compression.enabled"),
+							config.getList("product.image.size")));
 				}
 			}
 		} catch (ConfigurationException cex) {

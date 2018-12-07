@@ -13,8 +13,6 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.io.FilenameUtils;
 
-import com.jcraft.jsch.ConfigRepository.Config;
-
 import model.prototype.StoreDataModel;
 import model.singleton.PropertiesModel;
 
@@ -24,34 +22,34 @@ public class SettingsController implements ActionListener {
 	private PropertiesModel propApp = new PropertiesModel();
 	private Configuration configApp;
 	private Vector<StoreDataModel> stores;
-	
+
 	public SettingsController() {
 		initView();
 		initAppProperties();
 		initStoreProperties();
-		
+
 	}
-	
+
 	private void initView() {
 		view = new SettingsView(this);
 		view.setVisible(true);
 	}
-	
+
 	private void initAppProperties() {
-		//configApp = propApp.loadAppProperties2();
+		// configApp = propApp.loadAppProperties2();
 		propApp.loadAppProperties();
-		
+
 		view.textFieldLocNetworkRes.setText(propApp.get("locNetworkRes"));
 		view.textFieldLocMediaBackup.setText(propApp.get("locMediaBackup"));
 		view.textFieldMediaBackupDirOriginals.setText(propApp.get("mediaBackupDirOriginals"));
 		view.textFieldMediaBackupDirLive.setText(propApp.get("mediaBackupDirLive"));
-		
+
 		view.textFieldLocNetworkRes.setText(configApp.getString("locNetworkRes"));
 		view.textFieldLocMediaBackup.setText(configApp.getString("locMediaBackup"));
 		view.textFieldMediaBackupDirOriginals.setText(configApp.getString("mediaBackupDirOriginals"));
 		view.textFieldMediaBackupDirLive.setText(configApp.getString("mediaBackupDirLive"));
 	}
-	
+
 	public void initStores() {
 		File f = new File(propApp.get("locNetworkRes") + "stores");
 		File[] files = f.listFiles();
@@ -78,14 +76,15 @@ public class SettingsController implements ActionListener {
 					stores.add(new StoreDataModel(config.getString("url"), config.getString("ftp.host"),
 							Integer.parseInt(config.getString("ftp.port")), config.getString("ftp.protocol"),
 							config.getString("ftp.user"), config.getString("ftp.pswd"),
-							config.getString("ftp.dir.default"), config.getList("product.image.size")));
+							config.getString("ftp.dir.default"), config.getBoolean("product.image.compression.enabled"),
+							config.getList("product.image.size")));
 				}
 			}
 		} catch (ConfigurationException cex) {
 			// Something went wrong
 		}
 	}
-	
+
 	private void initStoreProperties() {
 		File f = new File(propApp.get("locNetworkRes") + "stores");
 		File[] files = f.listFiles();
@@ -93,21 +92,19 @@ public class SettingsController implements ActionListener {
 		PropertiesModel prop = new PropertiesModel();
 		stores = new Vector<StoreDataModel>();
 
-		/*for (File file : files) {
-			if (!file.isDirectory()) {
-				prop.load(file.getPath());
-				String[] imgSizes = prop.get("img.sizes").split(",");
-				for (String size : prop.get("img.sizes").split(",")) {
-					int imgSizeInt = Integer.parseInt(size);
-				}
-				stores.add(new StoreDataModel(prop.get("url"), prop.get("ftp.host"), Integer.parseInt(prop.get("ftp.port")),
-					prop.get("ftp.user"), prop.get("ftp.pswd"), imgSizes));
-			}
-		}*/
+		/*
+		 * for (File file : files) { if (!file.isDirectory()) {
+		 * prop.load(file.getPath()); String[] imgSizes =
+		 * prop.get("img.sizes").split(","); for (String size :
+		 * prop.get("img.sizes").split(",")) { int imgSizeInt = Integer.parseInt(size);
+		 * } stores.add(new StoreDataModel(prop.get("url"), prop.get("ftp.host"),
+		 * Integer.parseInt(prop.get("ftp.port")), prop.get("ftp.user"),
+		 * prop.get("ftp.pswd"), imgSizes)); } }
+		 */
 		view.listStoreSettings.setListData(stores);
 		view.listStoreSettings.setSelectedIndex(0);
 	}
-	
+
 	public File chooseDir() {
 		File file = null;
 
@@ -126,14 +123,14 @@ public class SettingsController implements ActionListener {
 		}
 		return file;
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 
 		if (ae.getSource() == view.btnSettingsCancel) {
 			view.dispose();
 		} else if (ae.getSource() == view.btnSettingsSave) {
-			
+
 		} else if (ae.getSource() == view.btnBrowseNetworkRes) {
 			try {
 				configApp.setProperty("locNetworkRes", chooseDir().getCanonicalPath());

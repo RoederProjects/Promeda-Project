@@ -94,7 +94,8 @@ public class ProdImgImpWzrdController implements ActionListener, ComponentListen
 					stores.add(new StoreDataModel(config.getString("url"), config.getString("ftp.host"),
 							Integer.parseInt(config.getString("ftp.port")), config.getString("ftp.protocol"),
 							config.getString("ftp.user"), config.getString("ftp.pswd"),
-							config.getString("ftp.dir.default"), config.getList("product.image.size")));
+							config.getString("ftp.dir.default"), config.getBoolean("product.image.compression.enabled"),
+							config.getList("product.image.size")));
 				}
 			}
 		} catch (ConfigurationException cex) {
@@ -152,7 +153,7 @@ public class ProdImgImpWzrdController implements ActionListener, ComponentListen
 						progressLabelUpdate("Remove Alpha Channel from " + FilenameUtils.getBaseName(psdFile.getName())
 								+ " (" + imgSize.getWidth() + "px)");
 						BufferedImage rgbImage = imgHandler.removeAlphaChannel(scaledImage);
-						
+
 						// COMPRESS and WRITE JPEG FILE TO MEDIA/LIVE FOLDER
 						File directory = new File(
 								propApp.get("locMediaBackup") + propApp.get("mediaBackupDirLive") + imgSize.getName());
@@ -183,7 +184,7 @@ public class ProdImgImpWzrdController implements ActionListener, ComponentListen
 							ftp.storeFile(remoteFile.getName(), input);
 //							ftp.changeToParentDirectory();
 
-						// USING SFTP
+							// USING SFTP
 						} else if (store.getStoreFtpProtocol().equals("sftp")) {
 							if (!sftp.session.isConnected()) {
 								sftp.connect();
@@ -251,7 +252,6 @@ public class ProdImgImpWzrdController implements ActionListener, ComponentListen
 		writer.dispose();
 	}
 
-	
 	public void imageCompression(File input) throws IOException {
 
 		BufferedImage image = ImageIO.read(input);

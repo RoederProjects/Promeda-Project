@@ -48,7 +48,6 @@ import model.prototype.StoreDataModel;
 import model.singleton.ImageHandler;
 import model.singleton.PropertiesModel;
 import model.singleton.SFTPClientModel;
-import psd.model.Layer;
 import psd.model.Psd;
 
 public class CustomImgImpWzrdController implements ActionListener, ComponentListener {
@@ -70,7 +69,7 @@ public class CustomImgImpWzrdController implements ActionListener, ComponentList
 	public CustomImgImpWzrdController() {
 		initProperties();
 		initView();
-		//initThemenwelten(propApp.get(key));
+		// initThemenwelten(propApp.get(key));
 		initStores();
 	}
 
@@ -137,14 +136,14 @@ public class CustomImgImpWzrdController implements ActionListener, ComponentList
 					stores.add(new StoreDataModel(config.getString("url"), config.getString("ftp.host"),
 							Integer.parseInt(config.getString("ftp.port")), config.getString("ftp.protocol"),
 							config.getString("ftp.user"), config.getString("ftp.pswd"),
-							config.getString("ftp.dir.banner"), config.getList("product.image.size")));
+							config.getString("ftp.dir.banner"), config.getBoolean("product.image.compression.enabled"),
+							config.getList("product.image.size")));
 				}
 			}
 		} catch (ConfigurationException cex) {
 			// Something went wrong
 		}
 	}
-
 
 	/**
 	 * 
@@ -209,7 +208,7 @@ public class CustomImgImpWzrdController implements ActionListener, ComponentList
 						}
 
 						imgFile = new File(directory.getPath() + File.separator + bannerName + ".jpg");
-						//ImageIO.write(scaledImage, "jpg", imgFile);
+						// ImageIO.write(scaledImage, "jpg", imgFile);
 
 						// COMPRESSION START
 						OutputStream os = new FileOutputStream(imgFile);
@@ -222,7 +221,6 @@ public class CustomImgImpWzrdController implements ActionListener, ComponentList
 
 						ImageWriteParam param = writer.getDefaultWriteParam();
 
-						
 						if (param.canWriteProgressive()) {
 							param.setProgressiveMode(ImageWriteParam.MODE_DEFAULT);
 						}
@@ -237,9 +235,9 @@ public class CustomImgImpWzrdController implements ActionListener, ComponentList
 						os.close();
 						ios.close();
 						writer.dispose();
-						
+
 						// COMPRESSION END
-						
+
 						// UPLOAD TO (REMOTE-)WEBSERVER
 						progressLabelUpdate(
 								"Upload " + bannerName + " (" + banner.getName() + ") to " + store.getStoreName());
@@ -325,14 +323,13 @@ public class CustomImgImpWzrdController implements ActionListener, ComponentList
 		}
 		return files;
 	}
-	
+
 	public File[] initThemenwelten(File psdFilesPath) {
-	
+
 		File[] files = psdFilesPath.listFiles();
 		return files;
 	}
-	
-	
+
 	public File[] initRemainingFolder(final String productID, File psdFilesPath) {
 		FilenameFilter filter = new FilenameFilter() {
 
@@ -344,7 +341,7 @@ public class CustomImgImpWzrdController implements ActionListener, ComponentList
 		File[] files = psdFilesPath.listFiles(filter);
 		return files;
 	}
-	
+
 	public void initSelectedBannerList() {
 		selectedBannerTemplates = new Vector<BannerModel>();
 		for (BannerModel banner : bannerTemplates) {
