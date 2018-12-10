@@ -35,6 +35,8 @@ public class AppController implements ActionListener {
 			new CustomImgImpWzrdController();
 		} else if (ae.getSource() == view.btnSettings) {
 			new SettingsController();
+		} else if (ae.getSource() == view.btnSysInfo) {
+			new SysInfoController();
 		} else if (ae.getSource() == view.btnSearch || ae.getSource() == view.textFieldProdNr) {
 			new ArticleController(view.textFieldProdNr.getText());
 		} else if (ae.getSource() == view.btnImageProcessingSandBox) {

@@ -31,6 +31,7 @@ public class AppView extends JFrame {
 	public JMenuItem mntmThemenwelt;
 	public JButton btnMenuImageImport;
 	public JButton btnImageProcessingSandBox;
+	public JButton btnSysInfo;
 
 	/**
 	 * Create the frame.
@@ -75,7 +76,7 @@ public class AppView extends JFrame {
 		btnSettings.setSize(new Dimension(225, 40));
 		btnSettings.setPreferredSize(new Dimension(300, 23));
 		btnSettings.setAlignmentX(0.5f);
-		btnSettings.setBounds(10, 312, 225, 40);
+		btnSettings.setBounds(10, 312, 111, 40);
 		contentPane.add(btnSettings);
 
 		btnExit = new JButton("");
@@ -131,6 +132,14 @@ public class AppView extends JFrame {
 		btnImageProcessingSandBox.setAlignmentX(0.5f);
 		btnImageProcessingSandBox.setBounds(10, 200, 225, 40);
 		contentPane.add(btnImageProcessingSandBox);
+		
+		btnSysInfo = new JButton("System Info");
+		btnSysInfo.addActionListener(controller);
+		btnSysInfo.setSize(new Dimension(225, 40));
+		btnSysInfo.setPreferredSize(new Dimension(300, 23));
+		btnSysInfo.setAlignmentX(0.5f);
+		btnSysInfo.setBounds(124, 312, 111, 40);
+		contentPane.add(btnSysInfo);
 	}
 
 	private static void addPopup(Component component, final JPopupMenu popup) {
