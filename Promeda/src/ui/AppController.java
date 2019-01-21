@@ -33,6 +33,8 @@ public class AppController implements ActionListener {
 			new BannerImgImpWzrdController();
 		} else if (ae.getSource() == view.mntmThemenwelt) {
 			new CustomImgImpWzrdController();
+		} else if (ae.getSource() == view.mntmFromList) {
+			new MassImgImpWzrdController();
 		} else if (ae.getSource() == view.btnSettings) {
 			new SettingsController();
 		} else if (ae.getSource() == view.btnSysInfo) {

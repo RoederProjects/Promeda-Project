@@ -32,6 +32,7 @@ public class AppView extends JFrame {
 	public JButton btnMenuImageImport;
 	public JButton btnImageProcessingSandBox;
 	public JButton btnSysInfo;
+	public JMenuItem mntmFromList;
 
 	/**
 	 * Create the frame.
@@ -124,6 +125,10 @@ public class AppView extends JFrame {
 		mntmThemenwelt = new JMenuItem("Themenwelt");
 		mntmThemenwelt.addActionListener(controller);
 		popupMenuImageImport.add(mntmThemenwelt);
+		
+		mntmFromList = new JMenuItem("From list");
+		mntmFromList.addActionListener(controller);
+		popupMenuImageImport.add(mntmFromList);
 
 		btnImageProcessingSandBox = new JButton("Image Processing SandBox");
 		btnImageProcessingSandBox.addActionListener(controller);
