@@ -27,6 +27,7 @@ public class StoreDataModel {
 	private Vector<ImageSize> storeImageSizeList = new Vector<ImageSize>();;
 	private List<ImageSize> storeImageSizeListNew = new Vector<ImageSize>();
 	private Boolean selectStatus;
+	private String compressionCommand;
 
 	public StoreDataModel(String storeName, String storeFtpServer, int storeFtpPort, String storeFtpUser,
 			String storeFtpPass, ImageSize[] storeImageSizes) {
@@ -64,14 +65,12 @@ public class StoreDataModel {
 		this.storeFtpPass = storeFtpPass;
 		for (Object imageSizeParams : storeImageSizeList) {
 			storeImageSizeListNew.add(new ImageSize(imageSizeParams.toString().split(",")));
-			System.out.println("xyz" + new ImageSize(imageSizeParams.toString().split(",")).getHeight());
-			
 		}
 		selectStatus = false;
 	}
 
 	public StoreDataModel(String storeName, String storeFtpServer, int storeFtpPort, String storeFtpProtocol,
-			String storeFtpUser, String storeFtpPass, String dirDefault, boolean compressionEnabled, List<Object> storeImageSizeList) {
+			String storeFtpUser, String storeFtpPass, String dirDefault, boolean compressionEnabled, String compressionCommand, List<Object> storeImageSizeList) {
 
 		this.storeName = storeName;
 		this.storeFtpServer = storeFtpServer;
@@ -81,9 +80,9 @@ public class StoreDataModel {
 		this.storeFtpPass = storeFtpPass;
 		this.dirDefault = dirDefault;
 		this.compressionEnabled = compressionEnabled;
+		this.compressionCommand = compressionCommand;
 		for (Object imageSizeParams : storeImageSizeList) {
 			storeImageSizeListNew.add(new ImageSize(imageSizeParams.toString().split(",")));
-			System.out.println("xyz" + new ImageSize(imageSizeParams.toString().split(",")).getHeight());
 		}
 		selectStatus = false;
 	}
@@ -182,6 +181,14 @@ public class StoreDataModel {
 
 	public void setCompressionEnabled(boolean compressionEnabled) {
 		this.compressionEnabled = compressionEnabled;
+	}
+
+	public String getCompressionCommand() {
+		return compressionCommand;
+	}
+
+	public void setCompressionCommand(String compressionCommand) {
+		this.compressionCommand = compressionCommand;
 	}
 
 }

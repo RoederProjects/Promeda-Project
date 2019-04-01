@@ -89,13 +89,15 @@ public class ProdImgImpWzrdController implements ActionListener, ComponentListen
 		try {
 			for (File file : files) {
 				if (!file.isDirectory() && FilenameUtils.isExtension(file.getName(), "properties")) {
-					Configuration config = new PropertiesConfiguration(file);
+					Configuration configStore = new PropertiesConfiguration(file);
 
-					stores.add(new StoreDataModel(config.getString("url"), config.getString("ftp.host"),
-							Integer.parseInt(config.getString("ftp.port")), config.getString("ftp.protocol"),
-							config.getString("ftp.user"), config.getString("ftp.pswd"),
-							config.getString("ftp.dir.default"), config.getBoolean("product.image.compression.enabled"),
-							config.getList("product.image.size")));
+					stores.add(new StoreDataModel(configStore.getString("url"), configStore.getString("ftp.host"),
+							Integer.parseInt(configStore.getString("ftp.port")), configStore.getString("ftp.protocol"),
+							configStore.getString("ftp.user"), configStore.getString("ftp.pswd"),
+							configStore.getString("ftp.dir.default"), 
+							configStore.getBoolean("product.image.compression.enabled"),
+							configStore.getString("product.image.compression.command"),
+							configStore.getList("product.image.size")));
 				}
 			}
 		} catch (ConfigurationException cex) {

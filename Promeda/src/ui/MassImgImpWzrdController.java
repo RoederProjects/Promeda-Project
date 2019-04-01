@@ -46,12 +46,14 @@ import model.prototype.StoreDataModel;
 import model.singleton.ImageHandler;
 import model.singleton.MultipartUtility;
 import model.singleton.PropertiesModel;
+import model.singleton.Run;
 import model.singleton.SFTPClientModel;
 
 public class MassImgImpWzrdController implements ActionListener, ComponentListener {
 
 	private MassImgImpWzrdView view;
 	private PropertiesModel propApp;
+	private Configuration configApp;
 	private Vector<StoreDataModel> stores;
 	private Vector<StoreDataModel> selectedStores;
 	private File psdFilesPath;
@@ -76,26 +78,33 @@ public class MassImgImpWzrdController implements ActionListener, ComponentListen
 		view.fileListSourceFiles.setListData(psdFileList);
 	}
 
-	private void initProperties() {
+	public void initProperties() {
 		propApp = new PropertiesModel();
 		propApp.loadAppProperties();
+		try {
+			configApp = new PropertiesConfiguration("properties" + File.separator + "app.properties");
+		} catch (ConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	private void initView() {
+	public void initView() {
 
 		view = new MassImgImpWzrdView(this);
 		view.setVisible(true);
 	}
 
 	public void initStores() {
-		File f = new File(propApp.get("locNetworkRes") + "stores");
+		File f = new File(
+				configApp.getString("dir.config") + File.separator + configApp.getString("dir.config.stores"));
 		File[] files = f.listFiles();
 		stores = new Vector<StoreDataModel>();
 
 		try {
 			for (File file : files) {
 				if (!file.isDirectory() && FilenameUtils.isExtension(file.getName(), "properties")) {
-					Configuration config = new PropertiesConfiguration(file);
+					Configuration configStore = new PropertiesConfiguration(file);
 					/*
 					 * String[] imgSizeParams = config.getStringArray("banner.image.size"); for
 					 * (String param : imgSizeParams) { imageSizeList.add(new
@@ -110,11 +119,13 @@ public class MassImgImpWzrdController implements ActionListener, ComponentListen
 					 * config.getString("ftp.host"), Integer.parseInt(config.getString("ftp.port")),
 					 * config.getString("ftp.user"), config.getString("ftp.pswd"), imageSizeList));
 					 */
-					stores.add(new StoreDataModel(config.getString("url"), config.getString("ftp.host"),
-							Integer.parseInt(config.getString("ftp.port")), config.getString("ftp.protocol"),
-							config.getString("ftp.user"), config.getString("ftp.pswd"),
-							config.getString("ftp.dir.default"), config.getBoolean("product.image.compression.enabled"),
-							config.getList("product.image.size")));
+					stores.add(new StoreDataModel(configStore.getString("url"), configStore.getString("ftp.host"),
+							Integer.parseInt(configStore.getString("ftp.port")), configStore.getString("ftp.protocol"),
+							configStore.getString("ftp.user"), configStore.getString("ftp.pswd"),
+							configStore.getString("ftp.dir.default"),
+							configStore.getBoolean("product.image.compression.enabled"),
+							configStore.getString("product.image.compression.command"),
+							configStore.getList("product.image.size")));
 				}
 			}
 		} catch (ConfigurationException cex) {
@@ -165,6 +176,7 @@ public class MassImgImpWzrdController implements ActionListener, ComponentListen
 				psdStringList.add(productID);
 				System.out.println(productID);
 			}
+			view.fileListSourceFiles.setListData(psdStringList);
 			scanner.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -348,8 +360,27 @@ public class MassImgImpWzrdController implements ActionListener, ComponentListen
 		view.progressBar.setMaximum(psdStringList.size() * selectedStores.size());
 		view.progressBar.setString(view.progressBar.getValue() + "/" + view.progressBar.getMaximum());
 
+		// FOR EACH SELECTED STORE - LOOP
 		for (StoreDataModel store : selectedStores) {
 
+			try {
+				if (store.getStoreFtpProtocol().equals("ftp")) {
+					ftp = new FTPClient();
+					ftp.connect(store.getStoreFtpServer());
+					ftp.login(store.getStoreFtpUser(), store.getStoreFtpPass());
+					ftp.cwd(store.getDirDefault());
+					ftp.setFileType(FTP.BINARY_FILE_TYPE);
+				} else if (store.getStoreFtpProtocol().equals("sftp")) {
+					sftp = new SFTPClientModel(store.getStoreFtpServer(), store.getStoreFtpPort(),
+							store.getStoreFtpUser(), store.getStoreFtpPass(), store.getDirDefault());
+					sftp.connect();
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			// FOR EACH PRODUCT ID FROM INPUTLIST - LOOP
 			for (String productID : psdStringList) {
 				psdFileList.clear();
 				psdFile = new File(psdFilesPath.getAbsolutePath() + File.separatorChar + productID);
@@ -423,7 +454,7 @@ public class MassImgImpWzrdController implements ActionListener, ComponentListen
 								directory.mkdirs();
 							}
 
-							File imgFile = new File(directory.getPath() + "/" + jpegFile.getName() + ".jpg");
+							File imgFile = new File(directory.getPath() + "/" + jpegFile.getName());
 							ImageIO.write(scaledImage, "jpg", imgFile);
 						}
 					}
@@ -445,7 +476,7 @@ public class MassImgImpWzrdController implements ActionListener, ComponentListen
 		String currentDate = LocalDate.now().toString(fmt);
 
 		try {
-			img = imgHandler.getImageFromPsd2(psdFile);
+			img = imgHandler.readBufferedImage(psdFile);
 			if (img != null) {
 
 				// Show 100x100px thumb of current file in wizard
@@ -464,120 +495,66 @@ public class MassImgImpWzrdController implements ActionListener, ComponentListen
 					BufferedImage rgbImage = imgHandler.removeAlphaChannel(scaledImage);
 
 					// WRITE IMAGE FILE TO MEDIA/LIVE FOLDER
-					File directory = new File(
-							propApp.get("locMediaBackup") + propApp.get("mediaBackupDirLive") + imgSize.getName());
+					File directory = new File(configApp.getString("dir.archive") + File.separator
+							+ configApp.getString("dir.archive.dist") + File.separator + imgSize.getName());
 					if (!directory.exists()) {
 						directory.mkdirs();
 					}
 
 					if (view.btnGrpImageFormat.getSelection().getActionCommand().equals("PSD")
 							&& view.btnGrpImageFormat.getSelection().getActionCommand() != null) {
-						imgFile = new File(directory.getPath() + "/" + fileName + ".jpg");
+						imgFile = new File(directory.getPath() + File.separator + fileName + ".jpg");
 					} else if (view.btnGrpImageFormat.getSelection().getActionCommand().equals("JPEG")) {
-						imgFile = new File(directory.getPath() + "/" + fileName);
+						imgFile = new File(directory.getPath() + File.separator + fileName);
 					}
 
 					ImageIO.write(rgbImage, "jpg", imgFile);
+
+					// COMPRESS IMAGE FILE - if enabled in {store}.properties
+					if (store.isCompressionEnabled()) {
+						
+						File workingDir=new File(System.getProperty("user.dir"));
+						Run.compressImage(imgFile, workingDir, store.getCompressionCommand());
+					}
+
+					// UPLOAD TO WEBSERVER
+					progressLabelUpdate("Upload " + FilenameUtils.getBaseName(psdFile.getName()) + " ("
+							+ imgSize.getName() + ") to " + store.getStoreName());
+
+					File remoteFile = new File(imgFile.getName());
+
+					// USING FTP
+					if (store.getStoreFtpProtocol().equals("ftp")) {
+						if (!ftp.isConnected()) {
+							ftp.connect(store.getStoreFtpServer());
+						}
+						InputStream input = new FileInputStream(imgFile);
+//						ftp.mkd(imgSize.getName());
+//						ftp.cwd(imgSize.getName());
+						ftp.storeFile(remoteFile.getName(), input);
+//						ftp.changeToParentDirectory();
+
+						// USING SFTP
+					} else if (store.getStoreFtpProtocol().equals("sftp")) {
+						if (!sftp.session.isConnected()) {
+							sftp.connect();
+						}
+						sftp.makeDir(imgSize.getName());
+						sftp.changeDir(imgSize.getName());
+						sftp.upload(imgFile, remoteFile);
+						sftp.changeDir("..");
+					}
 				}
 			}
 		} catch (IOException e) {
 			psdParseError++;
 			System.out.println(psdParseError);
 			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
 			System.out.println(psdParseError);
-		}
-	}
-
-	public void imageOptim(File file) {
-		String charset = "UTF-8";
-		File uploadFile = file;
-		String requestURL = "https://im2.io/kzrbgzzbfm/full";
-
-		try {
-			MultipartUtility multipart = new MultipartUtility(requestURL, charset);
-
-			multipart.addHeaderField("User-Agent", "Promeda");
-			multipart.addHeaderField("Test-Header", "Header-Value");
-
-			multipart.addFormField("description", "Cool Pictures");
-			multipart.addFormField("keywords", "image,compression,imagemin");
-
-			multipart.addFilePart("fileUpload", uploadFile);
-
-			List<String> response = multipart.finish();
-
-			System.out.println("SERVER REPLIED:");
-
-			for (String line : response) {
-				System.out.println(line);
-			}
-		} catch (IOException ex) {
-			System.err.println(ex);
-		}
-	}
-
-	public static String executePost(String targetURL, String urlParameters) {
-		HttpURLConnection connection = null;
-
-		try {
-			// Create connection
-			URL url = new URL(targetURL);
-			connection = (HttpURLConnection) url.openConnection();
-			connection.setRequestMethod("POST");
-			// connection.setRequestProperty("Content-Type",
-			// "application/x-www-form-urlencoded");
-			connection.setRequestProperty("Content-Type", "multipart/form-data");
-			connection.setRequestProperty("Content-Length", Integer.toString(urlParameters.getBytes().length));
-			connection.setRequestProperty("Content-Language", "en-US");
-
-			connection.setUseCaches(false);
-			connection.setDoOutput(true);
-
-			// Send request
-			DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
-			wr.writeBytes(urlParameters);
-			wr.close();
-
-			// Get Response
-			InputStream is = connection.getInputStream();
-			BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-			StringBuilder response = new StringBuilder(); // or StringBuffer if Java version 5+
-			String line;
-			while ((line = rd.readLine()) != null) {
-				response.append(line);
-				response.append('\r');
-			}
-			rd.close();
-			System.out.println(response.toString());
-			return response.toString();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		} finally {
-			if (connection != null) {
-				connection.disconnect();
-			}
-		}
-	}
-
-	public static void fireHTTPRequest(String request) {
-		URL yahoo;
-		try {
-			yahoo = new URL("http://www.yahoo.com/");
-			URLConnection yc = yahoo.openConnection();
-			BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
-			String inputLine;
-
-			while ((inputLine = in.readLine()) != null)
-				System.out.println(inputLine);
-			in.close();
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 
@@ -662,7 +639,6 @@ public class MassImgImpWzrdController implements ActionListener, ComponentListen
 	public void progressBarUpdate(int progressStepSize) {
 		view.progressBar.setValue(view.progressBar.getValue() + progressStepSize);
 		view.progressBar.setString(view.progressBar.getValue() + "/" + view.progressBar.getMaximum());
-		view.labelLoadManMoving.setLocation(view.progressBar.getValue(), 95);
 	}
 
 	public void progressLabelUpdate(String LabelText) {

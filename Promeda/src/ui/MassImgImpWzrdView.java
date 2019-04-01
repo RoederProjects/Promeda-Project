@@ -5,25 +5,23 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.UIManager;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
+import javax.swing.JList;
 
 public class MassImgImpWzrdView extends JFrame {
 
@@ -44,10 +42,9 @@ public class MassImgImpWzrdView extends JFrame {
 	public CheckBoxList checkBoxListStores;
 	public JButton btnSelectAll;
 	public JButton btnDeselectAll;
-	public FileList fileListSourceFiles;
+	public JList fileListSourceFiles;
 	public FileList fileListSourceFilesSummary;
 	public StoreList storeListTargetStoresSummary;
-	public JLabel labelLoadManMoving;
 	public JTextField textFieldProductsCsv;
 	public JTextField textFieldPsdFilesPath;
 	public JButton btnBrowseCsvFile;
@@ -95,7 +92,7 @@ public class MassImgImpWzrdView extends JFrame {
 		scrollPane.setBounds(10, 187, 322, 91);
 		panelCardSourceFiles.add(scrollPane);
 
-		fileListSourceFiles = new FileList();
+		fileListSourceFiles = new JList();
 		fileListSourceFiles.setEnabled(false);
 		fileListSourceFiles.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		fileListSourceFiles.setFont(new Font("Segoe UI", Font.BOLD, 12));
@@ -136,12 +133,12 @@ public class MassImgImpWzrdView extends JFrame {
 		
 		btnBrowseCsvFile = new JButton("Browse");
 		btnBrowseCsvFile.addActionListener(controller);
-		btnBrowseCsvFile.setBounds(342, 82, 67, 27);
+		btnBrowseCsvFile.setBounds(342, 147, 67, 27);
 		panelCardSourceFiles.add(btnBrowseCsvFile);
 		
 		btnBrowsePsdFilesPath = new JButton("Browse");
 		btnBrowsePsdFilesPath.addActionListener(controller);
-		btnBrowsePsdFilesPath.setBounds(342, 145, 67, 27);
+		btnBrowsePsdFilesPath.setBounds(342, 84, 67, 27);
 		panelCardSourceFiles.add(btnBrowsePsdFilesPath);
 		
 		rdbtnPsd = new JRadioButton("PSD");
@@ -233,11 +230,6 @@ public class MassImgImpWzrdView extends JFrame {
 		panelCardProcessing.setLayout(null);
 		panelCardProcessing.setBackground(Color.WHITE);
 		panelContentContainer.add(panelCardProcessing, "name_427830841893322");
-		
-		labelLoadManMoving = new JLabel("");
-		labelLoadManMoving.setBounds(10, 87, 48, 48);
-		labelLoadManMoving.setIcon(new ImageIcon(getClass().getResource("/img/load-man.png")));
-		panelCardProcessing.add(labelLoadManMoving);
 
 		JLabel lblProcessing = new JLabel("Processing...");
 		lblProcessing.setFont(new Font("Segoe UI", Font.BOLD, 16));
