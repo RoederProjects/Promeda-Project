@@ -46,7 +46,7 @@ import model.prototype.StoreDataModel;
 import model.singleton.ImageHandler;
 import model.singleton.MultipartUtility;
 import model.singleton.PropertiesModel;
-import model.singleton.Run;
+import model.singleton.Executor;
 import model.singleton.SFTPClientModel;
 
 public class MassImgImpWzrdController implements ActionListener, ComponentListener {
@@ -514,7 +514,8 @@ public class MassImgImpWzrdController implements ActionListener, ComponentListen
 					if (store.isCompressionEnabled()) {
 						
 						File workingDir=new File(System.getProperty("user.dir"));
-						Run.compressImage(imgFile, workingDir, store.getCompressionCommand());
+						//Executor.compressImage(imgFile, workingDir, store.getCompressionCommand());
+						Executor.exec(imgFile);
 					}
 
 					// UPLOAD TO WEBSERVER
@@ -549,9 +550,6 @@ public class MassImgImpWzrdController implements ActionListener, ComponentListen
 		} catch (IOException e) {
 			psdParseError++;
 			System.out.println(psdParseError);
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			System.out.println(psdParseError);

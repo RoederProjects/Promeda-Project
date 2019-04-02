@@ -4,11 +4,18 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class Run {
+import org.apache.commons.exec.CommandLine;
+import org.apache.commons.exec.DefaultExecutor;
+import org.apache.commons.exec.ExecuteException;
+import org.apache.commons.exec.ExecuteWatchdog;
+
+public class Executor {
     
-	public Run() throws IOException, InterruptedException {
+	public Executor() throws IOException, InterruptedException {
 		
 		//String destFolder="//SVR-APP-11/EC/Promeda.local-working-dir";
 		String destFolder="D:\\Benutzer\\Projekte\\workspace@Eclipse-Java-2018-09\\Promeda-Project\\Promeda";
@@ -77,6 +84,33 @@ public class Run {
         br.close();
         int resultStatust=resultExecution.waitFor();
         System.out.println("Result of Execution"+(resultStatust==0?"\tSuccess":"\tFailure"));
+    }
+    
+    public static void exec(File imageFile) {
+    	Map map = new HashMap();
+    	map.put("file", imageFile);
+    	
+    	CommandLine cmdLine = new CommandLine("codec\\jpegoptim\\win32\\jpegoptim.exe");
+    	cmdLine.addArgument("--strip-all");
+    	cmdLine.addArgument("--all-progressive");
+    	cmdLine.addArgument("--max=88");
+    	cmdLine.addArgument("${file}");
+    	cmdLine.setSubstitutionMap(map);
+    	
+    	DefaultExecutor executor = new DefaultExecutor();
+    	executor.setExitValue(1);
+    	ExecuteWatchdog watchdog = new ExecuteWatchdog(30000);
+    	executor.setWatchdog(watchdog);
+    	try {
+			int exitValue = executor.execute(cmdLine);
+		} catch (ExecuteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	//\Promeda>cd "codec\jpegoptim\win32" | jpegoptim.exe --strip-all --all-progressive --max=88 "D:\Benutzer\Projekte\workspace@Eclipse-Java-2018-09\Promeda-Project\Promeda\media-archive\dist\2200px\89635G.jpg"
     }
     
     static boolean isWindows() {
