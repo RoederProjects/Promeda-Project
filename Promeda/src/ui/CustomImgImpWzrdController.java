@@ -136,7 +136,9 @@ public class CustomImgImpWzrdController implements ActionListener, ComponentList
 					stores.add(new StoreDataModel(config.getString("url"), config.getString("ftp.host"),
 							Integer.parseInt(config.getString("ftp.port")), config.getString("ftp.protocol"),
 							config.getString("ftp.user"), config.getString("ftp.pswd"),
-							config.getString("ftp.dir.banner"), config.getBoolean("product.image.compression.enabled"),
+							config.getString("ftp.dir.banner"), 
+							config.getBoolean("product.image.compression.enabled"),
+							config.getString("product.image.compression.command"),
 							config.getList("product.image.size")));
 				}
 			}
