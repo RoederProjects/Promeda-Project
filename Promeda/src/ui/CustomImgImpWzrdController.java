@@ -185,7 +185,7 @@ public class CustomImgImpWzrdController implements ActionListener, ComponentList
 				// GET BUFFEREDIMAGE FROM PSD FILE
 				// img = imgHandler.getImageFromPsd(psdFile);
 
-				progressThumbUpdate(imgHandler.resizeImage2(100, 100, srcImage));
+				progressThumbUpdate(imgHandler.resizeImage(100, 100, srcImage));
 				for (BannerModel banner : selectedBannerTemplates) {
 
 					Vector<BufferedImage> scaledImages = new Vector<BufferedImage>();
@@ -199,7 +199,7 @@ public class CustomImgImpWzrdController implements ActionListener, ComponentList
 						// RESIZE BUFFEREDIMAGE
 						progressLabelUpdate("Resize " + FilenameUtils.getBaseName(srcFile.getName()) + " to "
 								+ dim.getValue().width + " " + dim.getValue().height + " px");
-						BufferedImage scaledImage = imgHandler.resizeImage2(dim.getValue().width, dim.getValue().height,
+						BufferedImage scaledImage = imgHandler.resizeImage(dim.getValue().width, dim.getValue().height,
 								srcImage);
 
 						// WRITE IMAGE FILE TO MEDIA/LIVE FOLDER

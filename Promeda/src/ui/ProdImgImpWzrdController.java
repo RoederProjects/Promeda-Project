@@ -30,6 +30,7 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
+import org.apache.sanselan.ImageReadException;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -38,6 +39,7 @@ import org.joda.time.format.DateTimeFormatter;
 
 import model.prototype.ImageSize;
 import model.prototype.StoreDataModel;
+import model.singleton.Executor;
 import model.singleton.ImageHandler;
 import model.singleton.PropertiesModel;
 import model.singleton.SFTPClientModel;
@@ -143,20 +145,27 @@ public class ProdImgImpWzrdController implements ActionListener, ComponentListen
 
 					// GET BUFFEREDIMAGE FROM PSD FILE
 					img = initSrcFile(psdFile);
-					progressThumbUpdate(imgHandler.resizeImage(100, 100, img));
+					try {
+						progressThumbUpdate(imgHandler.createThumbnail(img, 150));
+					} catch (ImageReadException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					for (ImageSize imgSize : store.getStoreImageSizeListNew()) {
 
-						// RESIZE BUFFEREDIMAGE
+						// *** IMAGE SCALING ***
 						progressLabelUpdate("Resize " + FilenameUtils.getBaseName(psdFile.getName()) + " to "
 								+ imgSize.getWidth() + "px");
-						BufferedImage scaledImage = imgHandler.resizeImage(imgSize.getWidth(), imgSize.getWidth(), img);
-
-						// REMOVE ALPHA CHANNEL FROM BUFFEREDIMAGE ( ARGB -> RGB )
+						//BufferedImage scaledImage = imgHandler.resizeImage(imgSize.getWidth(), imgSize.getWidth(), img);
+						BufferedImage scaledImage = imgHandler.resizeImage2(img, imgSize.getWidth());
+						
+						// *** IMAGE CONVERSION ***
+							// TODO method call convertToRGB
 						progressLabelUpdate("Remove Alpha Channel from " + FilenameUtils.getBaseName(psdFile.getName())
 								+ " (" + imgSize.getWidth() + "px)");
 						BufferedImage rgbImage = imgHandler.removeAlphaChannel(scaledImage);
 
-						// COMPRESS and WRITE JPEG FILE TO MEDIA/LIVE FOLDER
+						// *** IMAGE WRITING ***
 						File directory = new File(
 								propApp.get("locMediaBackup") + propApp.get("mediaBackupDirLive") + imgSize.getName());
 						if (!directory.exists()) {
@@ -165,17 +174,23 @@ public class ProdImgImpWzrdController implements ActionListener, ComponentListen
 
 						imgFile = new File(
 								directory.getPath() + "/" + FilenameUtils.getBaseName(psdFile.getName()) + ".jpg");
-						// ImageIO.write(rgbImage, "jpg", imgFile);
+						ImageIO.write(rgbImage, "jpg", imgFile);
+						
+						// *** IMAGE FILE COMPRESSION ***
+						if (store.isCompressionEnabled()) {
+							
+							//File workingDir=new File(System.getProperty("user.dir"));
+							//Executor.compressImage(imgFile, workingDir, store.getCompressionCommand());
+							Executor.exec(imgFile, store.getCompressionCommand());
+						}
 
-						compress(rgbImage, imgFile);
-
-						// UPLOAD TO WEBSERVER
+						// *** IMAGE FILE UPLOAD ***
 						progressLabelUpdate("Upload " + FilenameUtils.getBaseName(psdFile.getName()) + " ("
 								+ imgSize.getName() + ") to " + store.getStoreName());
 
 						File remoteFile = new File(imgFile.getName());
 
-						// USING FTP
+						// connection using FTP
 						if (store.getStoreFtpProtocol().equals("ftp")) {
 							if (!ftp.isConnected()) {
 								ftp.connect(store.getStoreFtpServer());
@@ -186,7 +201,7 @@ public class ProdImgImpWzrdController implements ActionListener, ComponentListen
 							ftp.storeFile(remoteFile.getName(), input);
 //							ftp.changeToParentDirectory();
 
-							// USING SFTP
+							// connection using SFTP
 						} else if (store.getStoreFtpProtocol().equals("sftp")) {
 							if (!sftp.session.isConnected()) {
 								sftp.connect();
@@ -324,7 +339,6 @@ public class ProdImgImpWzrdController implements ActionListener, ComponentListen
 
 	public void progressBarUpdate(int progressStepSize) {
 		view.progressBar.setValue(view.progressBar.getValue() + progressStepSize);
-		view.labelLoadManMoving.setLocation(view.progressBar.getValue() * 4, 95);
 	}
 
 	public void progressLabelUpdate(String LabelText) {

@@ -83,20 +83,57 @@ public class Executor {
         }
         br.close();
         int resultStatust=resultExecution.waitFor();
-        System.out.println("Result of Execution"+(resultStatust==0?"\tSuccess":"\tFailure"));
+        System.out.println("Result of Execution"+(resultStatust==0?"\tFailure":"\tSuccess"));
+    }
+    
+    public static void exec(File imageFile, String cmd) {
+    	// Initialize a HashMap for variable substitution in command string 
+    	Map<String, File> map = new HashMap<String, File>();
+    	map.put("file", imageFile);
+    	
+    	// Initialize a valid CommandLine object by parsing the command string
+    	CommandLine cmdLine = CommandLine.parse(cmd, map);
+    	
+    	DefaultExecutor executor = new DefaultExecutor();
+    	executor.setExitValue(1);
+    	
+    	// Initialize a Watchdog for Execution (if process run away, execution time out after 60 seconds)
+    	ExecuteWatchdog watchdog = new ExecuteWatchdog(60000);
+    	executor.setWatchdog(watchdog);
+    	
+    	// Run execution
+    	try  {
+			executor.execute(cmdLine);
+		} catch (ExecuteException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
     
     public static void exec(File imageFile) {
-    	Map map = new HashMap();
+    	Map<String, File> map = new HashMap<String, File>();
     	map.put("file", imageFile);
     	
-    	CommandLine cmdLine = new CommandLine("codec\\jpegoptim\\win32\\jpegoptim.exe");
+    	/*CommandLine cmdLine = new CommandLine("codec\\jpegoptim\\win32\\jpegoptim.exe");
     	cmdLine.addArgument("--strip-all");
     	cmdLine.addArgument("--all-progressive");
     	cmdLine.addArgument("--max=88");
     	cmdLine.addArgument("${file}");
-    	cmdLine.setSubstitutionMap(map);
+    	cmdLine.setSubstitutionMap(map);*/
     	
+    	String cmd = "codec\\jpegtran\\win\\x64\\jpegtran.exe -copy none -optimize -progressive -outfile ${file} ${file}";
+    	CommandLine cmdLine = CommandLine.parse(cmd, map);
+    	
+    	/*CommandLine cmdLine = new CommandLine("codec\\jpegtran\\win\\x64\\jpegtran.exe");
+    	cmdLine.addArgument("-copy none");
+    	cmdLine.addArgument("-optimize");
+    	cmdLine.addArgument("-progressive");
+    	cmdLine.addArgument("-outfile " + "\"${file}\"");
+    	cmdLine.addArgument("${file}");
+    	cmdLine.setSubstitutionMap(map);*/
+    	
+    	System.out.println(cmdLine.getExecutable() + " ### " + cmdLine.toString());
     	DefaultExecutor executor = new DefaultExecutor();
     	executor.setExitValue(1);
     	ExecuteWatchdog watchdog = new ExecuteWatchdog(30000);

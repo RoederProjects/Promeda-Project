@@ -33,6 +33,9 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
+import org.apache.sanselan.ImageInfo;
+import org.apache.sanselan.ImageReadException;
+import org.apache.sanselan.Sanselan;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -50,6 +53,7 @@ import model.singleton.PropertiesModel;
 import model.singleton.SFTPClientModel;
 import psd.model.Layer;
 import psd.model.Psd;
+import sun.font.CreatedFontTracker;
 
 public class BannerImgImpWzrdController extends ImportController implements ActionListener, ComponentListener {
 
@@ -375,16 +379,15 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 		String fileExt = FilenameUtils.getExtension(srcFile.getName());
 		try {
 			if (fileExt.equalsIgnoreCase("psd") || fileExt.equalsIgnoreCase("psb")) {
-				Psd psd = new Psd(srcFile);
-				srcImage = psd.getImage();
-				float factor = (float) 300 / (float) srcImage.getHeight();
-				int newWidth = Math.round((float) srcImage.getWidth() * factor);
-				ScaleFilter scaleFilter = new ScaleFilter(newWidth, 300);
-				ImageIcon iconHelper = new ImageIcon(
-						scaleFilter.filter(new BufferedImage(newWidth, 300, srcImage.getType()), srcImage));
-				// ImageIcon iconHelper = new ImageIcon(imgHandler.resizeImage(newWidth, 300,
-				// srcImage));
+				//Psd psd = new Psd(srcFile);
+				//srcImage = psd.getImage();
+				srcImage = imgHandler.imageReadSanselan(srcFile);
+				ImageIcon iconHelper = new ImageIcon(imgHandler.createThumbnail(srcFile, 300));
 				view.labelPreviewPsdImage.setIcon(iconHelper);
+				Sanselan.dumpImageFile(srcFile);
+				ImageInfo imageInfo = Sanselan.getImageInfo(srcFile);
+				imageInfo.dump();
+				System.out.println(imageInfo.getBitsPerPixel());
 			} else if (fileExt.equalsIgnoreCase("jpg") || fileExt.equalsIgnoreCase("jpeg")) {
 				srcImage = ImageIO.read(srcFile);
 				float factor = (float) 300 / (float) srcImage.getHeight();
@@ -393,6 +396,9 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 				view.labelPreviewPsdImage.setIcon(iconHelper);
 			}
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ImageReadException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
