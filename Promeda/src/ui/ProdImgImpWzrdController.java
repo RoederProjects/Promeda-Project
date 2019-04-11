@@ -40,12 +40,10 @@ import org.joda.time.format.DateTimeFormatter;
 import model.prototype.ImageSize;
 import model.prototype.StoreDataModel;
 import model.singleton.Executor;
-import model.singleton.ImageHandler;
 import model.singleton.PropertiesModel;
 import model.singleton.SFTPClientModel;
-import psd.model.Psd;
 
-public class ProdImgImpWzrdController implements ActionListener, ComponentListener {
+public class ProdImgImpWzrdController extends ImportController implements ActionListener, ComponentListener {
 
 	private ProdImgImpWzrdView view;
 	private FTPClient ftp = null;
@@ -109,7 +107,6 @@ public class ProdImgImpWzrdController implements ActionListener, ComponentListen
 
 	public void process() {
 
-		ImageHandler imgHandler = new ImageHandler();
 		File imgFile;
 		BufferedImage img;
 		DateTimeFormatter fmt = DateTimeFormat.forPattern("_yyyyMMdd");
@@ -144,26 +141,21 @@ public class ProdImgImpWzrdController implements ActionListener, ComponentListen
 									+ FilenameUtils.getExtension(psdFile.getName())));
 
 					// GET BUFFEREDIMAGE FROM PSD FILE
-					img = initSrcFile(psdFile);
-					try {
-						progressThumbUpdate(imgHandler.createThumbnail(img, 150));
-					} catch (ImageReadException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					srcImage = initSrcFile(psdFile);
+					progressThumbUpdate(imageHandler.createThumbnail(srcImage, 150));
 					for (ImageSize imgSize : store.getStoreImageSizeListNew()) {
 
 						// *** IMAGE SCALING ***
 						progressLabelUpdate("Resize " + FilenameUtils.getBaseName(psdFile.getName()) + " to "
 								+ imgSize.getWidth() + "px");
-						//BufferedImage scaledImage = imgHandler.resizeImage(imgSize.getWidth(), imgSize.getWidth(), img);
-						BufferedImage scaledImage = imgHandler.resizeImage2(img, imgSize.getWidth());
+						//BufferedImage scaledImage = imageHandler.resizeImage(imgSize.getWidth(), imgSize.getHeight(), srcImage);
+						BufferedImage scaledImage = imageHandler.resizeImage3(srcImage, imgSize.getWidth());
 						
 						// *** IMAGE CONVERSION ***
 							// TODO method call convertToRGB
 						progressLabelUpdate("Remove Alpha Channel from " + FilenameUtils.getBaseName(psdFile.getName())
 								+ " (" + imgSize.getWidth() + "px)");
-						BufferedImage rgbImage = imgHandler.removeAlphaChannel(scaledImage);
+						BufferedImage rgbImage = imageHandler.removeAlphaChannel(scaledImage);
 
 						// *** IMAGE WRITING ***
 						File directory = new File(
@@ -174,7 +166,10 @@ public class ProdImgImpWzrdController implements ActionListener, ComponentListen
 
 						imgFile = new File(
 								directory.getPath() + "/" + FilenameUtils.getBaseName(psdFile.getName()) + ".jpg");
-						ImageIO.write(rgbImage, "jpg", imgFile);
+						//ImageIO.write(rgbImage, "jpg", imgFile);
+						//imageHandler.imageWriteSanselan(rgbImage, imgFile);
+						writeFile(rgbImage, imgFile);
+					    
 						
 						// *** IMAGE FILE COMPRESSION ***
 						if (store.isCompressionEnabled()) {
@@ -229,19 +224,66 @@ public class ProdImgImpWzrdController implements ActionListener, ComponentListen
 		BufferedImage srcImage = null;
 		try {
 			if (fileExt.equalsIgnoreCase("psd") || fileExt.equalsIgnoreCase("psb")) {
-				Psd psd = new Psd(srcFile);
-				srcImage = psd.getImage();
+//				Psd psd = new Psd(srcFile);
+//				srcImage = psd.getImage();
+				srcImage = imageHandler.imageReadSanselan(srcFile);
+				srcImage = colorTools.correctImage(srcImage, srcFile);
 			} else if (fileExt.equalsIgnoreCase("jpg") || fileExt.equalsIgnoreCase("jpeg")) {
 				srcImage = ImageIO.read(srcFile);
-
 			}
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ImageReadException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return srcImage;
 	}
 
+	public void writeFile(BufferedImage image, File destFile) {
+		
+		String format = "JPEG";
+		// Get the writer
+	    Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName(format);
+
+	    if (!writers.hasNext()) {
+	        throw new IllegalArgumentException("No writer for: " + format);
+	    }
+
+	    ImageWriter writer = writers.next();
+	    System.out.println("reader: " + writers.next());
+	    
+	    try {
+	        // Create output stream
+	        ImageOutputStream output = ImageIO.createImageOutputStream(destFile);
+
+	        try {
+	            writer.setOutput(output);
+
+	            // Optionally, listen to progress, warnings, etc.
+
+	            ImageWriteParam param = writer.getDefaultWriteParam();
+
+	            // Optionally, control format specific settings of param (requires casting), or
+	            // control generic write settings like sub sampling, source region, output type etc.
+
+	            // Optionally, provide thumbnails and image/stream metadata
+	            writer.write(writer.getDefaultStreamMetadata(param), new IIOImage(srcImage, null, null), param);
+	        }
+	        finally {
+	            // Close stream in finally block to avoid resource leaks
+	            output.close();
+	        }
+	    } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    finally {
+	        // Dispose writer in finally block to avoid memory leaks
+	        writer.dispose();
+	    }
+	}
 	public void compress(BufferedImage srcImage, File destFile) throws IOException {
 		OutputStream os = new FileOutputStream(destFile);
 		Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName("jpeg");
@@ -252,41 +294,17 @@ public class ProdImgImpWzrdController implements ActionListener, ComponentListen
 
 		ImageWriteParam param = writer.getDefaultWriteParam();
 
-		if (param.canWriteProgressive()) {
-			param.setProgressiveMode(ImageWriteParam.MODE_DEFAULT);
-		}
-
-		if (param.canWriteCompressed()) {
-			param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
-			// param.setCompressionType("JPEG-LS");
-			param.setCompressionQuality(0.85f); // Change the quality value you prefer
-		}
+//		if (param.canWriteProgressive()) {
+//			param.setProgressiveMode(ImageWriteParam.MODE_DEFAULT);
+//		}
+//
+//		if (param.canWriteCompressed()) {
+//			param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+//			// param.setCompressionType("JPEG-LS");
+//			param.setCompressionQuality(0.85f); // Change the quality value you prefer
+//		}
 
 		writer.write(writer.getDefaultStreamMetadata(param), new IIOImage(srcImage, null, null), param);
-
-		os.close();
-		ios.close();
-		writer.dispose();
-	}
-
-	public void imageCompression(File input) throws IOException {
-
-		BufferedImage image = ImageIO.read(input);
-
-		File compressedImageFile = new File("compressed_image.jpg");
-		OutputStream os = new FileOutputStream(compressedImageFile);
-
-		Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName("jpg");
-		ImageWriter writer = (ImageWriter) writers.next();
-
-		ImageOutputStream ios = ImageIO.createImageOutputStream(os);
-		writer.setOutput(ios);
-
-		ImageWriteParam param = writer.getDefaultWriteParam();
-
-		param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
-		param.setCompressionQuality(0.05f); // Change the quality value you prefer
-		writer.write(null, new IIOImage(image, null, null), param);
 
 		os.close();
 		ios.close();

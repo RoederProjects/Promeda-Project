@@ -6,13 +6,13 @@
 package model.singleton;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -25,13 +25,13 @@ import javax.imageio.ImageIO;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.sanselan.ImageFormat;
 import org.apache.sanselan.ImageReadException;
+import org.apache.sanselan.ImageWriteException;
 import org.apache.sanselan.Sanselan;
 import org.apache.sanselan.SanselanConstants;
 import org.apache.sanselan.common.IBufferedImageFactory;
 import org.imgscalr.Scalr;
 
 import com.mortennobel.imagescaling.AdvancedResizeOp;
-import com.mortennobel.imagescaling.MultiStepRescaleOp;
 import com.mortennobel.imagescaling.ResampleFilters;
 import com.mortennobel.imagescaling.ResampleOp;
 
@@ -135,6 +135,26 @@ public class ImageHandler {
 		// new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB));
 		return rescaledBImage;
 	}
+	
+	public BufferedImage resizeImage(Dimension dim, BufferedImage bImage) {
+		ResampleOp resampleOp = new ResampleOp(dim.width, dim.height);
+		// ImprovedMultistepRescaleOp rescaleOp = new ImprovedMultistepRescaleOp(width,
+		// height);
+		System.out.println(resampleOp.getFilter().getName());
+		resampleOp.setFilter(ResampleFilters.getLanczos3Filter());
+		System.out.println(resampleOp.getFilter().getName());
+		resampleOp.setUnsharpenMask(AdvancedResizeOp.UnsharpenMask.Soft);
+		System.out.println(resampleOp.getUnsharpenMask().name());
+		// System.out.println(resampleOp.getRenderingHints().values().toString());
+		// rescaleOp.setUnsharpenMask(AdvancedResizeOp.UnsharpenMask.VerySharp);
+		// rescaleOp.setUnsharpenMask(AdvancedResizeOp.UnsharpenMask.Soft);
+
+		BufferedImage rescaledBImage = resampleOp.filter(bImage, new BufferedImage(dim.width, dim.height, bImage.getType()));
+		// BufferedImage rescaledBImage = rescaleOp.filter(bImage,
+		// new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB));
+		return rescaledBImage;
+	}
+	
 
 	/**
 	 *
@@ -144,10 +164,26 @@ public class ImageHandler {
 	 * @return
 	 */
 	public BufferedImage resizeImage2(BufferedImage srcImage, int width) {
-	    srcImage = Scalr.resize(srcImage, Scalr.Method.ULTRA_QUALITY, Scalr.Mode.FIT_TO_WIDTH, width, Scalr.OP_ANTIALIAS);
-	    return srcImage;
+	    //srcImage = Scalr.resize(srcImage, Scalr.Method.ULTRA_QUALITY, Scalr.Mode.FIT_TO_WIDTH, width, Scalr.OP_ANTIALIAS);
+		srcImage = Scalr.resize(srcImage, Scalr.Method.QUALITY, Scalr.Mode.FIT_TO_WIDTH, width, Scalr.OP_ANTIALIAS);
+		return srcImage;
 	}
 
+	public BufferedImage resizeImage3(BufferedImage thumbnail, int size) {
+	    int width = thumbnail.getWidth();
+	    int height = thumbnail.getHeight();
+	    if (width > size || height > size) {
+	        if (width > height) {
+	            thumbnail = Scalr.resize(thumbnail, Scalr.Mode.FIT_TO_HEIGHT, size);
+	            
+	        } else {
+	            thumbnail = Scalr.resize(thumbnail, Scalr.Mode.FIT_TO_WIDTH, size);
+	           
+	        }
+	    }
+	    return thumbnail;
+	}
+	
 	/**
 	 *
 	 * @param imageARGB
@@ -183,7 +219,7 @@ public class ImageHandler {
 		return null;
 	}
 	
-	public BufferedImage createThumbnail(File srcFile, int size) throws IOException, ImageReadException {
+	public BufferedImage createThumbnail(File srcFile, int size) {
 	    BufferedImage thumbnail = imageReadSanselan(srcFile);
 	    int width = thumbnail.getWidth();
 	    int height = thumbnail.getHeight();
@@ -199,7 +235,7 @@ public class ImageHandler {
 	    return thumbnail;
 	}
 	
-	public BufferedImage createThumbnail(BufferedImage thumbnail, int size) throws IOException, ImageReadException {
+	public BufferedImage createThumbnail(BufferedImage thumbnail, int size) {
 	    int width = thumbnail.getWidth();
 	    int height = thumbnail.getHeight();
 	    if (width > size || height > size) {
@@ -215,7 +251,7 @@ public class ImageHandler {
 	}
 	
 	public BufferedImage imageReadSanselan(File file)
-			throws ImageReadException, IOException
+			
 	{
 		Map<String, ManagedImageBufferedImageFactory> params = new HashMap<String, ManagedImageBufferedImageFactory>();
 
@@ -226,11 +262,20 @@ public class ImageHandler {
 		//		params.put(SanselanConstants.PARAM_KEY_VERBOSE, Boolean.TRUE);
 
 		// read image
-		BufferedImage image = Sanselan.getBufferedImage(file, params);
+		BufferedImage image = null;
+		try {
+			image = Sanselan.getBufferedImage(file, params);
+		} catch (ImageReadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return image;
 	}
-
+	
 	public static class ManagedImageBufferedImageFactory
 			implements
 				IBufferedImageFactory
@@ -252,5 +297,24 @@ public class ImageHandler {
 		{
 			return getColorBufferedImage(width, height, hasAlpha);
 		}
+	}
+	
+	public static void imageWriteSanselan(BufferedImage image, File destFile)
+	{
+		ImageFormat format = ImageFormat.IMAGE_FORMAT_JPEG;
+		Map optional_params = new HashMap();
+		// set optional parameters if you like
+//		optional_params.put(SanselanConstants.PARAM_KEY_COMPRESSION, new Integer(
+//				JpegConstants.JPEG_APP0));
+		try {
+			Sanselan.writeImage(image, destFile, format, optional_params);
+		} catch (ImageWriteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 }
