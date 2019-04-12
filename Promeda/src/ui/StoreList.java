@@ -1,12 +1,14 @@
 package ui;
 
-import javax.swing.*;
-import javax.swing.border.*;
-
-import model.prototype.StoreDataModel;
-
 import java.awt.Color;
 import java.awt.Component;
+
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
+import javax.swing.ListSelectionModel;
+
+import model.prototype.StoreDataModel;
 
 public class StoreList extends JList {
 	

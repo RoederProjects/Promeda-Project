@@ -250,6 +250,21 @@ public class ImageHandler {
 	    return thumbnail;
 	}
 	
+	public BufferedImage createTile(BufferedImage thumbnail, int size) {
+	    int width = thumbnail.getWidth();
+	    int height = thumbnail.getHeight();
+	    if (width > size || height > size) {
+	        if (width > height) {
+	            thumbnail = Scalr.resize(thumbnail, Scalr.Mode.FIT_TO_HEIGHT, size);
+	            thumbnail = Scalr.crop(thumbnail, thumbnail.getWidth() / 2 - size / 2, 0, size, size);
+	        } else {
+	            thumbnail = Scalr.resize(thumbnail, Scalr.Mode.FIT_TO_WIDTH, size);
+	            thumbnail = Scalr.crop(thumbnail, 0, thumbnail.getWidth() / 2 - size / 2, size, size);
+	        }
+	    }
+	    return thumbnail;
+	}
+	
 	public BufferedImage imageReadSanselan(File file)
 			
 	{

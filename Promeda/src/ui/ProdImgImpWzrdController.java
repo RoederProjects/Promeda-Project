@@ -2,11 +2,13 @@ package ui;
 
 import static org.apache.commons.io.FileUtils.copyFile;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImageOp;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -31,6 +33,8 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.sanselan.ImageReadException;
+import org.apache.sanselan.Sanselan;
+import org.imgscalr.Scalr;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -79,6 +83,12 @@ public class ProdImgImpWzrdController extends ImportController implements Action
 
 		view = new ProdImgImpWzrdView(this);
 		view.setVisible(true);
+		
+		Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName("JPEG");
+		ImageWriter writer = writers.next();
+	    while (writers.hasNext()) {
+		    System.out.println("reader: " + writers.next());
+	    }
 	}
 
 	public void initStores() {
@@ -149,13 +159,31 @@ public class ProdImgImpWzrdController extends ImportController implements Action
 						progressLabelUpdate("Resize " + FilenameUtils.getBaseName(psdFile.getName()) + " to "
 								+ imgSize.getWidth() + "px");
 						//BufferedImage scaledImage = imageHandler.resizeImage(imgSize.getWidth(), imgSize.getHeight(), srcImage);
-						BufferedImage scaledImage = imageHandler.resizeImage3(srcImage, imgSize.getWidth());
+						//BufferedImage scaledImage = imageHandler.resizeImage3(srcImage, imgSize.getWidth());
+						
+						BufferedImage scaledImage = null;
+						BufferedImageOp[] imageOp = null;
+						BufferedImage paddedImage = null;
+						BufferedImage croppedImage = null;
+						int padding = 0;
+						try {
+							scaledImage = imageHandler.resizeImage(1100, 2200, srcImage);
+							System.out.println(lockAspectRatioHeight(Sanselan.getImageSize(srcFile), imgSize.getWidth()));
+							System.out.println(scaledImage.getWidth() + " " + scaledImage.getHeight());
+							padding = Math.abs((scaledImage.getWidth() - scaledImage.getHeight()) * 1/2);
+							System.out.println(padding);
+							paddedImage = Scalr.pad(scaledImage, padding, Color.PINK, imageOp);
+							croppedImage = Scalr.crop(paddedImage, 0, padding, paddedImage.getWidth(), scaledImage.getHeight(), imageOp);
+						} catch (ImageReadException e) {
+							// TODO Auto-generated catch block		
+							e.printStackTrace();
+						}
 						
 						// *** IMAGE CONVERSION ***
 							// TODO method call convertToRGB
 						progressLabelUpdate("Remove Alpha Channel from " + FilenameUtils.getBaseName(psdFile.getName())
 								+ " (" + imgSize.getWidth() + "px)");
-						BufferedImage rgbImage = imageHandler.removeAlphaChannel(scaledImage);
+						BufferedImage rgbImage = imageHandler.removeAlphaChannel(croppedImage);
 
 						// *** IMAGE WRITING ***
 						File directory = new File(
@@ -220,6 +248,7 @@ public class ProdImgImpWzrdController extends ImportController implements Action
 	}
 
 	public BufferedImage initSrcFile(File srcFile) {
+		this.srcFile = srcFile;
 		String fileExt = FilenameUtils.getExtension(srcFile.getName());
 		BufferedImage srcImage = null;
 		try {
@@ -250,9 +279,11 @@ public class ProdImgImpWzrdController extends ImportController implements Action
 	    if (!writers.hasNext()) {
 	        throw new IllegalArgumentException("No writer for: " + format);
 	    }
-
+	    
 	    ImageWriter writer = writers.next();
-	    System.out.println("reader: " + writers.next());
+	    while (writers.hasNext()) {
+		    System.out.println("reader: " + writers.next());
+	    }
 	    
 	    try {
 	        // Create output stream

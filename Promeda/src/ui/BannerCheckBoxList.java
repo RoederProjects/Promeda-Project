@@ -12,8 +12,6 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 
 import model.prototype.BannerModel;
 import model.prototype.StoreDataModel;

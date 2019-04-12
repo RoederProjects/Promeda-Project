@@ -40,8 +40,6 @@ import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import com.jhlabs.image.ScaleFilter;
-
 import model.prototype.BannerModel;
 
 // import com.enterprisedt.net.ftp.FTPException;
@@ -53,7 +51,6 @@ import model.singleton.PropertiesModel;
 import model.singleton.SFTPClientModel;
 import psd.model.Layer;
 import psd.model.Psd;
-import sun.font.CreatedFontTracker;
 
 public class BannerImgImpWzrdController extends ImportController implements ActionListener, ComponentListener {
 

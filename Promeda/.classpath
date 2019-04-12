@@ -47,12 +47,12 @@
 			<attribute name="javadoc_location" value="jar:platform:/resource/Promeda/lib/sanselan-0.97-incubator-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/JAR/common-image-3.0.2.jar"/>
-	<classpathentry kind="lib" path="lib/JAR/common-io-3.0.2.jar"/>
-	<classpathentry kind="lib" path="lib/JAR/common-lang-3.0.2.jar"/>
-	<classpathentry kind="lib" path="lib/JAR/imageio-core-3.0.2.jar"/>
-	<classpathentry kind="lib" path="lib/JAR/imageio-jpeg-3.0.2.jar"/>
-	<classpathentry kind="lib" path="lib/JAR/imageio-metadata-3.0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/JAR/common-image-3.0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/JAR/common-io-3.0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/JAR/common-lang-3.0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/JAR/imageio-core-3.0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/JAR/imageio-jpeg-3.0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/JAR/imageio-metadata-3.0.2.jar"/>
 	<classpathentry kind="lib" path="lib/commons-io-2.5.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/Promeda/lib/commons-io-2.5-javadoc.jar!/"/>

@@ -5,22 +5,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -43,10 +35,9 @@ import org.joda.time.format.DateTimeFormatter;
 
 import model.prototype.ImageSize;
 import model.prototype.StoreDataModel;
-import model.singleton.ImageHandler;
-import model.singleton.MultipartUtility;
-import model.singleton.PropertiesModel;
 import model.singleton.Executor;
+import model.singleton.ImageHandler;
+import model.singleton.PropertiesModel;
 import model.singleton.SFTPClientModel;
 
 public class MassImgImpWzrdController implements ActionListener, ComponentListener {

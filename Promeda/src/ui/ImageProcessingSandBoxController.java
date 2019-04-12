@@ -1,6 +1,5 @@
 package ui;
 
-import java.awt.color.ICC_Profile;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -10,11 +9,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
 import org.apache.sanselan.ImageDump;
-import org.apache.sanselan.ImageInfo;
 import org.apache.sanselan.ImageReadException;
 import org.apache.sanselan.Sanselan;
-import org.apache.sanselan.common.IImageMetadata;
-import org.apache.sanselan.icc.IccProfileParser;
 
 public class ImageProcessingSandBoxController extends ImportController implements ActionListener {
 

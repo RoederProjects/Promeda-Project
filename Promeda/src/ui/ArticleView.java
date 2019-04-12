@@ -3,7 +3,6 @@ package ui;
 import java.awt.Cursor;
 import java.awt.Font;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;

@@ -1,11 +1,15 @@
 package ui;
 
-import javax.swing.*;
-import javax.swing.border.*;
-
 import java.awt.Component;
 import java.awt.Dimension;
 import java.io.File;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
+import javax.swing.ListSelectionModel;
+import javax.swing.border.BevelBorder;
 
 public class ThumbList extends JList {
 
