@@ -1,0 +1,3476 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes: Color Correction 
+
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution-Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Correction 
+
+
+is a global change in the 
+coloration of an image to alter 
+its tint, its hues, or the saturation 
+of its colors with minimal 
+changes to its luminant features. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gamma Adjustment of Color Bands 
+
+
+original 
+
+
+
+10000 
+
+9000 
+
+8000 
+
+7000 
+
+6000 
+
+5000 
+
+4000 
+
+3000 
+
+2000 
+
+1000 
+
+0 
+
+
+
+50 
+
+
+100 
+
+
+150 
+
+
+200 
+
+
+250 
+
+
+David Peters, producer, and representatives of the IA, The International Alliance of Theatrical Stage Employees, Moving Picture 
+Technicians, Artists and Allied Crafts, on the set of Frozen Impact (PorchLight Entertainment, 2003). 
+
+
+29 September 2016 
+
+
+(0 1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gamma Adjustment of Color Bands 
+
+
+red y=2 
+
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gamma Adjustment of Color Bands 
+
+
+original 
+
+
+
+10000 
+
+9000 
+
+8000 
+
+7000 
+
+6000 
+
+5000 
+
+4000 
+
+3000 
+
+2000 
+
+1000 
+
+0 
+
+
+
+50 
+
+
+100 
+
+
+150 
+
+
+200 
+
+
+250 
+
+
+David Peters, producer, and representatives of the IA, The International Alliance of Theatrical Stage Employees, Moving Picture 
+Technicians, Artists and Allied Crafts, on the set of Frozen Impact (PorchLight Entertainment, 2003). 
+
+
+29 September 2016 
+
+
+(0 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gamma Adjustment of Color Bands red y=0.5 
+
+
+
+Dave & IA image: red band gamma = 0.5 
+
+
+
+reduced red = increased cyan 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gamma Adjustment of Color Bands 
+
+
+original 
+
+
+
+10000 
+
+9000 
+
+8000 
+
+7000 
+
+6000 
+
+5000 
+
+4000 
+
+3000 
+
+2000 
+
+1000 
+
+0 
+
+
+
+50 
+
+
+100 
+
+
+150 
+
+
+200 
+
+
+250 
+
+
+David Peters, producer, and representatives of the IA, The International Alliance of Theatrical Stage Employees, Moving Picture 
+Technicians, Artists and Allied Crafts, on the set of Frozen Impact (PorchLight Entertainment, 2003). 
+
+
+29 September 2016 
+
+
+(0 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gamma Adjustment of Color Bands 
+
+
+green y=2 
+
+
+
+Dave & IA image: green band gamma = 2.0 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gamma Adjustment of Color Bands 
+
+
+original 
+
+
+
+10000 
+
+9000 
+
+8000 
+
+7000 
+
+6000 
+
+5000 
+
+4000 
+
+3000 
+
+2000 
+
+1000 
+
+0 
+
+
+
+50 
+
+
+100 
+
+
+150 
+
+
+200 
+
+
+250 
+
+
+David Peters, producer, and representatives of the IA, The International Alliance of Theatrical Stage Employees, Moving Picture 
+Technicians, Artists and Allied Crafts, on the set of Frozen Impact (PorchLight Entertainment, 2003). 
+
+
+29 September 2016 
+
+
+(0 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gamma Adjustment of Color Bands 
+
+
+green y=0.5 
+
+
+
+Dave & IA image: green band gamma = 0.5 
+
+
+
+reduced green = incr. magenta 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gamma Adjustment of Color Bands 
+
+
+original 
+
+
+
+10000 
+
+9000 
+
+8000 
+
+7000 
+
+6000 
+
+5000 
+
+4000 
+
+3000 
+
+2000 
+
+1000 
+
+0 
+
+
+
+50 
+
+
+100 
+
+
+150 
+
+
+200 
+
+
+250 
+
+
+David Peters, producer, and representatives of the IA, The International Alliance of Theatrical Stage Employees, Moving Picture 
+Technicians, Artists and Allied Crafts, on the set of Frozen Impact (PorchLight Entertainment, 2003). 
+
+
+29 September 2016 
+
+
+(0 1999-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gamma Adjustment of Color Bands 
+
+
+blue y=2 
+
+
+
+Dave & IA image: blue band gamma = 2.0 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gamma Adjustment of Color Bands 
+
+
+original 
+
+
+
+10000 
+
+9000 
+
+8000 
+
+7000 
+
+6000 
+
+5000 
+
+4000 
+
+3000 
+
+2000 
+
+1000 
+
+0 
+
+
+
+50 
+
+
+100 
+
+
+150 
+
+
+200 
+
+
+250 
+
+
+David Peters, producer, and representatives of the IA, The International Alliance of Theatrical Stage Employees, Moving Picture 
+Technicians, Artists and Allied Crafts, on the set of Frozen Impact (PorchLight Entertainment, 2003). 
+
+
+29 September 2016 
+
+
+(0 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gamma Adjustment of Color Bands blue y=0.5 
+
+
+
+
+reduced blue = incr. yellow 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gamma Adjustment of Color Bands 
+
+
+original 
+
+
+
+10000 
+
+9000 
+
+8000 
+
+7000 
+
+6000 
+
+5000 
+
+4000 
+
+3000 
+
+2000 
+
+1000 
+
+0 
+
+
+
+50 
+
+
+100 
+
+
+150 
+
+
+200 
+
+
+250 
+
+
+David Peters, producer, and representatives of the IA, The International Alliance of Theatrical Stage Employees, Moving Picture 
+Technicians, Artists and Allied Crafts, on the set of Frozen Impact (PorchLight Entertainment, 2003). 
+
+
+29 September 2016 
+
+
+(0 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+RGB to LHS: A Perceptual Transformation 
+
+
+C 
+
+3 
+
+3 
+
+CD 
+
+3 
+
+o 
+
+CD 
+
+
+c= 
+
+CD 
+
+
+c n 
+CD 
+
+
+CD 
+
+o 
+
+
+
+The brain transforms RGB into separate 
+brightness and color channels ( e.g ., LHS). 
+
+
+The eye has 3 types of photoreceptors: 
+sensitive to red, green, or blue light. 
+
+
+brain photo receptors 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+HSV Color Representation 
+
+
+
+intersects k, G, <& B axes at r 0 +g 0 +b 0 , and contains p 0 . 
+
+
+/ *o = z {[( r o + £o+^o)r-v 0 ],s 0 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+
+||- 1| is the norm operator - the 
+square root of the pixel-wise 
+sum of the squares of the 
+image intensity components. 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+RGB to HSV Algorithm A vector-geometric algorithm 
+
+
+1. Compute scalar value image, v, from RGB image, I=[r g b] T . 
+
+2. Compute vector value image, V = [v v v] T . 
+
+3. Compute vector saturation image, S = I - V. 
+
+4. Compute scalar saturation image, s = ||S||. 
+
+5. Compute red axis vector image, X = [2v -v -v] T . 
+
+6. Compute red axis scalar image, x = ||X||. 
+
+7. Create an indicator image, z(r,c) = s(r,c)==0. 
+
+8. Compute hue cosine image, c = (S*X) / ( (s+z) -x) . 
+
+9. Compute hue angle image, h = cos -1 (c) . 
+
+10. Create an indicator image, m(r,c) = b(r,c) > g(r,c). 
+
+11. Adjust h = -m-h + m-(2pi-h) . 
+
+12. Scale s = s / 208.2066. 
+
+13. Return [h s v] T . 
+
+
+z and m are binary images 
+z(r,c)==l iff s(r,c)==0; 
+m(r,c)==l iff b(r,c) > g(r,c). 
+
+
+S*X is the pixel- 
+wise dot product 
+of images SAX. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+HSV to RGB Conversion 
+
+
+The x, y, A z unit vectors in r, g, 
+A b coordinates are the columns 
+of the rotation matrix: 
+
+
+
+Po = [p] rgb =[ s ] reb + M re „’ where So = [s] rg b and [v] rgb = v 0 as def ’d. on slide 81. 
+
+
+Irgb 
+
+
+Irgb 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Saturation Adjustment 
+
+
+original 
+
+
+
+Original Dave & IA Image 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Saturation Adjustment 
+
+
+saturation + 50% 
+
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Saturation Adjustment 
+
+
+original 
+
+
+
+Original Dave & IA Image 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Saturation Adjustment 
+
+
+9000 
+
+8000 
+
+7000 
+
+6000 
+
+5000 
+
+4000 
+
+3000 
+
+2000 
+
+1000 
+
+
+The r, g, &. b histograms approach the value 
+histogram as the color facies to grayscale. 
+
+
+
+50 100 150 200 250 
+
+
+
+saturation - 50% 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Hue Shifting 
+
+
+10000 
+
+9000 
+
+8000 
+
+7000 
+
+6000 
+
+5000 
+
+4000 
+
+3000 
+
+2000 
+
+1000 
+
+50 100 150 200 250 
+
+
+
+
+R -> R 
+
+Y -> Y 
+
+
+original 
+
+G -> G 
+C -> C 
+
+B —> B 
+
+M^M 
+
+Original Dave & IA Image 
+
+
+
+
+“ 
+
+
+29 September 2016 
+
+
+(0 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Hue Shifting 
+
+
+
+
+The effects of a hue shift are nonlinear. They 
+difficult to characterize on the r, g, & b histograms 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Hue Shifting 
+
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Hue Shifting 
+
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Hue Shifting 
+
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Hue Shifting 
+
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Hue Shifting 
+
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Hue Shifting 
+
+
+
+
+The effect of a hue shift on the 
+hue histogram is quite obvious... 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Hue Shifting 
+
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Hue Shifting 
+
+
+
+
+... and the shift is circular since the hue is a 
+circular function - it is defined on a circle. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Hue Shifting 
+
+
+
+
+The part of the histogram that leaves 
+one side appears on the other. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Hue Shifting 
+
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Hue Shifting 
+
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Hue Shifting 
+
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+
+Linear Transformation of Color 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Correction via Linear Transformation 
+
+is a point process; the transformation is applied to each 
+pixel as a function of its color alone. 
+
+J(r,c) = <D[l(r,c)], V(r,c) esupp(l). 
+
+Each pixel is vector valued, therefore the transformation 
+is a vector space operator. 
+
+
+
+Ri(r,c) 
+
+
+R j ( r ’ c ) 
+
+
+Ri(r,c)l 
+
+l(r,c) = 
+
+Gjtyc) 
+
+, J(r,c) = 
+
+G j(r,c) 
+
+= 4>{l(r,c)} =0< 
+
+Gdr.c) > 
+
+
+
+
+_8j(r,c)_ 
+
+
+_Bi(r,c)J 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+39 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Color Vector Space Operators 
+
+
+Linear operators 
+are matrix 
+multiplications 
+
+
+
+
+'(r 0 l255f'~ 
+
+8 1 
+
+= 255- 
+
+Uo/255f* 
+
+h_ 
+
+
+(V255p 
+
+
+r i 
+
+
+flu a n a l3 
+
+
+
+8i 
+
+— 
+
+^21 ^22 ^23 
+
+
+#0 
+
+b x 
+
+
+^31 ^32 ^33 
+
+
+b o 
+
+
+Example of a 
+nonlinear operator: 
+gamma correction 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+40 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Linear Transformation of Color 
+
+
+
+r l 
+
+
+r A 
+
+0 
+
+0 " 
+
+r o 
+
+So 
+
+— 
+
+0 
+
+1 
+
+0 
+
+£o 
+
+b o_ 
+
+
+0 
+
+0 
+
+1 
+
+_ b o_ 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+41 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Linear Transformation of Color 
+
+
+
+r o 
+
+
+"1 
+
+0 
+
+0 " 
+
+r o 
+
+8i 
+
+— 
+
+0 
+
+gjgo 
+
+0 
+
+§0 
+
+b o_ 
+
+
+0 
+
+0 
+
+1 
+
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+42 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Linear Transformation of Color 
+
+
+
+r o 
+
+
+"l 
+
+0 
+
+0 
+
+r o 
+
+£o 
+
+— 
+
+0 
+
+1 
+
+0 
+
+<?0 
+
+b l_ 
+
+
+0 
+
+0 
+
+— i 
+
+b o_ 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+43 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Linear Transformation of Color 
+
+
+
+r l 
+
+
+r A 
+
+0 
+
+0 
+
+r o 
+
+8i 
+
+= 
+
+0 
+
+§Ao 
+
+0 
+
+£o 
+
+b i_ 
+
+
+0 
+
+0 
+
+1 
+
+-cT 
+
+_V 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+44 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Color Transformation 
+
+Assume J is a discolored version of 
+image I such that J = ®[ I ]. If O is 
+linear then it is represented by a 3x3 
+matrix, A: 
+
+
+a n 
+
+a \2 
+
+a 
+
+a 21 
+
+^22 
+
+a 
+
+a 3\ 
+
+a 32 
+
+a 
+
+
+Then J = AI or, more accurately, 
+
+J (r,c) = AI(r,c) for all pixel locations 
+(r,c) in image I. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+45 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Color Transformation 
+
+
+If at pixel location ( 
+
+r,c ), 
+
+then 
+
+j(r, c) = Al(r, 
+
+c). 
+
+image l(r,c) = 
+
+A 
+
+
+
+’a" 
+
+
+a n a n a n 
+
+A 
+
+Yi 
+
+and 
+
+
+Yj 
+
+— 
+
+$2i ^22 ^23 
+
+Yi 
+
+
+A. 
+
+
+
+A. 
+
+
+$31 $32 $ 33 _ 
+
+A. 
+
+
+image J ( r, c) 
+
+
+
+$n A 
+
++ 
+
+^12/1 
+
++ 
+
+a uP\ 
+
+$2i/?j 
+
++ 
+
+^22 A 
+
++ 
+
+$ 23^1 
+
+$31 A 
+
++ 
+
+$ 32 /i 
+
++ 
+
+$33/?! 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+46 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+
+Vanderbilt University School of Engineering 
+
+
+Color Transformation 
+
+The inverse transform O 1 (if it exists) maps the discolored 
+image, J, back into the correctly colored version, I, i.e., 
+
+I = 0 *[ J ]. If O is linear then it is represented by the 
+inverse of matrix A: 
+
+
+
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+47 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Correction 
+
+Assume we know n colors in the discolored image, J, that 
+correspond to another set of n colors (that we also know) 
+in the original image, I. 
+
+
+r 
+
+Pi,k 
+
+
+n 
+
+i 
+
+3 > 
+
+1 
+
+
+Pl,k 
+
+
+r 
+
+Pi, k 
+
+
+< 
+
+Yj ,k 
+
+
+> 
+
+Yj.k 
+
+
+Yl,k 
+
+< 
+
+
+Yl,k 
+
+> 
+
+V 
+
+3 * 
+
+i 
+
+J 
+
+k = 1 
+
+_Pi,k _ 
+
+
+Pit 
+
+
+V 
+
+1 
+
+?T- 
+
+1 
+
+J 
+
+
+
+for k = 1 , . . . , n. 
+
+
+known 
+
+
+known 
+
+wrong 
+
+known 
+
+correct 
+
+colors 
+
+correspondence 
+
+colors 
+
+29 September 2016 
+
+0) 1999-2016 by Richard Alan Peters II 
+
+48 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Color Correction 
+
+
+To remap the discolored image so that the result 
+matches the original image in a linearly optimal 
+way, we need to find the matrix. A, that minimizes 
+
+
+
+Pl,lc 
+
+
+Pi,k 
+
+CV5 
+
+II 
+
+M = 
+
+y i, k 
+
+-A -1 
+
+rj,k 
+
+k=l 
+
+
+
+i 
+
+> 
+
+1 
+
+
+i 
+
+1 
+
+
+2 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+49 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Yj 
+
+Color Correction 
+
+To find the solution of this problem, let 
+
+
+
+1 
+
+1 
+
+
+1 
+
+> 
+
+a 
+
+1 
+
+
+
+
+Pj,l 
+
+
+i 
+
+<5? 
+
+1 
+
+
+
+H i 
+
+• • • 
+
+Y\,n 
+
+
+, and X = 
+
+
+Yj,i 
+
+• • • 
+
+Yj ,n 
+
+
+
+_A,i_ 
+
+
+An. 
+
+
+
+
+_A,i_ 
+
+
+_A,n_ 
+
+
+
+Then X and Y are known 3 xn matrices such that 
+
+Y * A X, 
+
+where A is the 3x3 matrix that we want to find. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+50 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Yj 
+
+Color Correction 
+
+
+The linearly optimal solution is the least mean squared 
+solution that is given by 
+
+B = A -1 = YX t (XX t )"‘ 
+
+
+where X T represents the transpose of matrix X. 
+
+Notes: 1. n, the number of color pairs, must be > 3, 
+
+2. XX T must be invertible, i.e., rank(XX T ) = 3, 
+
+3. If n=3, then X T (XX T ) _1 = X _1 . . A ^ 
+
+1 > important 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+51 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Color Correction 
+
+The linearly optimal soluti 
+solution that is given by 
+
+B = A 1 = YX 
+
+
+input colors (to be changed): 
+
+\_Pi,\ y j,i Aj,i] 
+\_Pi,n y.],n P.), n ] 
+
+
+p j , i 
+r j,i 
+Pea 
+
+
+Pin 
+
+rj.n 
+
+Pj,n 
+
+
+-1 
+
+
+
+iared 
+
+
+where X T represt 
+
+
+Notes: 1. 
+
+2 . 
+
+3. 
+
+
+
+of matrix X. 
+
+
+or pairs, must be > 3, 
+
+
+XX T must be invertible, i.e., rank(XX T ) 
+If n=3, then X T (XX T ) _1 = X _1 . 
+
+
+= 3, 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+52 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Color Correction 
+
+The linearly optimal soluti 
+solution that is given by 
+
+-1 
+
+
+B = A 1 = YX 
+
+
+where X T represt 
+
+
+Notes: 1. 
+
+
+lors (to b e changed ): 
+
+
+
+
+iared 
+
+
+of matrix X. 
+
+
+or pairs, must be > 3, 
+
+
+2. XX T must be invertible, i.e., rank(XX T ) 
+
+3. If n=3, then X T (XX T ) _1 = X _1 . 
+
+
+= 3, 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+53 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Correction 
+
+Then the image is color corrected by performing 
+l(r,c)=Bj(r,c), forall (r,c) esupp(j). 
+
+In Matlab this is easily performed by 
+
+» I = reshape (( (B* (reshape (double (J) ,R*C, 3) )')’) 3) ; 
+» m = min ( I ( : ) ) ; 
+
+» M = max ( I ( : ) ) ; 
+
+» I = uint8 (255* (I-m) / (M-m) ) ; 
+
+where B=A~* is computed directly through the LMS formula 
+on the previous page, and R & C are the number of rows and 
+columns in the image. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+54 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Linear Color Correction 
+
+
+NASA Summer Faculty Fellows at Ellington Air Force Base, Houston, TX, July 2002. Airplane is a T-38. 
+
+
+
+Original Image 
+
+
+“Aged” Image 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+55 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Mapping 1 
+
+
+
+Original Image “Aged” Image 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+56 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Mapping 2 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+57 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Mapping 3 
+
+
+
+Original Image “Aged” Image 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+58 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Mapping 4 
+
+
+
+Original Image 
+
+
+“Aged” Image 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+59 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Color Transformations 
+
+
+
+The aging process was a transformation, <D, that mapped: 
+
+
+17 
+
+
+17 
+
+
+222 
+
+
+222 
+
+
+240 
+
+
+240 
+
+
+236 
+
+
+240 
+
+122 
+
+= ®< 
+
+121 
+
+> 
+
+222 
+
+= ®< 
+
+222 
+
+> 
+
+171 
+
+= ®< 
+
+171 
+
+> 
+
+227 
+
+= ®< 
+
+230 
+
+114 
+
+
+171 
+
+
+185 
+
+
+218 
+
+y 
+
+103 
+
+
+160 
+
+
+106 
+
+
+166 
+
+. — — * J 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+60 
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Color Transformations 
+
+
+
+To undo the process we need to find, O' 1 , that maps: 
+
+
+17 
+
+
+17 
+
+
+
+222 
+
+
+222 
+
+
+
+240 
+
+
+240 
+
+
+
+240 
+
+
+236 
+
+
+121 
+
+= 0" 1 < 
+
+122 
+
+
+> 
+
+222 
+
+= 0" 1 < 
+
+222 
+
+
+> 
+
+171 
+
+= O -1 1 
+
+171 
+
+
+> 
+
+230 
+
+= O -1 1 
+
+227 
+
+> 
+
+171 
+
+
+114 
+
+
+
+218 
+
+
+185 
+
+
+
+160 
+
+
+1 
+
+m 
+
+o 
+
+H 
+
+1 
+
+
+
+166 
+
+
+106 
+
+> 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+61 
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Correction Using 3 Mappings 
+
+B = A 1 = YX 1 
+
+
+X = 
+
+
+222 17 240 
+
+222 122 171 
+185 114 103 
+
+
+222 17 240 
+
+222 121 171 
+218 171 160 
+
+
+Y = 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+62 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Correction Using 3 Mappings 
+
+B = A 1 = YX 1 
+
+
+original corrected 
+
+
+
+
+'222 
+
+17 
+
+240' 
+
+
+'222 
+
+17 
+
+240' 
+
+x = 
+
+222 
+
+122 
+
+171 
+
+Y = 
+
+222 
+
+121 
+
+171 
+
+
+185 
+
+114 
+
+103_ 
+
+
+218 
+
+171 
+
+160 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+63 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Another Correction Using 3 Mappings 
+
+B = A 1 = YX 1 
+
+
+X = 
+
+
+222 17 236 
+
+222 122 227 
+185 114 106 
+
+
+222 17 240 
+
+222 121 230 
+218 171 166 
+
+
+Y = 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+64 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Another Correction Using 3 Mappings 
+
+B = A 1 = YX 1 
+
+
+original corrected 
+
+
+
+
+'222 
+
+17 
+
+236' 
+
+
+'222 
+
+17 
+
+240' 
+
+x = 
+
+222 
+
+122 
+
+227 
+
+Y = 
+
+222 
+
+121 
+
+230 
+
+
+185 
+
+114 
+
+106 
+
+
+218 
+
+171 
+
+166 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+65 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Correction Using All 4 Mappings 
+
+B = A -1 = YX t (XX t ) _1 
+
+
+
+'222 
+
+17 
+
+236 
+
+240' 
+
+
+'222 
+
+17 
+
+240 
+
+240' 
+
+x = 
+
+222 
+
+122 
+
+227 
+
+171 
+
+Y = 
+
+222 
+
+121 
+
+230 
+
+171 
+
+
+185 
+
+114 
+
+106 
+
+103 
+
+
+218 
+
+171 
+
+166 
+
+160_ 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+66 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Correction Using All 4 Mappings 
+
+
+B = A -1 = YX t (XX T ) _1 
+
+original corrected 
+
+
+
+
+'222 
+
+17 
+
+236 
+
+240' 
+
+
+'222 
+
+17 
+
+240 
+
+240' 
+
+x = 
+
+222 
+
+122 
+
+227 
+
+171 
+
+Y = 
+
+222 
+
+121 
+
+230 
+
+171 
+
+
+185 
+
+114 
+
+106 
+
+103 
+
+
+218 
+
+171 
+
+166 
+
+160 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+67 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Random Sampling of Color Values 
+
+
+R = number of rows in image 
+C - number of columns in image 
+n = number of pixels to select 
+
+
+rand([l n]) : 1 * n matrix 
+of random numbers 
+between 0 and 1. 
+
+
+diag(I(rr,rc,l)): vector 
+from main diagonal of 
+matrix I(rr,rc,l). 
+
+
+» rr = round (R* rand ( [1 n] ) ) ; 
+» rc = round (C*rand ( [1 n] ) ) ; 
+» idx = [rr;rc] ; 
+
+» Y(:,l) = diag (I (rr ,rc, 1) ) ; 
+» Y(:,2) = diag (I (rr , rc, 2) ) ; 
+» Y(:,3) = diag(I(rr,rc,3)); 
+» X(:,l) = diag(J(rr,rc,l)); 
+» X(:,2) = diag(J(rr,rc,2)); 
+» X(:,3) = diag ( J(rr , rc, 3) ) ; 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+68 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Correction Using 128 Mappings 
+
+B = A -1 = YX t (XX t ) _1 
+
+
+
+
+'111 
+
+2 35' 
+
+
+'111 
+
+2 34' 
+
+x = 
+
+103 •• 
+
+2 33 
+
+Y = 
+
+10 2 • 
+
+•• 2 33 
+
+
+_22 
+
+2 10 
+
+
+_ 7! 
+
+229 _ 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+69 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Correction Using 128 Mappings 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+70 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Correction Using 128 Mappings 
+
+B = A -1 = YX t (XX t ) _1 
+
+original corrected 
+
+
+
+
+'111 
+
+2 35' 
+
+
+'111 
+
+2 34' 
+
+x = 
+
+103 •• 
+
+2 33 
+
+Y = 
+
+10 2 • 
+
+•• 2 33 
+
+
+_22 
+
+2 10 
+
+
+_ 7! 
+
+229 _ 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+71 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+for 
+
+comparison: 
+
+
+Correction Using 4 Mappings 
+
+B = A -1 = YX t (XX t ) _1 
+
+original corrected 
+
+
+
+
+'222 
+
+17 
+
+236 
+
+240' 
+
+
+'222 
+
+17 
+
+240 
+
+240' 
+
+x = 
+
+222 
+
+122 
+
+227 
+
+171 
+
+Y = 
+
+222 
+
+121 
+
+230 
+
+171 
+
+
+185 
+
+114 
+
+106 
+
+103 
+
+
+218 
+
+171 
+
+166 
+
+160 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+72 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Linear Color Transformation Program 
+
+
+function J = LinTrans (I , A) 
+
+[R C B] = size (I) ; 
+
+I = double ( I ) ; 
+
+J = reshape ( ( (A* (reshape (I ,R*C,3) ) ' ) ' ) ,R,C,3) ; 
+return ; 
+
+
+This function returns an image of 
+class double. To get a good uint8 
+you may have to linearly scale the 
+result as shown on slide 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+73 
+
+

@@ -1,0 +1,7157 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes: Resizing Images 
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution -Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Three Methods for Resizing Images 
+
+
+original image original image 
+
+
+nearest neighbor 
+
+
+* nearest, neighbor 
+
+
+bilinear interpolation 
+
+
+bicubic interpolation 
+
+
+-bilinear interpolation 
+-bicubic interpolation 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Enlarging Images Through Pixel Replication 
+
+
+0 
+
+
+Example: 
+zoom this 
+image 4x ■ 
+get this 
+image. 
+
+to 
+
+
+
+
+
+
+Start with a blank image 4 times the 
+linear dimensions of the original. 
+
+
+Fill in every 4th pixel in every 4th 
+row with the original pixel values. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Enlarging Images Through Pixel Replication 
+
+
+
+Detail showing every 4th pixel in every 4th row with the original pixel values. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+Enlarging Images Through Pixel Replication 
+
+
+
+
+For each original value: replicate it 15 times to create a new, larger "pixel". 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Reducing Images Through Pixel Decimation 
+
+
+
+Example: 
+decimate 
+this image 
+4x to get 
+this image 
+
+L 
+
+
+Decimation by 
+a factor of n: 
+take every nth 
+pixel in every 
+nth row 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Reducing Images Through Pixel Decimation 
+
+
+
+Example: 
+decimate 
+this image 
+4x to get 
+this image 
+
+
+Zoom in on a 
+section for a 
+i closer look at 
+the process 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Reducing Images Through Pixel Decimation 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Reducing Images Through Pixel Decimation 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Reducing Images Through Pixel Decimation 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Reducing Images Through Pixel Decimation 
+
+
+Example: 
+decimate 
+this image 
+4x to get 
+this image 
+
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Backward Mapping 
+
+Resampling involves creating one image from another, each with a 
+different spatial geometry. There are two strategies for doing this. Let 
+I be the RxC input image and let J be the R'xC' output image. 
+
+1 . For each pixel (r,c) in image I select a pixel tr'.c' ) in J such that 
+
+j(r',c') = <t> Jl(r,c);(r,c)J for r e{0,...,t?-l} and c e{0,...,C-l} . 
+
+2. For each pixel ( r',c ') in J select a pixel ( r,c ) in image I such that 
+
+j(r',c') = <t> _1 {l(r,c);(r',c')J for r' e{0,...,f?' — 1} and c' e{0,...,C'-l}. 
+
+The first strategy, a forward mapping, can leave pixels in J empty - 
+a problem. The second fills in every pixel in J by selecting a correct 
+value from I. The second approach is a better strategy. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest 
+
+Neighbor 
+
+Resampling 
+
+
+The “Nearest Neighbor” algorithm is 
+a generalization of pixel replication 
+and decimation. 
+
+It also includes fractional resizing, 
+i.e. resizing an image so that it has 
+plq of the pixels per row and plq of 
+the rows in the original, (p and q are 
+both integers.) 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+Nearest 
+
+Neighbor 
+
+Resampling 
+
+
+Zoom in on a 
+section for a 
+closer look at 
+the process 
+
+
+of the original 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Nearest 3/7 resize 
+
+Neighbor 
+Resampling 
+
+
+better look 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest 3/7 resize 
+
+
+
+squares 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest 3/7 resize 
+
+
+Neighbor 
+
+Resampling 
+
+
+
+yellow: 3 p ix< 
+• every 7 row 
+ixels for eve 
+7 cols. 
+
+
+
+□ □□ □□□ □□□ 
+
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+□ □ 
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+
+
+* 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest 3/7 resize 
+
+Neighbor 
+
+Resampling 
+
+
+
+
+□ □ □ □ i □ □ 
+
+
+□ □ 
+
+
+□ □□□ □□□ □ □ n 
+
+□ □ □□□ □□□ □□□ 
+
+□ □ □ □ □ j 
+
+
+J Keep the 
+highlighted 
+pixels... 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Nearest 3/7 resize 
+
+Neighbor 
+
+Resampling 
+
+
+4 
+
+J J J 
+
+4 4 4 
+
+J J J 
+
+j j j 
+
+J J J 
+
+j j 
+
+4 
+
+j j j 
+
+in 
+
+4 4 4 
+
+4 4 
+
+
+4 4 
+
+
+■4 
+
+J % J 
+
+4 4 4 
+
+J J 4 
+
+j j j 
+
+444 
+
+44 
+
+j 
+
+j j j 
+
+j j i 
+
+IU 
+
+4 4 
+
+
+4 4 
+
+* - 
+
+% 
+
+4 4 4 
+
+J J J 
+
+J J J 
+
+j j ^ 
+
+til 
+
+j j 
+
+j 
+
+j j j 
+
+j ji 
+
+444 
+
+4 4 
+
+
+44 
+
+11 
+
+J 
+
+j J J 
+
+J J J 
+
+4 4 4 
+
+j j j 
+
+J J J 
+
+j j 
+
+j 
+
+j j j 
+
+
+
+
+
+
+
+4 
+
+J J J 
+
+J J J 
+
+J J J 
+
+j j j 
+
+J J J 
+
+j -j 
+
+• 
+
+in 
+
+j ^ 4 
+
+444 
+
+44 
+
+
+4% 
+
+41 
+
+IJ 
+
+J J j 
+
+4 4 4 
+
+44 4 
+
+j jj 
+
+j Ji 
+
+^ - j 
+
+j 
+
+j j j 
+
+iu 
+
+««« 
+
+* % 
+
+
+44 
+
+-» 1 
+
+% 
+
+J J J 
+
+
+4 44 
+
+j j j 
+
+j j j 
+
+i j 
+
+j 
+
+% ^ j 
+
+j ji 
+
+* 4 % 
+
+4 4 
+
+
+1 4 
+
+% 1 
+
+4 
+
+J J J 
+
+J J J 
+
+J J J 
+
+444 
+
+4 4 4 
+
+j j 
+
+j 
+
+
+
+
+
+
+
+
+4 
+
+J J J 
+
+J J J 
+
+J J j 
+
+444 
+
+444 
+
+j j 
+
+i 
+
+j j j 
+
+jii 
+
+114 
+
+4 % 
+
+
+* b 
+
+41 
+
+J 
+
+4 4 4 
+
+4 4 4 
+
+J j) 
+
+j % j 
+
+j 4 j 
+
+j j 
+
+• 
+
+j 44 
+
+j ji 
+
+J%4 
+
+44 
+
+
+44 
+
+%1 
+
+a 
+
+J J J 
+
+J J J 
+
+J J J 
+
+j j j 
+
+444 
+
+j j 
+
+
+444 
+
+4 44 
+
+444 
+
+% J 
+
+
+4 % 
+
+4| 
+
+4 
+
+% * % 
+
+V % % 
+
+i j j 
+
+j j j 
+
+j 4 4 
+
+4 j 
+
+j 
+
+444 
+
+4* % 
+
+444 
+
+1 4 
+
+
+4* 
+
+• 1 
+
+4 
+
+J J J 
+
+J J J 
+
+J J J 
+
+j j j 
+
+4 4 4 
+
+j j 
+
+j 
+
+j j j 
+
+J % 4 
+
+444 
+
+4 4 
+
+
+44 
+
+% s 
+
+• 
+
+J J J 
+
+iii 
+
+% J J 
+
+444 
+
+4 4 4 
+
+j j 
+
+• 
+
+444 
+
+ill 
+
+444 
+
+44 
+
+
+II 
+
+41 
+
+4 
+
+4 
+
+4 4 4 
+
+j J J 
+
+44 4 
+
+444 
+
+444 
+
+j j 
+
+
+
+
+
+
+
+
+41 
+
+•J 
+
+jl J 
+
+4 4 4 
+
+4 4 4 
+
+4 j j 
+
+jjJ 
+
+^ j 
+
+
+j j j 
+
+4 4 4 
+
+444 
+
+1 4 4 
+
+
+4 1 
+
+4 1 
+
+% 
+
+J J J 
+
+J% j 
+
+44 J 
+
+44 4 
+
+j j j 
+
+j j 
+
+
+
+444 
+
+ill 
+
+III 
+
+
+4% 
+
+* 1 
+
+% 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+J 
+
+1M 
+
+%% j 
+
+% j% 
+
+
+111 
+
+j* 
+
+
+444 
+
+444 
+
+444 
+
+*44 
+
+4 
+
+44 
+
+4 1 
+
+% 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+J 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* . 
+
+% 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+J 
+
+4 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+J 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+J 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% g 
+
+4 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+J 
+
+J J J 
+
+Mt 
+
+444 
+
+It) J 
+
+4 j 4 
+
+44 
+
+
+44 j 
+
+» * 4 
+
+444 
+
+44 
+
+
+11 
+
+
+% 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+J 
+
+
+»«« 
+
+444 
+
+444 
+
+444 
+
+% j 
+
+
+« j* 
+
+444 
+
+J44 
+
+4 % 
+
+
+4 1 
+
+41 
+
+m 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+J J J 
+
+j j j 
+
+j ■ m 
+
+■ ■ ■ 
+
+J J J 
+
+j j j 
+
+
+
+J J J 
+
+j j j 
+
+j j j 
+
+■ ■ ■ 
+
+J J J 
+
+j 1 1 
+
+j m m 
+
+j a ■ 
+
+
+
+
+jii 
+
+j • m 
+
+■ j ■ 
+
+ji i 
+
+• i ■ 
+
+j ■ ■ 
+
+• * • 
+
+m j ■ 
+
+j ii 
+
+j ■ ■ 
+
+■ ■ ■ 
+
+■ ■ j 
+
+■ ■ • 
+
+j ■ ■ 
+
+mm m 
+
+* ■ ■ 
+
+■ ■ ■ 
+
+■ ■ ■ 
+
+mmm 
+
+■ * ■ 
+
+mmm 
+
+■ ■ ■ 
+
+mmm 
+
+■ ■ ■ 
+
+■ ■ ■ 
+
+• ■ ■ 
+
+■ ■ ■ 
+
+■ ■ ■ 
+
+■ ■ j 
+
+
+< . ■ 
+
+
+
+... don t keep 
+
+
+
+the others. 
+
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Nearest 3/7 resize 
+
+Neighbor 
+
+Resampling 
+
+
+% 
+
+% 
+
+% % 
+
+j j j 
+
+j j j 
+
+j j j 
+
+% 
+
+% 
+
+% 
+
+J J J 
+
+% % % 
+
+j j j 
+
+'J % % 
+
+j j % 
+
+ii j 
+
+j. 
+
+• 
+
+• 
+
+j j 
+
+
+j j a 
+
+; j j j 
+
+»»% 
+
+»»% 
+
+J J J 
+
+
+tt J 
+
+jt j 
+
+« 
+
+
+J 
+
+j 
+
+% % 
+
+j j j 
+
+j 
+
+j j j 
+
+j 
+
+% 
+
+% 
+
+J J J 
+
+J il J 
+
+i»» 
+
+J%« 
+
+i j j 
+
+»»% 
+
+• « 
+
+'j 
+
+J 
+
+J J 
+
+j j J 
+
+j j j 
+
+j j j 
+
+■J 
+
+J 
+
+J 
+
+»»» 
+
+
+
+
+
+
+
+j 
+
+% 
+
+j j 
+
+j j j 
+
+j j j 
+
+j j j 
+
+%»» 
+
+»»% 
+
+J J J 
+
+j j j 
+
+%%% 
+
+«%% 
+
+44* 
+
+%« 
+
+% 
+
+j 
+
+% % 
+
+»•» 
+
+»»» 
+
+J J a 
+
+»»% 
+
+J J J 
+
+j J a 
+
+»» j 
+
+»«» 
+
+
+««« 
+
+ji 
+
+» 
+
+j 
+
+J J 
+
+j j j 
+
+a j j 
+
+j j j 
+
+j 
+
+J 
+
+J 
+
+
+• 4* 
+
+t«t 
+
+444 
+
+444 
+
+444 
+
+«i 
+
+j 
+
+J 
+
+% j 
+
+j j j 
+
+j j j 
+
+j j J 
+
+a 
+
+% 
+
+J 
+
+
+
+
+
+
+
+
+% 
+
+j j j 
+
+»»» 
+
+J J% 
+
+j j j 
+
+j 
+
+J 
+
+* 
+
+J JI J 
+
+j j* 
+
+j j% 
+
+%% * 
+
+««« 
+
+%»» 
+
+%« 
+
+* 
+
+* 
+
+
+a j j 
+
+j j j 
+
+j j j 
+
+j 
+
+% 
+
+• 
+
+%%% 
+
+j j j 
+
+j j% 
+
+%%% 
+
+»«« 
+
+«»« 
+
+
+% 
+
+% 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+j 
+
+j 
+
+^ j 
+
+J J J 
+
+j a j 
+
+^ j j 
+
+% 
+
+J 
+
+J 
+
+J J J 
+
+j j j 
+
+-»%* 
+
+444 
+
+«%« 
+
+«»« 
+
+*« 
+
+j 
+
+J j j 
+
+j j a 
+
+
+j j j 
+
+j 
+
+V 
+
+J 
+
+J J J 
+
+j j j 
+
+j% b 
+
+*»« 
+
+««« 
+
+%»» 
+
+«« 
+
+j 
+
+j 
+
+j j 
+
+J J J 
+
+j* a 
+
+
+% 
+
+J 
+
+% 
+
+J J J 
+
+j j j 
+
+j»I 
+
+%%% 
+
+»»« 
+
+%%% 
+
+»« 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+J 
+
+% J 
+
+J J J 
+
+j j a 
+
+a j j 
+
+!J 
+
+J 
+
+Ck 
+
+J J J 
+
+j j* 
+
+% jy 
+
+44* 
+
+» jj 
+
+444 
+
+ji 
+
+j 
+
+j 
+
+a j 
+
+j% j 
+
+j* j 
+
+
+J J J 
+
+J 
+
+
+%«« 
+
+%«« 
+
+»»• 
+
+%%» 
+
+»« 
+
+'j 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+j 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+«i 
+
+j 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+« 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+j 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* . 
+
+a 
+
+j 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+J J J 
+
+j 
+
+j □ 
+
+
+
+
+1 J J J 
+
+j 
+
+j j 
+
+
+
+
+J J J 
+
+j 
+
+j j 
+
+j j j 
+
+■ ■ 
+
+
+J J J 
+
+j 
+
+
+_i B j 
+
+j m 
+
+■ 
+
+
+
+
+
+j m 
+
+
+j m m 
+
+■ 
+
+j ■ 
+
+mm m 
+
+m j 
+
+■ 
+
+j j ■ 
+
+
+
+■ j ■ 
+
+j m 
+
+
+• ■ ■ 
+
+
+■ 
+
+■ ■ j 
+
+■ ■ 
+
+
+■ ■ ■ 
+
+■ 
+
+
+
+• ■ 
+
+
+
+
+
+
+
+• 
+
+
+Copy them into 
+a new image. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest 3/7 resize 
+
+Neighbor 
+
+Resampling 
+
+
+
+J 
+
+j 
+
+j 
+
+j 
+
+j 
+
+j 
+
+J 
+
+J 
+
+■ 
+
+• 
+
+■ 
+
+
+J 
+
+j 
+
+j 
+
+j 
+
+j 
+
+j 
+
+J 
+
+■ 
+
+• 
+
+• 
+
+■ 
+
+
+J 
+
+j 
+
+j 
+
+j 
+
+j 
+
+j 
+
+J 
+
+J 
+
+j 
+
+■ 
+
+■ 
+
+
+J 
+
+j 
+
+
+j 
+
+■ 
+
+n 
+
+% 
+
+• 
+
+■ 
+
+j 
+
+• 
+
+
+J 
+
+n 
+
+% 
+
+s 
+
+■ 
+
+
+■ 
+
+■ 
+
+• 
+
+j 
+
+j 
+
+
+J 
+
+j 
+
+m 
+
+■ 
+
+j 
+
+■ 
+
+5j 
+
+■ 
+
+j 
+
+■ 
+
+% 
+
+
+% 
+
+% 
+
+m 
+
+■ 
+
+• 
+
+■ 
+
+■ 
+
+Jl 
+
+■ 
+
+j 
+
+m 
+
+
+m 
+
+■ 
+
+■ 
+
+• 
+
+■ 
+
+
+■ 
+
+m 
+
+j 
+
+■ 
+
+m 
+
+j 
+
+ji 
+
+■ 
+
+■ 
+
+■ 
+
+■ 
+
+■ 
+
+w 
+
+■ 
+
+• 
+
+■ 
+
+■ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+j 
+
+
+Copy them into 
+a new image. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Nearest 3/7 resize 
+
+Neighbor 
+
+Resampling 
+
+
+
+j j j j j j jII MS 
+j j j j j j jSB MS 
+j J J J j j j j j sss 
+j j J jS j j! j jSB 
+
+j j JSB B j j j B 
+jIjBBijB jBSB jB 
+
+B BB B jB jBB 
+BB IBS SB J SB j 
+jBBBBBSBBBBB 
+
+sbbbbb SBBBBB 
+SBBBBBBBBBB j 
+
+
+Copy them into 
+a new image. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Yj 
+
+Nearest 3/7 resize 
+
+Neighbor 
+
+Resampling 
+
+
+
+
+Copy them into 
+a new image. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Yj 
+
+Nearest 3/7 resize 
+
+Neighbor 
+
+Resampling 
+
+
+
+
+Copy them into 
+a new image. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Nearest 3/7 resize 
+
+Neighbor 
+
+Resampling 
+
+
+
+
+3/7 times the 
+linear dimensions 
+of the original 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Nearest 
+
+Neighbor 
+
+Resampling 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+Nearest 
+
+Neighbor 
+
+Resampling 
+
+
+the original dims. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest 
+
+Neighbor 
+
+Resampling 
+
+
+
+Detail of 
+resized image 
+
+
+Resize to 3/7 of 
+the original dims. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest 
+
+Neighbor 
+
+Resampling 
+
+
+
+Original 
+
+image 
+
+
+7/3 resize 
+
+
+ii 
+
+
+Bii- • • 
+
+
+Pixels spread out 
+for a 7/3 resize ... 
+
+
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest 7/3 resize 
+
+
+
+Original 
+
+image 
+
+
+Neighbor 
+
+Resampling 
+
+
+Each 3x3 block 
+of pixels from 
+
+
+Detail 
+
+
+... is spread out over 
+a 7x7 block here 
+
+
+jj* * j% jjj 
+
+
+
+
+*»* *»• »«» »»• •»* »»* »» 
+
+• j • • j* * ««» %jj jjj jji »»» ««» %* ^ j* 
+
+
+
+^.iViUmZU'AiiUlXilZmiZl'a * 
+
+J* J *•••»• J J* J* J J J* |j| 1411 ill |j| j* j j'j j j* j 
+
+»•» JJJ J J J «»• J Jl IJJ J* J «|4 J J J * J J IJJ J J . 
+
+::: m m m uz u m 
+
+9 j*% J 44 %»• 141 
+
+• •jj j»j» 
+
+4 J%* JJJ *J* **J JJ 
+
+• IM J»« IJl tJt *.» «J» J* 
+
+• ••.» *»j jjj m mi .<» .< j* j j j 
+
+• jj* **j »» j -*j j*j j*j jj 
+
+
+jjj jjj »*j jjj %jj j»» %jj jjj jjj 
+
+in in hx Uj uu:'j u: m 
+
+i jjj jjj *jj jjj j*j jj* »j« mj jjj 
+i jjj JJJ jM J * jjj J J * j j* jjj jjj 
+i jjj jj! *jj Mj 1j* Ijj jM j% j jjj 
+jj jI« j*% jjj jj| jj* j* j **j *jj 
+j j ••• ••• • j j jjj • » j % j j % j j 
+
+jj j* J » • « • » j jjj »j* j j* j j* jj* 
+
+. j* j J* J J»» 1. J J »J« J** JJ* * J J % J* 
+
+, iMi.'M A. :M:: 54! 
+
+%j* j** j*j j*j *j* *jj jjj 
+
+• j* j j* j j* j j* j 
+
+•• » M •• »* J J%J »• J JJ - 
+
+M J«« ** , j* J J* j j«j«j»»»j 
+»» »»» »»» •»* *J* »»J JJ* 
+
+• • * »> JJJ »J« *J* J J* JJJ J* J 
+
+
+It: ; 
+
+
+HUUtti j jj 
+
+j* j * j j j* j jjj 
+
+:il zimiza 
+
+• 9* J** %» J JJJ 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Nearest 
+
+Neighbor 
+
+Resampling 
+
+
+7/3 resize 
+
+
+
+3x3 blocks 
+distributed over 
+7x7 blocks 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Nearest 
+
+Neighbor 
+
+Resampling 
+
+
+7/3 resize 
+
+
+i j j jjj 
+\ j j 
+
+
+jjj j j j j j j 
+j j j jjj jjj 
+jjj jjj jjj 
+
+
+
+Empty pixels filled 
+with color from ULH 
+non-empty pixel 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Nearest 
+
+Neighbor 
+
+Resampling 
+
+
+7/3 resize 
+
+
+
+Empty pixels filled 
+with color from ULH 
+non-empty pixel 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest 
+
+Neighbor 
+
+Resampling 
+
+
+
+Original 
+
+image 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest Neighbor Resampling 
+
+
+Size of original image, I: R x C 
+Size of scaled image, J: R' * C' 
+
+Row scale factor (input to output): 
+
+(R/R\ if R>R\ 
+
+Sr ~ (_(/? — l) //?', if R<R', 
+
+Column scale factor (input to output): 
+
+fC/C", if C>C\ 
+
+Sc _ {(C-l)/C', if C<C' 
+
+For each (r', c') in J, the corresponding 
+fractional pixel location, (r f , cy), in I is: 
+
+(r / ,c / ) = (5 / ,-r', S c -c') 
+
+
+for r f = a,...,R f , 
+c' = ,C'. 
+
+If S r > 0.5 then a =1. 
+
+
+If S c > 0.5 then p =1. 
+
+
+If S r < 0.5 then a = 
+If S c < 0.5 then (3 = 
+
+
+
+
+The closest integer pixel location (r, c), 
+in I is 
+
+(r , c) = round [^r f ,c f \. 
+
+Then 
+
+
+j(r',c') = l(r,c). 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest Neighbor Resampling 
+
+If the output image is 
+Size of larger than the input 
+Size of image then the scale 
+Row sc f QC 1' or IS I ess than 1. 
+
+
+Which pixel to 
+start with? 
+
+for r f = a,...,R f , 
+c' = 
+
+If S r > 0.5 then a =1. 
+
+
+(R/R\ if R>R\ 
+
+Sr “{(/?- l)/R\ if R<R\ 
+
+Columi if the output image is 
+smaller than the input 
+S c image then the scale 
+factor is greater than 1. 
+
+For each (r\ ~ in J, the corresponding 
+fractional pixel location, (/y, cy), in I is: 
+
+
+If S c > 0.5 then p =1. 
+
+
+If S r < 0.5 then a = 
+If S c < 0.5 then (3 = 
+
+
+
+
+The closest integer pixel location (r, c), 
+in I is 
+
+(r , c) = round [^r f ,c f \. 
+
+Then 
+
+
+[r f , c f) = (S R -r’, S c -c ') 
+
+
+j(r',c') = l(r,c). 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest Neighbor Resampling 
+
+
+Size The idea here is that the 4x4 
+
+c; 7P neighborhood in I of the point (r f/ c f/ ) 
+has (r,c) = L(r f ,c f/ )J as its upper left 
+
+Rov\ corner and has (r+l,c+l) as its lower 
+right corner. 
+
+1 Thus for each (r f ,c f/ ): (1) neither r 
+nor c can be less than one and (2) r+1 
+cannot be greater than R and c+1 
+cannot be greater than C . 
+
+If the set of all indices {(rye)} do not 
+satisfy (1) or (2), you must adjust 
+the indices so that they do. 
+
+For cacn {r , c ) in j^nie cormspoiramg 
+
+fractional pixel location, (/y, cy), in I is: 
+
+( r /’ c /) = (V r ’’ S c ' c ') 
+
+
+for r f = a,...,R f , 
+c f = P 9 ...,C'. 
+
+If S r > 0.5 then a =1. 
+
+
+If S c > 0.5 then p =1. 
+
+
+If S r < 0.5 then a = 
+If S c < 0.5 then (3 = 
+
+
+
+
+The closest integer pixel location (r, c), 
+in I is 
+
+(r , c) = round [^r f ,c f \. 
+
+Then 
+
+
+j(r',c') = l(r,c). 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Nearest Neighbor Resampling 
+
+
+r = 1 
+
+
+These 4 blocks 
+represent the 
+corners of an 
+image — the 
+extrema of r 
+and c in the 
+input image. 
+
+
+r+l=R 
+
+
+
+
+
+
+
+• • 
+
+
+pixel size 
+
+
+
+
+
+They are also 
+the extrema of 
+4-pixel 
+
+neighborhoods 
+in the image. 
+
+
+c- 1 
+
+
+c +1 — C 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest Neighbor Resampling 
+
+
+r = 1 
+
+
+Here the image is 
+supersampled with 
+the original pixels in 
+the center. This is 
+not actually none by 
+the algorithm but it 
+helps one visualize 
+the procedure 
+
+
+r + 1 =R 
+
+
+
+
+
+
+
+
+
+input pixel 
+spacing = 1 
+
+
+point location 
+of input pixel 
+
+
+
+c = 1 
+
+
+c +1 — C 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+39 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest Neighbor Resampling 
+
+
+r = 1 
+
+
+If the output 
+image is smaller 
+than the input 
+image, then 
+R' < R ,C< C. 
+
+
+
+□ 
+
+
+□ 
+
+
+r+l=R 
+
+
+
+• • 
+
+
+□ 
+
+
+□ □ 
+
+
+
+^ output pixel 
+spacing > 1 
+
+sampling 
+locations for 
+output pixels 
+
+using scale 
+factors 
+sR = R/R' and 
+sC = C/C . 
+
+
+
+c = 1 
+
+
+c +1 — C 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+40 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest Neighbor Resampling 
+
+
+If the output 
+image is larger 
+than the input 
+image, then 
+R* > R ,C> C.. 
+
+
+
+
+
+□ □ □ 
+
+
+
+c = 1 
+
+
+
+
+output pixel 
+spacing < 1 
+
+
+sampling 
+locations for 
+output pixels 
+
+
+• • • 
+
+
+
+using scale 
+factors 
+s R = R/R' and 
+s c = C/C. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+41 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Nearest Neighbor Resampling 
+
+
+r = 1 
+
+
+
+□ □ □ 
+
+
+r+l=R 
+
+
+
+) • • 
+
+
+
+
+Output image 
+
+
+J u 
+
+larger than 
+
+• 
+
+Output pixel • 
+
+input image, 
+
+• 
+
+indices are • 
+
+R* > R ,C> C. 
+
+• 
+
+outside image 
+
+
+
+pixel spacing < 1 
+
+
+
+sampling 
+locations for 
+output pixels 
+
+using scale 
+factors 
+s R = R/R' and 
+s c = C/C. 
+
+
+c- 1 
+
+
+c +1 — C 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+42 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest Neighbor Resampling 
+
+
+Output image 
+larger than 
+input image, 
+R* > R, C > C. 
+
+
+r + 1 =R 
+
+
+
+□ □ □ 
+□ □ □ 
+
+
+
+c = 1 
+
+
+rS 
+
+
+
+c +1 — C 
+
+
+pixel spacing < 1 
+
+
+sampling 
+locations for 
+output pixels 
+
+using scale 
+factors 
+Sr = (R-l)/R' 
+
+s c = (c-iyc 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+43 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Nearest Neighbor Resampling 
+
+
+r = 1 
+
+
+r+l=R 
+
+
+□ □ □ 
+
+
+
+• • 
+
+
+
+
+Output image 
+
+
+] □ 
+
+larger than 
+
+• 
+
+Output pixel 
+
+input image, 
+
+• 
+
+indices are 
+
+R* > R, C > C. 
+
+• 
+
+inside image 
+
+
+
+
+□ □ 
+
+
+j- pixel spacing < 1 
+
+
+sampling 
+locations for 
+output pixels 
+
+using scale 
+factors 
+s R = (R-l)/R‘ 
+
+S c = (C-l)/C 
+
+
+c- 1 
+
+
+c +1 — C 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+44 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest Neighbor Resampling 
+
+If the output is smaller than the input, R’ <R and C' < C . 
+
+
+
+lies between (p n + l,Z n +1 ) and (p n + 2 ’Zn+ 2 ) 
+
+
+Pn = 
+
+
+(n-1) 
+
+
+R_ 
+
+R' 
+
+
+and 
+
+
+( ; n ~ l ) 
+
+
+C_ 
+
+C’ 
+
+
+This and the next 7 slides 
+explain the scale factor 
+selection algebraically 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+45 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest Neighbor Resampling 
+
+If the output is smaller than the input, R' <R and C' < C . 
+
+
+(u) oux ^(u) 
+
+
+IN 
+
+
+( 2 ’ 2 )oUT ** l 1 ’ 1 ) IN + 
+
+
+f _R_ 
+
+
+(«’ «)out ^ IN + ^ ’ ( w - 1 ) 
+
+
+lies between (p n + !,/„ + !) and (p n + 2, % n + 2) 
+
+
+
+Pn = 
+
+
+(»-»# 
+
+
+and x n = 
+
+
+<"V 
+
+
+(2,2) 0 ut 
+
+(3,3)in 
+
+
+(2,2) out lies between 
+(2/2)in ond (3 / 3) I js sJ 
+since R/R* > 1 A C/C>1. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+46 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest Neighbor Resampling 
+
+
+If the output is smaller than the input, R r <R and C' < C . 
+
+but R f = (\ R and C' = /3C where a < 1 and /3 < 1. 
+
+
+
+— (aR-\) 
+a 
+
+
+
+a 
+
+
+R-2. 
+
+
+Similarly, Xc = C - 2. 
+
+Thus (/?',C') QUT lies between 
+(R-IC- l) m and (R,C) W . 
+
+
+J J J 
+
+
+(R-hC-l) m 
+
+
+— ► J J 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+47 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest Neighbor Resampling 
+
+
+If the output is smaller than the input, R r <R and C' < C . 
+
+but R f = (\ R and C' = /3C where a < 1 and /3 < 1. 
+
+
+
+— (aR-\) 
+a 
+
+
+
+a 
+
+
+R-2. 
+
+
+Similarly, Xc = C - 2. 
+
+Thus (/?',C') QUT lies between 
+(/?-!, C-l) m and 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+48 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nearest Neighbor Resampling 
+
+If the output is larger than the input, R < R' and C < C'. 
+
+
+
+lies between (p n ,z n ) and (/>„ +1 > + 1 ) 
+
+
+Pn = 
+
+
+0 n ~ 1 ) 
+
+
+R-l 
+
+R' 
+
+
+and 
+
+
+(n-\) 
+
+
+C-l 
+
+C 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+49 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Nearest Neighbor Resampling 
+
+If the output is larger than the input, R < R' and C < C'. 
+
+
+(l.l)oUT^(U) 
+
+
+IN 
+
+
+( 2 ’ 2 )oUT ** ( 1 ’ 1 )lN + 
+
+
+r R - 1 C-l 
+
+R' ’ C' J 
+
+
+(«’ w )out^ ( 1 > 1 )iN + ((«- 1 )^r’( w - 1 )ty7 
+lies between ( p„ , x n ) and ( A, + 1 • X„ + 1 ) 
+
+
+Pn = 
+
+
+(n — l)— — 1 
+v ! R , 
+
+
+and x n = 
+
+
+(n — l)— — 1 
+
+V ! c , 
+
+
+(2,2)out 
+
+
+
+-M (3,3) 
+
+
+IN 
+
+
+( 2,2) OUJ lies between 
+
+(M)in (2/2)in 
+since (R-l)/R' < 1. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+50 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Nearest Neighbor Resampling 
+
+
+If the output is larger than the input, R < R' and C < C\ 
+
+R-t 
+
+) 
+
+but R' = aR and C' = PC where a > 1 and p> 1. 
+
+
+
+
+Pr 
+
+
+H 
+
+1 
+
+H 
+
+1 
+
+= 
+
+(a/? 1)^ 1 
+
+= 
+
+/? i 1 + 1 
+
+L R' J 
+
+
+_ aR 
+
+
+a aR 
+
+
+= R- 2. 
+
+
+Similarly, = C - 2. 
+
+Thus (/?',C") 0UT lies between 
+(iJ-tC-lU and ty.Cty 
+
+
+(R-l.C-l) 
+
+
+IN 
+
+
+
+(*,Q 
+
+
+IN 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+51 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Nearest Neighbor Resampling 
+
+
+If the output is larger than the input, R < R' and C < C’. 
+
+
+but R' = aR and C' = PC where a > 1 and p > 1. 
+
+
+Pr 
+
+
+H 
+
+1 
+
+H 
+
+1 
+
+= 
+
+(a/? 1)^ 1 
+
+= 
+
+R 1 1 + 1 
+
+L R' J 
+
+
+_ ' 
+
+
+O' Ofi? 
+
+
+= R- 2. 
+
+
+Similarly, = C - 2. 
+
+Thus (/?',C") 0UT lies between 
+(/?-l,C-l) m and tyCty 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+52 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Interpolation 
+
+Assume that an image, I, is defined on a rectangle in a continuous domain and takes on a 
+continuous range of non-negative values on that domain. That is, 
+
+1 : [ r i ’ r R ] X [ C 1 ’ C C ] ~ d&min ’ •Smax ] Where Smin ^ 0 and g max < CO. 
+
+Also assume that we know the values of I only on an evenly spaced grid of discrete 
+points in the domain. That is, we know 
+
+l(r,c) for r e {l, and c e . 
+
+Unknown values can be estimated through interpolation. Most methods of interpolation fit 
+a 2-D polynomial to the known points surrounding the unknown point, then use its value 
+at the unknown point. For example, if we want to know I at subpixel location, (4.5,3.75) 
+we would find a polynomial, p, such that 
+
+p(4,3) = l(4,3) > p(4,4) = l(4,4),p(5,4) = l(5,4), and p(5,3) = 1(5,3). 
+
+The polynomial is defined everywhere in the interval [4,5] x [3,4] so to estimate 
+1(4.5,3.75), we compute p( 4.5,3.75). 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+53 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Interpolation 
+
+
+
+1(4.5,3*75), we compute /?(4.5,3.75). 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+54 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Enlarging Images: Replication vs. Interpolation 
+
+
+
+Pixel replication 
+
+produces a "jagged" 
+result since each 
+individual square 
+pixel is made larger. 
+
+
+Bilinear interpolation 
+
+creates new pixels that have 
+values intermediate between 
+the originals. The result is 
+smoother but blurry. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+55 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixel Replication 
+
+Red dots mark original pixel values. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+56 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bilinear Interpolation 
+
+Red dots mark original pixel values. 
+
+
+
+Intermediate locations are filled with intermediate values. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+57 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Bilinear Interpolation 
+
+
+Bilinear interpolation uses a first-order polynomial - a plane - to estimate a subpixel 
+value. A bilinear polynomial is defined by 
+
+Pm, (r,c) = ar + fic + yrc + 8. 
+
+
+If /y and cy are non integers and we know I at integer locations, we estimate I(/y , cy) as 
+p bilin (Ar, Ac) with A r= /y- r 0 and Ac = cy - c 0 where r 0 = \_r f \ and c 0 = LyJ. Then 
+
+Pm, Cr, ac) = [i ( r 0 + 1, c 0 ) — I (r 0 , c 0 )] Ar 
+
++ [ I (r 0 ,c 0 + 1 )- I (r 0 ,c 0 )]AC 
+
++ [ I (r 0 + 1 ,Co + l)-l(r 0 + l,c 0 )-l(r 0 ,c 0 +l) + l(r 0 ,Co)]4r4C 
+
++I (r 0 ,c 0 ). 
+
+
+Therefore, the coefficients are 
+
+a = l(r 0 + l,c 0 )-l(r 0 ,c 0 ), p = \{r 0 ,c 0 +l)-l(r 0 ,c 0 ), ^ = l(r 0 ,c 0 ), and 
+r = l(r 0 + l,c 0 +l)-l(r 0 +l,c 0 )-l(r 0 ,c 0 + l) + l(r 0 ,c 0 ). 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+58 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Resampling Through Bilinear Interpolation 
+
+
+Let I be an R x C image. 
+
+We want to resize I to R' x C to make 
+a new image J with pixel Iocs (r',c'). 
+
+Let s r =R/R' and s c = C / C'. 
+
+Let r f =r'-s R for r f = 
+
+and c f =c'-s c for c' = 1,...,C' . 
+
+Let r 0 = | r f J and c 0 = [ c f . 
+
+Let a r = r f — r 0 and a c = c f -c 0 . 
+
+Then j(r',c') = l(r 0 ,c 0 )*(l-Ar)-(l- ac) 
++l(r 0 +l,c 0 )-Ar-(l-Ac) 
++l(r 0 ,c 0 + l)-(l-Ar)-AC 
++1 ^ Tq + 1 , Cq t 1^ • a r • a c. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+59 
+
+
+
+For each pixel (r',c) in output 
+image, J, compute the f ractional 
+location (r f/ c f ) in I. Use (r 0 ,c 0 ), 
+
+Resampling Through Bilinear In f ^ e '. n+e ?T P art °f ( r f' c A +0 f * nd 
+
+r ° ° the 4 neighboring locations in I. 
+
+
+Let 1 1 Scale factors 
+
+
+We Wt it to resize I to h x C' to make 
+a new mage J with pixi I Iocs ( r',c '). 
+
+and 
+
+
+Let s r =R/R' 
+Let r f = r' • ^ 
+
+
+s c =C/C’. 
+
+
+R for r' = 1,...,/?' 
+and c, = c' -s c for c f = . 
+
+Let r 0 = ^ J and c 0 = . 
+
+Let a r = r f — r 0 and a c = c f -c 0 . 
+
+Then j(r',c') = l(r 0 ,c 0 )*(l-Ar)-(l- ac) 
++l(r 0 +l,c 0 )-Ar-(l-Ac) 
++l(r 0 ,c 0 +l)-(l — Ar)-AC 
++1 ^ Tq + 1, Cq + 1^ • a r • ac. 
+
+
+Compute J(r',c') from a weighted 
+sum of I at each of the locations. 
+r The weights are computed from 
+A r and Ac. 
+
+t IP w 
+
+
+V' 0’ 
+
+
+Fractional location (r f/ c f ) 
+in I of pixel (r',c') in J. 
+
+
+Ar 
+
+
+
+
+Integer part of (r f/ c f ). 
+
+
+
+n g 
+
+
+O'/.'/) 
+
+(l - Ar) 
+
+The location of (r f ,c f ) as 
+fractions of the distances *- 
+between (r 0/ c 0 ) and its 3 h 1^0+ 
+neighbors. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+60 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Resampling Through Bilinear Interpolation 
+
+
+Size of original image: Rx C 
+Size of scaled image: R' x C 
+Row scale factor: 
+
+[R/R\ if R>R 
+r ~\(R-l)/ R', if R<R'. 
+
+Column scale factor: 
+
+fC/C', if C>C\ 
+c _ {(C-l)/C', if R< C'. 
+
+(r f , Cf) is the fractional location in the input 
+image from which to sample the output 
+pixel (r , c ) . 
+
+r f =[(!,. ..,R')-S r ], c f C'K] 
+
+
+(r 0 , c 0 ) are the row and column indices of 
+the pixels in the input image to use in the 
+algorithm. 
+
+
+
+(A r, Ac) are the fractional parts of the row 
+and column locations, (r f , c f ). 
+
+(&r, ac ) = ( r f — r 0 ,c f -c 0 ) 
+
+
+Then the value of each output pixel 
+is given by 
+
+j(rbc') = l(r 0 ,c 0 )-(l-Ar)-(l-Ac) 
++l(r 0 +l,c 0 )-Ar-(l-Ac) 
++l(r 0 ,c 0 + l)-(l-Ar)-AC 
++1 ^ Vq + 1, Cq + 1 j • AT* • AC. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+61 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Resampling Through Bilinear Interpolation 
+
+
+Size of original image: Rx C 
+
+Like nearest neighbor resampling 
+the 4x4 neighborhood in I of the 
+point (r f ,c fl ) has (r 0 ,c 0 ) = L(r f/ c f ,)J as 
+its upper left corner and has 
+(r 0 +l,c 0 +l) as its lower right corner. 
+
+Thus for each (r f ,c f/ ): (1) neither r 0 
+' nor c 0 can be less than one and 
+(2) r 0 +l cannot be greater than R 
+and c 0 +l cannot be greater than C. 
+
+If the set of all indices {(r 0/ c 0 )} do 
+not satisfy (1) or (2), you must 
+adjust the indices so that they do. 
+
+c f =[(1,..., C'K] 
+
+
+(r 0 , c 0 ) are the row and column indices of 
+the pixels in the input image to use in the 
+algorithm. 
+
+
+( 
+
+
+r 0’ 
+
+
+
+
+(A r, Ac) are the fractional parts of the row 
+and column locations, (r f , c f ). 
+
+(at - , ac ) = ( r f - r 0 , c f - c 0 ) 
+
+Then the value of each output pixel 
+is given by 
+
+j(r',c') = l(r 0 ,c 0 )-(l — Ar)-(l-Ac) 
++l(r 0 +l,c 0 )-Ar-(l-Ac) 
++l(r 0 ,c 0 + l)-(l-Ar)-AC 
++1 ^ Vq + 1, Cq + 1^ • AC • AC. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+62 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Bilinear Interpolation 
+
+
+
+
+
+11:7 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+63 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bi-Interp Example: resize to 5/7 of original dimensions. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+64 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+Want to 
+upsample this 
+image by a 
+factor of two. 
+
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+65 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+New samples 
+to be added 
+at light gray 
+locations. 
+
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+66 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+Treat gray levels 
+as heights above 
+the image plane. 
+
+
+
+
+
+
+
+Center = 
+weighted 
+average of 
+four 
+corners. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+67 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+
+Treat gray levels 
+as heights above 
+the image plane. 
+
+
+
+
+
+
+Center = 
+weighted 
+average of 
+four 
+corners. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+68 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+
+New row and 
+column sample 
+values lie on 
+the lines 
+connecting 
+the old values. 
+
+
+1 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+69 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Resampling Through Bilinear Interpolation 
+
+
+The results: 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+70 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bilinear Interpolation Example 
+
+
+
+J ^ ' 
+
+
+We'll enlarge this image 
+by a factor of 4 ... 
+
+
+... via bilinear interpolation 
+and compare it to a nearest 
+neighbor enlargement. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+71 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Example: Bilinear Interpolation — 4x Zoom 
+
+
+
+To better see what happens, we'll look at the parrot's eye. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+72 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Example: Bilinear Interpolation — 4x Zoom 
+
+
+
+To better see what happens, we'll look at the parrot's eye. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+73 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bilinear 
+
+Interpolation 
+
+For a 4x zoom, create a 
+blank image, four times 
+the size of the original. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+74 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bilinear 
+
+Interpolation 
+
+Then fill in every 4th 
+pixel in every 4th row 
+with the original values 
+
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+75 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bilinear 
+
+Interpolation 
+
+Then fill in every 4th 
+pixel in every 4th row 
+with the original values. 
+
+
+
+4x replication 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+76 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bilinear 
+
+Interpolation 
+
+Then fill in every 4th 
+pixel in every 4th row 
+with the original values. 
+
+
+
+4x replication with the 
+original pixels overlaid. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+77 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bilinear 
+
+Interpolation 
+
+Next you want to fill in 
+the other 15 pixels in 
+each block with the 
+intermediate values. 
+
+
+
+Each pink dot is 
+a pixel location. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+78 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Bilinear 
+
+Interpolation 
+
+Next you want to fill in 
+the other 15 pixels in 
+each block with the 
+intermediate values. 
+
+
+
+Intermediate values filled in. 
+Spaces left so individual 
+pixels can be seen. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+79 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bilinear 
+
+Interpolation 
+
+Next you want to fill in 
+the other 15 pixels in 
+each block with the 
+intermediate values. 
+
+
+
+Intermediate values filled in. 
+Red dots mark individual pixels. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+80 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bilinear 
+
+Interpolation 
+
+
+The result: 
+
+
+
+Compare to the next slide 
+which contains a 4x pixel 
+zoom via pixel replication. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+81 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixel 
+
+Replication 
+
+
+The result: 
+
+
+
+Compare to the prev. slide 
+which contains a 4x pixel 
+zoom via bilinear interp. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+82 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bilinear 
+
+Interpolation 
+
+Result with original 
+pixels marked: 
+
+
+
+Compare to the next slide 
+which contains a 4x pixel 
+zoom via pixel replication. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+83 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixel 
+
+Replication 
+
+Result with original 
+pixels marked: 
+
+
+
+Compare to the prev. slide 
+which contains a 4x pixel 
+zoom via bilinear interp. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+84 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixel Replication vs. Bilinear Interpolation 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+85 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixel Replication vs. Bilinear Interpolation 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+86 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+Example: reduce 
+the cactus image 
+to 3/7 its 
+original size 
+using bilinear 
+interpolation 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+87 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+For each 7x7 
+block of pixels 
+select 3x3 = 9 
+pixel locations. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+88 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+For nearest 
+neighbor sampling 
+the 9 pixel 
+locations 
+correspond to 
+pixel locations in 
+the original image. 
+
+
+CTO □ □ □ 
+□ □ □ 
+□ □ □ 
+
+
+
+□ □ □ □ □ □ 
+
+□ □ □ □ □ □ 
+
+b □ □ □ □ □ 
+
+
+□ □ □ 
+□ □ □ 
+□ □ □ 
+
+
+Nearest neighbor 
+selected pixels 
+outlined in yellow. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+89 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+
+Nearest neighbor 
+selected pixels 
+outlined in yellow. 
+
+Bilinear interp. 
+pixels locations 
+outlined in red. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+90 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+In bilinear 
+interpolation the 9 
+pixel locations are 
+distributed evenly. 
+
+
+□ □□□□□ □ 
+□ □□□□□□ 
+□ □ □ □ 
+
+□ □ □ 
+
+
+
+Nearest neighbor 
+selected pixels 
+outlined in yellow. 
+
+Bilinear interp. 
+pixels locations 
+outlined in red. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+91 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+In bilinear 
+interpolation the 9 
+pixel locations are 
+distributed evenly. 
+
+
+□ □□□□□ □ 
+
+□ □ □ □ 
+
+□ □ □ 
+
+
+
+Notice that the 
+locations overlap 
+pixels in the 
+original image. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+92 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+For each 7x7 
+block of pixels 
+select 3x3 = 9 
+pixel locations. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+93 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+Examine one 
+section in detail. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+94 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+95 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+96 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+The blue square is 
+the output location. 
+
+
+□ 
+
+
+J 
+
+
+
+Shrink the pixels for 
+visualization of this 
+example. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+97 
+
+
+
+
+
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+
+
+1 
+
+
+J 
+
+
+
+The blue square is 
+the output location. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+98 
+
+
+
+
+
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+
+
+
+
+
+The blue square is 
+the output location. 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+99 
+
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+
+
+locations of new pixels 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+100 
+
+
+
+
+
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+101 
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+
+New image from new pixels 
+
+
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+102 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+103 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+104 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resampling Through Bilinear Interpolation 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+105 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resampling Through Bicubic Interpolation 
+
+
+Bilinear interpolation computes a value for 
+J(r',c f ) as the weighted combination of I (r,c), 
+
+I(r+l,c), I(r+l,c+l), and I(r,c+1). 
+
+Bicubic interpolation uses not only those 4 
+input image pixels, but also their partial 
+derivatives: 
+
+{ { ^(r + i.c+y), 
+
+aM ( r + i,c + j), 
+
+^l(r + /,c+y)}.' o j^ 
+
+The derivatives are are computed digitally on the 8-neighborhoods of the 4 pixel Iocs. 
+Therefore a 4x4 neighborhood of the input image is needed for each output value. 
+
+
+(r-l,c-l) 
+
+(r-l,c) 
+
+(r-l,c+l) 
+
+(r-l,c+2) 
+
+(r,c-l) 
+
+(r,c) 
+
+(r,c+l) 
+
+(r, c+2) 
+
+(r+l,c-l) 
+
+(r+l,c) 
+
+(r+l,c+l) 
+
+(r+l,c+2) 
+
+(r+2,c-l) 
+
+(r+2, c) 
+
+(r+2,c+l) 
+
+(r+2, c+2) 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+106 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bicubic Interpolation 
+
+Bicubic interpolation uses a third-order polynomial to estimate the value of 
+image I on subpixel (/y ,<sy). A bicubic polynomial on the square [0,l]x[0,l] is 
+defined by 
+
+Pbicub(3 ; ^) = ZE«m, n 3 ;m -*"- 
+
+m= 0 n = 0 
+
+To apply this to an image at pixel loc 
+v = cy-c 0 where r 0 = L/yJ and c 0 = Ley 
+
+The 16 coefficients a L J are derived from the values of the image and its 
+derivatives at the 4 pixel locations surrounding (/y,cy). In particular, 
+
+Pbicub (r, c) = I ( r, c) , i p bicub (r,c) = £l(r,c), 
+i Pbkub (r,c) = £l(r,c), £ p bicub (r,c) = £l(r,c), 
+
+at pixel locations (r 0 ,c 0 ), (r 0 +l,c 0 ), (r 0 ,c 0 +l), and (r 0 +l,c 0 +l). 
+
+
+ation we substitute y = /y-r 0 and 
+
+J so that /? bicub is a function on [0,l]x[0,l]. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+107 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bicubic Interpolation 
+
+
+The derivatives of the polynomial are 
+
+
+
+|:I(r,c) = {[l(r,c + l)-l(r,c-l)], 
+il(r,c) = i[l(r,c + l)-l(r,c-l)], 
+^l(r,c) = {[l(r + l,c + l)-l(r + l,c-l) 
++l(r-l,c-l)-l(r — l,c + l)]. 
+
+
+are the derivatives of the image. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+108 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bicubic Interpolation 
+
+Bicubic interpolation uses a third-order polynomial to estimate the unknown 
+value. A bicubic polynomial is defined by 
+
+Pbicub(^ C ) = ZZ<V V ’- 
+
+m = 0 /?=() 
+
+This has 16 coefficients a LJ that are derived from the values of the image and its 
+derivatives at the 4 pixel locations surrounding the desired point. Let A be the 
+matrix of coefficients, and C a matrix of constants defined as , 
+
+
+
+<*oo 
+
+<*01 
+
+<*02 
+
+<*03 
+
+
+i 
+
+0 
+
+0 
+
+O' 
+
+A = 
+
+<*10 
+
+<*11 
+
+<*12 
+
+<*13 
+
+and C = 
+
+0 
+
+0 
+
+1 
+
+0 
+
+
+<*20 
+
+<*21 
+
+<*22 
+
+<*23 
+
+
+-3 
+
+3 
+
+-2 
+
+-1 
+
+
+<*30 
+
+<*31 
+
+<*32 
+
+<*33 
+
+
+_ 2 
+
+-2 
+
+1 
+
+1 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+109 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Yj 
+
+Bicubic Interpolation 
+
+
+Let D be the matrix of image values and derivatives, 
+
+
+iM 
+
+l(r + l,c) 
+il(r + l,c) 
+
+
+I(r,c + l) 
+l(r + l,c + l) 
+J:l(r,c + l) 
+il(r + l,c + l) 
+
+
+mr + u) 
+
+nk l { r ’ c ) 
+
+
+fAr,c + \) 
+£l(r + l,c + l) 
+a^rltyc + i) 
+l( r + l,C + l) 
+
+
+Then the 16 coefficients, a ; • , for ij e {0,1, 2, 3} are given by 
+
+A = CDC 
+
+
+The derivatives in D are computed by central differences as shown in the next 
+slides. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+110 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Yj 
+
+Bicubic Interpolation 
+
+Let D be the matrix of image values and derivatives, 
+
+
+
+row derivatives cross derivatives 
+
+Then the 16 coefficients, a LJ , for ij e {0,1, 2, 3} are given by 
+
+A = CDC 
+
+The derivatives in D are computed by central differences as shown in the next 
+slides. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+111 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resampling Through Bicubic Interpolation 
+
+
+JV(r,c) is the 8-pixel 
+neighborhood of (r,c). 
+
+Jrl (r,c) = avg. of forward diff and 
+backward diff @ (r,c) 
+
+= f[( I (r + 1 ,c)- I (r,c)) 
+
++ (l(r,c)-l(r-l,c))] 
+
+= i[ I (r + i,c)- I (r- 1 ,c)] 
+
+
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+E 
+
+□ 
+
+□ 
+
+■ 
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+
+J\f(r, c) 
+
+
+□ 
+
+□ 
+
+E 
+
+E 
+
+E 
+
+E 
+
+B 
+
+□ 
+
+□ 
+
+□ 
+
+E 
+
+E 
+
+E 
+
+E 
+
+E 
+
+□ 
+
+
+JSf(r + l,c) 
+
+
+E 
+
+E 
+
+E 
+
+E 
+
+□ 
+
+□ 
+
+□ 
+
+B 
+
+E 
+
+B 
+
+E 
+
+B 
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+
+JV(r,c + l) 
+
+
+E 
+
+□ 
+
+□ 
+
+E 
+
+□ 
+
+E 
+
+E 
+
+E 
+
+E 
+
+□ 
+
+E 
+
+B 
+
+□ 
+
+E 
+
+E 
+
+E 
+
+
++ l,c + l) 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+112 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Resampling Through Bicubic Interpolation 
+
+
+JSf[r,c ) 
+
+
+il(r,c) = i[l(r + l,c)-l(r-l,c)], 
+
+
+^ I (r,c) = |[ I (r,c + 1 ) -!(/-, c-i)], 
+
+gf 7 I (r,c) = i[l(r + l,c + l)-l(r + l,c-l) 
++1 ( r — 1 , c — l) — I ( r - 1 , c + 1)] 
+
+
+□ 
+
+□ 
+
+□ 
+
+o 
+
+□ 
+
+□ 
+
+0 
+
+0 
+
+□ 
+
+0 
+
+0 
+
+0 
+
+□ 
+
+□ 
+
+0 
+
+0 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+113 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Resampling Through Bicubic Interpolation 
+
+
+Af(r,c + 1) 
+
+
+J:l(r,c + l) — + l,c + l) — l(r — l,c + l)J, 
+
+
+£l(r,c + l) = l[l(r,c + 2)-l(r,c)]. 
+
+
+^l(r,c + l) = i[l(r + l,c + 2)-l(r + U) 
+
++l(r-l,c)-l(r-l,c + 2)] 
+
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+□ 
+
+0 
+
+□ 
+
+□ 
+
+□ 
+
+0 
+
+□ 
+
+□ 
+
+□ 
+
+0 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+114 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Resampling Through Bicubic Interpolation 
+
+
+J\f{r + \,c + 1) 
+
+
+Jrl(r + l,c + l) — -y[l(r + 2, c + 1) — l(r,c + l)J, 
+
+
+^l(r + l,c + l) = |[l(r + l,c + 2)-l(r + l,c)], 
+
+
+^l(r + l,c + l) = i[l(r + 2,c + 2)-l(r + 2,c) 
+
++l(r,c) — l(r,c + 2)] 
+
+
+□ 
+
+□ 
+
+□ 
+
+0 
+
+□ 
+
+0 
+
+□ 
+
+0 
+
+□ 
+
+□ 
+
+□ 
+
+0 
+
+□ 
+
+□ 
+
+0 
+
+0 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+115 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resampling Through Bicubic Interpolation 
+
+
+JV(r + l,c) 
+
+
+J:l(r + l,c) = }[l(r + 2,c)-l(r,c)], 
+
+
+^I(r + l > c) = i[l(r + l,c + l)-l(r + l > c-l)], 
+
+
+^I(r + l,c) = |[l(r + 2 > c + l)-l(r + 2,c-l) 
++l(r,c — l) — l(r,c + l)] 
+
+
+□ 
+
+□ 
+
+o 
+
+o 
+
+0 
+
+□ 
+
+0 
+
+o 
+
+□ 
+
+□ 
+
+0 
+
+□ 
+
+□ 
+
+0 
+
+0 
+
+□ 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+116 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Resampling Through Bicubic Interpolation 
+
+
+{KIR', if R>R', 
+
+r if R<R'. 
+
+jC/C', if C>C\ 
+
+5c _ {(C-l)/C', if C<C'. 
+
+/>=[(!,..., R') -S r ] ,c f C')-S c ] 
+
+
+(r,c) = (P/J,L c /J) 
+
+( dr , dc} = [r f —r , c f — c \ 
+
+This part is the 
+same as NN 
+
+interpolation. 
+
+1 i ~~ 
+
+
+
+
+
+
+
+
+dc 
+
+1 -dc 
+
+
+
+dr 
+
+
+
+
+
+
+
+
+
+1 -dr 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+117 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Resampling Through Bicubic Interpolation 
+
+
+2 2 
+
+
+j(r',c')= ^ y l(r + m ,c + n) P (dr — m)P(n — dc) 
+
+
+m =— 1 n =— 1 
+
+
+J*( x ) — i ^ Q( x + 2) — 4Q(x + l) — 
+
+6Q(x) 3 -4Q(x-1) 3 ] 
+
+
+Q(x) = 
+
+
+x for x > 0 
+0 for x < 0 
+
+
+The differentials 
+on pp 112-115 are 
+combined in this 
+sum of products 
+of polynomials. 
+
+
+
+
+
+
+
+
+dc 
+
+1 -dc 
+
+
+
+dr 
+
+
+
+
+
+
+
+
+
+1-dr 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+118 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+119 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Size Reduction 3/7 
+
+
+
+original 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+120 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Size Reduction 3/7 (zoomed) 
+
+
+
+nearest neighbor 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+121 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Size Reduction 3/7 (zoomed) 
+
+
+
+bilinear 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+122 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Size Reduction 3/7 (zoomed) 
+
+
+
+bicubic 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+123 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Size Reduction 3/7 
+
+
+
+original 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+124 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Enlargement 
+
+
+
+nearest neighbor 
+7/3 
+
+
+
+m 
+
+,«m i"— 
+
+
+S§S®? 
+
+
+'SI 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+125 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Enlargement 
+
+
+
+bilinear 7/3 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+126 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Enlargement 
+
+
+
+bicubic 7/3 
+
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+127 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+General Case: Warping + Interpolation 
+
+1 . Assume the input image, I, has infinite spatial resolution. 
+
+2. Calculate the size, R out xC out xB, of the output image, J, and 
+allocate it. 
+
+3. Create an image map (a warping function, O) as follows: 
+
+a) Allocate an R ou /C ou /2 array, O. 
+
+b) For every pixel location (r,c) in J find the corresponding 
+real-valued pixel location (r f ,c f ) in I. 
+
+c) Set <D (r,c, 1) = r f and set d>(r,c,2) = c f . 
+
+4. Create an interpolation function, 0, that generates a pixel 
+value from the values of I on a neighborhood, 9l(r f ,c f ). 
+
+5. Then set J (r,c) = 0{I; 9l(r f ,c f )j. 
+
+
+8 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+128 
+
+

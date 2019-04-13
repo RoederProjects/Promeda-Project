@@ -1,0 +1,457 @@
+EECE 4353/5353 Image Processing Fall 2016 
+
+Prof. Alan Peters 
+
+Vanderbilt University School of Engineering 
+Electrical Engineering and Computer Science 
+
+Updated: 1 September 2016 12:20:56 
+
+
+Class meets: Tu&Th 14:35-15:50 in Featheringill Hall, Room 244. 
+
+Labs meet: There are no formal lab meetings, since all the labs can be done using Matlab on a PC. 
+However, the teaching assistant will be available in her office for some hours each week, if you want assistance 
+while working on a lab assignment. 
+
+Prof. Peters. Office: 332 Featheringill Hall; 615-322-7924; Alcm.PetersaVanderbilt.edu 
+Office Hours: MWF 14:00-15:00, TTh 16:00-17:00, drop in, or by appointment. 
+
+Teaching Assistant, Srijata Chakravorti. Office: 365 Jacobs Hall; 615-322-8478; 
+
+Srijata. ChakravortiaVanderbilt . edu 
+Office Hours: Tu 16:00-18:00, W 15:00-17:00 
+
+Some Recommended Textbooks: 
+
+The course is taught from notes that will be posted on Blackboard. The complete set of notes from last 
+year can be downloaded from 
+
+https : //archive . org/details/Lectures_on_Image_Processing. 
+
+There will be no direct references to particular textbooks. However, I highly recommend having a textbook 
+for reference. Any of the following would be fine. Alternatively search Amazon books for “Image Processing” 
+to get a list of about 9000. 
+
+• K. R. Castleman, Digital Image Processing , Prentice Hall, Englewood Cliffs, NJ, 1996, ISBN: 0-13- 
+211467-4. 
+
+• R. C. Gonzalez and R. E. Woods, Digital Image Processing, 3rd ed, Pearson Prentice-Hall, 2008, ISBN: 
+0-20-168728-8. 
+
+• R. C. Gonzalez, R. E. Woods, and S. L. Edins, Digital Image Processing with Matlab , Pearson 
+Prentice-Hall, 2004, ISBN: 0-13-008519-7. 
+
+• H. R. Myler and A. R. Weeks, Jr., The Pocket Handbook of Image Processing Algorithms in C , Prentice 
+Hall, ISBN: 0-13-642240-3. 
+
+• M. Petrou and P. Bosdogianni, Image Processing : The Fundamentals, John Wiley & Sons, Chichester, 
+UK 1999, ISBN: 0-47-199883-4. 
+
+• J. C. Russ, The Image Processing Handbook, 2nd ed. CRC Press, Boca Raton, FL, 1994, ISBN: 
+0-84-932516-1. 
+
+• M. Seul, L. O’Gorman, and M. J. Sammon, Practical Algorithms for Image Analysis: Descriptions, 
+Examples, and Code Cambridge University Press, Cambridge, UK, 2000, ISBN: 0-52-166065-3. 
+
+• R. Szeliski, Computer vision: algorithms and applications, Texts in Computer Science Series, D. Gries 
+and F. B. Schneider, Eds. Springer, New York, 2010. ISBN: 978-1-84882-934-3 or 978-1-84882-935-0 
+and DOI 10.1007/978-1-84882-935-0 (e-book). 
+
+Available for free online at http://szeliski.org/Book/. 
+
+• A. R. Weeks, Jr., Fundamentals of Electronic Image Processing, SPIE/IEEE Series on Imaging Science 
+and Engineering, E R. Dougherty, Ed., SPIE Press and the IEEE Press, 1996 ISBN: 0-81-942149-9. 
+
+
+EECE 4353 / 5353 
+
+
+Fall 2016 
+
+
+Goals: 
+
+This introductory class in image processing should give the student a working knowledge of the most com- 
+monly used methods and procedures for image analysis, enhancement and restoration. The emphasis of the 
+class will be on practical results: given an image and a goal for its processing ( e.g . feature enhancement, color 
+correction, sharpening, warping, etc.) the student should be able to select and implement an appropriate 
+procedure to achieve that goal. Good practical results often depend on an understanding of the mathematics 
+behind the procedures as well as the ability to write software to implement the mathematics. Thus, there 
+will be significant mathematical and computational components to the class. In the past, most students 
+have spent most of their time associated with this class either writing and debugging computer programs or 
+writing the lab reports. 
+
+The ability to explain results in writing is essential for a successful engineer. Therefore, the writing of 
+lab reports will be done in the style of archival journal papers. The writing component of the class is very 
+important. 
+
+The course is available for both undergraduate and graduate credit. Those students who are taking 5353, 
+the graduate course, will have additional problems to solve in each lab and homework assignment. These 
+problems will be marked as such in the lab assignment instructions. 
+
+Prerequisites: 
+
+Recommended but not required: An introductory course in digital signal processing (such as EECE 3214 or 
+EECE 4252), a basic understanding of the Fourier Transform, and experience in writing computer programs 
+(in C, C-( — Python, Matlab , or Mathematica). Matlab will be used in class and in the lab instructions. 
+
+Exams, Homework, and Grading: 
+
+Your knowledge of the material will be assessed by your performance on 7 laboratory assignments and 7 
+homework assignments. The score of each lab and each homework will be normalized to 100 points. The 
+homeworks will count for 20% of your grade and the labs 80%. 
+
+Unless an exception is stated explicitly within the instructions, you are to work alone on all these. You 
+can obtain help on the mechanics of Matlab or any other programming language that you decide to use. 
+But all writing, programming, logical implementations, and experiments must be exclusively 
+your own work. Any collaboration or plagiarism {e.g. copying someone else’s report from this year or 
+previous years) is an honor code violation and will be prosecuted. You may, of course, receive assistance 
+from Prof. Peters or the Teaching Assistant. 
+
+There are no in-class exams in this course, and there is no final exam. There will be one report due every 
+Tuesday throughout the semester except for 22 November, which is during Thanksgiving break. If a lab is 
+due on a specific Tuesday then a homework will be due the next Tuesday and vice versa. 
+
+Laboratories: 
+
+The labs in this image processing course are a bit different from those of most other courses. For each lab 
+you will be given a set of image processing tasks to perform. These will require you to write computer 
+programs to do the processing. You will be required to perform a set of experiments on various images and 
+then to document the results in a written report. An example report is posted on the Blackboard web site 
+for this course. The report will be in the form of a standard technical paper. The report can be prepared 
+in any word processor you like. I will accept only electronic versions of your reports (no paper). You should 
+submit the report electronically to the assignments section of Blackboard pages for this course. If for some 
+reason you are unable to do so, please contact me to arrange an alternative. 
+
+Homeworks 
+
+There will be one homework assignment every two weeks alternating with the labs. Homework assignments 
+differ from the labs in that they do not contain as much work as the labs. Also, Homeworks do not require 
+a formal report. A homework report can have any format you like - as long as it is electronic. Homework 
+reports will be due every two weeks on Tuesdays at midnight. 
+
+
+2 
+
+
+
+EECE 4353 / 5353 
+
+
+Fall 2016 
+
+
+Rules for laboratory assignments 
+
+1. Perform all the tasks listed in the instructions. 
+
+2. Explain the tasks you performed in detail. 
+
+3. In your report answer in writing all the questions asked in the instructions. 
+
+4. Include in the report the original images you used and those resultant images that were specified in the 
+instructions. In general include an image in your report unless told not to in the instructions. (The 
+reports are electronic; it does not matter how large the files are.) 
+
+5. In an appendix: Include all computer code that you wrote and used, clearly documented. 
+
+6. All work must be yours and yours alone. Collaboration on the laboratory assignments is forbid- 
+den, with the following exceptions: 
+
+(a) You may obtain help on any aspect of the homework from either Prof. Peters or the TA for this 
+course. 
+
+(b) You may obtain technical help on Matlab from anyone you wish. However you may not get 
+direct help on the implementation of the specific algorithm from another person except as noted 
+in (a) above. 
+
+(c) You may get help in obtaining the input images for the assignments from anyone you wish. 
+
+(d) You may get help in the formatting, storing, or transmission of your reports, but not the content, 
+from anyone you wish. 
+
+7. Write the lab reports in a classical technical paper form (as shown in the example lab)using MS Word, 
+Rl^X, or any other word processor with which you can embed images in text. Laboratory reports 
+must be submitted in this format or there will be a significant points penalty (20%). I 
+prefer that the reports be submitted in .pdf format, but that is not absolutely required. Submit your 
+report to me as a file on Blackboard. If for some reason this does not work, please contact me for an 
+an alternative. 
+
+8. Name the laboratory report files using the form: 
+
+EECE_X353_F16_Lab_n_LastName_FirstName . ext 
+
+where you would replace X with 4 or 5 depending on the version in which you enrolled, replace n with 
+the number of the lab. Replace LastName and FirstName with your actual last name and first name. 
+Replace ext with pdf or doc. For example: 
+
+EECE_4353_F16_Lab_l_Llurbybabbin_Lamoid . pdf 
+
+9. Assignments are due at midnight on the day specified in the instructions or in class. The grade on a 
+laboratory report will be reduced by 10 points (out of 100) for every day (24 hours) that it is late. 
+
+
+Rules for homework assignments 
+
+These are identical to the rules for the laboratory assignments with the following exception: Homework 
+assignments do not have to be submitted in formal technical report format. The report can have any structure 
+you like as long as the questions are numbered and listed in order and the answers are given below them. 
+Images may be interspersed in the report or included at the end of the report. Any code you write must be 
+included, although it does not have to be in an appendix at the end; it can be listed along with your answers 
+to the questions in the body of the report. 
+
+Homework report files should have the form 
+
+EECE_X353_F16_HW_n_LastName_FirstName . ext 
+
+
+similar to the lab report file name with Lab replaced with HW. 
+
+
+
+EECE 4353 / 5353 
+
+
+Fall 2016 
+
+
+Late Lab and Homework Report Penalties: 
+
+There will be one report due every Tuesday throughout the semester except for 22 November, which is during 
+Thanksgiving break. If the report is due on or before 23:59 on day 0, then for day n=l : 10 the point penalty 
+formula is (in Matlab ): 
+
+PointPenalty = -(n-l)*10 - round (linspace( 1,10, 24) ) ; 
+
+I.e. on day n it is — (n — 1) x 10 -ft 
+00:00-01:59 -0 
+
+02:00-03:59 -1 
+
+04:00-06:59 -2 
+
+07:00-08:59 -3 
+
+09:00-11:59 -4 
+
+12:00-14:59 -5 
+
+15:00-16:59 -6 
+
+17:00-18:59 -7 
+
+20:00-21:59 Tr 
+22:00-23:59 -9 
+
+
+Expected Outcomes: 
+
+EECE 4353 is an integral part of the EE & CS curricula, for those students who take it. Therefore, its 
+has been designed to support the outcomes specified by the Accreditation Board for Engineering Teaching 
+(ABET). In particular, the course has been design to support a students acquisition of the following ABET 
+outcome requirements: 
+
+(a) an ability to apply knowledge of mathematics, science, and engineering, 
+
+(b) an ability to design and conduct experiments, as well as to analyze and interpret data, 
+
+(e) an ability to identify, formulate, and solve engineering problems, 
+
+(g) an ability to communicate effectively, 
+
+(j) a knowledge of contemporary issues, and 
+
+(k) an ability to use the techniques, skills, tools necessary for engineering practice. 
+
+In particular, the course presents probability and statistics in the context of image analysis and enhance- 
+ment. It applies differential and integral calculus via Fourier analysis, convolution, filtering, sampling, noise 
+reduction, etc., all of which a student implements in software programs for image processing of his/her own 
+design. Many of the techniques taught and used in the course involve differential equations (in the form of 
+difference equations), linear algebra, and discrete mathematics. 
+
+Disabilities: 
+
+The Vanderbilt University School of Engineering is committed to equal opportunity for students with disabil- 
+ities. If you have a disability, you should ask the Opportunity Development Center to assist you in identifying 
+yourself to the professor, so that the professor and the School of Engineering may provide you with appro- 
+priate accommodations. Absent notification, the professor will assume that you have no disabilities that will 
+affect your performance in this class or that you seek no accommodation for such. 
+
+Emergency Evacuation Plans: 
+
+In the event of a fire or other emergency, the occupants of the class room should leave the building through 
+the nearest exit. The class should assemble at a safe distance from the building at a location indicated by 
+the professor. Please note that VU policy forbids reentry, without authorization from VU Security, into a 
+building in which an alarm has occurred. If you anticipate the need for assistance, please discuss that need 
+with the professor. 
+
+
+4 
+
+
+
+
+EECE 4353/5353 Image Processing 
+Fall 2016 Topics 
+
+
+1. Introduction 
+
+(a) Course requirements 
+
+(b) Evaluation 
+
+(c) Overview of course 
+
+(d) Image formation 
+
+(e) Basic Matlab procedures for image processing (IP) 
+
+Homework Assignment 1: Loading, displaying, and saving images in Matlab (Due Tuesday 30 August) 
+Laboratory Assignment 1: Intro to image processing and Matlab (Due Tuesday 6 September) 
+
+2. Image Enhancement by Point Operations 
+
+(a) An overview of point processing 
+
+(b) Constant and nonlinear operations 
+
+(c) Histogram techniques 
+
+(d) Operations between images 
+
+Homework Assignment 2: Point processing (Due Tuesday 13 September) 
+
+Laboratory Assignment 2: Point processing and histograms (Due Tuesday 20 September) 
+
+3. Color Correction 
+
+(a) Color spaces 
+
+(b) Color vector space operations 
+
+(c) Linear transformation of color 
+
+(d) Color correction 
+
+Homework Assignment 3: Color spaces (Due Tuesday 27 October) 
+
+Laboratory Assignment 3: Color correction (Due Tuesday 4 October) 
+
+4. The 2-D Fourier Transform and Convolution 
+
+(a) The Fourier transform and its properties 
+
+(b) Computation of the discrete Fourier transform 
+
+(c) Spatial convolution 
+
+(d) The convolution theorem 
+
+Homework Assignment 4: The Fourier transform (Due Tuesday 11 October) 
+
+5. Linear Spatial Filtering 
+
+(a) Blurring and sharpening 
+
+(b) Space domain spatial filtering 
+
+(c) Frequency domain spatial Filtering 
+
+(d) Edge detection 
+
+Laboratory Assignment 4: Convolution and spatial filtering (Due Tuesday 18 October) 
+
+
+5 
+
+
+
+EECE 4353 / 5353 
+
+
+Fall 2016 
+
+
+Image Processing 
+
+
+6. Image Sampling, Warping, and Stitching 
+
+(a) Pixelization and aliasing 
+
+(b) Backward mapping and interpolation 
+
+(c) Image resizing 
+
+(d) Image rotation 
+
+(e) Image warping 
+
+(f) Image stitching (panorama creation) 
+
+Homework Assignment 5: Image sampling (Due Tuesday 25 October) 
+
+Laboratory Assignment 5: Image warping and stitching (Due Tuesday 1 November) 
+
+7. Noise Reduction 
+
+(a) Noise in images 
+
+(b) Linear noise reduction, the Wiener filter 
+
+(c) Frequency selective filtering 
+
+(d) Halftone distortion 
+
+(e) Median filters 
+
+Homework Assignment 6: Image Noise processes (Due Tuesday 8 November) 
+
+Laboratory Assignment 6: Image Noise reduction (Due Tuesday 15 November) 
+
+8. Nonlinear Image Processing Techniques 
+
+(a) Binary morphological filters 
+
+(b) Grayscale morphology 
+
+(c) Morphological quantitative analysis 
+
+(d) Morphological feature enhancement 
+
+Homework Assignment 7: Mathematical Morphology (Due Tuesday 29 November) 
+
+9. High Dynamic Range (HDR) Imaging 
+
+(a) Dynamic Range (Visual vs. Photographic) 
+
+(b) Bracketed images 
+
+(c) Combination techniques 
+
+Laboratory Assignment 7: Nonlinear Image Processing; HDR Images (Due Tuesday 6 December) 
+
+10. Image Compression (No related assignments) 
+
+(a) Data compression fundamentals 
+
+(b) Error-free compression methods 
+
+(c) Lossy compression methods 
+
+11. Image Segmentation and Compositing (No related assignments) 
+
+(a) Image Thresholding 
+
+(b) Edge, Line, and Point Detection 
+
+(c) Region Based Segmentation 
+
+(d) Image Representation 
+
+(e) Image Compositing 
+
+
+

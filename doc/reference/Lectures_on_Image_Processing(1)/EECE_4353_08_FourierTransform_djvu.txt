@@ -1,0 +1,8050 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes: The 1&2-Dimensional Fourier Transforms 
+
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution-Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Signal: 
+
+A measurable phenomenon that changes over time, 
+throughout space, or both. 
+
+
+sound image 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Signals: Space/Time vs. Frequency- 
+
+Domain Representation 
+
+Space/time representation: a graph of the 
+measurements with respect to a point in time and/or 
+positions in space. 
+
+Fact: signals undulate (otherwise they’d contain 
+no information). 
+
+Frequency-domain representation: an exact 
+description of a signal in terms of its undulations. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Example: Time-Domain Representation 
+
+Sum of Sines, Frequencies 2n+l, Amplitudes l/(2n+l), n=0,...,9 
+
+
+0.8 
+0.6 
+0.4 
+
+£ 0.2 
+a> 
+
+E 
+
+o 0 
+cc 
+
+Q. 
+w 
+
+=6 - 0.2 
+-0.4 
+- 0.6 
+- 0.8 
+-1 
+
+0 71/4 nil 3ji/4 k 5n/4 3jc/2 7k/4 2ji 
+
+phase 
+
+
+
+C/3 
+
+a 
+
+(U 
+
+■ 4 — » 
+
+c 
+
++ 
+
+
+C/3 
+
+a 
+
+a> 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Example: Frequency-Domain Representation 
+
+
+Frequency Components n / 2ji 
+
+
+•g 
+
+Sc 3 
+
+
+'cuC 
+
+O 
+
+
+2 - 
+
+
+-frequency 
+
+
+EP 
+
+0> 
+
+c 
+
+a> 
+
+bt) 
+
+o 
+
+
++frequency 
+
+
+qI i LU 111 111 III III 111 III III III 111 111 111 111 ill III 111 111 III III III L_ 
+
+-21 -19 -17 -15 -13 -11 -9 -7 -5 -3 -1 13 5 7 9 11 13 15 17 19 21 
+
+component number, n 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Origin of Sounds 
+
+• The mechanical vibrations of an object in an atmosphere. 
+
+• Vibrations: internal elastic motions of the material. 
+
+• The surface of the object undulates causing compressions 
+and rarefactions in the air which propagate through the 
+air away from the surface. 
+
+• An object vibrates with different modes. 
+
+• A mode is a vibratory pattern with a distinctive shape — 
+part of the object surface moves out while another part 
+moves in — a standing wave. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Vibratory Modes / Standing Waves: Examples 
+
+
+
+string modes pipe modes 
+
+
+
+Note that 
+
+
+Note that 
+
+
+
+the modes 
+
+
+the negatives 
+
+
+
+are all 
+
+
+of these also 
+
+
+4 October 20 1( 
+
+sinusoids. 
+
+1999-2016 by Richard Alan Peters II 
+
+will occur 
+
+7 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Sound Waves: 
+
+
+Emerge from the superposition of the modes. 
+
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Sound Waves: 
+
+
+Even-order 
+
+harmonics 
+
+
+Emerge from the superposition of the modes. 
+
+
+
+co 
+
+CQ 
+
+co 
+
+
+
+The vibratory modes 
+add up to one complex 
+motion that pushes 
+the air around the 
+vibrating object 
+
+
+
+
+Odd-order 
+
+harmonics 
+
+
+“D 
+
+“o' 
+
+CD 
+
+C/) 
+
+o 
+
+
+I 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Fact: Any Real Signal has 
+a Frequency-Domain 
+Representation 
+
+
+Odd-order harmonics 
+
+
+
+The modes shown (blue) 
+sum to the rippling square 
+wave (black). 
+
+
+As the number of modes in 
+the sum becomes large, it 
+approaches a square wave 
+(red). 
+
+
+Sum of Sines, Frequencies 2n+l, Amplitudes l/(2n+l), n=0,...,9 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Frequency-Domain Representation 
+
+
+Any periodic signal can be described by a sum of sinusoids. 
+
+
+
+Sum of Sines, Frequencies 2n+l, Amplitudes l/(2n+l), n=0,...,9 
+
+
+The sinusoids are called 
+“basis functions”. 
+
+
+The multipliers are called 
+“Fourier coefficients”. 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Frequency-Domain Representation 
+
+
+Any periodic signal can be described by a sum of sinusoids. 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Frequency-Domain Representation 
+
+
+
+sq(r)= z 
+
+
+n=- 
+
+
+Sum of Sines, Frequencies 2n+l, Amplitudes l/(2n+l), n=0,...,9 
+
+
+The sinusoids are called 
+“basis functions’ . 
+
+
+
+The multipliers are calle< 
+“Fourier coefficients”. 
+
+
+The Fourier 
+coefficients (of a 
+square wave). 
+
+
+5n/4 3n/2 7tc/4 2k 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Example: Partial Sums of a Square 
+
+
+The limit of the 
+given sequence 
+of partial sums 1 
+is exactly a 
+square wave 
+
+
+
+
+0.2 
+
+
+
+- 0.2 * — 
+
+0 200 400 
+
+2 sines 
+
+
+
+
+
+Wave 
+
+
+1 the limit as n 
+becomes large 
+of the sum of 
+n sines. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Anatomy of a Sinusoid 
+
+
+
+f 
+
+
+/(t) = Asin — t-(f) 
+
+
+2 n 
+
+
+\ 
+
+
+\ A 
+
+
+J 
+
+
+1/A is the frequency of the sinusoid (Hz). 
+In I A is the angular frequency (radians /s). 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+The Inner Product: a Measure of Similarity 
+
+The similarity between functions/ and g on the interval (-A/ 2, A/2) 
+can be defined by 
+
+A/2 
+
+{ f,g)= } f{t)g\t)dt 
+
+-A/ 2 
+
+where g* (V) is the complex conjugate of g (V). 
+
+This number, called the inner product of f and g, can also be 
+thought of as the amount of g in / or as the projection off onto g. 
+
+Iff and g have the same energy, then their inner product is 
+maximal if f = g. On the other hand if (/, g) = 0, then / and g 
+have nothing in common. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+Inner Products 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+Inner Products 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Inner Product of a Periodic Function and a Sinusoid 
+
+
+A/2 
+
+(/,<?)= J /(OH 
+
+-A/2 
+
+I 2 /')* 
+
+
+A/2 
+
+(/><?)= { /(t)cos( 2 /r)jr 
+
+-A/2 
+
+
+A/2 
+
+
+(/>«)= I / w 
+
+
+cos 
+
+
+2;r 
+
+VT 
+
+
+n - i sin 
+
+
+2;r 
+
+VT 
+
+
+dt 
+
+
+-AH 
+
+A/2 '2k 
+
+= | /(f)e A dt 
+
+-A/2 
+
+A/2 
+
+= J f(t)e~ im dt 
+
+-A/2 
+
+
+
+= COS 
+
+
+2n 
+
+co = — 
+A 
+
+
+3 different 
+representations 
+
+
+(t'HHt') 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Inner Product of a Periodic Function and a Sinusoid 
+
+
+A/2 
+
+
+-A/2 
+
+
+mm 
+
+
+liiilfii 
+
+
+mm 
+
+
+(f>g)= | f{t)sin(^t)dt (/,g)= J f(t)cos^t)dt 
+
+
+A/2 
+
+
+real number results 
+yield the amplitude 
+of that sinusoid in 
+the function. 
+
+
+-A/2 
+
+
+im 
+
+
+: 5 e 3381 S 818 SaSS : ; 3 *! 
+
+
+III!! J f{r)e Id /Bill 
+
+
+1BI8II 
+
+
+!S!l|!!il|i 
+
+
+liiiii 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Inner Product of a Periodic Function and a Sinusoid 
+
+
+{/, 
+
+A/2 
+
+§ 
+
+(/) eos( / 
+
+ijjjj 
+
+jijij 
+
+| i 
+
+r/r 
+
+
+~ A/2::::::::::::: 
+
+
+
+
+
+
+(./'•tf) = f /(')s 
+
+■v.". H* 4 »:vv-= 
+
+: h 
+
+M ShU M M 
+
+j;j jil jil jil jil — ?J 2 : :j: : 
+
+
+
+A/2 
+
+
+(/>«)= I /M 
+
+
+, In , \ • • / 2 ;r 
+
+cos h-t -*sm U- 
+
+
+dt 
+
+
+-m 
+
+in 
+
+
+I /W 
+
+
+
+
+.7.71 
+
+-l 1 
+
+
+-A/2 
+
+A/2 
+
+
+= I /W 
+
+
+e~ im dt 
+
+
+Complex number result 
+yields the amplitude and 
+phase of that sinusoid in 
+the function. 
+
+
+-in 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+The Fourier Series 
+
+
+is the decomposition of a ^-periodic 
+signal into a sum of sinusoids. 
+
+
+
+periodic <^> 3 A e R such that fit ± n) L) = fit) 
+
+
+
+The representation of a 
+function by its Fourier 
+Series is the sum of sinu- 
+soidal "basis functions" 
+multiplied by coefficients. 
+
+
+Fourier coeff icients are 
+generated by taking the 
+inner product of the 
+function with the basis. 
+
+
+The basis f unctions 
+correspond to modes 
+of vibration. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Yj 
+
+The Fourier Series 
+
+
+can also be written in terms 
+of complex exponentials 
+
+
+00 
+
+
+z2 nn + 
+
++1 1 
+
+
+00 
+
+
+/W=Z C ^ 1 =Zlo 
+
+
+
+
+n =- oo 
+00 
+
+
+n —— oo 
+
+
+= T[\ C n\ c ™{ Z f L t + < /> n ) + i\C n \ S m(2ft + <f> n y_ 
+
+
+n =— oo 
+
+
+
+/i/2 '2nn + 
+
+C'=\cy*=\ j f(t)e * dt 
+
+^ -m 
+
+
+4- it • • 
+
+e~ = cos x + ismx 
+
+
+^ 2/2 
+
+= j f (t)[™{ 2 r t + </>„) «sin ( 2 ™ t + </> n )]dt 
+
+^ -2/2 
+
+
+f(t + nX) = f(t) 
+for all integers n 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+The Fourier Series Cont’d. on next page. 
+
+Relationship between the real and the complex Fourier Series 
+
+
+oo 
+
+
+f(t) = J'\A, cos cot + B„ sin cot 1 , where co„ = 
+
+J \ ) L n n n n y n 
+
+
+n - 0 
+
+
+2 nn 
+
+
+-fz 
+
+
+n = 0 
+
+
+A/2 
+
+
+A/2 
+
+
+| f (r/) cos co n r/ dr/ cos co n t+ J /( 77 ) sin co n r/dr/ sin co n t 
+
+
+_-A/2 
+
+A/2 
+
+
+-A/2 
+
+
+= f / (7) [ c °s co n ri cos COJ + / (17) sincy; sin ay ] drj 
+
+A n = 0 
+
+
+= {Z j f (n) cos (co„ti -coj)dt/ 
+
+
+?=<J -A/2 
+
+A/2 
+
+
+2 
+
+/L «=0 -A/2 
+
+
+The sine-plus-cosine 
+form results from the 
+projection of /onto a 
+cosine that is in phase 
+with the current time. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Relationship between the real and the cornu on next page, 
+complex Fourier Series (cont’d.) 
+
+
+Then add 
+zero to the 
+equation at 
+the end of 
+the previous 
+page: 
+
+
+00 
+
+Claim: o = Z sin (w n rj - w n t). 
+
+
+n —— oo 
+
+
+Proof given at 
+end of lecture 
+
+
+/t/2 
+
+
+Therefore: f 
+
+
+-A/2 L 
+
+
+oo 
+
+
+
+
+1 
+
+
+oo 
+
+
+Thus: -i~Z 
+
+
+n =- oo 
+
+
+n=— oo 
+A/2 
+
+
+drj = 0. 
+
+
+
+
+-A/2 
+
+
+= 0 . 
+
+
+/«=} Z 
+
+AI2 
+
+1 00 
+
+-/-Z 
+
+1 
+
+AI2 
+
+
+1 f(i])cos((D n ti-co n t)dTj 
+
+| f(^l)sin(co n i]-(o n t)di] 
+
+• 
+
+» 
+
+'ll 
+
+1 
+
+5 
+
+_-A/2 
+
+» 
+
+II 
+
+1 
+
+5 
+
+T9 
+
+1 
+
+_l 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Relationship between the real and the 
+complex Fourier Series (cont’d.) 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Relationship between the real and the 
+complex Fourier Series (cont’d.) 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Why are Fourier Coefficients Complex Numbers? 
+
+
+00 
+
+
+m = Z 
+
+
+.2 7rn 
+
++ ‘ 1 ' where C n = C n 
+
+
++i 0n 
+
+
+/ 7= -00 
+
+
+C n represents the 
+amplitude, A= \ C n \ , and 
+relative phase, (j ) , of 
+that part of the original 
+signal, /(f), that is a 
+sinusoid of frequency 
+oo n = 2nn / A,. 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+What about real + imaginary? 
+
+
+
+The F5 of a cosine is a pair of 
+impulses with complex amplitudes 
+
+
+Re{F(o))} 
+
+i 
+
+i 
+
+i 
+
+i 
+
+-M cos<|> 0i 
+
+k 
+
+W 
+
+N 
+
+X 
+
+? « 
+
+
+F(co) = (^f-coscp)[j(tf> + N/X) + 8(a>-N/X)~\ 
+
++/( i Vsin cp) S(co + N / X) + S(cl> — N / X)~^ 
+
+
+lm{F(a))} 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The real and imaginary Real + Imaginary to 
+
+parts at the positive Magnitude & Phase 
+
+frequency, NA ... 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The real and imaginary Real + Imaginary to 
+
+parts at the negative Magnitude & Phase 
+
+frequency, -N/A, ... 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Fourier Series of a Square Wave 
+
+
+0.2 
+
+
+Time-domain 
+signal , 0 ° 
+
+- 0.2 
+
+0 50 100 150 200 250 300 350 400 450 500 
+
+50 
+40 
+
+Fourier so 
+
+magnitude ” 
+
+0 
+
+0 50 100 150 200 250 300 350 400 450 500 
+
+2 
+
+Fourier 
+
+0 
+
+phase ^ 
+
+-2 
+
+0 50 100 150 200 250 300 350 400 450 500 
+
+
+i i i i r 
+
+~ . . , * * n n i n i H i i 1 i Hi H 1 1 1 1 1 
+
+1 1 1 1 1 
+
+1 1 1 1 L 
+
+1 1 1 1 1 
+
+
+
+T 
+
+
+J I I I I L 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+The Fourier Transform 
+
+is the decomposition of a nonperiodic signal into a 
+continuous sum* of sinusoids. 
+
+oo 
+
+F(co) = | F(co) | e io( '” ) = J /(f) e"' 2 ™' dt 
+
+
+OO 
+
+= | /(/)[cos(2;rry/)-/sin (2 ncot^dt 
+
+
+—oo 
+
+
+ou ou 
+
+/(f) = J F{a)e* n ’ m da = J|F(®) 
+
+
++ 2 
+
+
+
+
+dco 
+
+
+—oo 
+
+oo 
+
+
+= | F(ru) [cos(2;r£yr) + /sin(2;rtyf)]<iry 
+
+
+—oo 
+
+oo 
+
+
+= ||F(fi?) cos(2^<y/ L + 0(<y)) + /sin(2^’tyr + 0(ty)) 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+i.e., an integral. 
+
+
+33 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Mammals Use the FT in Hearing 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The Discrete Fourier Transform 
+
+
+A discrete signal, ( h k \ k = 0, 1, 2, . . . , N- 1 }, of finite length N can be rep re - 
+sented as a weighted sum of N sinusoids, { e ~ l2;rkn/N \ n - 0,1,2, N- 1} 
+through N - 1 
+
+7 X ^ j j +i\ 
+
+K=Zj H n e 
+
+
+lljrknlN 
+
+
+71 = 0 
+
+
+where the set, { H n \ n = 0, 1, 2, . . . , N - 1), are the Fourier coefficien t s 
+defined as the projection of the original signal onto sinusoid, n, given by 
+
+
+i N - 1 
+
+
+e 
+
+
+-UnknlN 
+
+
+Nt 
+
+
+k = 0 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+The Two-Dimensional Fourier Transform 
+
+
+Primary Uses of the FT in Image Processing: 
+
+• Explains why down-sampling can add distortion to 
+an image and shows how to avoid it. 
+
+• Useful for certain types of noise reduction, 
+deblurring, and other types of image restoration. 
+
+• For feature detection and enhancement, especially 
+edge detection. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Fourier Transform: Discussion 
+
+
+The expressions 
+
+GO 
+
+F(©)= J /(f) dt = (f(t), e +i2nmt ) 
+
+—GO 
+
+and 
+
+
+continuous signals 
+defined over all 
+real numbers 
+
+
+H 
+
+
+n 
+
+
+1 _ 
+
+N 
+
+
+N—l 
+
+i -UnknlN 
+
+n k e 
+
+n = 0 
+
+
+
+
++i27rkn/N 
+
+
+discrete signals 
+with N terms or 
+samples. 
+
+
+for the Fourier coefficients are “inner products” which can be 
+thought of as measures of the similarity between the functions 
+f(t) and e +i2ncot for t e (— oo, go) or between the sequences 
+
+I K } TJ, “1 { ! Z 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+The Fourier Transform: 
+Discussion (cont’d.) 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+In the context of inner products, the complex exponentials 
+
+
+-ilncot 
+
+
+<x> 
+
+
+e5? and co 
+
+
+=(-°o, 
+
+
+
+
+-i 2nknlN 
+
+e 
+
+
+,- 2 ,- 1 , 0 , 1 , 2 ,... 
+
+
+are called “orthogonal sets” since they have the property: 
+
+
+00 
+
+
+-i27TCOi t -Htv 0) 
+
+e , e 
+
+
+'H 
+
+
+g-i27rco l t g+i27rco 2 t ^ 
+
+
+-00 
+
+
+iV-1 
+
+
+-i2n jn!N -i2nkn!N \ -i2njn!N +i2nkn!N 
+
+
+, e 
+
+
+= Ie 
+
+
+n= 0 
+
+
+oo, if oj { =oj 2 
+0, if co x ^co 2 
+
+c, if j=k 
+0, if j^k ? 
+
+
+The function 
+sets are called 
+"orthogonal 
+basis sets" 
+
+
+They are called “basis sets” since for any function 1 , fit), of a real variable 
+there exists a complex- valued function F( w), and for any sequence 1 , h k , there 
+exist complex numbers, H n , such that 
+
+GO 
+
+f{t)=\F{6>)e- n ™'d<o and 
+
+" n= 0 
+
+-co 1 with finite energy. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+
+
+The Fourier Transform: 
+Discussion (cont’d.) 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Consider the 2-dimensional functions 
+
+
+-z' 2 ;r(wx+vy) 
+
+
+u, v, x, y 
+
+
+g 91 and e 
+
+
+■i 2*(£+$) 
+
+
+M N - 
+
+
+j, m g 0, M— 1, k,n g 0, N— 1 
+
+
+These are, likewise, orthogonal: 
+
+
+^ ^-i27r(u l x+v 1 
+
+
+-i2n 
+
+e 
+
+
+(u 2 x+v 2 y) 
+
+
+-i2 n 
+
+
+j\rn | M 
+VM iV 2 
+
+
+£ 
+
+
+—i 2n 
+
+
+U'2 m 
+
+M 
+
+
++ 
+
+
+
+00 00 
+
+-n 
+
+
+-z' 2 ;r(w 1 x-i-v 1 y) +z' 2 ;r (u 2 x+v 2 y) 
+
+
+dxdy 
+
+
+—00 —00 
+
+
+{ oo, if Mj =m 2 and V!=v 2 
+0 , otherwise ? 
+
+
+M - 1 ZV -1 
+
+
+m = 0 n -0 
+
+
+-i 2n\ 
+
+e 
+
+
+j\ m 
+M 
+
+
++ 
+
+
+
++ i2n\ 
+
+e 
+
+
+h m 
+
+M 
+
+
++ 
+
+
+k 2 n 
+
+N 
+
+
+( c, if 7 i = 7*2 and ^ 1=^2 
+J 0 , otherwise 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+39 
+
+
+
+The Fourier Transform: 
+Discussion (cont’d.) 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Therefore 
+
+
+{■ 
+
+
+—i2?r(ux+vy) 
+
+
+u,v, x , y 
+
+
+R} and 
+
+
+r i2 ”{ # + t) 
+
+
+/, k , 777 , 77 , M 
+
+
+are orthogonal basis sets. This suggests that function f(x,y) defined on the 
+real plane, and sequence { { h mn } } for integers m and n have analogous 
+Fourier representations, 
+
+
+GO 00 
+
+
+f(x,y)= | | F(u,v)e 
+
+
++i27r(ux+vy ) 
+
+
+-00 —00 
+
+
+M— IN— 1 
+
+dudv and h mn = E E H Jk e 
+
+j = 0 &=0 
+
+
+. _ . im kn 
++ i 2n\ — + — 
+M Ax' 
+
+
+where the Fourier coefficients are given by 
+
+
+00 00 
+
+
+F(u,v) = J J f(x,y)e~‘ 
+
+
+-i2n(ux+vy) 
+
+
+-00 —00 
+
+
+M-1JV-1 -,2* 
+
+dxdy and H jk = E E A„„,e 
+
+m=0 o=0 
+
+
+* ym kn ' 
+VM 
+
+
+(True for finite energy functions f(x,y ) and { { h mn } }.) 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+40 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Continuous Fourier Transform 
+
+
+
+The continuous Fourier 
+transform assumes a 
+continuous image exists 
+in a finite region of an 
+infinite plane. 
+
+
+The BoingBoing Bloggers 
+
+
+
+
+S(v,u)=j { I (r,c)e-‘ 2 ' ,lw *“ c) dcdr 
+
+
+00 00 
+
+I(r,c)= J | 5(v,«)e +i2 ’ r( '"' + “ l dudv 
+
+—00 —00 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+41 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Discrete Fourier Transform 
+
+
+
+The discrete Fourier 
+transform assumes a 
+digital image exists on a 
+closed surface, a torus. 
+
+
+
+
+I(r,c)= 
+
+v=0 u= 0 
+
+( vr uc ^ 1 
+fi2d — + — 
+
+U cj 1 
+
+
+
+/f-lC-l . - 
+
+5(v,u)= I zi( r,c)e 
+
+r=0c=0 
+
+[ rv cm 1 
+
+z2;r 1 
+
+KR C) 
+
+
+Photo: Bart Nagel www.bartnagel.com 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+42 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Discrete Fourier Transform 
+
+
+
+The discrete Fourier 
+transform assumes a 
+digital image exists on a 
+closed surface, a torus. 
+
+
+Photo: Bart Nagel www.bartnagel.com 
+
+
+/f-lC-1 . 
+
+5(v,«)=IH(v)e 
+
+r=0c=0 
+
+
+i rv cu 
+
+—i2n\ \ 
+
+R C 
+
+
+R-lC-l ^ +/2d— + — 
+
+I (w)=IX5(v.«)« u c) 
+
+v=0 u = 0 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+43 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The 2D Fourier Transform of a Digital Image 
+
+
+Let I (r,c) be a single-band (intensity) digital image with R 
+rows and C columns. Then, I (r y c) has Fourier representation 
+
+
+
+i 
+
+RC 
+
+
+R - 1 C-l 
+
+ZZ 5 ( v ’ m ) 
+
+
++i2n 
+
+e 
+
+
+r vr uc N 
+VR ~CJ 
+
+
+u - 0 v=0 
+
+
+where 
+
+
+K-l C-l 
+
+
+5 ( v »“)=SS I ( r ’ c ) e 
+
+
+-i2jr 
+
+
+vr uc'' 
+
+yR c) 
+
+
+r - 0 c-0 
+
+
+these complex 
+exponentials are 
+! 2D sinusoids. 
+
+
+are the Rx C Fourier coefficients. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+44 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Matlab’s Discrete Fourier Transforms 
+
+are implemented using some variant of the Cooley-Tukey Fast 
+Fourier Transform algorithm 1 . They include the 1-D f f t and if ft 
+and the 2-D f ft2 and if f t2. The 1-D versions compute 
+
+N - 1 _. 9 mn 
+
+F(m) = §{f(m))=Y j f(n)e ' * N , 
+
+n - 0 
+
+where 
+
+
+N - 1 . 9 run 
+
+f(n) = 3-'{F(n)}=±Y j F(m)e 
+
+m=0 
+
+
+‘See https://en.wikipedia.org/wiki/Cooley-Tukey_FFT_algorithm 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+45 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Matlab’s Discrete Fourier Transforms 
+
+
+The 2-D versions compute 
+
+$(u,v) = tyl(r,c)} ;m};v 
+
+
+On the Matlab command line: 
+ff t2(I) = 
+
+
+where 
+
+
+R- 1 
+
+
+=Z 
+
+
+r=0 
+
+
+C-l 
+
+
+Y_}(r,c)e 
+
+
+-z2;r — 
+C 
+
+
+c=0 
+
+
+vr 
+
+-iln — 
+
+, R 
+
+
+R-l C-l 
+
+
+
+
+-i2n 
+
+
+uc vr 
+~C + -R 
+
+
+r - 0 c=0 
+
+
+l(r,c) = 8 1 | 5 (v,w)} = § 1 {$ 1 { 5 ;c} ;r 
+
+
+R-l 
+
+
+=±Z 
+
+
+v=0 
+
+
+C-l 
+
+
+±J^3(v,u)e 
+
+
+cu 
++i2n — 
+
+C 
+
+
+n = 0 
+
+
++ H7T- 
+
+
+rv 
+
+R 
+
+
+R-l C-l 
+
+
+=^ZZ 3 ( v .“)« 
+
+
++ i27T 
+
+
+cu rv 
+1 — 
+
+C R 
+
+
+v=0 u = 0 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+46 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+What are 2D sinusoids? 
+
+To simplify the situation assume R = C = N. Then 
+
++;o 77-/V , ±i^-[vr+uc] sinO+ccosO) 
+
+e \ R C ) — e N y —e n 
+
+
+where 
+
+
+
+v = &>sin 0 , u = &>cos 0 , co = \lv 2 +u 2 , and 0 = tan 1 (^). 
+
+
+Write 
+
+
+A = 
+
+
+N 
+
+
+co 
+
+
+Note: since images are indexed 
+by row & col with r down and c 
+to the right, 0 is positive in the 
+clockwise direction. 
+
+
+Then by Euler’s relation, 
+
+e ±i 27 Tj(rsm$ + ccosG) _ CQS |~ M ^ r S i n 0 + C C0S 0) J + / SHI ( V Sm 0 + C COS 0)] 
+
+Cont’d. on next page. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+47 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+What are 2D sinusoids? (cont’d.) 
+
+
+Both the real part of this, 
+
+
+Re | ^ +i2;r i( rsin0+ccos0 )| - + cos[^f(rsin0 + ccos0)] 
+
+and the imaginary part, 
+
+Imj ^ ±i2;r i( rsin0+ccos0 )| = +sin[^f (rsin0 + ccos0)] 
+
+are sinusoidal “gratings” of unit amplitude, period X and direction 0. 
+
+2 nco co 
+
+Then — — is the radian frequency, and — the frequency, of the wavefront 
+
+N 
+
+and A = — is the wavelength in pixels in the wavefront direction. 
+
+co 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+48 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+◄ — ► 
+
+
+period X <|> = phase shift 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+49 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+2D Sinusoids: 
+
+
+
+... specific orientations, 
+and phase shifts. 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+50 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Fourier Transform of an Image 
+
+
+
+I Re[£{I}] Im[£{I}] 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+51 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Points on the Fourier Plane 
+
+
+If R=C=N the point at 
+column freq. u and row 
+freq. v represents a 
+sinusoid with freq. w and 
+orientation 0. 
+
+
+If R t C then ui = 1/A 
+where A is the length of 
+vector (C/u, R/v) and the 
+wavefront orientation is 
+0 = tan _1 [(v/R)/(u/C)]. 
+
+
+^ 
+
+1 v 
+
+k 
+
+Fourier Plane 
+
+
+
+w 
+
+
+u 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+52 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Points on the Fourier Plane (of a Digital Image) 
+
+
+In the Fourier transform of an RxC digital image, 
+positions u and v indicate the number of repetitions 
+
+
+-v direction 
+
+
+More about 
+this later 
+(pp. 73-94). 
+
+
+of the sinusoid in those directions. Therefore the 
+wavelengths along the column and row axes are 
+
+K = 7 and K = 7 P ixcls - 
+
+
+and the wavelength in the wavefront direction is 
+
+
+
+RC 
+
+
+(uR ) 2 +(vC) 
+
+
+1 
+
+2 
+
+
+The frequency is the fraction of the sinusoid 
+traversed over one pixel, 
+
+®„ = c-®v = *> and 
+
+
+= 
+
+
++(|>C ) 2 cycles. 
+
+
+The wavefront direction is given by 
+
+
+
+= tan 
+
+
+
+= tan 
+
+
+
+row freq. 
+column freq. 
+
+
+
+s 
+
+Q. 
+
+CD 
+
+o 
+
+» I 
+
+o' 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+53 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Points on the Fourier Plane 
+
+
+Note that 0 is the wavefront 
+direction only if R=C. 
+
+
+
+This point represents this particular sinusoidal grating 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+54 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The Value of a Fourier Coefficient ... 
+
+
+t Re[5{/}] 
+
+
+
+
+— > 
+
+I 
+
+
+A 
+
+
+S' Re[£{/}] 
+
+
+... is a complex 
+number with a 
+/real)part and an 
+imaginary part. 
+
+
+If you represent 
+that number as a 
+magnitude. A, and 
+a phase, <|>, ... 
+
+
+..these represent the amplitude 
+and offset of the sinusoid with 
+frequency co and direction 0.* 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+*See p. 51. 55 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Value of a Fourier Coefficient 
+
+
+
+The magnitude and phase 
+representation makes 
+more sense physically... 
+
+
+...since the Fourier magni- 
+tude, A (co,0), at point (co,0) 
+represents the amplitude 
+of the sinusoid... 
+
+
+and the phase, (p(co,0), 
+represents the offset of the 
+sinusoid relative to origin. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+56 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Fourier Coefficient at (u y v) 
+
+
+
+So, the point (w,v) on the 
+Fourier plane... 
+
+...represents a sinusoidal 
+grating of frequency co 
+and orientation 0.* 
+
+The complex value, F(u,v), 
+of the FT at point (w,v)... 
+
+...represents the ampli- 
+tude, A, and the phase 
+offset, ((), of the sinusoid. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+*See p. 51. 57 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Sinusoid from the Fourier Coeff. at ( u,v ) 
+
+
+
+4 October 2016 © 1999-2016 by Richard Alan Peters II 58 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+FT of an Image (Magnitude + Phase) 
+
+
+
+i 
+
+
+io g {i£{i}i 2 +i} zm i}] 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+59 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+FT of an Image (Real + Imaginary) 
+
+
+
+I Re[£{I}] Im[£{I}] 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+60 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Power Spectrum 
+
+The power spectrum of a signal is the square of 
+the magnitude of its Fourier Transform. 
+
+5(n,v)| 2 = S[u,v)S*[u,v) 
+
+= [Re^(n,v) + iIm5(w,v)][Re5(w,v) — /Im3(w,v)] 
+
+= [Re3(w,v)] 2 +[lm5(n,v)] 2 • 
+
+At each location ( u,v ) it indicates the squared intensity of the 
+frequency component with period x = \ / V« 2 +v 2 and orientation 
+
+0 = tan -1 (v/w). 
+
+I For display in Matlab: 
+
+PS = fftshift (2*log (abs (fft2 (I) ) +1) ) ; 
+
+
+For display, 
+the log of 
+the power 
+spectrum is 
+often used. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+61 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+On the Computation of the Power Spectrum 
+
+The power spectrum (PS) is defined by PS(l)= |^{l(w,v)}| 2 . 
+
+We take the base-e logarithm of the PS in order to view it. Otherwise its dynamic range could be 
+too large to see everything at once. We add 1 to it first so that the minimum value of the result is 
+0 rather than -infinity, which it would be if there were any zeros in the PS. Recall that 
+
+l°g(/ 2 ) = 21og(/ ). 
+
+Multiplying by 2 is not necessary if you are generating a PS for viewing, since you'll probably 
+have to scale it into the range 0-255 anyway. It is much easier to see the structures in a Fourier 
+plane if the origin is in the center. Therefore we usually perform an fftshift on the PS before it is 
+displayed. 
+
+>> PS = fftshift (log (abs (fft2 (I )) +1) ) ; 
+
+>> M = max (PS ( : ) ) ; 
+
+>> image (uint8 (255* (PS/M) ) ) ; 
+
+If the PS is being calculated for later computational use — for example the autocorrelation of a 
+function is the inverse FT of the PS of the function — it should be calculated by 
+
+>> PS = abs ( f f t2 ( I ) ) . A 2 ; 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+62 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+The Uncertainty Relation 
+
+
+
+If Ax Ay is the extent of 
+the object in spaceand 
+if Am Av is its extent in 
+frequency then, 
+
+1 
+
+AxAy-AMAv> r- 
+
+16;r 2 
+
+
+A small object in space 
+has a large frequency 
+extent and vice-versa. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+63 
+
+
+<- large extent -> -> small extent <- 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Uncertainty Relation 
+
+
+frequency 
+
+
+-» small extent <- 
+
+
+
+t 
+
+(Q 
+
+CD 
+
+CD 
+
+X 
+
+i— +■ 
+
+CD 
+
+=3 
+
+rH- 
+
+i 
+
+
+
+Recall: a symmetric 
+pair of impulses in the 
+frequency domain 
+becomes a sinusoid in 
+the spatial domain. 
+
+
+A symmetric pair of 
+lines in the frequency 
+domain becomes a 
+sinusoidal line in the 
+spatial domain. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+64 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Fourier Transform of an Edge 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+65 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+The Fourier Transform of a Bar 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+66 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Some Fourier 
+
+Transform 
+
+Pairs 
+
+
+Name 
+
+
+Signal 
+
+
+Transform 
+
+
+impulse 
+
+
+shifted 
+
+impulse 
+
+
+box filter 
+
+
+tent 
+
+
+Gaussian 
+
+
+Laplacian 
+of Gaussian 
+
+
+Gabor 
+
+
+unsharp 
+
+mask 
+
+windowed 
+
+sine 
+
+
+
+
+
+
+
+S(x) 
+
+
+5(x — u) 
+
+
+bo \(x/a) 
+
+
+tent (x/a) 
+
+
+G(x\c r) 
+
+
+0 -juu 
+
+
+asinc(au;) 
+
+
+asinc 2 (aa;) 
+
+
+
+
+(fr - -^)G(x;a) ^ uj\a x ) 
+
+
+cos (uj 0 x)G(x-,a) ^ ^-G(uj ±uj 0 ;<t *) 
+
+
+(1+7)(5(x) 
+
+~'rG(x;a) 
+
+rcos (x/(aW)) 
+sine (x/a) 
+
+
+(1+7)- 
+
+^L G (w;a~ l ) 
+
+(see Figure 3.29) 
+
+
+
+1 
+
+
+Table: Richard Szeliski, Computer Vision and Applications, Springer, 2010, ISBN 978-1-84882-935-0, p.137, http://szeliski.org/Book/. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+67 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Fourier Transform Pairs 
+
+
+Function, f(t) 
+
+Fourier Transform, F(co) 
+
+J 7Tt 
+
+sgn(ry) 
+
+u(f) 
+
+7rS{(0) + -}— 
+
+JCO 
+
+try™ 0 ' 
+
+n=—oo 
+
+00 
+
+2 n^ F n S(a ) - nca Q ) 
+
+n =- oo 
+
+reCt (r) 
+
+-(f) 
+
+r s s -(f) 
+
+“(f) 
+
+tri (/ ) 
+
+s ' ; (f) 
+
+^cos(f)rect(^:) 
+
+An cos(rur) 
+
+* 
+
+cos(ft? 0 /) 
+
+n[S(co - co 0 ) + 5(co + co 0 )] 
+
+sin(<y 0 /) 
+
+
+u(t) cos(<y 0 /) 
+
+[S(w 0) 0 ) + S(0) + <»„)]+ / 
+
+2 G) 0 -6) 
+
+w(/)sin(<y 0 /) 
+
+[S(o> o) 0 ) S(o) + co 0 )]+ , 
+
+2y tUg - 
+
+w(/)e _0? cos(<y 0 /) 
+
+{a + jco) 
+a>l + (a + jco) 2 
+
+
+Function, f(t) 
+
+Fourier Transform, F(co) 
+
+Definition of Inverse Fourier Transform 
+
+Definition of Fourier Transform 
+
+/( t) = 2- "\F(o>)e im dco 
+
+F(co)= )f(l)e- jM dl 
+
+-00 
+
+At -t 0 ) 
+
+F(ai)e- Jm '° 
+
+At)e Ja * 
+
+F{co -co 0 ) 
+
+f(ca) 
+
+h'(9 
+
+Fit) 
+
+2nf(-co) 
+
+dj(t) 
+
+dF 
+
+Uo))"F(co) 
+
+(-jt)JU) 
+
+d n F{co) 
+
+dco n 
+
+\f(r)dr 
+
+-oo 
+
+F( ' a) +nF(0)S(a>) 
+jco 
+
+Sit) 
+
+1 
+
+e jw °' 
+
+2 nS(co - co 0 ) 
+
+sgn (t) 
+
+_2_ 
+
+jo> 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+68 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+2D Fourier Transform Properties 
+
+a/(r,c) + Z?g(r,c) aF (v,u) + bG(v,u) 
+
+Linearity 
+
+f (r - r 0 ,c-c 0 ) <=> e~ l2 ^ vr ° +uc ^ F (v,u) 
+
+Shifting 
+
+^M^o+cuo) f ( r ,c) F(v- v 0 ,u - w 0 ) 
+
+Modulation 
+
+/(r,c)*g(r,c)oF(v,w)G(v,M) 
+
+Convolution 
+
+/(r,c)g(r,c) <=> F(v,w)*G(v,w) 
+
+Multiplication 
+
+/M = f(r)f{c) o F(v,u) = F(v)F(u) 
+
+Separability 
+
+f ( r ’ C ) 2 = j J|r’(v,M) 2 dw/M 
+
+r=l c=l _ 1/ -1/ 
+
+/2 72 
+
+Parseval Thm. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+69 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Coordinate 
+
+
+Even 
+
+
+Origin of the FFT 
+
+Odd Even 
+
+
+Center = 
+
+(floor(/?/2)+l, floor(C/2)+l) 
+
+
+Odd 
+
+
+2 
+
+3 
+
+4 
+
+5 
+
+6 
+
+7 
+
+8 
+
+9 
+
+10 
+
+11 
+
+12 
+
+13 
+
+14 
+
+15 
+
+16 
+
+■ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 
+
+2 
+
+3 
+
+4 
+
+5 
+
+6 
+
+7 
+
+8 
+
+9 
+
+10 
+
+11 
+
+12 
+
+13 
+
+14 
+
+15 
+
+16 
+
+■ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 
+
+Image Origin 
+
+17 
+
+1 
+
+2 
+
+3 
+
+4 
+
+1 
+
+5 
+
+In 
+
+6 
+
+1c 
+
+7 
+
+K 
+
+8 
+
+9 
+
+> < 
+
+10 
+
+0 
+
+ii 
+
+'ri 
+
+12 
+
+g 
+
+13 
+
+ir 
+
+14 
+
+1 
+
+15 
+
+16 
+
+17 
+
+
+1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 
+
+2 
+
+3 
+
+4 
+
+5 
+
+6 
+
+7 
+
+8 
+
+9 
+
+10 
+
+11 
+
+12 
+
+13 
+
+14 
+
+15 
+
+16 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2 
+
+3 
+
+4 
+
+5 
+
+6 
+
+7 
+
+8 
+
+9 
+
+10 
+
+11 
+
+12 
+
+13 
+
+14 
+
+15 
+
+16 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 
+
+Weight Matrix Origin 
+
+17 
+
+1 
+
+2 
+
+V' 
+
+3 
+
+/€ 
+
+4 
+
+5 
+
+gi 
+
+6 
+
+It 
+
+7 
+
+r 
+
+8 
+
+71 
+
+9 
+
+a 
+
+10 
+
+tr 
+
+ii 
+
+ix 
+
+12 
+
+( 
+
+13 
+
+3 
+
+14 
+
+rii 
+
+15 
+
+gi 
+
+16 
+
+n 
+
+17 
+
+
+
+After FFT shift 
+
+
+
+
+After I FFT shift 
+
+
+E 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+. 
+
+
+
+
+■ 
+
+
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 
+
+
+After I FFT shift 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+70 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Matlab’s fftshift and ifftshift 
+
+
+I = ifftshift(J) : J = fftshift(I) : 
+
+
+
+J ( l_/?/2j+l, LC/2J+1) I (1,1) I (1,1) -> J ( LR/2J+1, LC/2J+1) 
+
+where LxJ = floor (x) = the largest integer smaller than x. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+71 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Matlab’s fftshift and ifftshift 
+
+
+J = fftshift ( I ) : 
+
+I (1,1) -> J ( VR!2\ +1, LC/2J +1) 
+
+
+5 
+
+
+
+4 
+
+8 
+
+A 
+
+
+
+7 
+
+
+
+
+
+
+
+
+
+
+
+2 
+
+2L 
+
+
+
+1 
+
+
+
+
+
+
+
+
+1 
+
+2 
+
+3 
+
+
+
+4 
+
+5 
+
+
+
+
+0 
+
+8 
+
+9 
+
+
+
+□ 
+
+
+
+
+
+I = ifftshift (J) : 
+
+J ( lR!2\ +1, LC/2J +1) I (1,1) 
+
+
+
+
+
+
+
+
+1 
+
+2 
+
+3 
+
+
+
+4 
+
+5 
+
+
+
+
+I 
+
+nr 
+
+0 
+
+
+
+
+
+□ 
+
+
+
+
+where lx] = floor (x) = the largest integer smaller than x. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+72 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Points on the Fourier Plane (of a Digital Image) 
+
+
+In the Fourier transform of an RxC digital image, 
+positions u and v indicate the number of repetitions 
+of the sinusoid in those directions. Therefore the 
+wavelengths along the column and row axes are 
+
+K = 7 and K = 7 P ixels > 
+
+
+and the wavelength in the wavefront direction is 
+
+
+
+RC 
+
+
+(uR ) 2 +(vC) 
+
+
+1 
+
+2 
+
+
+The frequency is the fraction of the sinusoid 
+traversed over one pixel, 
+
+®„ = c-®v = *> and 
+
+
+= 
+
+
++(|>C ) 2 cycles. 
+
+
+The wavefront direction is given by 
+
+
+
+= tan 
+
+
+
+= tan 
+
+
+
+row freq. 
+column freq. 
+
+
+-v direction 
+
+
+* 
+
+k 
+
+Fourier Plane 
+
+of a digital image 
+
+V 
+
+
+g 
+
+7 
+
+-0 direction 
+
+CO 
+
+
+(0,0) 
+
+
+u 
+
+Note that the wave 
+front direction = 0 
+
+
+only if R=C. 
+
+
+s 
+
+Q. 
+
+CD 
+
+O 
+
+» i 
+
+o' 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+73 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Geometrical Derivation of Wavelength 
+
+
+Since the wavelength of a horizontal* wave 
+is R/v and that of a vertical is Clu , the line 
+segment, h , that connects the two distances 
+is parallel to the wavefront. The wavelength 
+is the “altitude” of the triangle w.r.t. h (the 
+perpendicular to h that intersects the origin). 
+The area of the triangle, one half of base 
+times height, is independent of the leg that is 
+taken to be the base. Equate the expression 
+with base Clu to that with base h , to find X 
+w.r.t R , C, v, u , & h. Then replace h with its 
+expression as a function of R , C, v, & u to 
+get the final expression. 
+
+* 
+
+The equivalue lines are horizontal in a wave with a vertical wave front and vice versa. 
+
+
+
+u 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+74 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Coordinates and Directions in the Fourier Plane 
+
+
+
+Since rows increase down and columns to the right, slopes and 
+angles are opposite those of a right-handed coordinate system. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+75 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Inverse FFTs of Impulses 
+
+
+"horizontal" is the 
+wavefront direction. 
+
+
+Lc/ 2 j 
+
+
+C-LC/2J- 1 
+
+
+I 
+
+—1 
+
+Cs| 
+
+I 
+
+os 
+
+
+
+^ 
+
+
+
+p 
+
+L 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+o 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+■ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=5 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+o 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+c 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+r 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+■ 
+
+
+
+
+
+
+
+( 
+
+Driqin Row 
+
+
+
+
+
+
+0 
+
+
+
+
+
+
+
+
+k 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4 
+
+T 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+r 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+U 
+
+
+fftshifted 
+
+
+
+highest-possible-frequency horizontal sinusoid (C is even) 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+76 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Inverse FFTs of Impulses 
+
+
+"vertical" is the 
+wavefront direction. 
+
+
+
+highest-possible-frequency vertical sinusoid ( R is even) 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+77 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Inverse FFTs of Impulses 
+
+
+a checker-board 
+pattern. 
+
+
+Lc/2j I C-|C/2j-l 
+
+
+
+
+highest-possible-freq horizontal+vertical sinusoid (R & C even) 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+78 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Inverse FFTs of Impulses 
+
+"horizontal" is the 
+wavefront direction. 
+
+
+Lc/2j I C-LC/2J-1 
+
+
+
+lowest-possible-frequency horizontal sinusoid 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+79 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Inverse FFTs of Impulses 
+
+"vertical" is the 
+wavefront direction. 
+
+
+
+lowest-possible-frequency vertical sinusoid 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+80 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Inverse FFTs of Impulses 
+
+"negative diagonal" is 
+the wavefront direction. 
+
+
+
+lowest-possible-frequency negative diagonal sinusoid 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+81 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Inverse FFTs of Impulses 
+
+"positive diagonal" is 
+the wavefront direction. 
+
+
+Lc/2j I C-LC/2J-1 
+
+
+
+lowest-possible-frequency positive diagonal sinusoid 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+82 
+
+
+
+|W| i i - f z/y"| - 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Frequencies and Wavelengths in the Fourier Plane 
+
+
+512 columns 
+
+
+
+Note this „. I ... and this. 
+
+
+frequencies: (u,v) = (4,3); wavelengths: (X u , X v ) = (128,128) 
+
+How can that be? I 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+83 
+
+
+384 rows 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Frequencies and Wavelengths in the Fourier Plane 
+
+
+I 
+
+a: 
+
+
+lC/2] 
+
+
+1 C-LC/2J-1 
+
+
+. Origin R o w . 
+
+
+\-C l U 
+
+
+u = # of complete cycles 
+in the horizontal direction 
+
+
+
+frequencies: ( u,v ) = (1,0); wavelength: X u = 512 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+84 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Frequencies and Wavelengths in the Fourier Plane 
+
+
+LC/ 2 J 
+
+
+I C-LC/2J-1 
+
+
+I 
+
+<N 
+
+_^J 
+
+I 
+
+0 $ 
+
+
+v = # of complete 
+cycles in the 
+vertical direction 
+
+
+, Origin R o w , 
+
+
+Tj 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+A 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+A 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+K~- 
+
+= K / V 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+— f 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\ 
+
+
+
+
+
+
+frequencies: ( u,v ) = (0,1); wavelength: X v = 384 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+85 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Frequencies and Wavelengths in the Fourier Plane 
+
+
+I 
+
+a: 
+
+
+lC/2] 
+
+
+C-LC/2J- 1 
+
+
+. Origin R o w . 
+
+
+X u = C / U 
+
+
+u = # of complete cycles 
+in the horizontal direction 
+
+
+
+frequencies: ( u,v ) = (2,0); wavelength: X u = 256 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+86 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Frequencies and Wavelengths in the Fourier Plane 
+
+
+LC/2J 
+
+
+C-LC/2J- 1 
+
+
+I 
+
+a: 
+
+
+v = # of complete 
+cycles in the 
+vertical direction 
+
+
+, Origin R o w , 
+
+
+\, = R/v 
+
+
+
+frequencies: ( u,v ) = (0,2); wavelength: X v = 192 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+87 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Frequencies and Wavelengths in the Fourier Plane 
+
+
+I 
+
+a: 
+
+
+lC/2] 
+
+
+C-LC/2J- 1 
+
+
+. Origin R o w . 
+
+
+\-C l U 
+
+
+u = # of complete cycles 
+in the horizontal direction 
+
+
+
+frequencies: (u,v) = (3,0); wavelength: A ll = 170X 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+88 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Frequencies and Wavelengths in the Fourier Plane 
+
+
+LC/2J 
+
+
+C-LC/2J- 1 
+
+
+I 
+
+a: 
+
+
+v = # of complete 
+cycles in the 
+vertical direction 
+
+
+, Origin R o w , 
+
+
+\, = R/v 
+
+
+
+frequencies: ( u,v ) = (0,3); wavelength: X v = 128 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+89 
+
+
+
+
+
+In the Fourier plane of a In the F plane the angle is -45° SS’flQ 
+
+square image, the orientation in this image it's about -53° beering 
+
+of the line through the point (yellow line). That's because 
+
+pair = the orientation of the the fraction of R covered by 
+
+wave front in the image. Not ^ncri one pixel is 4/3 the fraction of » 
+so for a non-square image. ® C covered by one pixel. 
+
+
+
+Also as a result, the 
+wavelength is 102.4. 
+
+
+frequencies: (n,v) = (3,3); wavelengths: (k u , X v ) = ( 1 70K, 128) 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+90 
+
+
+384 rows 
+
+
+
+
+
+, , , ... EECE 4353 Image Processing 
+
+In general the slope of the ^ ^ 
+
+wavefront direction in the Vanderbilt University School of Engineering 
+
+image is given by (v/R) / (u /C). 
+
+Therefore its angle is 
+
+
+0wf = tan 
+
+
+-i 
+
+
+vC^ 
+
+uRy 
+
+
+ingths in the Fourier Plane 
+
+
+Lc/2j I C-LC/2J-1 
+
+
+
+512 columns 
+
+
+
+and the wavelength is: 
+
+
+frequencies: ( u,v ) = (3,3); wavelengt 
+
+
+^wf — RC 
+
+
+( uR ) 2 +(vC) z 
+
+
+1 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+91 
+
+
+384 rows 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Frequencies and Wavelengths in the Fourier Plane 
+
+
+
+frequencies: (n,v) = (3,3); wavelengths: (k u , X v ) = ( 1 70K, 128) 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+92 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Frequencies and Wavelengths in the Fourier Plane 
+
+
+
+frequencies: (u,v) = (4,3); wavelengths: (X u , X v ) = (128,128) 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+93 
+
+
+
+
+The ratio R /C - i in this image. Therefore at 
+frequency (4,3) the wave front angle is 
+
+
+EECE 4353 Image Processing 
+
+' jrersity School of Engineering 
+
+
+1 *1 , T T 
+
+
+Fl 0,,c = tan" 1 
+
+
+3- 512^1 
+
+4- 384/ 
+
+
+= tan 
+
+
+,j( 3 - 4 ^ 
+v 4-3/ 
+
+
+= tan" 1 (1) = 45 c 
+
+
+ourier Plane 
+
+
+512 columns 
+
+
+
+frequencies: ( u,v ) = (4,' 
+
+
+and the wavelength is 
+
+
+A wf =384-512[(3-384) 2 +(4-512) 2 ] 4 *83.67, 
+
+
+94 
+
+
+4 October 2016 
+
+
+© 1999-2UT6 by Richard Alan Peters n 
+
+
+384 rows 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Power Spectrum of an Image 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+95 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Relationship between Image and FT 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+96 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Features in the FT and in the Image 
+
+
+
+are ... 
+
+
+... perpen- 
+dicular to 
+lines in the 
+image. 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+97 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Fourier Magnitude and Phase 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+98 
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Fourier Magnitude 
+
+
+log S (I) 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+99 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Fourier Phase 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+100 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Q: Which contains more visually relevant 
+information; magnitude or phase? 
+
+
+
+original image 
+
+
+log Fourier 
+magnitude 
+
+
+Fourier phase 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+101 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Magnitude Only Reconstruction 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+102 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+M’tude 
+of FT 
+set to 1 
+before 
+inverse 
+
+
+Phase Only Reconstruction 
+
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+103 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Proof of claim made on slide 25 : 
+
+
+00 
+
+^ sin[(Q n ri-CQ n t) = 0, where co n 
+
+n=— oo 
+
+
+2 mi 
+
+"T" 
+
+
+Let £, = r)-t then 
+
+sm(ry„/7-ry n t) = sin(^f ^). 
+Expand sin(-) as a Maclaurin series: 
+
+
+k = 0 
+
+and substitute it back into the first equation, 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+104 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Proof of claim made on slide 25 (cont’d.): 
+
+00 00 00 
+
+
+n=-oo 
+
+
+n =- oo k=0 
+
+
+00 00 
+
+Z R V (2m A 
+
+{2k+i)\ LU w 
+
+&=0 n=— oo 
+
+
+2/fc+l 
+
+
+
+
+(2Jfc+l) 
+
+/c=0 l n - 1 L 
+
+
+00 
+
+
+-ZS>+Z 
+
+
+oo 
+
+
+k=0 
+
+oo 
+
+
+(2/t+l)! 
+
+
+2/fc+l 
+
+
+. 2k+l 
+
+
+, 2k+l 
+
+
+n - 1 
+oo 
+
+
+k=0 
+
+00 
+
+=i 
+
+k=0 
+
+= 0 
+
+
+(2k+l)\ 
+
+_Rl_ 
+
+(2/t+l)! 
+
+
+/7 = 1 
+00 
+
+
+-ZSiio+Z (¥«)“*- («) 
+
+
+2£+l 
+
+
+»+Z[0] 
+
+
+71 = 1 
+
+
+4 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+p. 25 
+
+
+105 
+
+

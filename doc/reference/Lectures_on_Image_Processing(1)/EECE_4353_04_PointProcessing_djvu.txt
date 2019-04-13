@@ -1,0 +1,4302 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE/CS 4353 Image Processing 
+
+Lecture Notes: The Point Processing of Images 
+
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution -Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Point Processing of Images 
+
+
+• In a digital image, a point = a pixel. 
+
+• Point processing transforms a pixel’s 
+value as function of its value alone. 
+
+• It does not depend on the values of 
+the pixel’s neighbors. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Point Processing of Images 
+
+Examples include: 
+
+• Brightness and contrast adjustment 
+
+• Gamma correction 
+
+• Histogram equalization 
+
+• Histogram matching 
+
+• Color correction. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+
+
+Point Processing 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+- gamma - brightness 
+
+
+
+histogram mod - contrast 
+
+
+
+original 
+
+
+
+original 
+
+
+
++ contrast 
+
+
+histogram EQ 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Point Processing: Pixel Values 
+
+A point process transforms one intensity level (or color) into 
+another as a function of that one alone. So a point process is 
+
+Pout = /(Pi„)- 
+
+That is, the pixel value output is dependent on only the pixel value 
+input. That implies 
+
+Po„,( r ’ C ) = /(Pin( r ’ C ))- 
+
+
+In words, the output at one location is dependent only the value of 
+the input image at that same location. Other locations don’t matter. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Point Ops via Functional Mappings 
+
+
+Image: 
+
+
+
+Pixel: 
+
+
+Input 
+
+
+Output 
+
+I(r,c) |— 
+
+function,/ * 
+
+J(r,c) | 
+
+
+The transformation of image I into image J is 
+accomplished by replacing each input intensity, g , with 
+a specific output intensity, k, at every location ( r,c,b ) 
+where I (r,c,b) = g. 
+
+
+j = o[i] 
+
+
+If I (r,c,b) = g 
+and f(g) = k 
+then J (r,c,b) = k. 
+
+
+The rule that associates k with g is usually 
+specified with a function,/, so that f(g) = k. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Point Ops via Functional Mappings 
+
+
+One-band Image 
+
+
+J(r,c)=/(I(r,c) ), 
+
+for all pixel locations, (r,c). 
+
+
+Three-band Image 
+
+
+J (r,c,b) =/( I (r,c,b ) ), or 
+5(r,c,b) =f b ( I (r,c,b ) ), or 
+for b = 1, 2, 3, and all ( r,c ). 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Point Ops via Functional Mappings 
+
+
+One-band Image 
+
+Either all 3 bands 
+are mapped through 
+the same function, 
+f , or ... 
+
+
+Three-band Image 
+
+
+J(r,c)=/(I(r,c) ), 
+
+for all pixel locations, (r,c). 
+
+
+J (r,c,b) =/( I (r,c,b) ), or 
+
+J (r,c,b) =f b ( I (r,c,Z0 ), or 
+for b = 1, 2, 3, and all / ' eac x h b 
+
+and is 
+
+
+mapped through 
+a separate func- 
+tion, f b . 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Look-Up Tables 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Lookup Tables 
+
+A lookup table is an indexed list of numbers - a vector - that can 
+be used to implement a discrete function - a mapping from a set 
+of integers, {g in t , g m 2 , ... , g in „}, to a set of numbers (integers or 
+
+not ), Uout.i’ £out, 2, - , gout,,/}- A lookup table can implement a 
+function such as: 
+
+
+if Som = /(Sin), where g in e{0,...,n-l} and # out e{g ouU }" =1 
+then define LUT(g iia + l) = LUT(£) = g 0Mk , for k = l,...n. 
+
+We’ve already seen one of these, the colormap. 1 
+
+1 Lecture 2, slides 29-40. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Point Operations using Lookup Tables 
+
+
+A lookup table (LUT) 
+can implement a 
+functional mapping. 
+
+
+If k = f(g), 
+for g =0,...,255, 
+
+and if stakes on 
+valuesin{o,...,255}, ... 
+
+
+
+. . . then the LUT 
+that implements/ 
+is a 256x1 array 
+whose (g +l) th 
+value is k =f(g). 
+
+
+LUT is 256x1. 
+But I may be 
+RxC or RxCx3. 
+
+
+To remap an 
+image, I, to J : 
+
+
+J = LUT (1+ 1 ) 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Point Operations = Lookup Table Ops 
+
+
+in 
+
+
+
+
+index 
+
+value 
+
+• • • 
+
+• • • 
+
+101 
+
+64 
+
+102 
+
+68 
+
+103 
+
+69 
+
+104 
+
+70 
+
+105 
+
+70 
+
+106 
+
+71 
+
+• • • 
+
+• • • 
+
+
+input output 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+How to Generate a Lookup Table 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Point Ops on RGB Images using Lookup Tables 
+If I is 3-band, then 
+
+a) each band is mapped separately using the 
+same LUT for each band or 
+
+b) each band is mapped using different LUTs - 
+one for each band. 
+
+
+a) J = LUT(I+1), 
+
+b) J = LUT fo (I +1), for b= 1,2, 3. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+1-Band Lookup Table for 3 -Band Image 
+
+
+
+input 
+
+
+a pixel with 
+this value 
+
+
+— Channel: j RGB 
+
+
+
+
+Input: 192 
+Output: |224| 
+
+
+X 
+
+CD 
+
+■o 
+
+c 
+
+
+CD 
+
+O 
+
+
+FT 
+
+
+ME 
+
+
+0 
+
+0 
+
+• 
+
+: ^ 
+
+64 
+
+32 
+
+# 
+
+• 
+
+128 
+
+128 
+
+• 
+
+• 
+
+192 
+
+224 
+
+\ 
+
+\ 
+
+255 
+
+255 
+
+
+
+output 
+
+
+is mapped to 
+this value 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Example 3 -Band Image . . . 
+
+
+
+Lightning at Ramasse, Rhone-Alpes, France by Flickr user, Regarde la-bas, 
+
+https://www.flickr.com/photos/marcel s s/8624344496/in/pool-tbasab/ 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+. . . with 3 -Band LUT. 
+
+
+
+
+Lightning at Ramasse, Rhone-Alpes, France by Flickr user, Regarde la-bas, 
+
+https://www.flickr.com/photos/marcel s s/8624344496/in/pool-tbasab/ 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+
+R is mapped 
+through a 
+sigmoid. 
+
+
+. . . with 3 -Band LUT. 
+
+
+250 
+
+
+200 
+
+
+Example R,G,& B Lookup Tables 
+
+
+0 5 7T Ttrz rtr r^r- 
+
+The dark values of B are contrast 
+stretched while the light values 
+are negated and stretched. 
+
+
+^ 150 
+
+
+& is mapped to 
+its negative 
+
+
+Lightning at Ramasse, Rhone-Alpes, France by Flickr user, Regarde la-bas, 
+
+https://www.flickr.com/photos/marcel s s/8624344496/in/pool-tbasab/ 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Resultant bands recom- 
+bined into one image. 
+
+
+3 -Band Image with 3 -Band LUT. 
+
+
+
+Lightning at Ramasse, Rhone-Alpes, France by Flickr user, Regarde la-bas, 
+
+https://www.flickr.com/photos/marcel s s/8624344496/in/pool-tbasab/ 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+A silly example to demon- 
+strate some possibilities. 
+
+
+3 -Band Image with 3 -Band LUT. 
+
+
+
+Lightning at Ramasse, Rhone-Alpes, France by Flickr user, Regarde la-bas, 
+
+https://www.flickr.com/photos/marcel s s/8624344496/in/pool-tbasab/ 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Basic Point Processing: 
+Brightness, Contrast, and Gamma 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+
+Point Processing 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+- gamma - brightness 
+
+
+
+histogram mod - contrast 
+
+
+
+original 
+
+
+
+original 
+
+
+
++ contrast 
+
+
+histogram EQ 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Point Processes: Original Image 
+
+
+
+Kinkaku-ji (4 eI® tF, Temple of the 
+Golden Pavilion), also known as 
+Rokuon-ji Deer Garden 
+
+Temple), is a Zen Buddhist temple 
+in Kyoto, Japan. 
+
+Photo by Alan Peters, August 1993. 
+
+
+
+Luminance Histogram 
+
+
+For more information on this fascinating, unique 
+place read the historical novel by Mishima,Yukio, 
+The Temple of the Golden Pavilion , translated by 
+Ivan Morris, Shinchosha Publishing Co, Ltd., 1956. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Point Processes: Increase Brightness 
+
+
+
+I (r,c,b) + g, if l(r,c,b) + g < 256 
+
+
+J (r,c,b) = 
+
+
+255, 
+
+
+if \[r,c,b) + g > 255 
+
+
+g > 0 and b e { 1, 2, 3 } is the band index. 
+
+
+Channel: || Luminosity 
+
+
+VI 
+
+
+
+Mean: 
+Std Dev: 
+Median: 
+Pixels: 
+
+
+166.30 
+
+39.58 
+
+158 
+
+514500 
+
+
+Level: 
+Count: 
+Percentile: 
+Cache Level: 
+
+
+
+/ saturation point 
+
+
+0 127 255 
+
+LUT Mapping 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Point Processes: Decrease Brightness 
+
+
+
+
+Jb >C ,M = {°’ if ty,ty)-g<0 
+
+|l (r,c,b)-g, if l(r,c,b)-g >0 
+
+g > 0 and b e { 1, 2, 3 } is the band index. 
+
+
+
+Channel: | Luminosity 
+
+
+
+in 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Point Processes: Decrease Contrast 
+
+
+
+T (r,c,b) = a[l(r,c,b)~ s~^ + s, 
+where 0 < a < 1 .0, 
+
+s e{0,l,2,...,255}, and 
+be{ 1,2,3}. 
+
+
+s is the 
+center of 
+the contrast 
+function. 
+
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Point Processes: Increase Contrast 
+
+
+
+T(r,c,£) = r 
+
+j[l(r,c,b)- s~^ + s 
+
+0, if T (r,c,b) < 0, 
+
+j(r,c,b) = < 
+
+T (r,c,b), if 0 < T(r,c,&) < 255, 
+
+255, if T(r,c,b)>255. 
+
+a> 1, s e{0,...,255}, Z?e{ 1,2,3} 
+
+
+
+in 
+
+in 
+
+<N 
+
+
+Here , s = 
+
+
+r- 
+
+<N 
+
+
+°0 127 255 
+
+LUT Mapping 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Point Processes: Contrast Stretch 
+
+
+
+
+Let mj = min[l(r,c)] , M Y = max[l(r,c)], 
+m, = min[j(r,c)] , M } = max[j(r,c)]. 
+
+Then, 
+
+< \ / \ if r,c]-nu 
+
+J r,c = M. m. ) v ' + ntj. 
+
+v ' v J M l -m l J 
+
+
+
+Channel: | Luminosity 
+
+
+
+Mean: 80.25 
+Std Dev: 56.97 
+Median: 67 
+Pixels: 514500 
+
+
+M T £ 
+
+J <N 
+
+
+O 
+
+<N 
+
+
+m j° 
+
+
+zero j 
+
+?oint 
+
+\ 
+
+// 
+
+
+center point 
+
+H"" 
+
+sat. point 
+
+
+0 
+
+
+M l 255 
+
+
+LUT Mapping 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+
+
+histograms 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Information Loss from Contrast Adjustment 
+
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Information Loss from Contrast Adjustment 
+
+
+
+
+abbreviations: 
+
+original 
+
+low-contrast 
+
+high-contrast 
+
+restored 
+
+difference 
+
+
+difference between 
+original and restored 
+low-contrast 
+
+
+
+
+
+difference between 
+original and restored 
+high-contrast 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Point Processes: Increased Gamma 
+
+
+
+
+
+1 
+
+j(r,c) = 255- 
+
+l(r,c) 
+
+^ for y > 1 .0 
+
+255 
+
+
+
+
+
+Channel: | Luminosity 
+
+
+
+Mean: 157.00 
+StdDev: 43.11 
+Median: 154 
+Pixels: 514500 
+
+
+
+in 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Point Processes: Decreased Gamma 
+
+
+
+
+
+1 
+
+j(r,c) = 255- 
+
+I(r,c) 
+
+^ for 0 < y < 1 .0 
+
+_ 255 _ 
+
+
+
+
+
+
+
+0 m 127 M 255 
+
+
+LUT mapping 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Point Processes: Decreased Gamma 
+
+r 
+
+
+rhannol- I I i irninnc itu 
+
+
+Rather than rather than 255[I/255] 1 ^, gamma correction can also be 
+defined as 255[I/255]T The eff ects are opposite. That definition is 
+often used for image processing as a precursor to coding for 
+transmission. (https://en.wikipedia.orq/wiki/Gamma correction .) 
+
+
+
+
+1 
+
+j(r,c) = 255- 
+
+I(r,c) 
+
+^ for 0 < y < 1 .0 
+
+_ 255 _ 
+
+
+
+
+
+Pixels: 514500 
+
+
+Cache Level: 1 
+
+
+
+m 127 M 255 
+
+LUT mapping 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gamma Correction: Effect on Histogram 
+
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Point Processing: 
+Histogram Equalization 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Point Processes: Histogram Equalization 
+
+
+Task: remap a 1 -band image I so that its histogram is as 
+close to constant as possible. This maximizes the contrast 
+evenly across the entire intensity range. 
+
+
+Let P I (y + 1) be the cumulative (probability) distribution 
+function of I. Then J has, as closely as possible, a flat 
+(constant) histogram if: 
+
+
+J (r,c,b)= 255 -Pj [i ( r, c, fr) + 1] . 
+The scaled CDF itself is used as the LUT. 
+
+
+one-band 
+
+image 
+
+
+That is, to equalize a one-band image, map it through its own CDF 
+multiplied by the maximum desired output value. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Point Processes: Histogram Equalization 
+
+
+Task: remap image I with min = m 1 and max = so that its 
+histogram is as close to constant as possible and has min = m 
+and max = M i . 
+
+Let Pj(y + 1) be the cumulative (probability) distribution 
+function of I. 
+
+
+Then J has, as closely as possible, the correct histogram if 
+
+
+Using 
+
+intensity 
+
+extrema 
+
+
+J (r,c) = (M J -m J ) 
+
+
+P I [l(r,c) + l]-P I (m I +l) 
+
+
++ 
+
+
+m r 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+
+V 
+
+
+Histogram EQ 
+
+
+
+Value Image 
+
+
+
+Histogram EQ’d Value Image 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The CDF (cumulative distribution) 
+x 255 is the LUT for remapping. 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Histogram EQ 
+
+
+
+Value Image 
+
+
+
+Histogram EQ’d Value Image 
+
+
+The CDF (cumulative distribution) 
+x 255 is the LUT for remapping. 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+39 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Histogram EQ 
+
+
+
+Value Image 
+
+
+
+Histogram EQ’d Value Image 
+
+
+The CDF (cumulative distribution) 
+x 255 is the LUT for remapping. 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+40 
+
+
+V 
+
+
+Histogram EQ 
+
+
+
+Histogram EQ’d Value Image 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+41 
+
+
+Once again, but bigger 
+(and with more feeling!) 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Histogram EQ of a Grayscale Image 
+
+
+
+Luminance Image Luminance Histogram 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+42 
+
+
+
+Once again, but bigger 
+(and with more feeling!) 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Histogram EQ of a Grayscale Image 
+
+Luminance CDF of Kinkaku-ji 
+
+
+
+Luminance Image Luminance CDF 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+43 
+
+
+
+Once again, but bigger 
+(and with more feeling!) 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Histogram EQ of a Grayscale Image 
+
+LUT for Luminance Equalization of Kinkaku-ji 
+
+
+
+Luminance Image Equalization LUT 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+44 
+
+
+
+Once again, but bigger 
+(and with more feeling!) 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Histogram EQ of a Grayscale Image 
+
+
+
+Equalized Luminance Image Histogram of Eq’d Image 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+45 
+
+
+
+Once again, but bigger 
+(and with more feeling!) 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Histogram EQ of a Grayscale Image 
+
+
+
+Luminance Image Equalized Luminance Image 
+
+
+Note the detail loss 
+in saturated areas. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+46 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+One CDF-based 
+LUT for each band 
+
+
+Histogram EQ of Individual Color Bands 
+
+
+
+Original Color Image Color Histograms 
+
+Here we will create a separate equalization LUT for 
+each of the color bands from each of their CDFs. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+47 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+One CDF-based 
+LUT for each band 
+
+
+Histogram EQ of Individual Color Bands 
+
+
+
+CDFs of Kinkaku-ji Color Bands 
+
+
+
+Original Color Image Color CDFs 
+
+Here we will create a separate equalization LUT for 
+each of the color bands from each of their CDFs. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+48 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+One CDF-based 
+LUT for each band 
+
+
+Histogram EQ of Individual Color Bands 
+
+
+
+Original Color Image 
+
+
+LUT for Color Equalization of Kinkaku-ji 
+
+
+
+Equalization LUTs 
+
+
+These are the separate equalization LUTs - one for each of the color bands. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+49 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+One CDF-based 
+LUT for each band 
+
+
+Histogram EQ of Individual Color Bands 
+
+
+
+0 50 100 150 200 250 
+
+Equalized Color Image Histogram of Eq’d Image 
+
+This is the result of mapping each band through its own equalization LUT. 
+
+Notice how the hues have changed in some parts of the image. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+50 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+One CDF-based 
+LUT for each band 
+
+
+Histogram EQ of Individual Color Bands 
+
+
+
+Original Color Image Equalized Color Image 
+
+This is the result of mapping each band through its own equalization LUT. 
+
+Notice how the hues have changed in some parts of the image. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+51 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+One CDF-based 
+LUT for each band 
+
+
+Histogram EQ of Individual Color Bands 
+
+
+
+Equalized Color Image Original Color Image 
+
+This is the result of mapping each band through its own equalization LUT. 
+
+Notice how the hues have changed in some parts of the image. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+52 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Luminance EQ of a Color Image 
+
+
+
+Original Color Image Color Histograms 
+
+Here we compute the CDF of the luminance or value image, make a 
+LUT from it, then remap all three color bands through the same LUT. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+53 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Luminance EQ of a Color Image 
+
+
+
+x 10 
+
+
+Luminance Histogram of Kinkaku-ji 
+
+
+
+Luminance Image Luminance Histogram 
+
+Here we compute the CDF of the luminance or value image, make a 
+LUT from it, then remap all three color bands through the same LUT. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+54 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Luminance EQ of a Color Image 
+
+
+
+Original Color Image 
+
+
+
+Color CDFs 
+
+
+Here we compute the CDF of the luminance or value image, make a 
+LUT from it, then remap all three color bands through the same LUT. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+55 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Luminance EQ of a Color Image 
+
+
+
+Luminance Image 
+
+
+Luminance CDF of Kinkaku-ji 
+
+
+
+Luminance CDF 
+
+
+Here we compute the CDF of the luminance or value image, make a 
+LUT from it, then remap all three color bands through the same LUT. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+56 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Luminance EQ of a Color Image 
+
+
+
+LUT for Luminance Equalization of Kinkaku-ji 
+
+
+
+Original Color Image Equalization LUT 
+
+Here we compute the CDF of the luminance or value image, make a 
+LUT from it, then remap all three color bands through the same LUT. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+57 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Luminance EQ of a Color Image 
+
+
+
+Luminance Eq’d Color Image Original Color Image 
+
+This is what we get when we map each of the three bands through 
+the LUT created from the CDF of the image’s luminance. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+58 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Histogram EQ of the Individual Bands 
+
+
+
+Each band EQ’d Separately Luminance EQ’d Color Image 
+
+The left image is what we got when we equalized each of the three bands separately. The 
+right image is what we get when we map each color band through the luminance CDF 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+59 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Luminance EQ of a Color Image 
+
+
+
+Original Color Image Luminance Eq’d Color Image 
+
+Remapping each of the color bands through the luminance CDF LUT preserves the 
+hues of the original image better than the individual equalization of each color band. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+60 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Point Processing: 
+Histogram Matching 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+61 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Point Processing: Histogram Matching 
+
+Task: Remap image I d (discolored) so that it has, as 
+closely as possible, the same histogram as image J r 
+(reference). 
+
+Q: Why do this? 
+
+A: Restore a degraded image based on an original. 
+Match the characteristics of images of the same 
+scene from different cameras. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+62 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Point Processing: Histogram Matching 
+
+Task: Remap image I d (discolored) so that it has, as 
+closely as possible, the same histogram as image J r 
+(reference). 
+
+Because the images are digital it is not, in general, 
+possible to make h A = h x . Therefore, p d £p r . 
+
+Q: How, then, can the matching be done? 
+
+A: By matching percentiles. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+63 
+
+
+d: discolored 
+r: reference 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Matching Percentiles 
+
+Recall: 
+
+• CDF P d of image I d is such that 0 < P d ( g d ) < 1 . 
+
+• ty ( ,? c i + 1 ) = c means that c is the fraction of pixels in I d that 
+have a value less than or equal to g d . 
+
+• 100c is the percentile of pixels in I d that are less than or equal 
+tog d . 
+
+To match percentiles, replace all occurrences of value g d in image 
+I d with value g T from image J r whose percentile in J r most closely 
+matches the percentile of g d in image I d . 
+
+
+... assuming a 1-band image, 
+one band of a color image, 
+or its luminance image. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+64 
+
+
+
+d: discolored 
+r: reference 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Matching Percentiles 
+
+
+... assuming a 1-band image, 
+one band of a color image 
+or its luminance image. 
+
+
+So, to create an image, K, from image I d such that K 
+has nearly the same CDF as image J r do the following: 
+
+If I d (r,c) = g d then let K(r,c) = g Y where g Y is such that 
+
+P d (?d) > P , ( Sr - 1 ) AND Pdig^^Prigr)- 
+
+
+Example: 
+
+I d (^c) = 5 
+P d (5) = 0.65 
+P r ( 9) = 0.56 
+P r (10) = 0.67 
+K(r,c) = 10 
+
+
+^0 
+
+0.8 
+
+0.6 
+
+0.4 
+
+0.2 
+
+0.0 
+
+
+
+
+
+
+
+
+
+
+
+
+S-H 
+
+^0 
+
+V 0 ' 8 
+
+
+
+
+
+
+
+
+I 
+
+il 
+
+1 
+
+
+
+
+
+
+
+
+
+
+0.6 
+
+0.4 
+
+0.2 
+
+1 A A 
+
+■■ l 
+
+ill 
+
+1 
+
+
+
+
+
+
+i 
+
+0 1 2 3 4 5 
+
+i 6 7 8 9 1011 12131415 gj VM 0 1 2 3 4 5 6 7 8 9 1( 
+
+111 12131415 gj 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+65 
+
+
+
+d: discolored 
+r: reference 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Histogram Matching Algorithm 
+
+
+... assuming a 1-band image, 
+one band of a color image 
+or its luminance image. 
+
+
+
+This directly matches 
+image I d to image J r . 
+
+
+P*{8 a +1 ) 
+
+: CDF ofI d , 
+
+USr+1) 
+
+: CDF of J d . 
+
+m r = 
+
+min J r , 
+
+M r = 
+
+max J r , 
+
+ra d = 
+
+min I d , 
+
+M d = 
+
+max I d . 
+
+Better to 
+
+use a LUT. 
+
+See slide 
+
+74. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+66 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Example: Histogram Matching 
+
+
+Discolored Image pdf 
+
+
+Discolored 
+Image with 
+16 intensity 
+values. 
+
+
+U °- 25 
+0.20 
+
+
+Image 
+
+probability density function, 
+pdf 7 . 
+
+
+0.15 
+
+
+0.10 
+
+0.05 
+
+0.00 
+
+
+Llk 
+
+
+I ii n. 
+
+
+n ■ 
+
+
+0123456789 1011 12131415 g 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+67 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Example: Histogram Matching 
+
+Discolored Image CDF 
+
+
+
+*a.k.a Cumulative Distribution Function, CDFj. 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+68 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Example: Histogram Matching 
+
+■p\ r j A r Reference 
+
+Reference Image pdf . with 
+
+16 intensity 
+
+
+^ 0.1 5 r 
+
+"O 
+
+& 0.12 - pdf. 
+
+
+0.09 - 
+
+0.06 - 
+
+0.03 - 
+
+0.00 
+
+
+Target 
+
+probability density function, 
+
+
+values. 
+
+
+Target a.k.a. Reference 
+
+
+m 
+
+
+IL 
+
+
+0123456789 1011 12131415 g 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+69 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Example: Histogram Matching 
+
+Reference Image CDF 
+
+
+
+*a.k.a Cumulative Distribution Function, CDFj. 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+70 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Histogram Matching with a Lookup Table 
+
+The algorithm on slide 66 matches one image to another directly. 
+Often it is faster or more versatile to use a lookup table (LUT). 
+Rather than remapping each pixel in the image separately, one 
+can create a table that indicates to which target value each input 
+value should be mapped. Then 
+
+K = LUT[I d + 1] 
+
+In Matlab if the LUT is a 256 x l matrix with values from 0 to 
+255 and if image I d is one-band of type uint8, it can be 
+
+remapped with the following code: 
+
+K = uint8 (LUT (1+1) ) ; 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+71 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+
+Vanderbilt University School of Engineering 
+
+
+Histogram Matching with a Lookup Table 
+
+
+The E-Z teenage New York version* on the previous page only 
+works for one-band images. For truecolor or other multiband 
+images you need to execute the LUT on each band separately. 
+
+
+
+if E == 1 % single band LUT; multi -band image 
+for b = 1 :B 
+
+J( : , : ,b) = LUT (1+double (I ( : , : ,b) ) ) ; 
+
+end 
+
+else % multiband LUT; multi-band image 
+for b = 1 :B 
+
+LUT ID = squeeze (LUT ( : , 1 ,b) ) ; 
+
+J( : , : ,b) = LUT1D (1+double (I ( : ,b) )) ; 
+
+end 
+
+end 
+
+
+'http://www.science.uva.nl/~robbert/zappa/albums/Zappa_ln_New_York/10.html & http://youtu.be/GDwRJK8bpb4 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+72 
+
+
+
+LUT Creation 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+1.0 r 
+0.8 - 
+0.6 - 
+0.4 - 
+0.2 - 
+0.0 - 
+
+
+Discolored CDF 
+
+
+
+1.0 
+
+
+0.8 
+
+
+
+
+0.4 
+
+
+0.2 
+
+
+0.0 
+
+
+Reference CDF 
+
+
+
+0 1 2 3(4)5 6 7 8 9 1011 12131415 ' 0 1 2 3 4 5 6 7 8 9 (1011 12131415 
+
+
+
+0 1 2 3 @ 5 6 7 8 9 10 11 12 13 14 15 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+73 
+
+
+d: discolored 
+r: reference 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Look Up Table for Histogram Matching 
+
+
+LUT = zeros (256,1 ) ; This creates a look-up 
+
+g = 0; table which can then be 
+
+used to remap the image. 
+
+for g d = 0 to 255 i 
+
+while J P r (^ r+ i)< J P d (^ d+ i) AND g r < 255 
+
+r a (*d+ 1): CDF of I d , 
+P,(g,+ 1): CDF of J r , 
+
+LUT (g d +l): Look-Up Table 
+
+] 
+
+
+g r = g r +i; 
+
+end 
+
+LUT( Sd + l) = j; r ; 
+
+end 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+74 
+
+
+(g)'d (*)un 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Discolored & Reference CDFs, LUT, and Resultant CDF 
+
+
+
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+75 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Example: Histogram Matching 
+
+
+
+
+
+discolored 
+
+
+reference 
+
+
+remapped 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+76 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Probability Density Functions (pdfs) 
+
+
+
+Atlas-Mercury r, g, b, & v pdfs (densities) 
+0 . 03 1 1 1 1 
+
+
+0.025 
+
+
+
+red pdf 
+
+green pdf 
+
+
+blue pdf 
+luminosity pdf 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+77 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Cumulative Distribution Functions (CDF) 
+
+1 
+
+0.5 
+
+0 
+1 
+
+0.5 
+
+0 
+1 
+
+0.5 
+
+0 
+1 
+
+0.5 
+
+0 
+
+red CDF blue CDF- 
+
+luminosity CDF- 
+
+
+Atlas-Mercury r, g, b, & v PDFs (Distributions) 
+
+
+
+
+
+1 
+
+
+
+
+50 
+
+100 
+
+150 
+
+200 
+
+250 
+
+
+
+
+
+
+
+
+50 
+
+100 
+
+150 
+
+200 
+
+250 
+
+- 
+
+
+
+
+
+- 
+
+
+50 
+
+100 
+
+150 
+
+200 
+
+250 
+
+- 
+
+
+
+
+
+- 
+
+
+50 100 150 200 250 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+78 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Probability Density Functions (pdfs) 
+
+0.02 
+
+0.018 
+
+0.016 
+
+0.014 
+
+0.012 
+
+0.01 
+
+0.008 
+
+0.006 
+
+0.004 
+
+0.002 
+
+0 
+
+red pdf blue pdf 
+
+green pdf luminosity 
+
+
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+79 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Cumulative Distribution Functions (CDF) 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+80 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Remap one Image to have the RGB CDF of Another 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+81 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+RGB CDFs and the LUTs 
+
+
+Atlas-Mercury Red PDF 
+
+1 
+
+Atlas-Mercury Green PDF 
+
+1 
+
+
+Atlas-Mercury Blue PDF 
+
+
+. 
+
+
+0.5 
+
+. ^ 
+
+
+0.5 
+
+
+
+- 
+
+y i i i i 
+
+
+0 
+
+i 1i 
+
+i i i i 
+
+
+0 
+
+1 
+
+y 
+
+
+
+TechnoTrousers Red PDF 
+
+250 
+
+TechnoTrousers Green PDF 
+
+250 
+
+
+TechnoTrousers Blue PDF 
+
+250 
+
+
+
+0.5 
+
+- 
+
+
+0.5 
+
+
+
+- 
+
+
+
+0 
+
+
+
+O 1 
+
+
+
+
+LUT (Red) Atlas-Mercury to TechnoTrousers 
+
+0 
+
+LUT (Green) Atlas-Mercury to TechnoTrousers 
+
+
+
+LUT (Blue) Atlas-Mercury to TechnoTrousers 
+
+0 
+
+
+
+200 
+
+i t i i ^ 
+
+
+
+
+
+
+
+_ 
+
+
+200 
+
+
+
+
+- 
+
+
+100 
+
+- 
+
+
+100 
+
+
+
+- 
+
+/ 
+
+
+0 
+
+1 
+
+/ iiii 
+
+
+0 
+
+•j 
+
+/ 
+
+
+
+Atlas-Mercury RGB Remapped Red PDF 
+
+250 
+
+Atlas-Mercury RGB Remapped Green PDF 
+
+50 
+
+
+Atlas-Mercury RGB Remapped Blue PDF 
+
+250 
+
+
+
+0.5 
+
+i i i — 
+
+- — t— 
+
+0.5 
+
+
+
+
+
+
+0 
+
+iiii 
+
+
+0 
+
+
+
+
+50 100 150 200 
+
+250 
+
+50 100 150 200 
+
+250 
+
+
+50 100 150 200 
+
+250 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+82 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Effects of RGB Remapping on pdfs 
+
+
+Atlas-Mercury r, g, b, & v pdfs (densities) 
+
+
+
+Before 
+
+
+Atlas-Mercury RGB Remapped pdfs (densities) 
+
+
+
+After 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+83 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Effects of RGB Remapping on CDFs 
+
+Atlas-Mercury r, g, b, & v PDFs (Distributions) Atlas-Mercury RGB Remapped PDFs (Distributions) 
+
+
+0.5 - 
+
+i 
+
+in c 
+
+o 
+
+
+50 100 150 200 250 50 100 150 200 250 
+
+
+0.5 - 
+
+n l l l l l 
+
+0.5 - 
+
+n l l l i l 
+
+
+50 100 150 200 250 50 100 150 200 250 
+
+
+i 1 1 1 1 — i 
+
+0.5 - ^ 
+
+0.5 - 
+
+n l l l l l 
+
+
+50 100 150 200 250 50 100 150 200 250 
+
+
+1 1 1 1 — i — |— 
+
+0.5 - 
+
+0.5 - ^ 
+
+
+50 100 150 200 250 50 100 150 200 250 
+
+Before After 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+84 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Remap one Image to have the Lum. CDF of Another 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+85 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Luminance CDFs and the LUT 
+
+
+Atlas-Mercury Luminosity CDF 
+
+
+
+LUT (Luminosity) Atlas-Mercury to TechnoTrousers 
+
+
+
+50 100 150 200 250 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+86 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Effects of Luminance Remapping on pdfs 
+
+
+Atlas-Mercury r, g, b, & v pdfs (densities) 
+
+
+Atlas-Mercury Value Remapped pdfs (densities) 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+87 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Effects of Luminance Remapping on CDFs 
+
+
+Atlas-Mercury r, g, b, & v PDFs (Distributions) 
+
+
+Atlas-Mercury Value Remapped PDFs (Distributions) 
+
+
+50 
+
+
+100 
+
+
+150 
+
+
+200 
+
+
+250 
+
+
+
+50 
+
+
+100 
+
+
+150 
+
+
+200 
+
+
+250 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+88 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Histogram Equalization Revisited 
+
+
+Our first attempt to equalize the color version of Kinkaku-ji by mapping each band 
+through its own CDF LUT led to the unsatisfactory results below (left): 
+
+
+
+(a) Direct equalization of the color bands by (b) Equalization of the color bands by mapping 
+
+mapping each band though its own CDF. each band though the CDF of the luminance 
+
+LUT b = 255*CDF b image. LUT b = 255*CDF L . 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+89 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Histogram Equalization Revisited 
+
+
+Histogram matching presents another alternative: Match each color band CDF 
+with the CDF from the luminance image. Then we get: 
+
+
+
+(a) Original image. (b) Equalization by mapping band, b, 
+
+though LUT fo = 255*[CDFJ- 1 .*CDF fo . 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+90 
+
+
+
+Each color band CDF is matched 
+to the luminance CDF to 
+generate a LUT for each band 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+EQ by matching each color-band to image luminance 
+
+
+In 6 (count 'em) 1 ■ Convert image I into grayscale image, L, via your 
+6 E-Z steps! favorite weighting scheme. 
+
+2. Compute the 3 color histograms, h c , C e {R,G,B} of I 
+and the histogram, h L , of L. 
+
+3. Compute the 4 probability density functions, p c , 
+
+C e {R,G,B,L}, from the h c . 
+
+4. Compute the 4 cumulative distribution functions, H c , 
+C e {R,G,B,L}, from the p c . 
+
+5. Generate 3 lookup tables, T c , C e {R,G,B}, by 
+matching H R to H L , H G to H h , & H B to H h . 
+
+6. Map each image band {R,G,B} through its 
+corresponding lookup table T c . 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+91 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Each color band CDF is matched 
+to the luminance CDF to 
+generate a LUT for each band 
+
+
+EQ by matching each color-band to image luminance 
+
+
+
+Original Color Image Color & Lum. Histograms 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+92 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Each color band CDF is matched 
+to the luminance CDF to 
+generate a LUT for each band 
+
+
+EQ by matching each color-band to image luminance 
+
+
+CDFs of Kinkaku-ji Color Bands and Lumninance Image 
+
+
+
+Original Color Image Color & Lum. CDFs 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+93 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Each color band CDF is matched 
+to the luminance CDF to 
+generate a LUT for each band 
+
+
+EQ by matching each color-band to image luminance 
+
+
+Matched LUT for Luminance Remapping of Color Bands 
+
+
+
+Original Color Image Equalization LUT 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+94 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Each color band CDF is matched 
+to the luminance CDF to 
+generate a LUT for each band 
+
+
+EQ by matching each color-band to image luminance 
+
+
+
+Luminance matched image Histo of lum matched image 
+
+
+Note the desaturation of the colors. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+95 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Each band in one image is 
+matched to the same band 
+in the other image. 
+
+
+Method 1: Match each band, use 3 different LUTs 
+
+
+
+Original color image Each band eq’d separately 
+
+Right image: equalized each of the three bands separately (pp. - ). 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+96 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Luminance is used to generate 
+one LUT for all bands. 
+
+
+Method 2: Map each band through 1 luminance LUT 
+
+
+
+Original color image Each band eq’d through lum. 
+
+Right image: mapped each band through the LUT from luminance CDF (pp. - ). 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+97 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Each color band CDF is matched 
+to the luminance CDF to 
+generate a LUT for each band 
+
+
+Method 3: Match each band to luminance, 3 LUTs 
+
+
+
+Original Color Image Each band matched to lum. 
+
+Right image: matched each band to the luminance (pp. - ). 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+98 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Histogram Matching for Image Restoration 
+
+
+Degraded image 
+
+
+Another image of the same scene, not degraded 
+
+
+
+Lotus Flowers at Turtle Head Park, Lake Tai, Wuxi, Jiangsu Province, China. 
+
+Xffl SUffi >1^ ^H. Photos by R. A. Peters II, July 2013. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+99 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Histogram Matching for Image Restoration 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+100 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Histogram Matching for Image Restoration 
+
+
+Degraded image Another image of the same scene, not degraded 
+
+
+
+Lotus Flowers at Turtle Head Park, Lake Tai, Wuxi, Jiangsu Province, China. 
+
+jZ^ Photos by R. A. Peters II, July 2013. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+101 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Histogram Matching for Image Restoration 
+
+
+Remapped degraded image Another image of the same scene, not degraded 
+
+
+
+Lotus Flowers at Turtle Head Park, Lake Tai, Wuxi, Jiangsu Province, China. 
+
+jZ^ Photos by R. A. Peters II, July 2013. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+102 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Robot's view of boxes to move. 
+http://www.universalrobotics.com/ 
+
+
+Histogram Matching for Image Restoration 
+
+
+
+Left Image 
+
+
+Right Image 
+
+
+Images from a stereo pair of inexpensive web cams. Such cameras have different color 
+characteristics of-the-shelf. Once can be corrected to match the other using histo. matching. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+103 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Histogram Matching for Image Restoration 
+
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+104 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Robot's view of boxes to move. 
+http://www.universalrobotics.com/ 
+
+
+Histogram Matching for Image Restoration 
+
+
+
+Left Image 
+
+
+Right Image 
+
+
+Images from a stereo pair of inexpensive web cams. Such cameras have different color 
+characteristics of-the-shelf. Once can be corrected to match the other using histo. matching. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+105 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Robot's view of boxes to move. 
+http://www.universalrobotics.com/ 
+
+
+Histogram Matching for Image Restoration 
+
+
+Left Image Right Image 
+
+
+
+Right image histogram matched to left image. 
+
+
+21 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+106 
+
+

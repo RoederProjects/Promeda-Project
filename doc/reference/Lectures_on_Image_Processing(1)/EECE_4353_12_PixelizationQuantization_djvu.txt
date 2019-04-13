@@ -1,0 +1,2156 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes: 
+
+Pixelization, Quantization, and Steganography 
+
+Richard Alan Peters II 
+
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+
+Fall Semester 2016 
+
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution-Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Pixelization 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+Pixelization . . . 
+
+
+. . . is a special effect often used to hide identities . . . 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Pixelization 
+
+
+. . . or to “clean up” an image. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Pixelization and Quantization 
+
+
+
+high-res image pixelated quantized 
+
+This is what a digital camera does to 
+the continuous tone image projected 
+- by its optics onto the sensor plane. 
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+pixelated 
+& quantized 
+
+
+20 October 2016 
+
+
+5 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Pixelization and Quantization 
+
+
+pixel grid 
+
+
+column index 
+
+
+
+
+high-res image pixelated 
+
+
+All the photons that hit a single sensor 
+combine to produce a single intensity. 
+The result is pixelization of the image. 
+
+
+quantized 
+
+
+pixelated 
+& quantized 
+
+
+The intensity values are quantized - 
+mapped to a limited range of numbers. 
+
+© 1999-2016 by Richard Alan Peters II 6 
+
+
+20 October 2016 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Pixelization 
+
+
+I Take the average 
+
+within each square. 
+
+
+
+high-res image 
+
+
+DS 
+
+
+1 (r+l)A-l (c+1)A-1 
+
+= ZI(AJ); Ip=lDstA 
+
+
+pixelated image 
+
+
+
+
+{upsampled) 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixelization 
+
+
+I Take the average 
+
+within each square. 
+
+
+
+high-res image 
+
+
+DS 
+
+
+1 (r+l)A-l (c+1)A-1 
+
+= ZI(AJ); Ip=lDstA 
+
+
+pixelated image 
+
+
+
+
+{upsampled) 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Pixelization 
+
+
+Take the average 
+within each square. 
+
+
+
+high-res image 
+
+
+1 (r+l)A-l (c+1)A-1 pixelated image 
+
+Ids(^c) = ttZ Zi(aj); Ip=lDstA 
+
+/\ ny=cA {upsaffipled) 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixelization 
+
+
+Take the average 
+within each square. 
+
+
+
+high-res image 
+
+
+DS 
+
+
+1 (r+l)A-l (c+1)A-1 
+
+= ZI(AJ); Ip=lDstA 
+
+
+pixelated image 
+
+
+
+
+{upsampled) 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixelization Procedure (Part 1 ) 
+
+
+To pixelize an RxCxB image I by a factor, s: 
+
+Let I| be an \_R/s]x\_C/sjxB image. 
+
+Let the value of I| at location (r,c,b) be the average value of I 
+in the ^-square neighborhood starting at (rs,cs,b). 
+
+
+where 
+
+0li(r,c) 
+
+
+
+G I + 1 , . . . ,(r + 1) ^ - 1| , 
+X g|c5',C5' + 1,...,(c + 1)^-1| 
+
+
+Notation: 
+
+Ids = I i 5 
+
+Ids ^ downsampled by a factor of i*. 
+
+
+r <& c are indices in the 
+downsampled image. 
+p=rs+i A x=cs+j are indices 
+in the original image. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+II 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Pixelization Procedure (Part 2) 
+
+
+Let Ip be an RxCxB image. 
+
+Let the value of Ip in neighborhood, 0t(r,c) be 
+
+IpIA/T.^) =lDs(r.O^) for {p,z) ^%^{r,c). 
+
+
+where 
+
+%Jr,c) 
+
+
+(P’X) 
+
+
+yO e { + 1, . . . , ( r + 1) ^ - 1} , 
+
+
+Notation: 
+
+Ip = lost 5 
+
+Ip is Ij)s upsampled by a factor of 
+
+
+r <& c are indices in the 
+downsampled image. 
+p=rs+i <& x=cs+j are indices 
+in the upsampled image. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Pixelization 8 of s: 256x256 
+
+
+
+What is the scene in this picture? 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Pixelization ^ of 128x128 
+
+
+
+What is the scene in this picture? A room with a window? 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Pixelization ^ 
+
+
+
+What is the scene in this picture? Earth and sky? 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Pixelization 
+
+
+5 of 8: 32x32 
+
+
+
+What is the scene in this picture? A sign pointing [^]at a bright spot? 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Pixelization 
+
+
+4 of 8: 16x16 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Pixelization 
+
+
+3 of 8: 8x8 
+
+
+
+A bucolic landscape with a barn? Yes and a fine autumn day, too. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Pixelization 
+
+
+2 of 8: 4x4 
+
+
+
+Pixels are still visible at 4x4. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Pixelization 
+
+
+1 of 8: 2x2 
+
+
+
+Pixels are pretty much invisible at 2x2. But the resolution is wanting. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Pixelization original image 
+
+
+
+Switch back and forth between this slide and the previous one to see. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Pixelization by Factor 32 Cross-fade 1/5 
+
+
+
+This 5-step cross-fade between the original and . . . 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Pixelization by Factor 32 Cross-fade 2/5 
+
+
+
+. . . a 32x32 pixelization shows. . . 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Pixelization by Factor 32 Cross-fade 3/5 
+
+
+
+. . . the averaging of . . . 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Pixelization by Factor 32 Cross-fade 4/5 
+
+
+
+. . . the underlying pixels. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Pixelization by Factor 32 Cross-fade 5/5 
+
+
+
+Completed crossfade to a 32x32 pixelization. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Pixelization by Factor 32 original image 
+
+
+
+Switch back and forth between this slide and the previous one to see. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Other kinds of pixelization Pho toshop "facet" 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Other kinds of pixelization Photoshop "stained glass" 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Other kinds of pixelization Photoshop "patchwork" 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Other kinds of pixelization Photoshop "pointilized" 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Other kinds of pixelization Photoshop "mezotint" 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Quantization 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Quantization 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Quantization 
+
+
+
+4 bits 16 levels 3 bits 8 levels 2 bits 4 levels 1 bit 2 levels 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Intensity Quantization 
+
+
+256 128 64 32 16 8 4 2 
+
+
+
+8 bits 7 bits 6 bits 5 bits 4 bits 3 bits 2 bits 1 bit 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Intensity Quantization 
+
+
+256 
+
+
+128 
+
+
+64 
+
+
+32 16 8 
+
+Usually with 2-bit 
+quantization, the 
+output intensities 
+are mapped to 
+{0,85,170,255}, 
+
+
+
+8 bits 
+
+
+7 bits 
+
+
+6 bits 
+
+
+5 bits 
+
+
+4 bits 
+
+
+3 bits 
+
+
+2 bits 
+
+
+1 bit 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Enhancement of an 8 -bit image 
+
+
+a. original | b. contrast enh. b. dark enhanced b. bright enh. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Enhancement of a 16-bit image 
+
+
+
+a. original 1 b. contrast enh. b. dark enhanced | b. bright enh. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+39 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Effect of Quantization on Equalization 
+
+
+Equalization of 8-bit image 8-bit quantization after equalization of 1 6-bit image 
+
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+40 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Effect of Quantization on Equalization 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+41 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Effect of Quantization on Equalization 
+
+
+
+
+enhanced 8-bit | 
+
+
+enhanced 16-bit | 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+42 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Effect of Quantization on Equalization 
+
+
+
+enhanced 16-bit enhanced 8-bit 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+43 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Effect of Quantization on Equalization 
+
+
+histograms of original, 8-bit and 16-bit enhanced images 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+44 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+What’s in the lower eight bits? 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+45 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Use of 16-bit images as 
+intermediates. 
+
+
+When performing operations on an 
+image that will change intensity 
+levels, either locally or globally, 
+sometimes better results can be had 
+by converting the image into a 16-bit 
+format, performing the operations, 
+and then converting it back. 
+
+This happens frequently (and 
+sometimes automatically) in Matlab 
+except that each value is converted 
+to 64-bit floating point. So this 
+applies to other IP programs like 
+Photoshop or gimp. 
+
+
+Workflow: 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+46 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V This is a crude form 
+of HOR imaging... 
+
+
+Separate EQ of Dark and Light Regions in 16-bit Images 
+
+
+
+original 16-bit image contr. stretched dark reg. contr. stretched light reg. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+47 
+
+
+
+
+
+... which is covered 
+in a later lecture. 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Separate EQ of Dark and Light Regions in 16-bit Images 
+
+
+
+
+original 16-bit image 
+
+
+contr. stretched light + dark reg. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+48 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Dithering: Noise Improves Quantization 
+
+• Quantizing an image into 1, 2, or 3 bits can introduce false contours. 
+
+• The addition of signed noise to the image before quantization can 
+improve the appearance of the result. This is called dithering. 
+
+• The noise usually should have p = 0. 
+
+• The o of the noise must be determined through experimentation since it 
+depends on the image being quantized. A reasonable first choice for 
+uniformally distributed noise in the interval (-1,^) is a = i MIq, where M 
+is the maximum intensity value in the image {e.g. 255) and q is the 
+number of bits in the quantized image. 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+49 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Dithering: use noise to reduce quant, error 
+
+
+8 bits 
+
+
+4 bits 
+
+
+4 bits + noise 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+50 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Dithering: use noise to reduce quant, error 
+
+
+8 bits 
+
+
+3 bits 
+
+
+3 bits + noise 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+51 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Dithering: use noise to reduce quant, error 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+52 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Dithering: use noise to reduce quant, error 
+
+
+
+8 bits 1 bit 1 bit + noise 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+53 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Steganography 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+54 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+8-bit-per-band, 3-band, 
+"original" image 
+
+
+Application of Quantization: Steganography 
+
+
+
+If an image is quantized, say from 8 bits to 6 bits and redisplayed it 
+can be all but impossible to tell the difference visually between the two. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+55 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+6-bit-per-band, 3-band, 
+quantized image 
+
+
+Application of Quantization: Steganography 
+
+
+Q ^ hd 
+
+
+
+
+ro 
+
+
+^ ro 
+c ^ dd 
+
+E ^ 2- 
+
+o ^ ^ 
+
+^ 
+
+^ ^ ft 
+
+^ S W 
+2 9a 
+
+
+o 
+
+p 
+
+
+c/3 O 
+
+ro p 
+a o 
+
+p fo 
+
+^ i?e K) 
+
+^ V’ 
+P ^ S 
+
+ft ^ 
+
+5 
+
+U 5. 
+
+OS 
+
+-p 
+
+
+If an image is quantized, say from 8 bits to 6 bits and redisplayed it 
+can be all but impossible to tell the difference visually between the two. 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+56 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Application of Quantization: Steganography 
+
+
+green-band histogram of 8-bit image 
+
+
+green-band histogram of 6-bit image 
+
+
+
+With simple image analysis, it is easy to tell the difference: The histograms of 
+the two versions indicate which is which. If the 6-bit version is displayed as an 
+8-bit image it has only pixels with values 0, 4, 8, , 252. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+57 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Application of Quantization: Steganography 
+
+
+If the 6-bit version is 
+displayed as an 8-bit 
+image then the 8-bit 
+pixels all have zeros 
+in the lower 2 bits: 
+
+
+b 
+
+b 
+
+b 
+
+b 
+
+b 
+
+b 
+
+0 
+
+0 
+
+
+b = 0 or 1 always 0 
+
+This introduces the 
+possibility of encoding 
+other information in 
+the low-order bits. 
+
+
+That other information could be 
+a message, perhaps encrypted, or 
+even another image. 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+58 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Image 1 in upper 6-bits. 
+Image 2 in lower 2-bits. 
+
+
+Application of Quantization: Steganography 
+
+
+? § S' 
+^ § 
+
+
+
+
+ro 
+
+
+dd 
+
+i-i 
+
+
+K b C= 
+
+
+o 
+
+i-t 
+
+
+a .P 
+
+^ 2 - 
+_ 
+
+
+^ S W 
+2 9?? 
+
+
+c 
+
+c/3 
+
+ro 
+
+C 
+
+
+o 
+
+
+o 
+
+P 
+
+
+y p L/l 
+^ ^ bJ 
+
+P 5 so 
+
+
+ro 
+
+
+
+
+ro 
+
+P 
+
+P 
+
+P 
+
+
+-P 
+
+X 
+
+o\ 
+
+-p 
+
+
+
+
+The second image is invisible because the value of each pixel is between 0 and 3. 
+
+For any given pixel, its value is added to the to the collocated pixel in the first image 
+that has a value from the set {0, 4, 8, ... , 252}. The 2’^^ image is noise on the US 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+59 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Image 1 in upper 6-bits. 
+Image 2 in lower 2-bits. 
+
+
+Application of Quantization: Steganography 
+
+
+
+To recover the second image (which is 2 bits per pixel per 
+band) simply left shift the combined image by 6 bits. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+60 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Image 2 in upper 2-bits. 
+Image 1 shifted out 
+
+
+Application of Quantization: Steganography 
+
+
+
+
+RLL VDUR BRBE 
+RRE BELONG 
+TO USIH 
+
+
+00 Tl 
+
+ft) 
+
+ft) O 
+
+cr 3 
+
+^ CD 
+
+= I 
+
+« g 
+
+crq 
+
+5‘ B 
+
+CD 3 
+
+a- ro 
+
+
+p 
+
+b 
+
+'/Q 
+
+
+
+
+B I 
+
+P • 
+
+CD 
+
+
+To recover the second image (which is 2 bits per pixel per 
+band) simply left shift the combined image by 6 bits. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+61 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Application of Quantization: Steganography 
+
+
+This is so effective that two 
+4-bit-per-pixel images can be 
+superimposed with only the 
+image in the high-order bits 
+visible. Both images contain 
+the same amount of information 
+but because one takes on values 
+between 0 and 15, the other 
+takes on values from { 16, 32, 
+48, ... , 240}, and the smaller 
+values are added to the larger, 
+the image in the low-order bits 
+is effectively invisible 
+
+
+Images 1 and 2 each 
+have 4-bits per pixel 
+when combined. 
+
+
+^ A 
+
+Image 1 
+
+Image 2 
+
+^ -j 
+
+^r 
+
+
+r 
+
+R-Shift 4 
+
+R-Shift 4 
+
+^r 
+
+L-Shift 4 - 
+
+
+r 
+
+r 
+
+
+Image Out 
+
+V J 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+62 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Original Image 
+
+
+Application of Quantization: Steganography 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+63 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Image quantized to 
+4-bits per pixel. 
+
+
+Application of Quantization: Steganography 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+64 
+
+
+
+
+
+
+Image 1 in upper 4-bits. EECE 4353 Image Processing 
+
+Image 2 in lower 4-bits. Vanderbilt University School of Engineering 
+
+
+Application of Quantization: Steganography 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+65 
+
+
+
+
+Image 2 in upper 4-bits. EECE 4353 Image Processing 
+
+Image 1 shifted out. Vanderbilt University School of Engineering 
+
+
+Application of Quantization: Steganography 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+66 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Histograms of Steganographs 
+
+
+9000 
+
+8000 
+
+7000 
+
+6000 
+
+c 
+
+ZJ 
+
+O 5000 
+
+4000 
+
+3000 
+
+2000 
+
+1000 
+
+
+Graffiti image: although the histogram of the 4-bit quantized image (right) has gaps of 
+16 between adjacent nonzero bins, its overall shape is similar to the original (left). 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+67 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Histograms of Steganographs 
+
+Histogram of Green Band of Aspens x 10^* Histogram of Green Band of 4-bit Quantized Aspens 
+
+
+
+Aspens image: again there are gaps of 16 between pixel values but the overall shape 
+is preserved. Note the bell-shaped distribution. That is typical of natural scenes. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+68 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Histograms of Steganographs 
+
+Histogram of Green Band of 4-bit Quantized Aspens / 16 Histogram of Green Band of 4-bit Steganograph Graffit + Aspens 
+
+
+
+Steganograph image: since the Aspens image’s values are “riding on top” of the Graffiti 
+images values, Aspen’s pdf appears to be repeated at every nonzero bin of Graffiti. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+69 
+
+

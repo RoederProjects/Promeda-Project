@@ -1,0 +1,3428 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes: Image Convolution - Spatial 
+
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+kiiniSHiii 
+
+
+This work is licensed under the Creative Commons Attribution-Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Point Operators & Neighborhood Operators 
+
+are the two major categories of image transformation. A point process 
+changes the value of a pixel as a function only of its current value. I.e. 
+
+such that 
+
+Neither the distribution of values nor the metric structure of an image 
+has any effect whatsoever on the result of the operation. Spatially 
+dependent processing requires an operator whose output at a point is a 
+function of the area surrounding it - a neighborhood. 
+
+such that {l._^;(r,c) )). 
+
+That is, C) operates on the MxV square of pixels in centered on (r,c) 
+to produce a single output value for at location (r,c). 
+
+hf Ijjj is a color image then the mapping is from to R^. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Spatial Filtering 
+
+Neighborhood operators and moving window transforms such as 
+convolutions and morphological operators (cf. Lectures 17 & 18) 
+are spatial filters. Here is a more specific statement of the def: 
+
+Let I and J be images such that J = 0[l]. Then on an MxN 
+rectangular window (M&.N both odd), 
+
+j(r,c) = <D[I](r,c) 
+
+= 0[{lty,,|^)| pe{r-m,...,r,...,r + m} , X ^{c-n,...,c,...,c + n } }]. 
+
+That is, the value of the transformed image, J, at pixel location 
+(r,c) is a function of the values of the original image, I, in an mxn 
+= (2m +1) X (2n +1) rectangular neighborhood centered on pixel 
+location (r,c). 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Image Neighborhood & Shift Invariance 
+
+
+In image, I, a neighborhood (abbreviated nbhd) of pixel location (r,c) 
+is a rectangular set of pixels that includes (r,c) and has a specific 
+shape (as determined by its zero elements). It is the set of pixels 
+
+
+91 
+
+
+'MxN 
+
+
+I;(r,c) ) = {(p,x) el p-r G[-Lf J,Lf J],x-c e[-Lf J,Lf J] 
+
+
+if Mand A/^are odd. If M and/or A/^ is even then 
+
+
+p-r e 
+
+
+LfJffJ 
+
+
+
+and/or x-c e 
+
+
+Lfj.m-i]- 
+
+
+Neighborhood operator, O, is called ''shift invariant" if both the 
+geometry of the nbhd and the action of O is the same for every pixel 
+location (r,c) g I. All the nbhd ops in this course will be shift invariant. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Convolution 
+
+A convolution is a linear operator^ 3)[I;h] denoted I*h such that 
+
+oc oc 
+
+J(r,c)= I*h (r,c)^ J J lir- p,c-x)Hp,X)<ipdx^ 
+
+— OC — oc 
+
+for a real image (I:]RxR^]R). Or for a digital image (I:ZxZ— >Z): 
+
+m n 
+
+J(r,c)= I*h (r,c)= ^ ^ B(r-p,c-x)h(p,x) 
+
+p=-m x=-n 
+
+where I and J are 7?xC images and h is a 2m+l x 2n+\ matrix that 
+defines the size and shape of the convolution neighborhood. 
+
+^Image operator O is said to be linear if 0[al+pj] = aO[I]+pO[J], where a,peR, I,J are images. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+A convolution's nbhd is 
+defined by its matrix, h. 
+
+
+Convolution 
+
+Shift invariant neighborhood operators are sometimes called "moving window 
+transforms" (MWT). Convolutions are linear MWTs and are the mathematical 
+dual of multiplication in the frequency domain. Algebraically convolution is 
+defined on a nbhd like the one on the left. Computationally convolution is 
+performed on a nbhd like the one on the right. (Larger diagram on next slide.) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-n 
+
+
+1 
+
+
+n 
+
+
+
+
+
+
+
+
+
+
+
+1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-m 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[-b-D 
+
+
+(-1,1) 
+
+
+
+
+
+
+
+
+
+
+
+
+(0,0) 
+
+
+
+
+
+M 
+
+
+
+
+
+
+
+(1,-1) 
+
+
+(1,1) 
+
+
+
+
+
+
+
+m 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+N 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+n 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(1,1) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+m' 
+
+
+
+
+
+(»»,«) 
+
+
+
+
+
+M 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(A/A) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TV 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+A convolution's nbhd is 
+defined by its matrix, h. 
+
+
+Convolution Neighborhood 
+
+
+
+> 
+
+
+V 
+
+I 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+n 
+
+
+
+
+
+
+
+
+
+
+
+r 
+
+
+
+
+
+
+
+
+
+
+
+
+
+(14) 
+
+
+
+
+
+
+
+j 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+m'' 
+
+f 
+
+
+
+
+itn,n] 
+
+
+
+
+
+M 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 
+
+f 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+N 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+I 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-n 
+
+
+
+
+
+n 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+J 
+
+1 
+
+
+
+
+
+
+
+
+
+J 
+
+
+
+
+-m 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- 1 ,- 1 ) 
+
+
+r 
+
+(- 14 ) 
+
+
+
+
+
+
+
+
+
+
+
+
+im 
+
+
+
+
+
+M 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ih-i) 
+
+
+(14) 
+
+
+
+
+
+
+
+m 
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 
+
+r 
+
+
+
+
+
+
+
+
+1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+N 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+used in math definition used in computation 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+
+Vanderbilt University School of Engineering 
+
+
+Boundary Effects in Convolution 
+
+If a convolution's matrix, h, is MxN and has its origin at 
+
+
+
+what happens when 
+
+
+
+That is when r or c is close to one of the image boundaries? 
+
+The convolution is indeterminate there; its value depends on the 
+algorithm used to compute it. For example the image can be 
+zero-padded (slides 45-48). Or the image's right side can be 
+joined to its left, its top joined to its bottom and the convolution 
+performed on the resulting torus (slides 51-59). 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Three ways to compute a convolution 
+
+1 . Moving window transform. 
+
+2. Shift multiply add. 
+
+3. Fourier transform. 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Moving-Window Transformations 
+
+
+
+Neutral 
+Buoyancy 
+Facility ( 
+NASA 
+Johnson 
+Space 
+Center 
+
+
+We'll take a 
+section of 
+this image to 
+demonstrate 
+the MWT. 
+
+
+photo: R.A.Peters II, 1999 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Moving-Window Transformations 
+
+
+
+I Operate on this region. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+
+
+Pixelize the section to 
+better see the effects. 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Moving-Window Transformations 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+
+
+
+Pixelize the section to 
+better see the effects. 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Moving-Window Transformations 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Moving-Window Transformations 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mmnr 
+
+
+
+
+
+
+
+
+Let's put 
+some 
+
+perspective 
+on this. 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Moving-Window Transformations 
+
+
+
+
+A neighborhood defined 
+by a weight matrix 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Moving-Window Transformations 
+
+
+
+12 October 2016 © 1999-2016 by Richard Alan Peters II 16 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Linear Moving- Window 
+T ransformations 
+( i. e. a Convolution) 
+
+
+The output of the 
+transform at each 
+pixel is the (weighted) 
+average of the pixels 
+in the neighborhood. 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Moving-Window Transformations 
+
+
+
+Result of a 9 X 9 
+
+
+uniform averaging 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Moving Window Transform: Example 
+
+
+
+original 3x3 average 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Moving Window Transform: Example 
+
+
+
+I original | 3x3 average 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Moving Window Transform: Example 
+
+
+
+I original | 3x3 average 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Moving Window Transform: Example 
+
+
+
+original 3x3 average 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Moving Window Transform: Example 
+
+
+
+original 3x3 average 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Moving Window Transform: Example 
+
+
+
+
+3x3 average 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Moving Window Transform: Example 
+
+
+
+original 3x3 average 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution Matrix (Weight Matrix) 
+
+• The object, h(p,x), in the equation is a weighting function, or in the 
+discrete case, a rectangular matrix of numbers. 
+
+• The matrix is the moving window. It is called variously the weight 
+matrix; convolution matrix, kernel, mask, or neighborhood; or a filter, 
+filter kernel, or filter matrix. All the names mean the same thing. 
+
+• Pixel (r,c) in the output image is the weighted sum of pixels from the 
+original image in the neighborhood of (r,c) traced by the matrix. 
+
+• Each pixel in the neighborhood of (r,c) is multiplied by the 
+corresponding matrix value — after the matrix is rotated by 180®. 
+(See slide 30). 
+
+• The sum of those products is the value of pixel (r,c) in the output 
+image. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+EECE 4353 Image Processing 
+
+When perf orined per the definition on Vanderbilt University School of Engineering 
+
+p. 5, the convolution's matrix must be 
+
+rotated by 180° before the raster scan. 
+
+Convolution Matrices: Moving Window 
+
+
+
+
+
+
+
+
+
+
+h{-2,-2) 
+
+h{-2,-l) 
+
+h{-2,0) 
+
+h{-2,l) 
+
+K-2,2) 
+
+
+
+h{-l-2) 
+
+
+h{-l,0) 
+
+
+h{-l,2) 
+
+
+B 
+
+matrix » 
+
+• • 
+
+
+A 
+
+KO) 
+
+h{0,l) 
+
+K0.2) 
+
+
+ur ly 
+
+in 
+
+mf7-T) 
+
+h{i-i) 
+
+h{i 
+
+. 0 ) 
+
+h{lJ) 
+
+Kl,2) 
+
+
+
+h{2,-2) 
+
+K2.-1) 
+
+
+>0) 
+
+K2J) 
+
+K2,2) 
+
+
+
+
+tn 
+
++/ 
+
+ansia 
+
+3 pixi 
+
+c (r,( 
+
+te 
+
+
+
+lo 
+
+Cl • 
+
+c) 
+
+
+
+
+
+iron 
+
+
+ito)H 
+
+
+in')H 
+
+
+in-)H 
+
+
+U':)H 
+
+
+{Vl)H 
+
+
+um 
+
+
+
+
+
+
+
+
+{0'1)H 
+
+
+{0'0)H 
+
+
+
+
+(0 
+
+
+'-)H 
+
+
+
+
+(^7)^ 
+
+
+
+
+(r’7)v 
+
+
+rotate 180°... 
+
+1 
+
+
+
+
+
+
+... around 
+pixel loc 
+(r,c) 
+
+
+(r-7-)v 
+
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+When performed per the definition on 
+: p. 16 , the convolution's matrix must be 
+rotated by 180° before the raster scan. 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Convolution Matrices: Moving Window 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution by Moving Window 
+
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The convolution of an impulse with a matrix places 
+_ a copy of the matrix at the location of the impulse. 
+— That's why we rotate the matrix by 180°. 
+
+
+Convolution by Rotating and Shifting the Weight Matrix 
+
+
+Shifted weight 
+matrix 
+
+
+
+Result of sum 
+of products 
+
+
+
+
+
+
+
+
+At the locations 
+not shown, the 
+results were 
+zeros. 
+
+
+
+Location of 
+impulse 
+
+
+Accumulated 
+nonzero results 
+
+
+The original image has a 
+black impulse at the center 
+and zeros (white) elsewhere. 
+
+
+The weight matrix has a 
+gray 'L' at its left and zeros 
+(white) elsewhere. 
+
+
+The resulting image has a copy 
+of the weight matrix pegged 
+to the impulse location. 
+
+
+14 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Symmetric Weight Matrix 
+
+
+f 
+
+e 
+
+d 
+
+e 
+
+f 
+
+e 
+
+c 
+
+h 
+
+c 
+
+e 
+
+d 
+
+h 
+
+a 
+
+h 
+
+d 
+
+e 
+
+c 
+
+b 
+
+c 
+
+e 
+
+f 
+
+e 
+
+d 
+
+e 
+
+f 
+
+
+A symmetric weight matrix is unchanged by rotation through 180°. 
+Many commonly used filters have symmetric matrices. Many do not. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution by an Impulse 
+
+
+An impulse is a digital image, that has a single pixel with 
+value 1 ; all others have value zero. An impulse at location 
+(p, x) is represented by: 
+
+
+5{r-p,c-x) 
+
+
+Jl, if r = p and c = x 
+0, otherwise 
+
+
+If an image is convolved with an impulse of weight w at 
+location (p, x), then the image is multiplied by w and shifted 
+in location down by p pixels and to the right by x pixels. 
+
+
+\\*w5{r- p,c- x)\{r,c) = wl[r- p,c- x)- 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution by an Impulse 
+
+
+
+
+1 
+
+
+S(r-\6,c-\6) 
+
+
+( Shifted down and to 
+the right by 16 pixels. 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Convolution by Two Impulses 
+
+
+
+k 
+
+
+2 
+
+
+
+
+
+I Two copies, one moved, 
+
+one not moved, averaged. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution by Three Impulses 
+
+
+
+
+
+
+I Three copies, two moved, 
+
+one not moved, averaged. 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Convolution by Five Impulses 
+
+
+
+r-|-16,c-|-16 
+
+1 
+
+r-|-16,c — 16 
+
+
+
+
+
+
+
+r-16,c-16 
+
+
+I Five copies, four moved, 
+
+one not moved, averaged. 
+
+
+I 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution by Five Impulses 
+
+
+
+
+Moved adjacent to each 
+other, the convolution 
+becomes a blurring filter. 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution by Five Impulses 
+
+
+
+
+The Impulses become values 
+In a 3x3 neighborhood. 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution by Five Impulses 
+
+
+
+
+This convolution matrix 
+has five elements at 1/5 
+and four at 0. 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+39 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Shift-Multiply-Add Convolution 
+
+• The image is copied 1 time for each element in 
+the convolution matrix. 
+
+• Each copy is shifted relative to the original by the 
+displacement of its associated matrix element. 
+
+• Each copy is multiplied by the value of its 
+associated matrix element. 
+
+• The set of shifted and multiplied images is 
+summed pixel wise. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+40 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Shift-Multiply-Add Convolution 
+
+Assume images I and J are RxCxB and that h isMxA^xl 
+
+1. Create a zero image, A, of size R+M-1 x C+N-1 x B 
+
+2. Formejl, andne{l, ...,N} do: 
+
+3. i = [m OT+1 ••• m+R-l], j = [« «+l ••• «+C-l] 
+
+4. A(i,j,:) = A(i,j,:) + h(m,n)-l 
+
+5. End for 
+
+6. r=[LM/2j+l LM/ 2 J +2 ••• Im/2]+R] 
+
+7. c=[Lv/2j+l LV/ 2 J +2 ••• lN/2j+Q 
+
+8. J = A(r,c,:) 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+41 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution 
+by Copying 
+and Shifting 
+the Image 
+
+To use the image 
+shift-multiply- 
+accumulate 
+algorithm, create 
+an accumulator 
+image, A, that is 
+R+M-1 rows by 
+C+N-1 columns 
+
+
+Image I is RxC | 
+
+
+C + N- 1 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+42 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution via Copy, Multiply, and Shift of the Image 
+
+
+For each element h(m,n) 
+in an MxN weight matrix, 
+h, RxC image I is 
+multiplied by h(m,n) then 
+added to a zero-padded 
+accumulator image. A, in 
+the /?xC rectangle with 
+upper right corner {m,n) 
+and lower right corner 
+{m+R-\,n+C-\). 
+
+
+After all MxN matrix 
+elements have been 
+looped over, the RxC 
+result is cropped out of A 
+starting at the origin of h, 
+typically (Lm/2J-i- 1, 
+LN/2j-tl) 
+
+
+
+original image, I 
+accumulator image, A 
+effective neighborhood 
+
+
+h(-1,-1) 
+
+h(-1,0) 
+
+h(-i.i) 
+
+h(0,-1) 
+
+h(O.O) 
+
+h(0,i) 
+
+h(1.-1) 
+
+h(i.O) 
+
+h(i,i) 
+
+
+5 
+
+era' 
+
+
+3 
+
+
+aligned pixels (r,c) 
+are summed 
+
+weight for image Q 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+43 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution via Copy, Multiply, and Shift of the Image 
+
+
+
+
+
+The original image has a 
+black impulse at the center 
+and zeros (white) elsewhere. 
+
+
+The weight matrix has a 
+gray 'L' at its left and zeros 
+(white) elsewhere. 
+
+
+
+The resulting image has a 
+copy of the weight matrix 
+pegged to the impulse 
+location. 
+
+
+
+original image, I 
+
+In the result, the origin of the I 
+
+
+effective neighborhood 
+
+weight matrix coincides with the 1 
+
+
+accumulator image, A 
+
+original location of the impulse. 1 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+44 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution by 
+Copying, Multiplying, 
+and Shifting the Image 
+
+
+Each copy of the (entire) image is multiplied by the value 
+of the weight matrix in purple square (here, white = 0) 
+before being accumulated (pixelwise) in the padded image 
+
+
+The position of 
+the purple 
+square relative 
+the center of 
+the weight 
+matrix 
+indicates the 
+shift of the 
+original image 
+relative to the 
+middle of the 
+padded image. 
+
+
+
+
+* 
+
+\r- 
+
+
+
+
+In this 
+image, only 
+the pixel In 
+the center Is 
+nonzero so 
+only It shows 
+a result when 
+the Image Is 
+multiplied by 
+a nonzero 
+value 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+45 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Convolution by 
+Copying, Multiplying, 
+and Shifting the Image 
+
+
+Each copy of the (entire) image is multiplied by the value 
+of the weight matrix in purple square (here, white = 0) 
+before being accumulated (pixelwise) in the padded image 
+
+
+The position of 
+the purpk 
+square r«?Jative 
+the center of 
+the weight 
+matrix 
+indicates the 
+shift of the 
+original image 
+relative to the 
+middle of the 
+padded image. 
+
+
+9HH H 
+
+
+
+■■■ 
+
+
+* 
+
+\r- 
+
+
+
+In this 
+image, only 
+the pixel In 
+the center is 
+nonzero so 
+only it shows 
+a result when 
+the image is 
+multiplied by 
+a nonzero 
+value 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+46 
+
+
+
+
+V 
+
+
+Zero Padding an Image for 
+Convolution: Variable names. - 
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+
+
+cpad 
+
+
+c 
+
+
+N 
+
+
+
+
+rpad 
+
+
+M 
+
+
+
+
+cpad = floor ( N / 2 ) 
+rpad = floor ( M / 2 ) 
+hcorig = cpad + 1 
+hrorig = rpad + 1 
+
+
+
+
+
+
+
+
+
+
+Image, I 
+
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+47 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution by Copying, Multiplying, and Shifting the Image 
+
+
+13x13 image 
+convolved by 
+6x6 matrix. 
+
+Image is constant; 
+matrix has only 6 
+nonzero values all 
+on the diagonal. 
+
+Image is shifted to 
+matrix location, 
+multiplied by value, 
+and accumulated. 
+
+
+
+accumulator 
+output image 
+
+
+conv. matrix 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+48 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution 
+by Copying 
+and Shifting 
+the Image 
+
+
+When done, copy the 
+output image from the 
+accumulator starting 
+at (hrorig, hcorig) and 
+ending at (hrorig+R-1, 
+hcorig+C-1) 
+
+
+
+hcorig . 
+
+
+hcorig+C-1 f 
+
+
+
+L 
+
+
+
+■ 
+
+
+
+hrorig 
+
+-rxTT^ ■=- ■ 
+
+
+
+
+
+4 
+
+
+
+
+
+
+
+
+
+
+
+4 
+
+
+
+
+
+
+
+
+■ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+j 
+
+i 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+utput image, J 
+
+1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+0 
+
+1 
+
+
+
+
+Ri 
+
+hrorig+R-1 
+
+ii'i — 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-1 ^ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+r 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+49 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Box Filter 
+
+
+A square convolution matrix with 
+uniform weights that sum to 1 is 
+called a box filter. Convolution 
+matrices do not have to be 
+uniformly weighted. Nevertheless, 
+if the weights are all positive and 
+sum to 1, the result of convolution 
+is blurring. If the weights are both 
+positive and negative and sum to 0, 
+then the filter is an "edge 
+detector". 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+50 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Convolution on a Torus 
+
+
+The 2D Discrete Fourier transform is 
+defined on a torus. And it can be used 
+to perform a convolution. 
+
+
+
+111111111 
+
+111111111 
+
+111111111 
+
+
+h = — 
+
+111111111 
+
+
+111111111 
+
+
+81 
+
+111111111 
+
+111111111 
+
+111111111 
+
+111111111 
+
+
+
+
+9x9 box filter 
+
+
+test pattern image 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+51 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Convolution on a Torus 
+
+
+The FT computes the 
+convolution on a torus so 
+opposite sides of the 
+image affect each other. 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+52 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution on a Torus 
+
+
+The effects of convolution 
+on a torus can be seen in 
+the examples that follow. 
+
+
+
+boundaries of original image 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+53 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution on a Torus 
+
+
+Here, a 9x9 box filter 
+convolution was applied 
+to the torus. 
+
+
+
+patterns smeared across the boundaries 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+54 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution on a Torus: Original Images 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+55 
+
+
+
+
+
+1 
+
+1 1 1 
+
+
+1 1 1 
+
+
+9 
+
+1 1 1 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Convolution on a Torus: 3x3 Box Filter 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+56 
+
+
+
+11111 
+
+11111 
+
+11111 
+
+11111 
+
+11111 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Convolution on a Torus: 5x5 Box Filter 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+57 
+
+
+1 
+
+"1 1 1 1 1 1 1 1 1' 
+
+111111111 
+
+111111111 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+81 
+
+iiiiiiiii 
+
+111111111 
+
+111111111 
+
+111111111 
+
+111111111 
+
+
+bnvolution on a Torus: 9x9 Box Filter 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+58 
+
+
+
+
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ' 
+11111111111111111 
+11111111111111111 
+11111111111111111 
+11111111111111111 
+11111111111111111 
+11111111111111111 
+11111111111111111 
+11111111111111111 
+11111111111111111 
+11111111111111111 
+11111111111111111 
+11111111111111111 
+11111111111111111 
+11111111111111111 
+11111111111111111 
+11111111111111111 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+volution on a T oms : 1 7 x 1 7 B ox Filter 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+59 
+
+
+
+

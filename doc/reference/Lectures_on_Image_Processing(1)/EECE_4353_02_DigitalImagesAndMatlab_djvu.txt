@@ -1,0 +1,4883 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes: Light Scattering, Image 
+Formation, Digital Images, and Matlab 
+
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution -Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Light from a source . . . 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+. . . illuminates a scene. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Each surface scatters light . . . 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+. . . that illuminates other surfaces . . . 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Yj 
+
+.. that scatter light. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+The degree of interreflection . . . 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+... depends on the material properties . . . 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+. . . of the surfaces in the scene. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Materials are transparent . . . 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+... to some wavelengths . . . 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Yj 
+
+. . . opaque to others . . . 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+. . . and reflect yet other wavelengths. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Smooth surfaces may be mirror-like, . . . 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+. . .rough surfaces, matte or diffuse. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Anisotropic surfaces scatter more in . . . 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+... in one direction than others. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+The color of a surface affects those . . . 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+... of nearby surfaces. The result . . . 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+The Plenoptic Function 
+
+
+. . . is highly complex. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+An observer, awash in all the light, . . . 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+... sees the result of both illumination . . . 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+. . . and surface interreflection. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+projection onto 
+discrete sensor 
+array. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+continuous colors, 
+discrete locations. 
+
+
+Image Formation 
+
+
+discrete real- 
+valued image 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Sampling and Quantization 
+
+
+A A A A 
+
+real image sampled quantized sampled & 
+
+quantized 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Sampling and Quantization 
+
+
+pixel grid 
+
+
+
+
+
+real image sampled quantized sampled & 
+
+quantized 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Sampling 
+
+
+Take the average 
+within each square. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Sampling 
+
+
+Take the average 
+within each square. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Sampling 
+
+
+Take the average 
+within each square. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Sampling 
+
+
+Take the average 
+within each square. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Digital Image Formation: Quantization 
+
+
+Q_ 
+
+O 
+
+O 
+O 
+
+o 
+0 ) 
+
+CD 
+
+b 
+
+c/) 
+
+ID 
+
+continuous color input 
+
+
+continuous colors 
+mapped to a finite, 
+
+discrete set of colors. 
+
+. I 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Digital Image 
+
+
+Color images have 3 values per 
+pixel; monochrome images have 1 
+value per pixel. 
+
+
+a grid of squares, 
+each of which 
+contains a single 
+color 
+
+
+
+each square is 
+called a pixel (for 
+picture element) 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixels 
+
+• A digital image, I, is a mapping from a 2D grid 
+of uniformly spaced discrete points, {p = ( r, c) ) , 
+into a set of positive integer values, { I( p) } , or a 
+set of vector values, e.g., { [R G B] T (p)}. 
+
+• At each column location in each row of I there 
+is a value. 
+
+• The pair ( p, I(p) ) is called a “pixel” (for 
+picture element). 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixels 
+
+• p = ( r, c) is the pixel location indexed by row, 
+r, and column, c. 
+
+• I(P) = I (r,c) is the value of the pixel at 
+location p. 
+
+• If I( p) is a single number then I is 
+monochrome. 
+
+• If I( p) is a vector (ordered list of numbers) 
+then I has multiple bands (e.g., a color image). 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+39 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixels 
+
+
+
+
+value 
+
+I (p)= B(r , c) 
+
+
+
+p = (r, c) 
+location 
+
+
+r 
+
+
+
+Pixel Location: p = (r , c) 
+Pixel Value: I(p) = I(r , c ) 
+
+
+Pixel : [ p, I(p)] 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+40 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixels 
+
+
+Pixel : [ p, I(p)] 
+
+
+
+p = (r, c) 
+
+= (row#, col#) 
+= (272, 277) 
+
+
+red 
+
+
+I(P) = 
+
+
+green 
+
+
+blue 
+
+
+value 
+I (p)= B(r , c) 
+
+
+p = (r,c) 
+
+location 
+
+
+
+
+
+
+
+" 12 “ 
+
+
+= 
+
+43 
+
+
+— 
+
+61 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+41 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Read a Truecolor Image into Matlab 
+
+4^ Command Window 
+
+File Edit Debug Desktop Window Help 
+
+
+To get started, select MATLAB Help or Demos from the 
+
+>> cd T E : \images\Animals\People\Famous T 
+>> I = imread ( T Les_Boingeoisie . jpg T , T jpg T ) ; 
+
+» class ( I ) 
+ans = 
+uint8 
+» si ze ( I ) 
+ans = 
+
+600 1200 3 
+
+» figure 
+» 
+
+• First, change to the directory that holds 
+the image. 
+
+• Then load the image into an a matrix 
+labeled T. (It could be any valid Matlab 
+name.) 
+
+• Display the image's dimensions using the 
+size() command. 
+
+• Then, create a figure window. 
+
+
+tygjx 
+
+
+Help menu. 
+
+
+
+I WR A 
+
+
+
+The next few slides demonstrate the 
+results of the commands shown in the 
+command window. Each successive slide 
+starts at the end of the previous one. 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+42 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Read a Truecolor Image into Matlab 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+43 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Read a Truecolor Image into Matlab 
+
+
+4^ Command Window 
+
+File Edit Debug Desktop Window Help 
+
+
+To get started, select MATLAB Help or Demos from the 
+
+>> cd T E : \images\Animals\People\Famous T 
+>> I = imread ( T Les_Boingeoisie . jpg T , T jpg T ) ; 
+
+» class ( I ) 
+ans = 
+uint8 
+» si ze ( I ) 
+ans = 
+
+600 1200 3 
+
+» figure 
+» image ( I ) 
+
+» title ( T Les Boingeoisie: The Boing-Boing Bloggers T ) 
+» xlabel ( T Photo : Bart Nagel, 2006, www.bartnagel.com' ) 
+» 
+
+• Display the image in the figure window 
+using image(). 
+
+• Place a title at the top. 
+
+• Put a label under the x-axis using xlabel(). 
+
+• ylabel() puts a label to the left of the y- 
+axis, oriented 90° from horizontal 
+
+
+
+Hfwel - [□ X 
+
+File Edit View Insert Tools Desktop Window Help * 
+
+
+Les Boingeoisie: The Boing-Boing Bloggers 
+
+
+100 
+
+
+200 
+
+
+300 
+
+
+400 
+
+
+500 
+
+
+200 400 600 800 1000 1200 
+
+Photo: Bart Nagel, 2006 , www.bartnagel.com 
+
+
+Matlab scales the image to fit the 
+figure window so both the images size 
+and aspect ratio are usually incorrect. 
+
+
+Help menu 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+44 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Read 
+
+
+_ B Figure 1 
+
+-M* 
+
+*\ File Edit View Insert Tools Desktop Window Help 
+
+
+□ csoa k « as ■ o 
+
+
+Command Window 
+
+File Edit Debug Desktop Wine 
+
+
+To get start) 
+
+» 
+
+cd T E:\imag 
+
+» 
+
+I = imread( 
+
+» 
+
+class ( I ) 
+
+ans 
+
+
+uint8 
+
+» 
+
+size ( I ) 
+
+ans 
+
+
+
+600 
+
+» 
+
+figure 
+
+» 
+
+image ( I ) 
+
+» 
+
+title ( T Les ; 
+
+» 
+
+xlabel ( T Pho 
+
+» 
+
+truesize 
+
+» 
+
+
+
+100 
+
+
+200 
+
+
+300 
+
+
+400 
+
+
+500 
+
+
+truesize makes the figure 
+window fit the image - unless 
+the images is too large for 
+the display in which case it is 
+resized to fit but with the 
+correct aspect ratio. 
+
+
+Les Boingeoisie: The Boing-Boing Bloggers 
+
+
+
+200 
+
+
+400 600 800 
+
+Photo: Bart Nagel, 2006, www.bartnagel.com 
+
+
+1000 
+
+
+1200 
+
+
+JVK A 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+45 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Read c 
+
+
+Command Window 
+
+File Edit Debug Desktop Wine 
+
+
+To get startj 
+
+>> cd T E:\imagi 
+>> I = imread( 
+» class ( I ) 
+ans = 
+uint8 
+» si ze ( I ) 
+ans = 
+
+600 
+
+» figure 
+» image ( I ) 
+
+» title ( T Les 
+» xlabel ( T Phol 
+» truesize 
+» 
+
+
+S] Figure 1 
+
+File Edit View Insert Tools Desktop Window Help 
+
+
+http : / /boingboing . net/ 
+
+
+D&a a <a. <a.n ® « as 
+
+
+100 
+
+
+200 
+
+
+300 
+
+
+400 
+
+
+500 
+
+
+600 
+
+
+Les Boingeoisie: The Boing-Boing Bloggers 
+
+
+
+200 
+
+
+400 600 800 
+
+Photo: Bart Nagel, 2006, www.bartnagel.com 
+
+
+1000 
+
+
+1200 
+
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+46 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+How to crop an image using 
+
+V 
+
+
+Ma+lab's native indexing 
+
+
+
+Crop t 
+
+
+S3 Figure 1 
+
+-M* 
+
+File Edit View Insert Tools Desktop Window Help 
+
+
+□ gSH# □ 0 | ■ O 
+
+
+Command Window 
+
+File Edit Debug Desktop Wine 
+
+
+Les Boingeoisie: The Boing-Boing Bloggers 
+
+
+1000 
+
+
+1200 
+
+
+Cut out a region 
+from the image 
+
+
+To 
+
+>> cc 
+» I 
+» cl 
+ans = 
+
+
+First, select a 
+region using 
+the magnif ier. 
+
+
+CIO O \ -L / 
+
+
+200 
+
+
+400 600 800 
+
+Photo: Bart Nagel, 2006 , www.bartnagel.com 
+
+
+uint8 
+» si ze ( I ) 
+ans = 
+
+600 
+
+figure 
+image ( I ) 
+ti tie ( T Les I 
+xlabel ( T Pho j 
+t ruesi ze 
+
+
+» 
+
+» 
+
+» 
+
+» 
+
+» 
+
+» 
+
+
+300 
+
+
+400 
+
+
+500 
+
+
+600 1 
+
+
+200 
+
+
+drag to here and release 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+47 
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Crop t 
+
+
+S] Figure 1 
+
+File Edit View Inse 
+
+□ gs a a k \ 
+
+
+■"fX Command Window 
+
+File Edit Debug Desktop Wind< 
+
+
+From this close-up 
+we can estimate 
+the coordinates of 
+the region: 
+
+
+d°l. x 
+
+
+ngeoisie: The Boing-Boing Bloggers 
+
+
+To get starts 150 - 
+
+
+>> cd T E:\imag^ 
+>> I = imread ( 1 
+» class ( I ) 
+ans = 
+uint8 
+» si ze ( I ) 
+ans = 
+
+600 
+
+» figure 
+» image ( I ) 
+
+» title ( T Les I 
+» xlabel ( T Phot 
+» truesize 
+» 
+
+
+200 
+
+
+250 - 
+
+
+300 - 
+
+
+350 
+
+
+400 
+
+
+
+750 
+
+
+800 850 900 950 
+
+Photo: Bart Nagel, 2006, www.bartnagel.com 
+
+
+1000 
+
+
+1050 
+
+
+A 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+48 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Crop t 
+
+
+S] Figure 1 
+
+File Edit View Insert Tools Desktop Window Help 
+
+□ b m |^<a. n ® « □ b ~eTe 
+
+
+Command Window 
+
+File Edit Debug Desktop Window Help 
+
+
+_ [n| x oing Bloggers 
+
+
+To get started, select MAT LAB Help or Demos from the Help menu. 
+
+» cd T E : \ images \ Animals \People\ Famous T H Figure 2 
+
+>> I = imread ( T Les_Boingeoisie . jpg T , T jpg T ) ; 
+
+» class ( I ) 
+ans = 
+
+uint8 Here it is: 
+
+» si ze ( I ) 
+ans = 
+
+600 1200 3 
+
+» figure 
+» image ( I ) 
+
+» title ( T Les Boingeoisie: The Boing-Boing Bloggers T 
+» xlabel ( T Photo : Bart Nagel, 2006, www.bartnagel.com' ) 
+
+» truesize 
+
+» J = 1(125:425,700:1050,:); 
+
+» figure 
+» image ( J) 
+
+» truesize 
+
+» 
+
+J = I(firs+ rowdast row, first columndast column, all bands) 
+
+V alone means all bands' here. In the 1 st position, V means 
+all rows'; in the 2 nd it means all columns'. 
+
+
+1(0 means all I's 
+elements in a vertical 
+list: 1 st col followed by 
+2 nd , etc. until the 1st 
+band is catenated. 
+Same procedure is 
+applied to remaining 
+bands for one long list. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+49 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Crop t 
+
+
+S] Figure 1 
+
+File Edit View Insert Tools Desktop Window Help 
+
+□ b m |^<a. n © « □ e ~eTe 
+
+
+d°l. x 
+
+
+■ItX Command Window 
+
+File Edit Debug Desktop Windi 
+
+
+To get starts 150 
+
+
+» 
+
+» 
+
+
+cd T E:\imags 
+
+I = imread ( * 1 
+» class ( I ) 
+ans = 
+uint8 
+» si ze ( I ) 
+ans = 
+
+600 
+
+» figure 
+» image ( I ) 
+
+» title ( T Les I 
+» xlabel ( T Phot 
+» truesize 
+» J = I ( 125 : 4S 
+» figure 
+» image ( J) 
+
+» truesize 
+» figure (1) 
+
+» 
+
+
+200 
+
+
+250 
+
+
+300 
+
+
+350 
+
+
+400 
+
+
+Les Boingeoisie: The Boing-Boing Bloggers 
+
+
+
+... Bring figure 1 to 
+the front using the 
+
+
+750 
+
+
+800 
+
+
+850 900 950 f igureQ command, 
+
+Photo: Bart Nagel, 2006, www.bartnagel.com 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+50 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Crop the Image 
+
+
+•jp«, Command Window 
+
+File Edit Debug Desktop Window Help 
+
+
+- □ x 
+
+
+To get started, select MAT LAB Help or Demos from the Help menu. 
+
+
+» cd T E : \images\Animals\People\Famous T 
+» I = imread ( T Les_Boingeoisie . jpg T , T jpg T ) ; 
+
+» class ( I ) 
+ans = 
+uint8 
+» si ze ( I ) 
+ans = 
+
+600 1200 3 
+
+» figure 
+» image ( I ) 
+
+>> title ( T Les Boingeoisie: The Boing-Boing Bloggers T ) 
+>> xlabel ( T Photo : Bart Nagel, 2006, www. bartnagel . corn' 
+» truesize 
+
+» J = 1(125:425,700:1050,:); 
+
+» figure 
+>> image ( J) 
+
+» truesize 
+» figure (1) 
+
+» close 
+
+» 
+
+
+a Figure 2 
+
+File Edit View Insert Tools Desktop Window Help 
+
+
+□ y s fe <$. s. ® '-is □ in hq 
+
+
+1°I*I 
+
+
+
+then type close 
+at the prompt. 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+51 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Read a Colormapped Image into Matlab 
+
+
+Command Window 
+
+File Edit Debug Desktop Window Help 
+
+
+__yx] 
+
+
+To get started, select MATLAB Help or Demos from the Help menu. 
+
+» cd T D : \classes\EECE253\F all 2006\graphics\matlab intro’ 
+
+» [I,cmap] = imread( T Jim Woodring - PlusMinus . gif ’ , ’ gif T ) ; 
+
+» figure 
+» image ( I ) 
+
+» class ( I ) 
+ans = 
+uint8 
+» si ze ( I ) 
+ans = 
+
+383 533 
+
+» I 
+
+
+A colormap is an /7X 3 table of 
+color values. 8-bits per pixel 
+implies n- 256 (at most) 
+colors out of 256 3 = 16777216 
+
+
+H Figure 1 
+
+File Edit View Insert Tools Desktop Window Help 
+
+
+□ X 
+
+
+DcSH# k ®. <=l « DS'bQ 
+
+
+A colormapped image is a 
+rectangular array of 
+indices into a color map. 
+
+
+Matlab assumes that a 1-band, 8- 
+bit / pixel image is colormapped. 
+Initial display uses a default 
+colormap which is highly likely to 
+be incorrect for any given image. 
+
+
+
+100 150 200 250 300 350 400 450 500 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+52 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Read a Colormapped Image into Matlab 
+
+
+Command Window 
+
+File Edit Debug Desktop Window Help 
+
+
+__yx] 
+
+
+To get started, select MATLAB Help or Demos from the Help menu. 
+
+» cd T D : \classes\EECE253\F all 2006\graphics\matlab intro’ 
+
+» [I,cmap] = imread( T Jim Woodring - PlusMinus . gif ’ , ’ gif T ) ; 
+
+» figure 
+
+» imaged) [I, cma p] = i in read (.. . 
+
+» class ( I ) 
+ans = 
+
+uint8 I = index array 
+
+» si ze ( I ) 
+ans = 
+
+383 533 
+
+» colormap ( cmap ) 
+
+» title (’Plus Minus’); 
+
+» xlabel(’Jim Woodring (http://www.jimwoodring.com/)’ 
+
+» truesize 
+
+
+Read the correct colormap 
+from the image file along 
+with the index array. 
+
+
+B Figure 1 
+
+File Edit View Insert Tools Desktop Window He 
+
+
+-J°l* 
+
+
+d*h# * as 8-bit colormapped 
+
+
+Plus Minus 
+
+
+cmap = colormap 
+
+
+100 
+
+
+150 - 
+
+
+» 
+
+
+Display the index array using imaged 
+Then load the colormap using colormapQ. 
+
+
+
+200 
+
+
+250 
+
+
+300 gw. 
+
+
+350 
+
+
+50 100 150 200 250 300 350 400 450 500 
+
+Jim Woodring (http://www.jimwoodring.com/) 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+53 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Colormapped vs. Truecolor in Matlab 
+
+
+
+Command Window 
+
+File Edit Debug Desktop Window Help 
+
+
+To get started, select MATLAB Help or Demos from the Help menu. 
+
+» cd T D : \classes\EECE253\F all 2006\graphics\matlab intro’ 
+
+>> [I, cmap] = imread ( T Jim Woodring - PlusMinus . gif ’ , ’ gif T ) ; 
+
+
+» figure 
+» image ( I ) 
+» class ( I ) 
+
+
+ans = 
+uint8 
+
+
+» si ze ( I ) 
+ans = 
+
+383 533 
+
+» colormap ( cmap ) 
+
+» title (’Plus Minus’); 
+
+» xlabel(’Jim Woodring (http : //www. j imwoodring . 
+» truesize 
+
+>> T = imread (’Jim Woodring - PlusMinus.jpg’, ’jp 
+» figure 
+
+
+» image (T ) 
+» truesize 
+
+» I 
+
+
+
+50 100 150 200 250 300 350 400 450 500 
+
+
+50 100 1 bO 200 2b0 300 3b0 400 4b0 bOO 
+
+Jim Woodring (http://www.jimwoodring.com/) 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+54 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Coloraic 
+
+
+H Figure 2 _]□ 
+
+File Edit View Insert Tools Desktop Window Help 
+
+D^Hfi fe « db no 24-bit truecolor 
+
+
+atlab 
+
+
+
+
+j(X Command Window 
+
+File Edit Debug Desktop Window Help 
+
+
+300 
+
+
+350 
+
+
+150 
+
+
+200 
+
+
+250 
+
+
+300 
+
+
+350 
+
+
+» cd T D:\cla sses\ 
+
+>> [I,cmap] = imre 
+» figure 
+» image ( I ) 
+
+» class ( I ) 
+ans = 
+uint8 
+» si ze ( I ) 
+ans = 
+
+383 533 
+
+» colormap ( cmap ) 
+
+» title ( T Plus Minu!5 T ) ; 
+
+» xlabel( T Jim Woodring (http://www.jimwoodring.com 
+» truesize 
+
+» T = imread( T Jim Woodring - PlusMinus . jpg T , T jpg T ) 
+» figure 
+» image (T ) 
+
+» truesize 
+
+» I 
+
+
+50 100 150 200 250 300 350 400 450 
+
+
+100 
+
+
+150 - 
+
+
+200 - 
+
+
+250 
+
+
+Window Help 
+
+las 
+
+
+Ic 8-bit colormapped 
+
+
+Plus Minus 
+
+
+500 
+
+
+To get started, 
+
+
+100 
+
+
+
+
+50 100 150 200 250 300 350 400 450 500 
+
+
+Jim Woodring (http://www.jimwoodring.com/) 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+55 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Colormapped vs. Truecolor in Matlab 
+
+
+
+150 
+
+
+200 
+
+
+250 
+
+
+300 
+
+
+350 
+
+
+T (231 , 326 , :) 
+
+
+227 
+
+222 
+
+96 
+
+
+row: 231 
+
+
+Command Window 
+
+File Edit Debug Desktop Window 
+
+
+Help 
+
+
+» 
+
+» 
+
+» 
+
+» 
+
+» 
+
+» 
+
+» 
+
+» 
+an s ( : 
+
+227 
+ans ( : 
+
+222 
+ans ( : 
+
+96 
+
+» 
+
+
+title ( T Plus Minus ’ ) ; 
+
+xlabel( T Jim Woodring (http://www.jinj 
+t ruesi ze 
+
+T = imread( T Jim Woodring - PlusMinus.jpg 
+figure 
+image (T ) 
+t ruesi ze 
+T (231, 32 6, : ) 
+
+:, 1 ) = 
+
+
+Intensity values 
+are integers 
+between 0 and 255. 
+
+
+I Figure 2 
+
+
+image class: uint8 
+image type: truecolor 
+
+
+100 
+
+
+50 100 150 200 250 300 350 400 450 500 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+56 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Colormapped vs. Truecolor in Matlab 
+
+
+
+T (231 , 326 , :) 
+
+
+0.89 
+
+0.87 
+
+0.38 
+
+
+— row: 231 
+
+
+350 
+
+. 
+
+
+■1t\ Command Window 
+
+File Edit Debug Desktop Window Help 
+
+
+Intensity values 
+
+
+PlusMinus . jpg T , T T ) ; 
+
+
+1 Figure 2 
+
+
+image class: double 
+image type: truecolor 
+
+
+» title ('Pius Minus'); are numbers 
+
+>> xlabel( T Jim Woodring (http://www.jinl \}g\\/\j££Y\ 0 QncI 1 
+» truesize 
+
+» T = imread( T Jim Woodring 
+» figure 
+» image (T ) 
+
+» truesize 
+» T (231, 326, : ) 
+ans ( : , : , 1) = 
+
+227 
+
+ans ( : , : , 2 ) = 
+
+222 
+
+50 
+
+100 
+
+150 
+
+200 
+
+250 
+
+300 
+
+
+ans ( : , 
+96 
+
+:,3) = 
+
+» T = 
+
+double (T) / 2 5 5 ; 
+
+» T (231, 326, : ) 
+
+ans ( : , 
+
+1) = 
+
+0.8901 
+
+ans ( : , 
+
+:,2) = 
+
+0.8705 
+
+ans ( : , 
+
+» 
+
+:,3) = 
+
+0.3765 
+
+
+50 100 150 200 250 300 350 400 450 500 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+57 
+
+
+
+
+
+
+Color 
+
+
+Command Window 
+
+File Edit Debug Desktop Vi 
+
+
+Number at pixel 
+location is an index 
+into a colormap. 1 
+
+
+\ 
+
+
+1(231,326,:) = 214 
+
+
+>> ti tie ( T Pl| 
+» xlabel ( 
+
+» truesize 
+
+
+
+
+VO 
+
+CM 
+
+CO 
+
+
+256 
+
+
+colormap 
+
+• 
+
+• 
+
+• 
+
+0.1804 
+
+n c o n 
+
+• 
+
+• 
+
+• 
+
+0.1882 
+
+0.7098 
+
+0.9059 
+
+• 
+
+• 
+
+• 
+
+• 
+
+• 
+
+0.0627 
+
+0.2902 ' 
+
+0.2549 
+
+• 
+
+• 
+
+• 
+
+U . bo bd 
+
+0.8863 
+
+• 
+
+• 
+
+• 
+
+red green blue 
+
+
+Intensity values 
+are integers 
+between 0 and 1. 
+
+
+x 255 = [226 231 65] 
+
+
+
+» T = imread( T Jim Woddryajg 
+>> figure 
+» image (T ) 
+
+» truesize 
+» T (231, 326, : ) 
+ans ( : , : , 1) = 
+
+227 
+
+ans ( : , : , 2 ) = 
+
+222 . 
+
+96 
+
+» I (231, 326, : ) 
+ans = 
+
+214 
+
+» cmap (214, : ) 
+ans = 
+
+0.8863 0.9059 0.2549 
+
+» round ( 255*cmap ( 2 14 , : ) ) 
+ans = 
+
+226 231 65 
+
+» 
+
+
+PlusMinus . jpg T , T jpg T ) / 
+
+
+0 
+
+0 
+
+H Figure 1 
+
+
+-Jt x 
+
+File Edit View Insert Tools Desktop 
+
+Window Help 
+
+-a 
+
+
+Dcsy# k o. Q. ® « 
+
+□ @| i Q 
+
+
+|\^ plus Minus 
+
+
+
+
+100 150 200 250 300 350 400 450 500 
+
+Jim Woodring (http://www.jimwoodring.com/) 
+
+
+image class: uint8 
+image type: colormapped 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+58 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Example truecolor and colormapped images 
+
+
+
+24-bit truecolor 8-bit colormapped to 24 bits 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+59 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Example truecolor and colormapped images 
+
+
+
+24-bit truecolor 8-bit colormapped to 24 bits 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+60 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Colormapped Image, Indices, & Color Map 
+
+>> [M,CMAP] = imread ( 'button_mapped . bmp' bmp) ; 
+
+Indices contained in M(254:258,254:258) actual values in CMAP(109:113,:) 
+
+
+... Ill 
+
+121 
+
+48 
+
+111 
+
+4 8 ... 
+
+... 110 
+
+48 
+
+111 
+
+110 
+
+Ill ... 
+
+... 110 
+
+111 
+
+121 
+
+48 
+
+121 ... 
+
+... 121 
+
+48 
+
+110 
+
+111 
+
+4 8 ... 
+
+... 110 
+
+121 
+
+48 
+
+121 
+
+110 ... 
+
+
+
+
+• 
+
+R i 
+
+G : 
+
+B : 
+
+109 
+
+0.6588 
+
+0.4706 
+
+0.8471 
+
+110 
+
+0.2196 
+
+0.1569 
+
+0.2824 
+
+111 
+
+0.4706 
+
+0.3451 
+
+0.5961 
+
+112 
+
+0.5333 
+
+0.4078 
+
+0 . 6588 
+
+113 
+
+0.2824 
+
+0.2196 
+
+0.3451 
+
+
+t 
+
+Last 
+
+3 
+
+cols. 
+
+only 
+
+
+255*aAAP(109:113,:) 
+
+
+: 
+
+Ri 
+
+G\ 
+
+B = 
+
+109 
+
+168 
+
+120 
+
+216 
+
+110 
+
+56 
+
+40 
+
+72 
+
+111 
+
+120 
+
+88 
+
+152 
+
+112 
+
+136 
+
+104 
+
+168 
+
+113 
+
+72 
+
+56 
+
+OO 
+
+OO 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+61 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+How to convert a colormapped image to true color 
+
+M is a 512x512x1, 8-bit image. cmap is the colormap that is stored in 'button_mapped.bmp' 
+
+It has 262,144 pixels. along with image, cmap is a 256x3 type-double matrix, each 
+
+Each pixel has a value between row of which lists a color in terms of its R, G, A B intensities, 
+
+0 A 255. which are given as fractions between 0 and 1. 
+
+
+>> [M, cmap] = imread ( 'button mapped . bmp ' , 'bmp'); 
+
+
+>> T = uint8 (reshape (cmap (M+l size^(M) 3]) *255); 
+
+[512 512 ] 
+
+
+The 262,144 x 3 matrix of 
+intensity values is reshaped 
+into a 512x512x3 image of 
+type double. The values are 
+scaled to lie between 0 A 255 
+then converted to type uint8. 
+
+
+By concatenating M's columns, Matlab 
+rearranges M into a 262,144 x 1 list. Each 
+number in the list (if it has 1 added to it) 
+refers to a row of the colormap. Then, 
+cmap(M+l,:) produces a 262,144 x 3 matrix of 
+intensity values of type double between 0 A 1. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+62 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+How to Make Colormaps 
+
+
+* Command Window 
+
+File Edit Debug Desktop Window Help 
+
+
+» 
+
+» 
+
+» 
+
+» 
+
+» 
+
+» 
+
+» 
+
+
+n x 
+
+
+
+>> gem = [ zeros (256, 1 ) ramp zeros (256, 1) ] ; 
+
+
+
+» 
+
+» colormap ( kem) 
+
+
+|OVR 
+
+
+0 
+
+0.0039 
+
+0.0078 
+
+0.0118 
+
+0.0157 
+
+
+0.9843 
+
+0.9882 
+
+0.9922 
+
+0.9961 
+
+1.0000 
+
+
+This code, 0:255 , 
+generates a 1 row by 
+256 element vector 
+of class double that 
+contains numbers 0 
+through 255 inclusive. 
+
+
+This, (0:255)’ , has 
+the same contents 
+and class but is a 256 
+row by 1 column 
+vector. The 
+apostrophe (’) is the 
+matrix transpose 
+operator. 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+63 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+R, G, & B bands of a 
+truecolor image displayed 
+with grayscale colormaps 
+
+
+
+
+
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+64 
+
+
+
+
+R, G, & B bands of a 
+truecolor image displayed 
+with grayscale colormaps 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+» i = 
+
+
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+65 
+
+
+
+
+R, G, & B bands of a 
+truecolor image displayed 
+with tinted colormaps 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+66 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+R, G, & B bands of a 
+truecolor image displayed 
+with tinted colormaps 
+
+
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+67 
+
+
+
+
+
+
+R, G, & B bands of a 
+truecolor image displayed 
+with grayscale colormaps 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+» i = 
+
+
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+68 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Saving Images as Files 
+
+
+■jfi. Command Window _ | □[ X 
+
+File Edit Debug Desktop Window Help e 
+
+» 
+
+» % truecolor as .bmp 
+
+» imwrite (I, ' image_name.bmp' , 'bmp' ) ; 
+
+» 
+
+» % truecolor as .jpg (default quality = 75) 
+
+» imwrite (I , ' image_name . jpg' , ' jpg' ) ; 
+
+» 
+
+» % truecolor as .jpg (quality = 100) 
+
+» imwrite (I , ' image_name . jpg' , ' jpg' , ' Quality' , 100 ) ; 
+
+» 
+
+» % colormapped as .bmp 
+
+» imwrite (I , cmap, ' image_name . bmp' , ' bmp' ) ; 
+
+» 
+
+» % colormapped as .gif 
+
+» imwrite (I , cmap, ' image_name .gif' , 'gif' ) ; 
+
+» 
+
+1 °^^: 
+
+
+Assuming that 
+
+T contains the image of 
+the correct class, 
+that 
+
+cmap' is a colormap, 
+and that 
+
+’image_name' is the 
+file-name that you 
+want. 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+69 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+15 Septermber 2016 © 1999-2016 by Richard Alan Peters II 
+
+
+Double Exposure: 
+Adding Two Images 
+
+
+Rayden Woodring - The Ecstasy of Bumper i I lo (?) 
+
+
+Mark Rayden - The Ecstasy of Cecelia 
+
+
+Jim Woodring - Bumperillo 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Double Exposure: Adding Two Images 
+
+>> cd 'D:\Classes\EECE253\Fall 2006\Graphics\matlab intro' 
+
+>> JW = imread ( ' Jim Woodring - Bumperillo . jpg ' , ' jpg ' ) ; 
+
+>> figure 
+>> image ( JW) 
+
+>> truesize 
+>> title (' Bumperillo ' ) 
+
+>> xlabel('Jim Woodring') 
+
+>> MR = imread ('Mark Ryden - The Ecstasy of Cecelia . jpg ', ' jpg ') ; 
+
+>> figure 
+>> image (MR) 
+
+>> truesize 
+
+>> title (' The Ecstasy of Cecelia') 
+
+>> xlabel('Mark Ryden') 
+
+» [ RMR , CMR , DMR ] = size (MR) ; 
+
+» [RJW, CJW, DJW] = size ( JW) ; 
+
+» rb = round ( (RJW -RMR) / 2 ) ; 
+
+» cb = round ( (CJW-CMR) / 2 ) ; 
+
+>> JWplusMR = uint8 ( (double (JW (rb : (rb+RMR-1 ), cb : (cb+CMR-1 ),:)) +double (MR) ) /2 ) ; 
+>> figure 
+>> image (JWplusMR) 
+
+>> truesize 
+
+>> title (' The Ecstasy of Bumperillo') 
+
+>> xlabel('Jim Woodring + Mark Ryden') 
+
+
+Example 
+Matlab Code 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+71 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Double Exposure: Adding Two Images 
+
+
+>> cd 'D:\Classes\EECE253\Fall 2006\Graphics\matlab intro' 
+
+>> JW = imread ( ' Jim Woodring - Bumperillo . jpg ' , ' jpg ' ) ; 
+
+>> figure 
+>> image ( JW) 
+
+>> truesize 
+
+>> title (' Bumperillo ' ) 
+
+>> xlabel('Jim Woodring') 
+
+>> MR = imread ('Mark Ryden - The Ecstasy of Cecelia . jpg ',' jpg ') ; 
+>> figure 
+>> image (MR) 
+
+>> truesize 
+
+>> title (' The Ecstasy of Cecelia') 
+
+>> xlabel('Mark Ryden') 
+
+» [ RMR , CMR , DMR ] = size (MR) 
+
+» [RJW, CJW, DJW] = size ( JW) 
+
+» rb = round ( (RJW -RMR ) / 2 ) ; 
+
+» cb = round ( (CJW-CMR) /2) ; 
+
+>> JWplusMR = uint8 ( (double 
+>> figure 
+>> image (JWplusMR) 
+
+>> truesize 
+
+>> title (' The Ecstasy of Bumperillo') 
+
+>> xlabel('Jim Woodring + Mark Ryden' 
+
+
+Example 
+Matlab Code 
+
+
+Cut a section out of the middle of the larger 
+image the same size as the smaller image. 
+
+
+JW (rb: (rb+RMR-1) , cb: (cb+CMR-1) , : ) 
+
+
+) +double (MR) ) / 2 ) ; 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+72 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Double Exposure: Adding Two Images 
+
+
+>> cd 'D:\Classes\EECE253\Fall 2006\Graphics\matlab intro' 
+
+>> JW = imread ( ' Jim Woodring - Bumperillo . jpg ' , ' jpg ' ) ; 
+
+>> figure 
+>> image ( JW) 
+
+>> truesize 
+
+>> title (' Bumperillo ' ) 
+
+>> xlabel('Jim Woodring') 
+
+MR = imread ('Mark Ryden - The Ecstasy of Cecelia . jpg ',' jpg ') ; 
+figure 
+image (MR) 
+
+>> truesize 
+
+>> title (' The Ecstasy of Cecelia') 
+
+>> xlabel('Mark Ryden') 
+
+» [ RMR , CMR , DMR ] = size (MR) ; 
+
+» [RJW, CJW, DJW] = size ( JW) ; 
+
+» rb = round ( (RJW -RMR ) / 2 ) ; 
+
+» Cb = round ( (C JW- CMR ^ /?•) : 
+
+
+Example 
+Matlab Code 
+
+
+» 
+
+» 
+
+» 
+
+
+Note that the images are averaged, 
+pixelwise. 
+
+
+>> JWplusMR = uint8 
+>> figure 
+>> image (JWplusMR) 
+
+>> truesize 
+
+>> title (' The Ecstasy of Bumperillo') 
+>> xlabel('Jim Woodring + Mark Ryden' 
+
+
+( (double ( JW (rb: (rb+RMR-1) , cb: (cb+CMR-1) , : ) ) +double (MR) ) / 2 ) 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+73 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Double Exposure: Adding Two Images 
+
+
+>> cd 'D:\Classes\EECE253\Fall 2006\Graphics\matlab intro' 
+
+>> JW = imread ( ' Jim Woodring - Bumperillo . jpg ' , ' jpg ' ) ; 
+
+>> figure 
+>> image ( JW) 
+
+>> truesize 
+
+>> title (' Bumperillo ' ) 
+
+>> xlabel('Jim Woodring') 
+
+>> MR = imread ('Mark Ryden - The Ecstasy of Cecelia . jpg ', ' jpg ') ; 
+>> figure 
+>> image (MR) 
+
+>> truesize 
+
+>> title (' The Ecstasy of Cecelia') 
+
+>> xlabel('Mark Ryden') 
+
+» [ RMR , CMR , DMR ] = size (MR) ; 
+
+» [RJW, CJW, DJW] = size ( JW) ; 
+
+» rb = round ( (RJW -RMR) /2) ; 
+
+>> cb = roun 
+>> JWplusMR 
+>> figure 
+
+>> image (JWplusMR) Note the data claSS 
+
+>> truesize conversions. 
+
+>> title (' The Ecstasy of Bumperillo') 
+
+>> xlabel('Jim Woodring + Mark Ryden') 
+
+
+l l CJW — CMR ) i2A 
+
+
+uint8 ( 
+
+
+double ( JW ( rb : ( rb+RMR-1 ) , cb : ( cb+CMR- 1 ) , : ) ) 
+
+
+j- double"^ 
+
+
+Example 
+Matlab Code 
+
+
+R) ) /2) ; 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+74 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+Jim Woodring - Bumperillo 
+
+
+
+Mark Rayden - The Ecstasy of Cecelia 
+
+
+Intensity Masking: 
+Multiplying Two Images 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+75 
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Intensity Masking: Multiplying Two Images 
+
+
+>> JW = imread( f Jim Woodring - Bumperillo . jpg f r 1 jpg 1 ) ; 
+
+
+>> MR = imread( f Mark Ryden 
+» 
+
+» 
+
+
+- The Ecstasy of Cecelia . jpg f , f jpg 1 ) ; 
+
+[RMR, CMR, DMR] = size (MR) ; 
+
+[RJW, CJW, DJW] = size ( JW ) ; 
+
+» rb = round ( (RJW-RMR) / 2 ) ; 
+
+» cb = round ( (CJW-CMR) / 2 ) ; 
+
+>> JWplusMR = uint8 ( (double ( JW (rb : (rb+RMR-1 ) , cb : (cb+CMR-1 ) , : ) ) +double (MR) ) / 2 ) ; 
+>> figure 
+>> image (JWplusMR) 
+
+>> truesize 
+
+>> title ( f The Extacsy of Bumperillo 1 ) 
+
+>> xlabel( f Jim Woodring + Mark Ryden 1 ) 
+
+» JWtimesMR = double (JW (rb : (rb+RMR-1 ), cb : (cb+CMR-1 ),:)). ^double (MR) ; 
+
+>> M = max (JWtimesMR ( : ) ) ; 
+
+>> m = min (JWtimesMR ( : ) ) ; 
+
+>> JWtimesMR = uint8 (255* (double (JWtimesMR) -m) / (M-m) ) ; 
+
+>> figure 
+
+>> image (JWtimesMR) 
+
+>> truesize 
+
+>> title ( f EcstasyBumperillo ' ) 
+
+
+Example 
+Matlab Code 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+76 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Intensity Masking: Multiplying Two Images 
+
+
+- Bumperillo . jpg ' jpg ' ) ; 
+
+The Ecstasy of Cecelia . jpg jpg ' 
+
+
+>> JW = imread('Jim Woodring 
+>> MR = imread('Mark Ryden - 
+» [RMR, CMR, DMR] = size (MR) ; 
+
+» [RJW, CJW, DJW] = size ( JW) ; 
+
+» rb = round ( (RJW-RMR) /2) ; 
+
+» cb = round ( (CJW-CMR) / 2 ) ; 
+
+JWplusMR = uint8 ( (double ( JW (rb : (rb+RMR-1 ) , cb : (cb+CMR-1 ) , : ) ) +double (MR) ) /2 ) ; 
+figure 
+
+image (JWplusMR) Note that the images are multiplied, pixelwise. 
+
+
+Example 
+Matlab Code 
+
+
+>> 
+
+>> 
+
+>> 
+
+>> truesize 
+
+>> title ( f The Extacsy of Bumperillo 1 ) 
+
+>> xlabel( f Jim Woodring + Mark Ryden 1 ) 
+
+>> JWtimesMR = double ( JW ( rb : ( rb+RMR-1 ) r cb 
+>> M = max (JWtimesMR ( : ) ) ; 
+
+>> m = min (JWtimesMR ( : ) ) 
+
+» JWtimesMR = uint8 
+
+
+I cb+CMR-1) , 
+
+
+C3 
+
+
+double (MR) ; 
+
+
+» 
+
+» 
+
+
+(255* (double (JWtimesMR) -m) / (M-m) ) 
+
+
+figure 
+
+image (JWtimesMR) 
+
+>> truesize 
+
+>> title ( ' EcstasyBumperillo 1 
+
+
+Note how the image intensities are 
+scaled back into the range 0-255. 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+77 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+A note on image intensity scaling 
+
+In the code on the previous slide we scaled the result of the image multiplication so that 
+it would have the maximum possible dynamic range (0-255). The formula for such 
+linear scaling is 
+
+m = min(l), M = max(l), and J = 255 (l-m)/(M - m ) . 
+
+
+
+In Matlab, if the images are of type uint8, this requires class conversions: 
+
+J = uint8 (255*double (I-m) /double (M-m) ) ; 
+
+Without the double casts, the arithmetic is performed with 8 bits of precision, which 
+yields incorrect results. 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+78 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+A note on image intensity scaling 
+
+
+In the code on the p 
+it would have the n 
+linear scaling is 
+
+
+ro\n on c oil r\e* \\ zo cr*o i <±a m o racn it tU o imorro m 1 t 
+
+In Matlab, the min and max are computed like this: 
+
+m = min (!(:)); M = max (!(:)) ; 
+
+
+ltiplication so that 
+mula for such 
+
+
+m = min(l), M - max (I) , and J = 255 (I - m) / (M - m) . 
+
+
+
+In Matlab, if the images are of type uint8, this requires class conversions: 
+
+J = uint8 (255*double (I-m) /double (M-m) ) ; 
+
+Without the double casts, the arithmetic is performed with 8 bits of precision, which 
+yields incorrect results. 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+79 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+More on image intensity scaling 
+
+
+
+Linear scaling is not always appropriate. If the image has 
+some important features with very low intensity values and 
+others that are large, the darker features may not be visible 
+in a linearly scaled result. In such cases nonlinear scaling 
+can perform better. The images below are differently scaled 
+versions of D = abs (I-J) ; where I is the image to the 
+left and J was a quality-0 jpeg copy of itself. 
+
+
+
+uint8 (255* (D-m) / (M-m) ) ) L=log (D+l ) , uint8 (255*L/max (L(:)) uint8(D. A 2) 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+80 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixel Indexing in Matlab 
+
+
+“For” loops in Matlab are inefficient, whereas Matlab’s 
+native indexing procedures are very fast. 
+
+
+Rather than 
+
+
+"IP_Function" is 
+some arbitrary 
+image processing 
+function that you or 
+someone else has 
+written. 
+
+
+for r = 1 : R 
+
+for c = 1:C 
+
+J (r, c, : ) = IP_Function (I (r, c, : ) ) ; 
+
+end 
+
+end 
+
+
+use, if possible 
+
+
+J = IP Function (I); 
+
+
+But, sometimes that is not possible. 
+
+For example, if the output, J, is decimated with respect to the input, I, 
+the above will not work (unless, of course, it is done within IP_function). 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+81 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Pixel Indexing in Matlab 
+
+
+
+To decimate the above image by a factor of n, 
+create a vector, r, that contains the index of 
+every nth row, and a similar vector, c. 
+
+
+
+O 
+
+LO 
+
+ON 
+
+NO 
+
+to 
+
+to 
+
+to 
+
+Ln 
+
+to 
+
+00 
+
+
+4^ 
+
+<1 
+
+O 
+
+ON 
+
+NO 
+
+to 
+
+to 
+
+to 
+
+Ln 
+
+to 
+
+00 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+82 
+
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Pixel Indexing in Matlab 
+
+
+
+Then, vectors r and c used as index 
+arguments for image I select every 
+nth column in every nth row. 
+
+
+rrtHHH 
+
+
+#####► r n 
+
+
+Here, 
+
+nr3 
+
+rr [ rP’c 
+
+
+f~ r f i 
+
+
+r;rM 
+
+Yf 
+
+
+
+It F U-U fftt 
+
+r- r- ™ r- r- r- r- r- ■■ 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+83 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixel Indexing in Matlab 
+
+
+
+image, i 
+
+
+r = 1 : n : R ; 
+
+
+c = 1 : n : C ; 
+
+— 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+84 
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixel Indexing in Matlab 
+
+
+Indexing in Matlab is fully general. 
+
+If I is R x C x B, vectors r and c 
+can contain any numbers 1 < r k < R 
+and 1 < c k <C. 
+
+The numbers can be in any order 
+and can be repeated within r and c. 
+
+The result of I (r,c) is an ordinal 
+shuffling of the pixels from I as 
+indexed by r and c. 
+
+
+Whenever possible, 
+avoid using 'for' loops; 
+vectorize instead. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+85 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixel Indexing in Matlab 
+
+
+Indexing in Matlab is fully general. 
+
+If I is R x C x B, vectors r and c 
+can contain any numbers 1 < r k < R 
+and 1 < c k <C. 
+
+The numbers can be in any order 
+and can be repeated within r and c. 
+
+The result of I (r,c) is an ordinal 
+shuffling of the pixels from I as 
+indexed by r and c. 
+
+
+Whenever possible, 
+avoid using 'for' loops; 
+vectorize instead. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+86 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixel Indexing in Matlab 
+
+
+Indexing in Matlab is fully general. 
+
+If I is R x C x B, vectors r and c 
+can contain any numbers 1 < r k < R 
+and 1 < c k <C. 
+
+The numbers can be in any order 
+and can be repeated within r and c. 
+
+The result of I (r,c) is an ordinal 
+shuffling of the pixels from I as 
+indexed by r and c. 
+
+
+Whenever possible, 
+avoid using 'for' loops; 
+vectorize instead. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+87 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixel Indexing in Matlab 
+
+
+Indexing in Matlab is fully general. 
+
+If I is R x C x B, vectors r and c 
+can contain any numbers 1 < r k < R 
+and 1 < c k <C. 
+
+The numbers can be in any order 
+and can be repeated within r and c. 
+
+The result of I (r,c) is an ordinal 
+shuffling of the pixels from I as 
+indexed by r and c. 
+
+
+Whenever possible, 
+avoid using 'for' loops; 
+vectorize instead. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+88 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixel Indexing in Matlab 
+
+
+Indexing in Matlab is fully general. 
+
+If I is R x C x B, vectors r and c 
+can contain any numbers 1 < r k < R 
+and 1 < c k <C. 
+
+The numbers can be in any order 
+and can be repeated within r and c. 
+
+The result of I (r,c) is an ordinal 
+shuffling of the pixels from I as 
+indexed by r and c. 
+
+
+Whenever possible, 
+avoid using 'for' loops; 
+vectorize instead. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+89 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pixel Indexing in Matlab 
+
+
+Indexing in Matlab is fully general. 
+
+If I is R x C x B, vectors r and c 
+can contain any numbers 1 < r k < R 
+and 1 < c k <C. 
+
+The numbers can be in any order 
+and can be repeated within r and c. 
+
+The result of I (r,c) is an ordinal 
+shuffling of the pixels from I as 
+indexed by r and c. 
+
+
+Whenever possible, 
+avoid using 'for' loops; 
+vectorize instead. 
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+90 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Pixel Indexing 
+
+
+H Figure 1 
+
+File Edit View Insert Tools Desktop Window Help 
+
+
+>> I = imread ( ' Lawraa - Fl 
+>> size(I) 
+ans = 
+
+576 768 3 
+
+>> r = randperm (576) ; 
+
+>> c = randperm ( 7 68 ) ; 
+
+» J = I (r, c, : ) ; 
+
+>> figure 
+>> image ( J) 
+
+>> truesize 
+
+>> title (' Scrambled Image' 
+>> xlabel('What is it?') 
+
+
+Fun (if you're an imaging geek) 
+thing to try with Matlab 
+indexing: Scramble an image! 
+
+
+600 700 
+
+
+Scrambled Image 
+
+
+300 400 500 
+
+What is it? 
+
+
+50 
+
+100 
+
+150 
+
+200 
+
+250 
+
+300 
+
+350 
+
+400 
+
+450 
+
+500 
+
+550 
+
+
+100 200 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+91 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Pixel Indexing 
+
+
+S3 Figure 2 
+
+File Edit View Insert Tools Desktop Window Help 
+
+
+>> ... 
+
+>> xlabel( ! What is it? ! ) 
+
+» K (r, c, : ) = J; 
+
+>> figure 
+>> image (K) 
+
+>> truesize 
+>> title ( f Yay ! ! ! ' ) 
+
+>> xlabel ( f Photo : Lawraa on Flickr-com') 
+
+
+600 700 
+
+
+50 
+
+100 
+
+150 
+
+200 
+
+250 
+
+300 
+
+350 
+
+400 
+
+450 
+
+500 
+
+550 
+
+
+100 
+
+
+200 
+
+
+Yay!!! 
+
+
+300 400 500 
+
+Photo: Lawraa on Flickr.com 
+
+
+The image can be 
+unscrambled using 
+the row and column 
+permutation 
+vectors, r & c. 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+92 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Matlab Vectorization 
+
+Making a Matlab program run as fast as possible fast by avoiding 
+loops is called “vectorization.” It is not something that Matlab does 
+automatically. Rather it is a skill that a good programmer learns. 
+
+
+"tic" starts 
+Matlab's code 
+timer, "toe" 
+stops the timer 
+and reports the 
+elapsed time. 
+
+
+Looped code Vectorized code 
+
+
+tic 
+
+
+tic 
+
+for t = 1:1024 
+
+
+y = sin(pi*(0: (1/256) :2) ) ; 
+
+y(t) = sin(2*pi*t/512) ; 
+
+
+toe 
+
+end 
+
+
+
+toe 
+
+
+Elapsed time is 0.002019 seconds. 
+
+Elapsed time is 0.038923 seconds. 
+
+
+
+0.038923 / 0.002019 = 19.2784 =^> vectorized code is 20 times faster the looped! 
+There is a web page on vectorization at the MathWorks: 
+
+http : //www . mathworks . com/help/matlab/matlab prog/vectorization . html 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+93 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Matlab Vectorization 
+
+Example: compute a distance matrix, 
+the matrix of squared pair-wise 
+distances between two sets of vectors. 
+
+
+d 2 (a,b) 
+
+
+a ,-bi 
+
+2 
+
+a i 
+
+... 
+
+1 
+
+of 
+
+2 
+
+a V ~^N 
+
+
+A 
+
+
+MxN 
+
+
+
+
+
+MxN 
+
+
+
+K • b„ eR M , a mJ ,b. eR, 
+
+
+
+
+a 
+
+
+m, 1 
+
+
+a 
+
+
+
+
+K = 
+
+
+b mi 
+
+
+' m,M 
+
+
+d ™,»( a - b ) 
+
+
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+94 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Matlab Vectorization 
+
+
+Looped code 
+
+
+tic 
+
+for r = 1 : 1000 
+
+for c = ( r+1) : 1000 
+
+diff = A( : , r) -B( : , c) ; 
+D(r,c) = diff 1 *dif f ; 
+end 
+end 
+
+
+u = u -i- u ; 
+
+toe 
+
+Elapsed time is 
+4.893803 seconds. 
+
+
+
+Vectorized code 
+
+
+Example: compute 
+a distance matrix. 
+
+bsxf un ( function, A, B) 
+applies the binary operation 
+specified by function, to 
+matrices A and B. 
+
+Elapsed time is 
+0.009223 seconds. 
+
+
+tic 
+
+D = bsxfun(@plus, sum(A.^2) ' ,bsxfun(@plus,sum(B.^2) , -2*(A'*B) ) ) ; 
+toe 
+
+
+4.893803 / 0.009223 = 530.609 => vectorized code is 530 times faster the looped! 
+
+
+15 Septermber 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+95 
+
+
+
+

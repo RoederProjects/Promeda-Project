@@ -1,0 +1,2685 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes: Reduction of Uncorrelated Noise 
+
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution -Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Noise in Images 
+
+
+All images created through optical 
+projection onto a sensor array are noisy. 
+
+
+Correlated noise 
+
+- Due to electrical interference 
+
+- Due to source / sensor interference 
+
+- Halftone distortion / moire patterns 
+
+
+r&v 
+
+IN 
+
+
+
+
+mm*. 
+
+mm 
+
+
+
+
+
+Uncorrelated noise 
+
+- Quantum noise in CCD arrays 
+
+- Silver halide grains in film photography 
+
+- Neuronal noise in a retina 
+
+- Quantization noise in digital photographs 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image with Additive Noise 
+
+
+noisy 
+
+additive 
+
+noisy 
+
+additive 
+
+image 
+
+noise 
+
+image 
+
+noise 
+
+\/ 
+
+— . 
+
+A 
+
+' — i — 
+
+/ 
+
+l 
+
+A 
+
+
+j(r,c) = l(r,c) + N(r,c). JT(v,m) = l[v,u) + N(v,u). 
+
+
+undegraded 
+
+image 
+
+
+undegraded 
+
+image 
+
+
+spatial domain 
+
+
+frequency domain 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Intensity distributions - 
+normalized histograms 
+
+
+Uncorrelated Noise 
+
+
+
+Each pixel’s value has probability of occurrence given by the associated distribution. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Intensity distributions - 
+normalized histograms 
+
+
+
+The most likely value is 128 
+with an average difference 
+of 25 from 128 (std. dev.). 
+
+
+Jncorrelated Noise 
+
+
+This is sparse noise: 
+Only 12.5% of the 
+— pixels contain noise. 
+'V v Of those 123% ... 
+
+UV :V'v v Vv :. y . ' 
+
+
+.. ** ■ 
+
+
+Salt & Pepper 
+
+
+
+All values occur with 
+equal probability. 
+
+
+0.015 
+
+0.01 
+
+0.005 
+
+n 
+
+■MM 
+
+
+U 
+
+0 50 100 150 200 250 
+
+
+
+0.7 
+
+0.6 
+
+0.5 
+
+
+Sl ... black pixels occur 
+75% of the time and 
+
+
+white pixels occur 
+25% of the time. 
+
+
+■xrm 
+
+o W - 
+
+0 50 100 150 200 250 
+
+
+Each pixel’s value has probability of occurrence given by the associated distribution. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Uncorrelated Color Noise: Gaussian 
+
+
+
+Gaussian: Luminance pdf 
+
+0.015 
+
+0.01 
+
+0.005 
+
+0 
+
+0 50 100 150 200 250 
+
+Gaussian: Green Band pdf 
+
+0.015 
+
+0.01 
+
+0.005 
+
+0 
+
+0 50 100 150 200 250 
+
+
+
+
+0.015 
+
+0.01 
+
+0.005 
+
+0 
+
+0 50 100 150 200 250 
+
+Gaussian: Blue Band pdf 
+
+0.015 
+
+0.01 
+
+0.005 
+
+0 
+
+0 50 100 150 200 250 
+
+
+
+Gaussian: Red Band pdf 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Uncorrelated Color Noise: Uniform 
+
+
+Uniform: Luminance pdf 
+
+
+Uniform: Red Band pdf 
+
+
+0.015 
+
+0.01 
+
+0.005 
+
+0 
+
+0 50 100 150 200 250 
+
+
+
+0.015 
+
+0.01 
+
+0.005 
+
+0 
+
+
+
+0 50 100 150 200 250 
+
+
+Uniform: Green Band pdf 
+
+
+Uniform: Blue Band pdf 
+
+
+0.015 
+
+0.01 
+
+0.005 
+
+0 
+
+0 50 100 150 200 250 
+
+
+
+
+0.015 
+
+0.01 
+
+0.005 
+
+0 
+
+0 50 100 150 200 250 
+
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Noise Enhancement: Problem with Sharpening 
+
+• Noise occurs in every natural imaging device 
+
+- Quantum effects in CCD arrays 
+
+- Random distribution of silver halide grains in film 
+
+- Neuronal noise in the retina 
+
+• Spatially independent noise 
+
+- The noise in one sensor has no effect on that in its neighbors 
+
+- => the autocorrelation of the signal is an impulse at the origin 
+
+- The chances of getting repeated patterns of any frequency are virtually nil 
+
+- => the frequency spectrum of the noise is flat 
+
+Recall: Autocorrelation = inverse Fourier transform of power 
+spectrum; Fourier transform of an impulse at (0,0) is a constant. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Noise Enhancement: Problem with Sharpening 
+
+• The spectra of most natural images fall-off toward the high 
+frequencies. 
+
+• IID noise has a flat spectrum. 
+
+• Therefore, at some relatively high frequency (HF) the 
+energy in the noise is greater than that in the uncorrupted 
+image. 
+
+• Sharpening multiplies the FT of the image by u and v (or 
+by linear combinations of them) which, at HF, increases 
+the noise more than the uncorrupted image. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gaussian IID Noise Field 
+
+
+IID => no spatial 
+correlation 
+
+
+
+Histogram of Noise Image 
+
+
+
+IID: Independent, Identically Distributed 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gaussian IID Noise Field 
+
+
+IID => no spatial 
+correlation 
+
+
+
+3500 
+
+
+3000 
+
+
+2500 
+
+
+2000 - 
+
+
+1500 
+
+► 
+
+
+Histogram of Noise Image 
+
+
+1000 
+
+
+500 - 
+
+
+
+
+The probability of 
+any one pixel 1 
+
+having this value ... 
+
+, . 1 
+
+
+
+50 
+
+
+100 
+
+
+150 
+
+
+200 
+
+
+250 
+
+
+IID: Independent, Identically Distributed 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Autocorrelation of an Image 
+
+
+Let the support of I be a toms. (I is defined on a toms a la the Fourier transform.) 
+Let I be I minus the mean value of I. Make a copy of I. Shift the copy by (p,%) 
+on the torus. Pixel- wise multiply the shifted version by the original and sum the 
+products. 
+
+
+A i(p>x) 
+
+
+iZZ i( r ’ c )i('i / ( r+ p; /? )>v(c+x;c)) 
+
+r - 1 c - 1 
+
+
+where 
+
+
+I(p,x)=l(p,x) 
+
+
+1 
+
+~RC 
+
+
+ZZ I M 
+
+
+r — 1 c - 1 
+
+
+\\i(x;N) 
+
+
+and 
+
+mod(v, N) 
+
+~ < 
+
+mod(v + N, N) 
+
+
+if 
+
+if 
+
+
+x>0 
+x < 0 
+
+
+^i(p,x), the autocorrelation of 
+I at offset (p.x), ^ a measure 
+of the similarity of I to itself 
+when shifted by (p.x). 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Power Spectrum & Autocorrelation of IID Noise 
+
+
+250 - 
+
+
+Noise Log Power Spectrum 
+“i 1 1 1 1 r ~ 
+
+
+xIO 
+
+
+Noise Autocorrelation 
+
+
+“i r 
+
+
+Power Spectrum 
+
+
+200 - 
+
+
+150 - 
+
+
+100 - 
+
+
+50 - 
+
+
+The autocorrelation is 
+the inverse FT of the 
+power spectrum. 
+
+
+
+
+Q ! I ! I I I I I 
+
+
+ps(i)=k(i) 
+
+
+
+A t (A;r) = Re £ -1 |#(i) 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Power Spectrum & Autocorrelation of IID Noise 
+
+
+250 - 
+
+
+200 - 
+
+
+150 - 
+
+
+100 - 
+
+
+50 - 
+
+
+Noise Log Power Spectrum 
+
+“i 1 1 1 1 1 1 r 
+
+
+xIO 
+
+
+Noise Autocorrelation 
+
+
+Power Spectrum 
+
+
+The autocorrelation of 
+an IID noise image is ~ 
+5(p,x). That implies 
+the PS is ~ constant 
+
+
+
+
+_! I I I I I I L_ 
+
+
+ps(i)=k(i) 
+
+
+
+A (a x) = Re 3- l \g(l) 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Noise-Free Image and Uncorrelated Noise Field 
+
+
+
+image Gaussian noise field 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Spectra of Noise-Free Image and Uncorr. Noise Field 
+
+
+
+image center row log power spectrum noise field center row log power spectrum 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Sum of Noise-Free Image and Uncorrelated Noise Field 
+
+
+
+image + noise field image + noise field center row log PS 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Power Spectra of Noise-Free Image and Noise Field 
+
+
+
+original image noise image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Power Spectra of Sum of Image and Noise Field 
+
+
+
+original image noisy image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Power Spectra of Sum of Image and Noise Field 
+
+
+
+original image blue indicates noise > image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Power Spectra of Sum of Image and Noise Field 
+
+
+
+noise image 
+
+
+
+red indicates image > noise 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Power Spectra of Sum of Image and Noise Field 
+
+
+
+noisy image image & noise 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Additive Noise: Another Example 
+
+
+
+original image noise image image+noise 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Additive Noise: Another Example 
+
+
+
+displayed: 
+
+logjty!) | 2 +lj 
+
+
+image PS 
+
+
+noise PS image+noise PS 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Additive Noise: Another Example 
+
+
+
+image PS image+noise PS image PS > noise PS 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Additive Noise: Reduce Through Blurring? 
+
+
+
+At some frequency 
+To, there are more 
+components where 
+the noise power is 
+greater than the 
+image power. 
+
+
+
+red indicates image > noise 
+
+
+image PS > noise PS 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Additive Noise: Reduce Through Blurring? 
+
+
+
+Thus, it makes 
+sense to apply a LPF 
+with cutoff fO, (a 
+blurring filter) to 
+the images and see 
+what happens. 
+
+
+
+red indicates image > noise 
+
+
+image PS > noise PS 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Additive Noise: Reduction Through Blurring. 
+
+
+The result 
+is actually 
+no better. 
+There's less 
+noise but 
+the blurring 
+looks worse. 
+
+
+r ^ 
+
+
+PS of Gaussian blurred image 
+
+
+Gaussian Blurred Image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Additive Noise: Reduction Through Blurring. 
+
+
+
+The result 
+is actually 
+no better. 
+There's less 
+noise but 
+the blurring 
+looks worse. 
+
+
+
+PS of Gaussian blurred image 
+
+
+Gaussian Blurred Image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Noise Masking 
+
+
+
+If the freq. comps, 
+for which noise- 
+power > image- 
+power are known 1 ... 
+
+
+
+power spec, of noisy image 
+
+
+red: image > noise 
+blue: image < noise 
+
+
+© 1999-2016 byRi< bf course they almost never are. 
+
+
+10 November 2016 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Noise Masking 
+
+
+... mask those out 
+of the FT and 
+invert the result 
+to get... 
+
+
+
+
+
+power spec, of noisy image 
+
+
+image < noise masked out 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Noise Masking 
+
+
+... this: 
+
+
+noisy image 
+
+
+noise-masked mage 
+
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Noise Masking 
+
+Although the noise-masked image looks better than the blurred one, it is still 
+noisy. Moreover, this example is unrealistic because we know the exact noise 
+power spectrum. In any real case we will at most know its statistics. 
+
+
+
+blurred noisy image noise-masked mage 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Degradation Model 
+
+
+So far, we have considered 
+only additive noise. Before 
+going further it will be 
+useful to consider a more 
+general model of image 
+degradation, one that 
+includes convolution with a 
+pointspread 1 function, H, as 
+well as additive noise. 
+
+
+degraded 
+
+image 
+
+
+i 
+
+
+pointspread 
+
+function 
+
+I 
+
+* 
+
+
+j(r,c) = l(r,c)*H(r,c) + N(r,c). 
+
+
+i 
+
+undegraded 
+
+image 
+
+
+I 
+
+additive 
+
+noise 
+
+
+l H is also referred to as the optical transfer function. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pointspread Operators 
+
+
+A pointspread operator is a linear model of the distortion acquired during the 
+imaging process. Since it is a linear model, it is a convolution operator. One 
+example of this is aperture distortion, an unavoidable consequence of making 
+an image with a camera that has an opening larger than a point. 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pointspread Operators 
+
+
+
+aperture camera 
+
+
+
+A pinhole camera maps one 
+object point to one image 
+point; it is one-to-one. 
+
+
+An aperture camera maps one 
+object point to many image 
+points; it spreads the points. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pointspread Operators and Convolution 
+
+
+I ( r , c) J ( r , c) = I ( r , c) * H ( r , c) 
+
+
+
+Recall how a convolution works through multiply, shift, and add (See Lect. 7 p. 25ff). 
+That is precisely the effect of imaging through an aperture. It results in a blurry image. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Lenses 
+
+A properly designed lens will focus the light emanating from a point and thereby 
+reduce the blurring. But no lens can do this perfectly. In fact, the lens adds its 
+own distortion. The result is an optical transfer function, H(r,c), that is 
+convolved with the image. 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Image Degradation Model 
+
+
+degraded 
+
+image 
+
+
+r 
+
+
+pointspread 
+
+function 
+
+l 
+
+
+j(r,c) = l(r,c)*H(r,c) + N(r,c). 
+
+
+\ 
+
+undegraded 
+
+image 
+
+
+I 
+
+additive 
+
+noise 
+
+
+Note: The term pointspread operator refers to convolution by the pointspread function. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+39 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Degradation Model 
+
+
+
+l(r,c) *H(r,c) 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+40 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Image Degradation Model (Frequency Domain) 
+
+
+degraded 
+
+image 
+
+
+[ 
+
+
+pointspread 
+
+operator 
+
+
+4 
+
+
+j(v,u) = l(v,u)-<H( V, u ^ + "M- 
+
+
+[ 
+
+
+undegraded 
+
+image 
+
+
+t 
+
+additive 
+
+noise 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+41 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Image Degradation Model (Frequency Domain) 
+
+
+l(v,u) 
+
+
+
+
+
+J(v, u) = I(v, u) • 'H(v, u) + N(v , u) . 
+Images shown are log magnitude. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+42 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Yj 
+
+Image Restoration 
+
+
+Let I be a perfect image and let K be 
+the image convolved with a pointspread 
+function, H. Then in the frequency 
+domain: 
+
+7f(w, v) = l(u , v) 7 Y(w, v) . 
+
+If the process of imaging adds noise then 
+we get J = K + N, or in freq.: 
+
+j(w, v) = v) + 7V(w, v) . 
+
+We want a filter, W, to remove as much 
+of the noise from J as possible: 
+
+*W( v, u) = lV(v, u ) J(v, u ) . 
+
+
+Then an estimate of I would be the 
+inverse Fourier transform of 
+
+fiy v \ = k( u ’ v ) = av(«,y)J(«,v) 
+
+[ ’ <H{u,v) <H{u,v ) • 
+
+We want to find the filter, W, that results 
+in the closest possible estimate of I i.e. 
+the W that minimizes the energy of the 
+difference between the estimate and I. 
+That is we want to find W such that 
+
+
+
+is as small as possible. This is called 
+least mean squared (LMS) minimization. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+43 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Image Restoration 
+
+
+There are a number of ways to solve for 
+the minimum squared error. All make use 
+of the assumption that the image and the 
+noise are uncorrelated. Depending on 
+how that fact is used, slightly different 
+solutions are found. The most common 
+one used in image processing is the 
+Wiener filter: 
+
+
+W 
+
+
+I 
+
+
+<H I 
+
+
++ 
+
+
+N 
+
+
+Then, with a little bit of algebra, we get 
+
+
+WJ 
+
+
+
+
+
+
++ 
+
+
+N 
+
+
+I 
+
+
+For frequencies (u,v) where noise power 
+is smaller than the image power r W acts 
+
+like an inverse filter since 
+Af(w,v)/X(w,v) < 1 and 
+
+
+Wj(u,v) 
+
+
+
+
+
+
+l(u,v) = I(u,v), 
+
+
+and at frequencies where the noise 
+power dominates, N(u,v)/I(u,v) > 1 and 
+
+
+Wj(u,v) = 
+
+
+I H‘ 
+
+
+I <H 
+
+
++ 
+
+
+N 
+
+
+N(u,v), 
+
+
+the fraction is small so the noise power 
+is diminished. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+44 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Image Restoration 
+
+
+=HM 
+
+
+dudv 
+
+
+=ff 
+
+=IJl" 
+
+=IJl" 
+
+=IJl" 
+
+=IJl" 
+
+=\\\* 
+
+
+K WJ 
+H H 
+
+-2 
+
+
+dudv 
+
+
+This is one of the 
+possible derivations 
+of the Wiener filter 
+
+
+-2 
+
+
+-2 
+
+
+-2 
+
+
+-2 
+
+
+-2 
+
+
+\K-'W{ < K + N) | dudv 
+\K( I - "IV) + 'WN^ dudv 
+
+
+dudv 
+
+
+\_‘K(\-'W) + 'WN\K(\-'W) + 'WN']dudv 
+[ty(l - av)| 2 + <K(\-'W) ' WN + ' WN < K{\-'W ) + \<WN\ 
+
+\<k {\ - av )| 2 + 2 Re [-7C (i - 'W ) «] + |awv | 2 J dudv 
+[ty(l- av)| 2 + |WV| 2 1 4«4v + 2 Re j| \<H\ 2 (l - 'W) WKN dudv 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+45 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Yj 
+
+Image Restoration 
+
+
+From the previous page, the squared error is 
+
+£ 2 = JJ 1‘7/p 2 [^(l - W)\ 2 + \WN\ 2 dudv + 2Re JJ 1'7/p 2 (l - TV) 'WTC'. N dudv. 
+
+The second term should be small compared to the first since it can be written 
+
+2 Re JJ [H\ l (1 - nV) WlJVdudv, 
+
+and the image and the noise are assumed to be uncorrelated 1 . Thus the error 
+can be approximated by 
+
+£ 2 =JJ|<7/p 2 ^|‘7C(l-nV)| 2 +|nVA^| 2 dudv. 
+
+The mean squared error, c 2 , is minimized when r W is given by, 
+
+<W 
+
+
+H 
+
+I 
+
+2 
+
+
+2 
+
+I 
+
+2 
+
++ 
+
+N 
+
+2 
+
+
+JJ I N dudv = 0. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+46 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Noise Reduction Through LMS Filtering 1 
+
+
+
+image Gaussian noise field 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+'Here the PSF is the identity. 
+
+
+10 November 2016 
+
+
+47 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Noise Reduction Through LMS Filtering 1 
+
+
+
+image noisy image 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+'Here the PSF is the identity. 
+
+
+10 November 2016 
+
+
+48 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Additive Noise (Power Spectra) 
+
+
+
+original image noisy image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+49 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Additive Noise (Power Spectra) 
+
+
+
+
+In this example we 
+knew the exact image 
+and noise power 
+spectra and the P5F 
+was the identity 
+because the image is 
+synthetic. In a real 
+example, none of that 
+is true. 
+
+
+
+
+noisy image 
+
+
+Wiener filter 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+50 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Additive Noise (Power Spectra) 
+
+
+
+noisy image 
+
+
+Wiener filter 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+51 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Additive Noise (Power Spectra) 
+
+
+
+Wiener filtered image original image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+52 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Additive Noise 
+
+
+
+noisy image Wiener filtered image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+53 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Additive Noise 
+
+
+
+Wiener filtered image original image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+54 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Additive Noise 
+
+
+
+Gaussian blurred image original image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+55 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Noise Reduction Through LMS Filtering 1 
+
+
+
+image noisy image J = I*h + N 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Ri< 1 Least Mean Squared. PSF, h, is Gaussian q=0, a= 2. 5 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Image*PSF + Noise (Power Spectra) 
+
+
+
+original image noisy image J = I*h + N 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+57 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Image*PSF + Noise (Power Spectra) 
+
+
+
+In this example v 
+knew the exact ir 
+and noise power 
+spectra and the F 
+was Gaussian w/ | 
+a=2. In a real ex 
+none of that is tr 
+
+
+Wiener filtered image 
+
+
+Wiener filter 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+58 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Image*PSF + Noise (Power Spectra) 
+
+
+
+Wiener filtered image Wiener filter 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+59 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Image*PSF + Noise (Power Spectra) 
+
+
+
+Wiener filtered image original image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+60 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Image*PSF + Noise 
+
+
+
+noisy image J = I*h + N 
+
+
+f % 
+
+
+Wiener filtered image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+61 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Image*PSF + Noise 
+
+
+
+Wiener filtered image original image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+62 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+LMS Image Restoration (Real Example) 
+
+
+
+For this real example we 
+need to estimate the 
+
+
+image power spectrum, the 
+pointspread function and 
+the noise power spectrum. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+63 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+LMS Image Restoration (Real Example) 
+
+
+
+To estimate the noise 
+power spectrum, 
+analyze a constant 
+area from the image. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+64 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Noise Estimation 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+65 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pointspread Function Estimation 
+
+
+0.0625 0.1250 0.0625 
+0.1250 0.2500 0.1250 
+0.0625 0.1250 0.0625 
+
+
+
+
+
+To estimate the PSF, 
+find the image of a point 
+and construct a convo- 
+lution mask from it. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+66 
+
+
+
+V 
+
+
+Wiener Filter Estimation 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+67 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+LMS Image Restoration (original) 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+68 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+LMS Image Restoration (filtered) 
+
+
+
+n if • * ■ 
+
+
+/ 
+
+% 
+
+
+d- 
+
+t4r 4' ^ 
+
+V 
+^ > 1 . 
+
+* 
+
+ifc, jfej 
+
+— s- 
+
+• » 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+69 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Detail of Results 
+
+
+The contrast of these has 
+been increased to make the 
+differences more visible. 
+
+
+
+original image filtered image matlab’s wiener2 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+70 
+
+

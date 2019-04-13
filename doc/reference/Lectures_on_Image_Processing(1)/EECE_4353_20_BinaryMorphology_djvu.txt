@@ -1,0 +1,4829 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes on Mathematical Morphology: 
+
+Binary Images 
+
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution-Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+What is Mathematical Morphology? 
+Jt h: 
+
+• nonlinear, 
+
+• built on Minkowski set theory, 
+
+• part of the theory of finite lattices, 
+
+• for image analysis based on shape, 
+
+• extremely useful, yet not often used. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Uses of Mathematical Morphology 
+
+
+image enhancement 
+image segmentation 
+image restoration 
+edge detection 
+texture analysis 
+particle analysis 
+feature generation 
+skeletonization 
+
+
+shape analysis 
+image compression 
+component analysis 
+curve filling 
+general thinning 
+feature detection 
+noise reduction 
+space-time filtering 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Notation and Image Definitions 
+
+An image is a mapping, I, from a set, 5'p, of pixel coordinates to a set, G, of 
+values such that for every coordinate vector, p = (r,c) in 5'p, there is a value I(p) 
+drawn from G. Sp is also called the image plane. 
+
+A binary image has only 2 values. That is, G = {Vfg , v^g}, where Vfg, is called 
+iht foreground value and v^^g is called the background value. 
+
+Often, in the literature, the foreground value is Vfg = 0 and the background is 
+= - 00 . (That is to be consistent with the mathematical morphology of 
+intensity images.) Other possibilities are {Vfg , v^g} = {0,oo}, {0,1}, {1,0}, 
+{0,255}, and {255,0}. 
+
+In this lecture {Vfg , v^g} = {255, 0}, or {Vfg , v^g} = {0, 255}, although the 
+foreground is often displayed in different colors for contrast. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Notation and Image Definitions 
+
+
+The foreground of binary image I is 
+
+
+FG{l}={l(p),p = (r,c)e5p|l(p) 
+
+
+= V 
+
+
+fg 
+
+
+Sp is the set of of all pixel 
+locations in the image, i.e., 
+the pixel grid, or the 
+support of the image. 
+
+
+i.e. the set of locations, p, where I(p) = Vfg. Similarly, the background is 
+
+
+BG{I}={ I(p),p = (r,c)e5p 
+
+
+I(P) = ^bg } • 
+
+
+The two sets form a partition of the image: 
+
+FG{i}uBG{i}=I and FG{i} UBG{i} = 0 . 
+
+Moreover, 
+
+BG{I} = {fG{I}}‘^ and FG{I} = {bG{I}}‘^. 
+
+The background is the complement of the foreground and vice-versa. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+A Binary Image 
+
+
+IT 
+
+
+background 
+
+I(P)=0 
+
+
+a 
+
+
+
+
+n I 
+
+
+I I I I 
+
+
+“L 
+
+
+I I 
+
+
+I I 
+
+
+a 
+
+
+
+
+
+
+foreground: 
+
+I(p)=c 
+
+where 
+
+ce 
+
+
+This represents a digital image. Each square is one pixel. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Support of an Image 
+
+
+The support of a binary image is often 
+defined as the set of locations of the 
+foreground pixels . /. e . , 
+
+supp{l} =|p = (r,c) eSp|l(p)= Vfgj. 
+
+In that case, the complement of the support 
+is the set of baekground pixel loeations 
+within the image plane. 
+
+{supp{l}}'' = {p = (r,c) s5p |l(p)= 
+
+But other times, the support is defined as 
+the set of all pixel loeations in the image 
+both foreground and baekground. 
+
+
+
+
+Support of Image 
+
+
+Image 
+
+
+Issuiud by Iht Uril liiibrniaUi^ COu'idl 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Structuring Element (SE) 
+
+A structuring element is a small image - used as a moving window 
+- whose support delineates pixel neighborhoods in the image plane. 
+
+
+
+o o 
+
+
+c/5 
+
+
+c/5 
+
+
+tr p 
+CD • 
+
+
+It can be of any shape, size, or connectivity (more than 1 piece, have 
+holes). In the figure the circles mark the location of the structuring 
+element’s origin which can be placed anywhere relative to its support. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Structuring Element locations in the image. 
+
+
+Let I be an image and Z a SE. 
+
+Z+p means that Z is moved 
+so that its origin coincides 
+with location p in Sp, 
+
+Z+p is the translate of Z to 
+location p in 5'p 
+
+The set of locations in the 
+image delineated by Z+p is 
+called the Z-neighborhood of 
+p in I denoted N{I,Z}(p). 
+
+
+Origin i 
+
+
+image, l c 
+
+> 1 
+
+
+
+
+
+
+
+
+IS marKGQ o. ^ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+" 
+
+
+< 
+
+Q I 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Structuring 
+Origin is mj 
+
+Element, Z - 
+
+
+
+
+
+
+
+
+
+arked o. * 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+z+p delineates a 
+neighborhood in / 
+with respect to p. 
+
+
+
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Reflected Structuring Elements 
+
+Let Z be a SE and let § be the square of pixel locations 
+that contains the set {(r,c), (-r,-c) I (r,c) g supp(Z) } . Then 
+
+Z(az) = Z(-A-2') for all 
+
+is the reflected structuring element. 
+
+Z is Z rotated by 180 ° around its origin. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+r 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+m 
+
+m 
+
+m 
+
+
+
+
+
+!■' 
+
+
+
+
+
+
+
+S". 
+
+
+O 
+
+
+
+
+
+vM 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+z, 2, z, 1, Z 3 1, 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Dilation 
+
+
+n: 
+
+
+
+
+
+TTTT 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Dilation of Binary Images 
+
+There are a number of equivalent definitions of dilation. Three of them that 
+apply to binary images are: 
+
+
+I©Z 
+
+
+
+(z+p)nfg{i} 
+
+
+
+The set of all pixel locations, p, in the 
+image plane where the intersection of 
+Z+p with the foreground of I is not empty. 
+
+
+I©Z= U (z + p). 
+
+Pefgjl} 
+
+
+The union of copies of the SE, one translated to 
+each pixel location in the forground of the image. 
+
+
+I©Z= [J (l + p). 
+
+pefgjZ} 
+
+
+The union of copies of the image, one translated 
+to each pixel location in the foreground of the SE. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Dilation 
+
+The locus of pixels pe5p such that (Z+p)ni=z=0. 
+
+
+
+dilated image original / dilation original image 
+
+
+SE = Z8 
+
+
+This is a piece of a larger image. Boundary effects are not apparent 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Dilation using a Reflected SE 
+
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Fast Computation of Dilation 
+
+The fastest way to compute binary dilation is to use the union-of-translates-of- 
+the-image definition. That is, use 
+
+J = I©Z=Ul + q. 
+
+qeZ 
+
+
+Assume the dimensions of I are RxC, the dimensions of Z are NxM, and Z’s 
+origin is offset from the upper left hand corner (ULHC) by rows and x 
+columns. Allocate a scratch image, T, that is (/^+A-l)x(C+M-l) and initialized 
+to zeros. Then, for each FG pixel loc (v, u) in Z (measured from the ULHC of Z) 
+perform a logical OR between I+(v, u) and T. Put the results in T. When done, 
+copy to J the RxC subarray of T starting at {p,x)' 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Dilation through Image Shifting 
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Dilation through Image Shifting 
+
+
+
+The red outlines indicate the positions of the features in the original images. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Erosion 
+
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Erosion of Binary Images 
+
+There are a number of equivalent definitions of erosion. Three of them that 
+apply to binary images are: 
+
+
+ieZ = |pe5p|(Z + p)efg{l} 
+
+
+The set of all pixel locations, p, in the image 
+plane where Z+p is contained in fg{I}. 
+
+
+i©z= n (z+p)- 
+
+
+The intersection of copies of the refl. SE, one translated 
+to each pixel location in the foreground of the image. 
+
+
+iez= n (i+p)- 
+
+Pefgjz) 
+
+
+The intersection of copies of the image, one translated 
+to each pixel location in the foreground of the refl. SE. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Erosion 
+
+
+The locus of pixels pe5'p such that Z+pcI. 
+
+
+
+eroded image erosion / original original image 
+
+
+
+
+SE = Z8 
+
+
+This is a piece of a larger image. Boundary effects are not apparent 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Fast Computation of Erosion 
+
+
+The fastest way to compute binary erosion is to use the intersection-of- 
+translates-of-the-image definition. That is, use 
+
+
+j = iez= n i+q- 
+
+QGfgjz} 
+
+
+Assume the dimensions of I are RxC, the dimensions of Z are AxM, and 
+Z’s origin is offset from the upper left hand comer (ULHC) by yC>rows and 
+columns. Allocate a scratch image, T, that is (/^+A-l)x(C+M-l) and 
+initialized to I. Rotate^ Z by 180°. Then, for each FG pixel loc (v, u) in Z 
+(measured from the ULHC of Z) perform a logical AND between I+(v, u) 
+and T. Put the results in T. When done, copy to J the RxC subarray of 
+T starting at {N-p, M-x)- 
+
+
+'In matlab the fastest way to rotate Z by 180° is 
+
+» Zrefl = f lipud ( f liplr ( Z ) ) ; 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Comparison of Erosion and Dilation 
+
+
+original contains erosion 
+
+
+dilation contains original 
+
+
+
+erosion / original erosion / original / dilation original / dilation 
+
+
+SE = z, 
+
+
+This is a piece of a larger image. Boundary effects are not apparent 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Erosion from Dilation / Dilation from Erosion 
+
+Dilation and erosion are duals of each other with respect to complementation: 
+
+I^©Z = {I©Z}^ and I^©Z = {l©Z}^ 
+
+That is, dilation with the reflected SE of the complement of a binary image is 
+the complement of the erosion. Erosion with the reflected SE of the 
+complement of the image is the complement of the dilation. It follows that, 
+
+I©Z = {U©Z}^ and I©Z = {U©z)^ 
+
+erosion can be performed with dilation and vice versa. That implies that only 
+one or the other must be implemented directly. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Opening and Closing 
+
+Opening is erosion by Z followed by dilation by Z. 
+
+IoZ = (l©Z)©Z 
+
+The opening is the best approximation of the image FG that can be made 
+from copies of the SE, given that the opening is contained in the original. 
+
+I o Z contains no FG features that are smaller than the SE. 
+
+Closing is dilation by Z followed by erosion by Z. 
+
+i*z = (i©z)©z 
+
+The closing is the best approximation of the image BG that can be made 
+from copies of the SE, given that the closing is contained in the image BG. 
+I • Z contains no BG features that are smaller than the SE. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Opening 
+
+
+rr 
+
+
+m 
+
+
+n 
+
+
+TT 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Opening is Erosion Followed by Dilation 
+
+
+erode the original 
+
+
+dilate the erosion dilated erosion 
+
+
+
+
+
+erosion / original 
+
+
+erosion / opening opening / original 
+
+
+SE = Z3 
+
+
+This is a piece of a larger image. Boundary effects are not apparent 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Opening is Erosion Followed by Dilation 
+
+
+
+original 
+
+
+erosion 
+
+
+opening 
+
+
+SE = Z3 
+
+
+This is a piece of a larger image. Boundary effects are not apparent 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Opening 
+
+The union of translates of Z such that Z+pcI 
+
+
+SE = z. 
+
+
+
+open image 
+
+
+opening / original 
+
+
+original image 
+
+
+The opening of I by Z is the best approximation of I that can be made 
+by taking the union of translated copies of Z, subject to the constraint 
+that the opening be contained by the original image. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Closing 
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Closing is Dilation Followed by Erosion^ 
+
+
+original image erode the dilation to get the closing 
+
+
+
+original / dilation 
+SE = Z3 
+
+
+closing / dilation 
+
+
+closing / original 
+
+
+^using the reflected SE, Z 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Closing is Dilation Followed by Erosion^ 
+
+
+original image dilated image 
+
+
+eroded dilation 
+
+
+
+original 
+
+dilation 
+
+closing 
+
+SE = Z3 
+
+
+^ using the reflected SE, Z 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Duality Relationships 
+
+Erosion in terms of dilation: I © Z = 
+
+[E©z' 
+
+- c 
+
+Dilation in terms of erosion: I © Z = 
+
+[Eez' 
+
+
+Opening in terms of closing: I o Z = 
+
+[r . z] 
+
+c 
+
+Closing in terms of opening: I • Z = 
+
+[Eoz] 
+
+c 
+
+is the complement of I and Z is the reflected SE. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Binary Ops with Asymmetric SEs 
+
+
+
+“L” shaped SE 
+O marks origin 
+
+
+
+Foreground: white pixels 
+Background: black pixels 
+
+
+
+Cross-hatched 
+pixels are 
+indeterminate. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Border Effects 
+
+
+
+
+
+
+SE 
+
+
+Erosion & Dilation 
+
+
+Since morph, ops. 
+are neighborhood 
+ops., there is a 
+band of pixels 
+around the border 
+of the resultant 
+image where the 
+values are | — , 
+
+Indeterminate. I 
+
+
+The actual values of pixels in 
+the indet. region depend on 
+the specific algorithm used. 
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Border Effects 
+
+Opening & Closing 
+
+
+Since opening & 
+closing iterate 
+erosion & dilation, 
+the boundaries of 
+the deterministic 
+region are 2x as 
+far from the 
+image border as 
+are those of 
+erosion or 
+
+
+dilation. 
+
+
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Boundary Extraction 
+
+
+binary image 
+
+
+8-connected SE 
+
+
+4-conn inside bdry 
+
+
+
+
+
+original 
+
+
+erosion by square 
+
+
+difference 
+
+
+This is a piece of a larger image. Boundary effects are not apparent 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Boundary Extraction 
+
+
+binary image 
+
+
+
+
+8-conn inside bdry 
+
+
+
+originai 
+
+
+erosion by pius 
+
+
+difference 
+
+
+This is a piece of a larger image. Boundary effects are not apparent 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Boundary Extraction 
+
+
+binary image 4-connected SE 8-conn outside bdry 
+
+
+
+original dilation by plus difference 
+
+
+This is a piece of a larger image. Boundary effects are not apparent 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Boundary Extraction 
+
+
+binary image 8-connected SE 4-conn outside bdry 
+
+
+
+original dilation by square difference 
+
+
+This is a piece of a larger image. Boundary effects are not apparent 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+39 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Boundary Extraction 
+
+
+binary image erosion by square is 8-conn inside bdry is 
+
+
+
+originai in erosion by pius in 4-conn inside bdry 
+
+
+This is a piece of a larger image. Boundary effects are not apparent 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+40 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Boundary Extraction 
+
+binary image diiation by pius is 8-conn outside bdry is 
+
+
+I 
+
+originai in diiation by square in 4-conn outside bdry 
+
+This is a piece of a larger image. Boundary effects are not apparent 
+
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+41 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Boundary Extraction 
+
+
+inside boundaries 
+
+
+
+
+I 
+
+
+a 
+
+
+H 
+
+
+
+
+"J: 
+
+
+' 1 1 1 1 1 
+
+u ■■■■■ 
+
+
+
+
+
+
+■■■■ liiiiii 
+
+
+8-bdry/4-bdry/orig 
+
+
+are disjoint from 
+
+
+
+outside boundaries 
+
+
+
+all 4 boundaries 
+
+
+orig/8-bdry/4-bdry 
+
+
+This is a piece of a larger image. Boundary effects are not apparent 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+42 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Conditional Dilation 
+
+original image mask over original dilated original 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+lii 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+14 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+l,\ 
+
+
+
+
+
+
+
+
+
+III 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+M 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+l.i 
+
+
+
+IJ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+u 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[T 
+
+
+
+
+
+
+
+li 
+
+
+
+
+
+
+iti 
+
+
+
+I'l 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+i: 
+
+
+
+
+
+
+
+
+
+■1 
+
+
+
+
+
+
+
+
+
+
+
+
+nil 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+L4 
+
+
+
+
+
+
+
+
+
+
+
+
+V 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+f 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+i.i 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.3 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+111 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+!■! 
+
+
+
+
+’i 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+f-i 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1.3 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+" 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1:2 
+
+
+
+
+
+□ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1.: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+h 
+
+
+
+d 
+
+
+I’l 
+
+
+
+
+
+
+
+
+
+" 
+
+
+
+
+
+
+
+
+ll' 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+IIS 
+
+
+
+n 
+
+
+
+
+
+
+
+
+1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+r 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+!'2 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+n 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+u 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+□ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+III 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+IIS 
+
+
+d 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+!■ 
+
+
+
+d 
+
+
+
+
+
+
+ns 
+
+
+
+
+
+
+
+cs 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(!! 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rn 
+
+0 
+
+
+
+
+r 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+□ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+1.3 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+!■! 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+d 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SiS 
+
+
+
+
+
+
+
+
+
+U 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+i;i 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hi 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+““ r 
+
+] " 
+
+
+'i ’ ' 
+
+
+
+_d_ 
+
+
+
+
+
+-i^ 
+
+II 
+
+'i-A 
+
+• 
+
+
+
+
+1 , 
+
+
+
+
+
+
+
+u 
+
+n 
+
+
+
+
+
+
+
+
+1 
+
+
+
+
+
+
+
+p 
+
+
+
+
+
+
+
+- 1 
+
+i!; 
+
+
+
+Li - 
+
+r" 
+
+
+
+
+
+
+
+
+\ 
+
+
+■ ' 
+
+1 
+
+1 
+
+
+L- 
+
+
+
+
+" n"Ti 
+
+
+
+-§ 
+
+
+
+
+. 1 . 
+
+
+
+
+
+
+
+- 1 
+
+
+
+1 . 
+
+
+■| 
+
+1 _ 
+
+
+1 
+
+_ 
+
+
+
+r 
+
+] 
+
+
+
+
+1 
+
+
+
+
+. . 
+
+
+
+
+
+Ki“- 
+
+
+
+
+1 
+
+
+1 
+
+1 
+
+-l_ 
+
+
+“ F 
+
+" 
+
+
+n 
+
+■ 
+
+
+
+_Li 
+
+1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+" n 
+
+^ " 
+
+
+
+
+
+
+
+
+
+
+
+
+
+■[|“ 
+
+a - 
+
+
+
+
+-Imi _ 
+
+
+n" 
+
+■i i: 
+
+;i 
+
+
+
+
+
+
+
+
+
+
+_iu 
+
+.[is. 
+
+
+
+
+
+dilation inside a mask 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+43 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Conditional Dilation 
+
+
+mask 
+
+over 
+
+dilated 
+
+
+
+masked 
+dilated 
+union with 
+original 
+
+
+
+
+conditionally 
+dilated with 
+respect to 
+mask 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+44 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Connected Component Extraction 
+
+
+
+masked 
+
+dilated 
+
+tag 
+
+
+dilated 
+
+tags 
+
+
+
+dilated 
+
+tag 
+
+
+tags 
+
+
+masked 
+
+dilated 
+
+tags 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+45 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Connected Component Extraction 
+
+
+tags 
+
+
+masked 
+
+tags 
+
+
+masked 
+
+dilated 
+
+tags 
+
+
+
+dilated 
+
+tags 
+
+
+dilated 
+
+tags 
+
+
+connected 
+
+component 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+46 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Binary Reconstruction 
+
+Used after opening to grow back pieces of the original image 
+that are connected to the opening. 
+
+
+
+original opened reconstructed 
+
+Removes of small regions that are disjoint from larger objects 
+without distorting the small features of the large objects. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+47 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Algorithm for Binary Reconstruction 
+
+
+1. 
+
+J = 
+
+I o Z, where Z is any SE . 
+
+2. 
+
+T = 
+
+J, 
+
+3. 
+
+J = 
+
+J © Z]^, where k=4 or k=8. 
+
+4. 
+
+J = 
+
+I AND J f [Take only those pixels from J that are also in I .] 
+
+5. 
+
+if 
+
+J^T then go to 2, 
+
+6. 
+
+0 1 S 0 stop; [J is the reconstructed image. ] 
+
+
+This is the same as connected component extraction with the opened 
+image, J, containing the tags. The choice of determines the 
+connectivity of the result. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+48 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+for i T1 ^ Usually g program for reconstruction 
+
+
+will take both J and I as inputs. E.g, 
+
+
+1 . 
+
+2 . 
+
+3. 
+
+4. 
+
+5. 
+
+6 . 
+
+
+J 
+
+T 
+
+J 
+
+J 
+
+
+loZ, where ^ ReconBin(I,J,Z) 
+
+J Then the algorithm starts at step 2. 
+
+J © where k=4 or k=8, 
+
+I AND J f [Take only those pixels from J that are also in I .] 
+
+
+if J^T then go to 2, 
+
+else stop; [ J is the reconstructed image. ] 
+
+
+This is the same as connected component extraction with the opened 
+image, J, containing the tags. The choice of determines the 
+connectivity of the result. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+49 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Skeletonization 
+
+Let Skel(I,r) be the set of pixels in I such that if p c Skel(I,r) 
+then D {r), is a maximal disk of radius r in I. That is, Skel(I,r) 
+is the locus of centers of maximal disks of radius r in I. Then 
+
+00 
+
+5 = USkel(I,r) 
+
+r-0 
+
+That is, the skeleton of I is the union of all the sets of centers of 
+maximal disks. 
+
+Note that for any actual image I, the union will not be infinite, 
+since I is bounded (not infinite in extent). 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+50 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Skeletonization 
+
+
+Original shape 
+
+
+Raw skeleton (red) 
+
+
+Pruned and connected 
+
+
+
+is the locus of centers of skeleton 
+
+maximal disks. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+51 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Skeletonization: Maximal Disks 
+
+
+non maximal “disks” maximal disks (red) 
+
+
+non max & max disks 
+
+
+
+
+
+I 
+
+I 
+
+I 
+
+
+“disks” are squares non max disks (blue) 
+
+
+over skeleton 
+
+
+The maximal disk at pixel loc p is the largest disk in the fg that includes p. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+52 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Skeletonization: Maximal Disks 
+
+
+non maximal “disks” 
+
+
+maximal disks (red) 
+
+
+non max & max disks 
+
+
+
+“disks” are squares 
+
+
+non max disks (blue) 
+
+
+over skeleton 
+
+
+The maximal disk at pixel loc p is the largest disk in the fg that includes p. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+53 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Computation of the Skeleton 
+
+
+• SE = Zg = Sfe = Sq(3) 
+
+• n = 0: SE = 1 pixel 
+
+• n = 1 : SE = Sq(3) 
+
+• n = 2: SE = Sq(5) 
+
+• n = 3: SE = Sq(7) 
+
+
+Note that the 
+result is 
+disconnected 
+and has 
+spurious points. 
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+54 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Skeletonization: Delete Spurious Pixels 
+
+
+raw skeleton def. spurious pixels as pruned skeleton 
+
+
+
+
+I 
+
+I 
+
+I 
+
+
+I 
+
+I 
+
+
+has spurious pixels conn. comp, of < 3 pix. raw less spurious 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+55 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Skeletonization: Reconnect Components 
+
+
+2 components of 
+
+
+2 other components 
+
+
+
+pruned skel. dilated. of pruned skel dilated. 
+
+
+Intersection of 
+
+
+
+dilated components. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+56 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Skeletonization 
+
+
+raw skeleton 
+
+
+pruned skeleton 
+
+
+reconnected skeleton 
+
+
+
+I 
+
+I 
+
+
+I 
+
+I 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+57 
+
+

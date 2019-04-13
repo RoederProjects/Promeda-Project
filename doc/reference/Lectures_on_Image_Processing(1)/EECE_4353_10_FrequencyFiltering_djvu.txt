@@ -1,0 +1,4644 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes: Frequency Filtering 
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution-Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution Property of the Fourier Transform 
+
+
+Let functions f(r,c) and g(r,c) have 
+Fourier Transforms F(m, v) and G(m, v). 
+
+
+* = convolution 
+
+• = multiplication 
+
+
+Then, 
+
+^{f *g} = FG. 
+Moreover, 
+
+^{f.g} = F*G. 
+
+
+The Fourier Transform of a 
+convolution equals the 
+product of the Fourier 
+Transforms. Similarly, the 
+Fourier Transform of a 
+product is the convolution of 
+the Fourier Transforms 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+/ 
+
+
+Image & Mask 
+
+
+O 
+
+
+0 
+
+
+Transforms 
+
+
+
+
+X 
+
+
+
+
+Convolution via 
+Fourier Transform 
+
+
+
+Pixel-wise 
+
+Product 
+
+
+
+Inverse 
+
+Transform 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+How to Convolve via FT in Matlab 
+
+1 . Read the image from a file into a variable, say i. 
+
+2. Read in or create the convolution matrix, h. I The matrix is usually i-band 
+
+3. Compute the sum of the matrix: s = sum (h ( : ) ) ; 
+
+4. If s == 0 , set s = 1 ; 
+
+5. Replace h with h = h/s; 
+
+6. Create: H = zeros (size (I) 
+
+7. Copy h into the middle of H. ^ 
+
+8. Shift H into position: H = ifftshift (H) ; 
+
+9. Take the 2D FT of I and h: Fi=fft2(i); FH=f f t2 (H) ; 
+
+10. Pointwise multiply the FTs: fj=fi.*fh; 
+
+1 1 . Compute the inverse FT: J = real (if f t2 (fj) ) ; 
+
+
+If h is a one-band matrix and 
+I is multi-band, you must copy 
+h into all the bands of H. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+How to Convolve via FT in Matlab 
+
+
+1 . Read the image from a file into a variable, say i. 
+
+2. Read in or create the convolution matrix, h. 
+
+3. Compute the sum of the matrix: s = sum (h ( : ) ) ; 
+
+4. If s == 0 , set s = 1 ; 
+
+5. Replace h with h = h/s; 
+
+6. Create: H = zeros (size (I) ) ; 
+
+7. Copy h into the middle of H. 
+
+8. Shift H into position: H = ifftshift (H) ; 
+
+9. Take the 2D FT of I and h: Fi=fft2(i); FH=f f t2 (H) ; 
+
+10. Pointwise multiply the FTs: fj=fi.*fh; 
+
+1 1 . Compute the inverse FT: J = real (if f t2 (fj) ) ; 
+
+
+fftshift and ifftshift must be 
+done separately for each band. 
+fft2 transforms all the bands of 
+a multiband image separately. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Coordinate Origin of the FFT 
+
+
+Center = 
+
+(floor(R/2)+l, floor(C/2)+l) 
+
+
+Even 
+
+
+Odd 
+
+
+Even 
+
+
+Odd 
+
+
+2 
+
+3 
+
+4 
+
+5 
+
+6 
+
+7 
+
+8 
+
+9 
+
+10 
+
+11; 
+
+12 
+
+13 
+
+14 
+
+15 
+
+16 
+
+■ 
+
+r 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 
+
+2 
+
+3 
+
+4 
+
+5 
+
+6 
+
+7 
+
+8 
+
+9 
+
+10 
+
+11 
+
+12 
+
+13 
+
+14 
+
+15 
+
+16 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+H 
+
+1 — 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 
+
+Image Origin 
+
+17 
+
+1 
+
+2 
+
+3 
+
+4 
+
+1 
+
+5 
+
+In 
+
+6 
+
+1c 
+
+7 
+
+8 
+
+9 
+
+) < 
+
+10 
+
+0 
+
+11 
+
+Ti 
+
+12 
+
+g 
+
+13 
+
+ir 
+
+14 
+
+1 
+
+15 
+
+16 
+
+17 
+
+
+1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 
+
+2 
+
+3 
+
+4 
+
+5 
+
+6 
+
+7 
+
+8 
+
+9 
+
+10 
+
+111 
+
+12 
+
+13 
+
+14 
+
+15 
+
+16 
+
+1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2 
+
+3 
+
+4 
+
+5 
+
+6 
+
+7 
+
+8 
+
+9 
+
+10 
+
+11 
+
+12 
+
+13 
+
+14 
+
+15 
+
+16 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+u 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+■ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+H 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+■ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+n 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 
+
+Weight Matrix Origin 
+
+17 
+
+1 
+
+2 
+
+V' 
+
+3 
+
+/€ 
+
+4 
+
+"il 
+
+5 
+
+gi 
+
+6 
+
+It 
+
+7 
+
+:r 
+
+8 
+
+9 
+
+a 
+
+10 
+
+tr 
+
+11 
+
+ix 
+
+12 
+
+( 
+
+13 
+
+D 
+
+14 
+
+ri( 
+
+15 
+
+gi 
+
+16 
+
+n 
+
+17 
+
+
+
+After FFT shift 
+
+
+
+
+After I FFT shift 
+
+
+
+II 
+
+
+
+
+■ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 
+
+
+
+
+..... I 
+
+
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 
+
+
+After IFFT shift 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Matlab’s f ftshift and if ftshift 
+
+
+J = f ftshift ( I ) : 
+
+I (1,1) ^ j ( LR/2J+1, LC/2J+1) 
+
+
+5 
+
+
+
+4 
+
+8 
+
+n 
+
+
+
+7 
+
+
+
+
+
+
+
+
+
+
+
+2 
+
+3 
+
+
+
+1 
+
+
+
+
+
+
+
+
+1 
+
+2 
+
+
+
+
+4 
+
+5 
+
+
+
+
+
+8 
+
+9 
+
+
+
+□ 
+
+
+
+
+
+I = ifftshift(J) : 
+
+J ( LR/2J +1, LC/2j +1) ^ I (1,1) 
+
+
+
+
+
+
+
+
+1 
+
+2 
+
+3 
+
+
+
+4 
+
+5 
+
+
+
+
+3 
+
+
+0 
+
+
+
+
+n 
+
+□ 
+
+
+
+
+where LxJ = floor(x) = the largest integer smaller than x. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Blurring: Averaging / Lowpass Filtering 
+
+Blurring results from; 
+
+• Pixel averaging in the spatial domain: 
+
+- Each pixel in the output is a weighted average of its neighbors. 
+
+- Is a convolution whose weight matrix sums to 1 . 
+
+• Lowpass filtering in the frequency domain: 
+
+- High frequencies are diminished or eliminated 
+
+- Individual frequency compone nts are m ultiplied by a non-increasing 
+function of co such as I/co = lN(u^+v^). 
+
+
+I The values of the output image are all non-negative. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Sharpening: Differencing / Highpass Filtering 
+
+Sharpening results from adding to the image, a copy of 
+itself that has been: 
+
+• Pixel-differenced in the spatial domain: 
+
+- Each pixel in the output is a difference between itself and a weighted 
+average of its neighbors. 
+
+- Is a convolution whose weight matrix sums to 0. 
+
+• Highpass filtered in the frequency domain: 
+
+- High frequencies are enhanced or amplified. 
+
+- Individual frequency compone nts are multiplied by an increasing 
+function of co such as aco = aV(w^+v^), where a is a constant. 
+
+1 The values of the output image could be negative. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Ideal Lowpass Filter 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Ideal Lowpass Filter 
+
+
+Image size: 512x512 
+Fb filter radius: 16 
+
+
+
+I Fourier Domain Rep. | Spatial Representation | Central Profile 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Ideal Lowpass Filter 
+
+
+• Image size: 512x512 
+Fb filter radius: 8 
+
+
+
+I Fourier Domain Rep. | Spatial Representation | Central Profile 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Power Spectrum and Phase of an Image 
+
+
+
+Original Image Power Spectrum 
+
+
+Phase 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Ideal Lowpass Filter 
+
+
+Image size: 512x512 
+Fb filter radius: 16 
+
+
+
+Original Image Power Spectrum Ideal LPF in FD 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Ideal Lowpass Filter 
+
+
+Image size: 512x512 
+Fb filter radius: 16 
+
+
+
+I Filtered Image Filtered Power Spectrum Original Image 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Ideal Lowpass Filter 
+
+
+Image size: 512x512 
+Fb filter radius: 16 
+
+
+
+Original Image Filtered Power Spectrum Filtered Image 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Ideal Highpass Filter 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Ideal Highpass Filter 
+
+
+Image size: 512x512 
+Fb notch radius: 16 
+
+
+
+
+
+Spatial Representation 
+
+
+Central Profile 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Ideal Highpass Filter 
+
+
+Image size: 512x512 
+Fb notch radius: 16 
+
+
+
+Original Image Power Spectrum Ideal HPF in FD 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+Ideal Highpass Filter 
+
+
+Image size: 512x512 
+Fb notch radius: 16 
+
+
+
+I Filtered Image* | Filtered Power Spectrum 
+
+
+Original Image 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Ideal Highpass Filter 
+
+
+Image size: 512x512 
+Fb notch radius: 16 
+
+
+
+Original Image 
+
+
+Filtered Power Spectrum 
+
+
+Filtered Image* 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Ideal Highpass Filter 
+
+
+Image size: 512x512 
+Fb notch radius: 16 
+
+
+
+Positive Pixels 
+
+
+Filtered Image* | Negative Pixels 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Ideal Bandpass Filter 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Ideal Bandpass Filter 
+
+
+A bandpass filter is created by 
+
+(1) subtracting a FD radius P 2 lowpass filtered image from a FD radius lowpass 
+filtered image, where P 2 < Pi, or 
+
+(2) convolving the image with a matrix that is the difference of the two lowpass 
+matrixs. 
+
+
+
+
+
+FD LP matrix with radius pj I FD LP matrix with radius p2 
+
+
+FD BP matrix pj - p2 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+Ideal Bandpass Filter 
+
+
+
+image LPF radius pi I image LPF radius p2 I image BPF radii pi, p2* 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+Ideal Bandpass Filter 
+
+
+
+filtered image* [ filter power spectrum | original image 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+Ideal Bandpass Filter 
+
+
+
+original image filter power spectrun^ filtered image"^ | 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+A Different Ideal Bandpass Filter 
+
+
+
+original image filter power spectrum | filtered image"^ | 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The Optimal Filter 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Ideal Filters Do Not Produce Ideal Results 
+
+
+
+A sharp cutoff in the ...causes ringing in the 
+
+frequency domain... spatial domain. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Ideal Filters Do Not Produce Ideal Results 
+
+
+
+Blurring the image above ...distorts the results with 
+
+w/ an ideal lowpass filter... ringing or ghosting. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Uncertainty Relation 
+
+
+
+— 
+
+space 
+
+
+FT 
+
+
+
+
+
+If AjcAy is the extent of 
+the objectin spaceand 
+if Am Av is its extent in 
+frequency then, 
+
+1 
+
+Aj:Av-AmAv> 7 
+
+16;r" 
+
+
+A small object in space 
+has a large frequency 
+extent and vice-versa. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+<- large extent ^ ^ small extent <- 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Uncertainty Relation 
+
+
+
+3 
+
+
+t 
+
+CQ 
+
+CD 
+
+CD 
+
+X 
+
+CD 
+
+I 
+
+
+^ small extent <- 
+
+
+<- large extent ^ 
+
+
+
+small extent <- 
+
+
+<- large extent ^ 
+
+
+Recall: a symmetric 
+pair of impulses in the 
+frequency domain 
+becomes a sinusoid in 
+the spatial domain. 
+
+
+A symmetric pair of 
+lines in the frequency 
+domain becomes a 
+sinusoidal line in the 
+spatial domain. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Optimal Filter: The Gaussian 
+
+
+G(u) 
+
+
+Frequency Domain Representation of Gaussian LPF 
+
+
+1 1 1 1 r 
+
+■ 
+
+/ 
+
+1 1 1 1 1 
+
+1 
+
+1 1 1 1 1 1 1 
+
+
+Spatial Domain Representation of Gaussian LPF 
+
+
+IFT 
+
+
+-256 -192 -128 -64 0 64 128 192 256 u 
+
+
+
+256 -192 -128 -64 0 64 128 192 256 r 
+
+
+The Gaussian filter optimizes the uncertainty relation. It 
+provides the sharpest cutoff possible without ringing. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+One-Dimensional Gaussian 
+
+
+
+
+
+1 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Two-Dimensional Gaussian 
+
+
+If |Li and a are 
+different for r & c... 
+
+
+
+g(nc) = g(r)g(c) 
+
+— 1 ^ 2al la] 
+
+CTyCTc 2 ^ 
+
+— i £ 
+
+GrOcln 
+
+
+...or if |Li and a are 
+the same for r <& c. 
+
+
+gix.c) 
+
+
+
+
+1 
+
+(T^ In 
+
+
+e 
+
+
+2cr^ 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Optimal Filter: The Gaussian 
+
+
+
+With a gaussian lowpass 
+filter, the image above ... 
+
+
+... is blurred without ringing 
+or ghosting. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Compare with an “Ideal” LPF 
+
+
+
+Ideal LPF 
+
+
+
+Blurring the Image above w/ 
+an ideal lowpass filter... 
+
+
+...distorts the results with 
+ringing or ghosting. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gaussian Lowpass Filter 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+39 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gaussian Lowpass Filter 
+
+
+• Image size: 512x512 
+5b filter sigma = 8 
+
+
+
+j Fourier Domain Rep. | Spatial Representation | Central Profile 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+40 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gaussian Lowpass Filter 
+
+
+Image size: 512x512 
+5b filter sigma = 2 
+
+
+
+I Fourier Domain Rep. | Spatial Representation | Central Profile 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+41 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gaussian Lowpass Filter 
+
+
+Image size: 512x512 
+5b filter sigma = 8 
+
+
+
+Original Image Power Spectrum Gaussian LPF in FD 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+42 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gaussian Lowpass Filter 
+
+
+Image size: 512x512 
+5b filter sigma = 8 
+
+
+
+Filtered Image : Filtered Power Spectrum Original Image 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+43 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Gaussian Lowpass Filter 
+
+
+
+Original Image Filtered Power Spectrum 
+
+
+Image size: 512x512 
+5b filter sigma = 8 
+
+
+
+Filtered Image 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+44 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resolution 
+
+Sequence 
+
+
+Original Image 
+
+
+
+0 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+45 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resolution 
+
+Sequence 
+
+
+Gaussian LPF 
+
+CTi = 1 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+46 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resolution 
+
+Sequence 
+
+
+Gaussian LPF 
+
+02 = 2 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+47 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resolution 
+
+Sequence 
+
+
+Gaussian LPF 
+
+0 ^ = 4 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+48 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resolution 
+
+Sequence 
+
+
+Gaussian LPF 
+
+CT4 = 8 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+49 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resolution 
+
+Sequence 
+
+
+Gaussian LPF 
+a5 = 16 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+50 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resolution 
+
+Sequence 
+
+
+Gaussian LPF 
+c^6 = 32 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+51 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resolution 
+
+Sequence 
+
+
+Gaussian LPF 
+CTy = 64 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+52 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Resolution 
+
+Sequence 
+
+
+Gaussian LPF 
+a3 = 128 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+53 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gaussian Highpass Filter 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+54 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gaussian Highpass Filter 
+
+
+• Image size: 512x512 
+Fb notch sigma = 8 
+
+
+
+I Fourier Domain Rep. | Spatial Representation | Central Profile 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+55 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gaussian Highpass Filter 
+
+
+Image size: 512x512 
+Fb notch sigma = 8 
+
+
+
+Original Image Power Spectrum Gaussian HPF in FD 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+56 
+
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gaussian Highpass Filter 
+
+
+Image size: 512x512 
+Fb notch sigma = 8 
+
+
+
+Filtered Image’^ 
+
+
+Filtered Power Spectrum 
+
+
+Original Image 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+57 
+
+
+
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gaussian Highpass Filter 
+
+
+Image size: 512x512 
+Fb notch sigma = 8 
+
+
+
+Original Image Filtered Power Spectrum j Filtered Image* 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+58 
+
+
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gaussian Highpass Filter 
+
+
+" Image size: 512x512 
+Fb notch sigma = 8 
+
+
+
+Positive Pixels j Filtered Image* I Negative Pixels 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+59 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+Another Gaussian Highpass Filter 
+
+
+
+
+
+
+
+
+Original Image Filter Power Spectrum Filtered Image* 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+60 
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Highpass 
+
+Sequence 
+
+
+Difference between 
+original image and 
+Gaussian LPF image 
+at Gg = 256. 
+
+J = I-[l*^(cTd]. 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+61 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Highpass 
+
+Sequence 
+
+
+Difference between 
+original image and 
+Gaussian LPF image 
+at Gg = 128 . 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+62 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Highpass 
+
+Sequence 
+
+
+Difference between 
+original image and 
+Gaussian LPF image 
+at Gy = 64. 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+63 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Highpass 
+
+Sequence 
+
+
+Difference between 
+original image and 
+Gaussian LPF image 
+at = 32. 
+
+J = I-[l*^(cTd]. 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+64 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Highpass 
+
+Sequence 
+
+
+Difference between 
+original image and 
+Gaussian LPF image 
+at G^= 16 . 
+
+J = I-[l*^(cTd]. 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+65 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Highpass 
+
+Sequence 
+
+
+Difference between 
+original image and 
+Gaussian LPF image 
+at = 8. 
+
+j=i-[i*^(c7d;. 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+66 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Highpass 
+
+Sequence 
+
+
+Difference between 
+original image and 
+Gaussian LPF image 
+at = 4. 
+
+J = I-[I*^(ct3)]. 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+67 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Highpass 
+
+Sequence 
+
+
+Difference between 
+original image and 
+Gaussian LPF image 
+at (^2 = 2. 
+
+j=i-[i*^(c7,);. 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+68 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Highpass 
+
+Sequence 
+
+
+Difference between 
+original image and 
+Gaussian LPF image 
+at Gj = 1. 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+69 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Highpass 
+
+Sequence 
+
+
+Original Image 
+
+
+
+0 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+70 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gaussian Bandpass Filter 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+71 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gaussian Bandpass Filter 
+
+
+A bandpass filter is created by 
+
+(1) subtracting a FD radius P 2 lowpass filtered image from a FD radius lowpass 
+filtered image, where P 2 < Pi, or 
+
+(2) convolving the image with a matrix that is the difference of the two lowpass 
+matrixs. 
+
+
+
+FD LP matrix with radius al 
+
+
+FD LP matrix with radius a2 
+
+
+FD BP matrix al - a2 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+72 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+Gaussian Bandpass Filter 
+
+
+
+image LPF radius pi I image LPF radius p2 I image BPF radii pi, p2* 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+73 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+Gaussian Bandpass Filter 
+
+
+
+filtered image* | filter power spectrum | original Image 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+74 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+Ideal Bandpass Filter 
+
+
+
+original image filter power spectrum | filtered Image’^ 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+75 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gaussian Bandpass Filter 
+
+
+Image size: 512x512 
+sigma = 2 - sigma = 8 
+
+
+
+Fourier Domain Rep. I Spatial Representation I Central Profile 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+76 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gaussian Bandpass Filter 
+
+
+Image size: 512x512 
+sigma = 2 - sigma = 8 
+
+
+
+Original Image Power Spectrum Gaussian BPF in FD 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+77 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+Gaussian Bandpass Filter 
+
+
+Image size: 512x512 
+sigma = 2 - sigma = 8 
+
+
+
+Filtered Image’^ I Filtered Power Spectrum Original Image 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+78 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+Gaussian Bandpass Filter 
+
+
+Image size: 512x512 
+sigma = 2 - sigma = 8 
+
+
+
+Positive Pixels 
+
+
+Filtered Image’*' | Negative Pixels | 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+79 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bandpass 
+
+Sequence 
+
+
+Difference between 
+Gaussian LPF images: 
+Gg = 128 and Gg = 256. 
+
+
+
+J = I * ( 0 - 3 ) - g (<T,)] = [l * ^ (o-g)] - [l * ^ ( 0 - 5 ) 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+80 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bandpass 
+
+Sequence 
+
+
+Difference between 
+Gaussian LPF images: 
+Gy = 64 and Gg = 128. 
+
+
+
+J = I * (o-J - ^ (cr,)] = [l * ^ (o-d] - [l * g (cr, )_ . 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+81 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bandpass 
+
+Sequence 
+
+
+Difference between 
+Gaussian LPF images: 
+= 32 and ay = 64. 
+
+
+
+J = I * (o-g) - ^ (o-,)] = [l * g (cr,)] - [l * ^ (0-7)]. 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+82 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bandpass 
+
+Sequence 
+
+
+Difference between 
+Gaussian LPF images: 
+(j^ = 16 and = 32 . 
+
+
+
+J = I * [^ (cTj) - g (a-,)] = [l * ^ (cTj)] - [l * ^ (o-J_ . 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+83 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bandpass 
+
+Sequence 
+
+
+Difference between 
+Gaussian LPF images: 
+a 4 = 8 and 16. 
+
+J = I * [g (o-d - ^ (crj] = [l * ^ (o-,)] - [l * g (a-j )]. 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+84 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bandpass 
+
+Sequence 
+
+
+Difference between 
+Gaussian LPF images: 
+a 3 = 4 and = 8. 
+
+J = I * (0-3) - g (o-,)] = [l * ^ (cTj)]- [l * g (o-d 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+85 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bandpass 
+
+Sequence 
+
+
+Difference between 
+Gaussian LPF images: 
+a 2 = 2 and = 4. 
+
+
+
+J = I * [^ (crd - g ( 0 - 3 )] = [l * g (crd] - [l * ^ (o- 3 )_ . 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+86 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bandpass 
+
+Sequence 
+
+
+Difference between 
+Gaussian LPF images: 
+Gj = 1 and G2 = 2. 
+
+
+
+J = I * [g (cTj ) - ^ (o-d] = [l * ^ (crj] - [l * ^ (o-j )_ . 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+87 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bandpass 
+
+Sequence 
+
+
+Difference between 
+Gaussian LPF images: 
+Gq = 0 and = 1 . 
+
+
+
+J = I*[^(0)-gty,) 
+
+
+I-[I*^(C7,) 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+88 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Bandpass 
+
+Sequence 
+
+
+Original Image 
+
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+89 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Ideal vs. Gaussian Filters 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+90 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+Ideal Lowpass and Highpass Filters 
+
+
+
+Ideal LPF 
+
+
+Original Image 
+
+
+Ideal HPF"^ | 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+91 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+Gaussian Lowpass and Highpass Filters 
+
+
+
+Gaussian LPF I Original Image Gaussian HPF* 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+92 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+Ideal and Gaussian Bandpass Filters 
+
+
+
+Ideal BPF* 
+
+
+Original Image Gaussian BPF* 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+93 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+^signed image: 
+
+0 mapped to 128 
+
+
+Gaussian and Ideal Bandpass Filters 
+
+
+
+Gaussian BPF* Original Image Ideal BPF’^ 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+94 
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Effects on Power Spectrum 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+95 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Power Spectrum and Phase of an Image 
+
+
+
+original image 
+
+
+power spectrum 
+
+
+phase 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+96 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Power Spectrum and Phase of a Blurred Image 
+
+
+
+blurred Image 
+
+
+power spectrum 
+
+
+phase 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+97 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Power Spectrum and Phase of an Image 
+
+
+
+
+
+original image 
+
+
+power spectrum 
+
+
+phase 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+98 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Power Spectrum and Phase of a Sharpened Image 
+
+
+
+sharpened Image 
+
+
+power spectrum 
+
+
+phase 
+
+
+12 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+99 
+
+
+
+
+

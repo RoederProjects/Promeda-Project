@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <identifier>Lectures_on_Image_Processing</identifier>
+  <title>Lectures on Image Processing</title>
+  <creator>Alan Peters</creator>
+  <mediatype>education</mediatype>
+  <collection>education_small_collections</collection>
+  <description>This is a 23-lecture series on Image Processing that I have created over the past 19 years (1999-2017) for my course, EECE 4353 / 5353, at the Vanderbilt University School of Engineering.  The files are all in Adobe Acrobat (.pdf) format and MS Powerpoint (.ppt) format.  They are quite large because of the images in them.  The topics covered include: Image Enhancement by Point Operations, Color Correction, The 2-D Fourier Transform and Convolution, Linear Spatial Filtering, Image Sampling and Rotation, Noise Reduction, High Dynamic Range Imaging, Mathematical Morphology for Image Processing, Image Compression, and Image Compositing.&lt;br /&gt;&lt;br /&gt;
+From the syllabus:&lt;br /&gt;&lt;br /&gt;
+This introductory course in image processing should give the student a working knowledge of the most commonly used methods and procedures for image enhancement and restoration.  The emphasis of the course is on practical results: given an image and a goal for its processing (e.g., feature enhancement, color correction, sharpening, warping, etc.) the student should be able to select and implement an appropriate procedure to achieve that goal.  Good practical results often depend on an understanding of the mathematics behind the procedures as well as the ability to write software to implement the mathematics.  Thus, there are significant mathematical and computational components to the course.  In the past, most students have spent most of their time associated with this course writing and debugging computer programs.  &lt;br /&gt;&lt;br /&gt;
+Recommended but not required: An introductory course in digital signal processing (such as EECE 214 or EECE 252) and proficiency in writing computer programs in C, C++, Matlab, or Mathematica.  Matlab is used in the class and the labs.&lt;br /&gt;&lt;br /&gt;
+-----&lt;br /&gt;&lt;br /&gt;
+I am making these freely available for noncommercial use.  If you use any of my slides or graphics, please cite me in the normal academic fashion.  For example, if you were to use any of the slides from Lecture 6, The Fourier Transform, cite the source as&lt;br /&gt;&lt;br /&gt;
+Peters, Richard Alan, II, "The Fourier Transform", Lectures on Image Processing, Vanderbilt University, Nashville, TN, April 2008, Available on the web at the Internet Archive, http://www.archive.org/details/Lectures_on_Image_Processing.&lt;br /&gt;&lt;br /&gt;
+If you intend to use any of the slides in a product that you intend to sell, please contact me directly to obtain permission.  Alan dot Peters at Vanderbilt dot edu.&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;-----Update Summer 2017&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;All the lectures have been updated to their latest versions -- from Fall Semester 2016.&lt;br /&gt;&lt;br /&gt;
+-----Update 7 January 2016&lt;br /&gt;&lt;br /&gt;
+This is a completely new upload of all the lectures to make it consistent with the Vanderbilt course, EECE 4353 Image Processing, Fall Semester 2015.  Many slides have changed. Much new information has been added.&lt;br /&gt;&lt;br /&gt;
+Please note that these lectures are sets of slides, not videos.  I made them using Matlab, Photoshop, Illustrator, Powerpoint, and Acrobat.  Also I have not included the assignments since they are the source of academic credit for the Vanderbilt Course, EECE 4253, and I do not want example solutions to be available.&lt;br /&gt;&lt;br /&gt;
+IMPORTANT:  If you do not have the Design Science MathType fonts installed on your computer, the Powerpoint files will not display correctly. For some bizarre and completely unexplained reason, Powerpoint will not embed these fonts. You can download an installer for these fonts from the other files section of this page. Once you download it, double click on the executable to load the fonts. This works for windows machines only. For macs and linux boxen, go to the Design Science web pages: http://www.dessci.com/en/dl/fonts/getfont.asp &lt;br /&gt;&lt;br /&gt;
+-----Update 1 October 2015&lt;br /&gt;&lt;br /&gt;
+I fixed a typo and added some explanations to slide 90 of Lecture 5a RGB and HSV color.&lt;br /&gt;&lt;br /&gt;
+-----&lt;br /&gt;&lt;br /&gt;
+Update 29 September 2015&lt;br /&gt;&lt;br /&gt;
+I have uploaded a revised lecture 5 on Color.  It is now divided into two parts&lt;br /&gt;&lt;br /&gt;
+EECE_4353_05a_RGBandHSVColor and&lt;br /&gt;
+EECE_4353_05b_ColorCorrection&lt;br /&gt;&lt;br /&gt;
+Lecture 5a has been added to extensively.  It includes a description of the hexagonal colorspace projection that underlies fasft RGB to LHS algorithms.  I've also added a section on CIE color and gamuts.&lt;br /&gt;&lt;br /&gt;
+I've also uploaded the most recent version of lecture 6 on the Fourier transform.&lt;br /&gt;&lt;br /&gt;
+EECE_4353_06_FourierTransform&lt;br /&gt;&lt;br /&gt;
+I've added a proof of the claim that a particular sequence of sinusoids sums to zero.&lt;br /&gt;
+There have been other minor updates to the files as well.&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;
+-----&lt;br /&gt;&lt;br /&gt;
+Update 3 September 2015&lt;br /&gt;&lt;br /&gt;
+I've uploaded new versions of lectures 1-4.  They are&lt;br /&gt;&lt;br /&gt;
+EECE_4353_01_Intro&lt;br /&gt;
+EECE_4353_02_DigitalImagesAndMatlab&lt;br /&gt;
+EECE_4353_03a_ImageHistograms&lt;br /&gt;
+EECE_4353_03b_PointProcessing&lt;br /&gt;
+EECE_4353_04_ColorPerception&lt;br /&gt;&lt;br /&gt;
+My uploads were in powerpoint (.pptx) and portable document format (.pdf) files. Vanderbilt changed it's course numbering scheme this year.  The new course number for Image Processing is 4353 for the undergraduate course and 5353 for the graduate version.  The lectures are the same for both.  They are all labeled 4353.  Over the semester I'll be updating the lectures here as I complete them.  Also note that I've split lecture 3 into 2 parts.  I've done the same for #5, which I will be updating here soon.&lt;br /&gt;&lt;br /&gt;
+I've also uploaded a short video file, ColorHistogram3D.mp4. This is included in both the pdf and pptx of lecture 3a, but it might not show up in the derived formats, so you can download it here.&lt;br /&gt;&lt;br /&gt;
+-----&lt;br /&gt;&lt;br /&gt;
+Update 27 August 2015&lt;br /&gt;&lt;br /&gt;
+As a new semester starts at Vanderbilt, I'll be updating the lecture slides here as I use them there.  The course numbering system has changed.  This course is now EECE 4253 Image Processing.  Also It looks like the format here on the archive has changed.  To download the lecture slides click on the "show all" link to the right.  I uploaded the ppt, pptx, and pdf format files.  It looks like they have been made available in other formats, too.  If you download one of these other file types and it doesn't look quite right, try one of my originals. &lt;br /&gt;&lt;br /&gt;
+-----&lt;br /&gt;&lt;br /&gt;
+Update 25 September 2014&lt;br /&gt;&lt;br /&gt;
+I've substantially expanded Lecture 5, Color Correction.  I've added 18 new slides to more thoroughly cover Hue, Saturation and Value (HSV) representation of color.  In particular, the lecture now includes fast methods for computation of HSV.  They are approximate but very fast.  More updates to come; next will be the Fourier Lecture,&lt;br /&gt;&lt;br /&gt;
+-----&lt;br /&gt;&lt;br /&gt;
+Update 9 September 2014&lt;br /&gt;&lt;br /&gt;
+Two slides on intensity scaling have been added to lecture 2, Digital Images and Matlab. I have added new material to lecture 3 and divided it into two parts. Lecture 3a Image Histograms, contains several new examples and includes more detailed presentations on luminance and value images and on probability distribtutions. Lecture 3b Point Processing now includes a section on image restoration through histogram matching. I have included in Lecture 4, Color Perception, more information on the space-variant retinal transformation and the log-polar transform.&lt;br /&gt;&lt;br /&gt;
+-----&lt;br /&gt;&lt;br /&gt;
+Updated 11 March 2013&lt;br /&gt;&lt;br /&gt;
+There was an error in the Fourier Transform lecture (No. 6).  The calculation of the wavelength of a Fourier component from its position on the Fourier plane was incorrect.  That has been corrected.  Please download the latest version.&lt;br /&gt;&lt;br /&gt;
+-----&lt;br /&gt;&lt;br /&gt;
+Updated 18 July 2012&lt;br /&gt;&lt;br /&gt;
+Two new lectures added: 19: JPEG compression and 20: High Dynamic Range Imaging&lt;br /&gt;&lt;br /&gt;
+-----&lt;br /&gt;&lt;br /&gt;
+About the Fall 2011 - Summer 2012 Updates:  I will be uploading new versions of all the lectures as the year progresses so that all the lectures are updated by mid Summer.  As of 18 July 2011 Lectures 1-18 have been updated and two new lectures, 19: JPEG Compression and 20: High Dynamic Range Imaging have been added.&lt;br /&gt;&lt;br /&gt;
+-----&lt;br /&gt;&lt;br /&gt;
+About the 28 April 2008 Update: I recompiled the pdf files from the ppt files (the originals) and made sure that all the fonts were embedded and that the start-in-full-screen mode was off.  This may solve the problem some folks were having with the PDF files.  Please let me know if they do not work for you.  Also, I retitled the lectures so that they would include the file type and appear in order and I modified the above introduction to, I hope, better explain the contents of this archive.  (Thanks to users LizBurl and d012560c for alerting me to the pdf problems!)&lt;br /&gt;&lt;br /&gt;
+-----&lt;br /&gt;&lt;br /&gt;
+About the 10 April 2008 Update:  Many of the lecture files have been revised, mainly to correct typos and various small errors.  Some new material has been added as well.&lt;br /&gt;&lt;br /&gt;
+Changes:&lt;br /&gt;&lt;br /&gt;
+Lecture  1 Intro: Included 3 slides on forensic analysis.&lt;br /&gt;
+Lecture  2 Digital Images: Included four slides on colormapping and two on image scrambling.&lt;br /&gt;
+Lecture  3 Point Processing: Added to explanations on slide 16.&lt;br /&gt;
+Lecture  4 Color Perception: No changes other than date from 2006 to 2007.&lt;br /&gt;
+Lecture  5 Color Correction: Added 19 slides on the color cube and on RGB vs HSV representation.&lt;br /&gt;
+Lecture  6 Fourier Transform: Reversed the order of slides 85 and 86.&lt;br /&gt;
+Lecture  7 Convolution: No changes other than date from 2006 to 2007.&lt;br /&gt;
+Lecture  8 Frequency Filtering: Added slide on on ideal bandpass filter.&lt;br /&gt;
+Lecture  9 Sharpening: No changes other than date from 2006 to 2007.&lt;br /&gt;
+Lecture 10 Pixelization, Quantization: Added 12 slides on steganography (hiding one picture in another.)&lt;br /&gt;
+Lecture 11 Sampling, Aliasing: Minor format changes.&lt;br /&gt;
+Lecture 12 Resampling: Errors corrected on pp 34 &amp; 108, 9 pages of examples added.&lt;br /&gt;
+Lecture 13 Rotating:  Added seven slides on interpolation and warping.&lt;br /&gt;
+Lecture 14 Uncorrelated Noise: No changes other than date from 2006 to 2007.&lt;br /&gt;
+Lecture 15 Correlated Noise: No changes other than date from 2006 to 2007.&lt;br /&gt;
+Lecture 16 Median Filters: No changes other than date from 2006 to 2007.&lt;br /&gt;
+Lecture 17 Binary Morphology:  Slide 18 corrected.  New slide (49) added. Minor changes (clarifications) made to 25 other slides.&lt;br /&gt;
+Lecture 18 Grayscale Morphology: New slide (43) added.&lt;/div&gt;</description>
+  <date>2017-08-15</date>
+  <year>2017</year>
+  <year>2016</year>
+  <subject>image processing</subject>
+  <subject>image enhancement</subject>
+  <subject>image noise reduction</subject>
+  <subject>Fourier transforms</subject>
+  <subject>convolution</subject>
+  <subject>mathematical morphology</subject>
+  <licenseurl>http://creativecommons.org/licenses/by-nc/3.0/</licenseurl>
+  <publicdate>2007-06-01 23:23:56</publicdate>
+  <addeddate>2007-06-01 23:01:19</addeddate>
+  <uploader>Alan.Peters@Vanderbilt.edu</uploader>
+  <updater>Alan Peters</updater>
+  <updater>ewingrr</updater>
+  <updater>ewingrr</updater>
+  <updater>ewingrr</updater>
+  <updater>ewingrr</updater>
+  <updater>Alan Peters</updater>
+  <updater>Alan Peters</updater>
+  <updater>Alan Peters</updater>
+  <updater>Alan Peters</updater>
+  <updater>Alan Peters</updater>
+  <updater>Alan Peters</updater>
+  <updater>Alan Peters</updater>
+  <updater>Alan Peters</updater>
+  <updater>Alan Peters</updater>
+  <updater>Alan Peters</updater>
+  <updater>Alan Peters</updater>
+  <updater>Alan Peters</updater>
+  <updater>Alan Peters</updater>
+  <updater>Alan Peters</updater>
+  <updater>Alan Peters</updater>
+  <updater>Alan Peters</updater>
+  <updater>Alan Peters</updater>
+  <updater>Alan Peters</updater>
+  <updatedate>2007-06-01 23:51:18</updatedate>
+  <updatedate>2007-06-02 00:22:26</updatedate>
+  <updatedate>2007-06-02 00:39:49</updatedate>
+  <updatedate>2007-06-02 00:40:30</updatedate>
+  <updatedate>2007-06-02 00:56:34</updatedate>
+  <updatedate>2007-06-14 06:58:54</updatedate>
+  <updatedate>2007-07-07 02:04:37</updatedate>
+  <updatedate>2008-04-10 17:55:51</updatedate>
+  <updatedate>2008-04-14 04:26:34</updatedate>
+  <updatedate>2008-04-14 04:29:50</updatedate>
+  <updatedate>2008-04-28 05:47:49</updatedate>
+  <updatedate>2008-04-28 05:57:24</updatedate>
+  <updatedate>2008-04-28 15:14:24</updatedate>
+  <updatedate>2008-05-15 01:53:44</updatedate>
+  <updatedate>2011-05-04 20:13:40</updatedate>
+  <updatedate>2011-09-06 23:43:13</updatedate>
+  <updatedate>2011-09-14 19:45:55</updatedate>
+  <updatedate>2011-09-14 19:52:31</updatedate>
+  <updatedate>2011-09-21 16:13:39</updatedate>
+  <updatedate>2011-09-21 16:15:32</updatedate>
+  <updatedate>2011-09-21 17:56:07</updatedate>
+  <updatedate>2011-09-21 17:59:19</updatedate>
+  <updatedate>2011-10-01 21:36:33</updatedate>
+  <notes>Update 7 January 2016
+
+This is a completely new upload of all the lectures to make it consistent with the Vanderbilt course, EECE 4353 Image Processing, Fall Semester 2015.  Much new information has been added.
+
+Please note that these lectures are sets of slides, not videos.  I made them using Matlab, Photoshop, Illustrator, Powerpoint, and Acrobat.  Also I have not included the assignments since they are the source of academic credit for the Vanderbilt Course, EECE 4253, and I do not want example solutions to be available.
+
+IMPORTANT:  If you do not have the Design Science MathType fonts installed on your computer, the Powerpoint files will not display correctly. For some bizarre and completely unexplained reason, Powerpoint will not embed these fonts. You can download an installer for these fonts from the other files section of this page. Once you download it, double click on the executable to load the fonts. This works for windows machines only. For macs and linux boxen, go to the Design Science web pages: http://www.dessci.com/en/dl/fonts/getfont.asp 
+
+-----
+
+Update 3 September 2015
+
+I've uploaded new versions of lectures 1-4.  They are
+
+EECE_4353_01_Intro
+EECE_4353_02_DigitalImagesAndMatlab
+EECE_4353_03a_ImageHistograms
+EECE_4353_03b_PointProcessing
+EECE_4353_04_ColorPerception
+
+My uploads were in powerpoint (.pptx) and portable document format (.pdf) files. Vanderbilt changed it's course numbering scheme this year.  The new course number for Image Processing is 4353 for the undergraduate course and 5353 for the graduate version.  The lectures are the same for both.  They are all labeled 4353.  Over the semester I'll be updating the lectures here as I complete them.  Also note that I've split lecture 3 into 2 parts.  I've done the same for #5, which I will be updating here soon.
+
+I've also uploaded a short video file, ColorHistogram3D.mp4. This is included in both the pdf and pptx of lecture 3a, but it might not show up in the derived formats, so you can download it here.
+
+-----
+
+Update 27 August 2015
+
+As a new semester starts at Vanderbilt, I'll be updating the lecture slides here as I use them there.  The course numbering system has changed.  This course is now EECE 4253 Image Processing.  Also It looks like the format here on the archive has changed.  To download the lecture slides click on the "show all" link to the right.  I uploaded the ppt, pptx, and pdf format files.  It looks like they have been made available in other formats, too.  If you download one of these other file types and it doesn't look quite right, try one of my originals. 
+
+Please note that these lectures are sets of slides, not videos.  I made them using Matlab, Photoshop, Illustrator, Powerpoint, and Acrobat.  Also I have not included the assignments since they are the source of academic credit for the Vanderbilt Course, EECE 4253, and I do not want example solutions to be available.
+
+IMPORTANT:  If you do not have the Design Science MathType fonts installed on your computer, the Powerpoint files will not display correctly. For some bizarre and completely unexplained reason, Powerpoint will not embed these fonts. You can download an installer for these fonts from the other files section of this page. Once you download it, double click on the executable to load the fonts. This works for windows machines only. For macs and linux boxen, go to the Design Science web pages: http://www.dessci.com/en/dl/fonts/getfont.asp 
+
+-----
+
+Update 25 September 2014
+
+I've substantially expanded Lecture 5, Color Correction.  I've added 18 new slides to more thoroughly cover Hue, Saturation and Value (HSV) representation of color.  In particular, the lecture now includes fast methods for computation of HSV.  They are approximate but very fast.  More updates to come; next will be the Fourier Lecture,
+
+-----
+
+Update 9 September 2014
+
+Two slides on intensity scaling have been added to lecture 2, Digital Images and Matlab. I have added new material to lecture 3 and divided it into two parts. Lecture 3a Image Histograms, contains several new examples and includes more detailed presentations on luminance and value images and on probability distribtutions. Lecture 3b Point Processing now includes a section on image restoration through histogram matching. I have included in Lecture 4, Color Perception, more information on the space-variant retinal transformation and the log-polar transform.
+
+-----About the 11 March 2013 Update: 
+
+There was an error in the Fourier Transform lecture (No. 6).  The calculation of the wavelength of a Fourier component from its position on the Fourier plane was incorrect.  That has been corrected.  Please download the latest version.
+
+-----
+
+About the Fall 2011 Updates:  I will be uploading new versions of all the lectures as the Fall Semester progresses so that all the lectures are updated by mid December.  As of 1 October 2011 Lectures 1-7 have been updated.
+
+-----
+
+About the 28 April 2008 Update: I recompiled the pdf files from the ppt files (the originals) and made sure that all the fonts were embedded and that the start-in-full-screen mode was off.  This may solve the problem some folks were having with the PDF files.  Please let me know if they do not work for you.  Also, I retitled the lectures so that they would include the file type and appear in order and I modified the above introduction to, I hope, better explain the contents of this archive.  (Thanks to users LizBurl and d012560c for alerting me to the pdf problems!)
+
+-----
+
+About the 10 April 2008 Update:  Many of the lecture files have been revised, mainly to correct typos and various small errors.  Some new material has been added as well.
+
+Changes:
+
+Lecture  1 Intro: Included 3 slides on forensic analysis.
+Lecture  2 Digital Images: Included four slides on colormapping and two on image scrambling.
+Lecture  3 Point Processing: Added to explanations on slide 16.
+Lecture  4 Color Perception: No changes other than date from 2006 to 2007.
+Lecture  5 Color Correction: Added 19 slides on the color cube and on RGB vs HSV representation.
+Lecture  6 Fourier Transform: Reversed the order of slides 85 and 86.
+Lecture  7 Convolution: No changes other than date from 2006 to 2007.
+Lecture  8 Frequency Filtering: Added slide on on ideal bandpass filter.
+Lecture  9 Sharpening: No changes other than date from 2006 to 2007.
+Lecture 10 Pixelization, Quantization: Added 12 slides on steganography (hiding one picture in another.)
+Lecture 11 Sampling, Aliasing: Minor format changes.
+Lecture 12 Resampling: Errors corrected on pp 34 &amp; 108, 9 pages of examples added.
+Lecture 13 Rotating:  Added seven slides on interpolation and warping.
+Lecture 14 Uncorrelated Noise: No changes other than date from 2006 to 2007.
+Lecture 15 Correlated Noise: No changes other than date from 2006 to 2007.
+Lecture 16 Median Filters: No changes other than date from 2006 to 2007.
+Lecture 17 Binary Morphology:  Slide 18 corrected.  New slide (49) added. Minor changes (clarifications) made to 25 other slides.
+Lecture 18 Grayscale Morphology: New slide (43) added.
+
+-----
+
+6 July 2007:  I've included powerpoint (.ppt) format versions of all the lectures.
+
+-----
+
+1 June 2007: I have been careful to include the CC attribution-noncommercial license in each file and a (cc) on each slide.  This is, IMHO, a pretty good set of lectures.  They are highly graphical (lots of pictures) I would like other to make use of them.</notes>
+  <rights>I am making these freely available for noncommercial use.  If you use any of my slides or graphics, please cite me in the normal academic fashion.  For example, if you were to use any of the slides from Lecture 6, The Fourier Transform, cite the source as
+
+Peters, Richard Alan, II, "The Fourier Transform", Lectures on Image Processing, Vanderbilt University, Nashville, TN, April 2008, Available on the web at the Internet Archive, http://www.archive.org/details/Lectures_on_Image_Processing.
+
+If you intend to use any of the slides in a product that you intend to sell, please contact me directly to obtain permission.  Alan dot Peters at Vanderbilt dot edu.</rights>
+  <contributor>Alan Peters</contributor>
+  <publisher>Vanderbilt University</publisher>
+  <coverage>Lecture notes from Vanderbilt University EECE/CS 253 Fall 2006</coverage>
+  <identifier-access>http://www.archive.org/details/Lectures_on_Image_Processing</identifier-access>
+  <identifier-ark>ark:/13960/t5gb20p15</identifier-ark>
+  <filesxml>Sun Dec 5 23:29:36 UTC 2010</filesxml>
+  <updatedate>2011-10-01 21:40:51</updatedate>
+  <updater>Alan Peters</updater>
+  <ppi>600</ppi>
+  <ocr>ABBYY FineReader 11.0</ocr>
+  <backup_location>ia903601_1</backup_location>
+  <year>2007</year>
+</metadata>

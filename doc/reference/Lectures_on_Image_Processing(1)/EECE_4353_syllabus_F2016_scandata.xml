@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book>
+  <bookData>
+    <dpi>600</dpi>
+    <bookId>Lectures_on_Image_Processing</bookId>
+    <leafCount>6</leafCount>
+  </bookData>
+  <pageData>
+    <page leafNum="0">
+      <pageType>Normal</pageType>
+      <addToAccessFormats>true</addToAccessFormats>
+      <origWidth>2550</origWidth>
+      <origHeight>3301</origHeight>
+      <cropBox>
+        <x>0</x>
+        <y>0</y>
+        <w>2550</w>
+        <h>3301</h>
+      </cropBox>
+      <bookStart>true</bookStart>
+    </page>
+    <page leafNum="1">
+      <pageType>Normal</pageType>
+      <addToAccessFormats>true</addToAccessFormats>
+      <origWidth>2550</origWidth>
+      <origHeight>3301</origHeight>
+      <cropBox>
+        <x>0</x>
+        <y>0</y>
+        <w>2550</w>
+        <h>3301</h>
+      </cropBox>
+    </page>
+    <page leafNum="2">
+      <pageType>Normal</pageType>
+      <addToAccessFormats>true</addToAccessFormats>
+      <origWidth>2550</origWidth>
+      <origHeight>3301</origHeight>
+      <cropBox>
+        <x>0</x>
+        <y>0</y>
+        <w>2550</w>
+        <h>3301</h>
+      </cropBox>
+    </page>
+    <page leafNum="3">
+      <pageType>Normal</pageType>
+      <addToAccessFormats>true</addToAccessFormats>
+      <origWidth>2550</origWidth>
+      <origHeight>3301</origHeight>
+      <cropBox>
+        <x>0</x>
+        <y>0</y>
+        <w>2550</w>
+        <h>3301</h>
+      </cropBox>
+    </page>
+    <page leafNum="4">
+      <pageType>Normal</pageType>
+      <addToAccessFormats>true</addToAccessFormats>
+      <origWidth>2550</origWidth>
+      <origHeight>3301</origHeight>
+      <cropBox>
+        <x>0</x>
+        <y>0</y>
+        <w>2550</w>
+        <h>3301</h>
+      </cropBox>
+    </page>
+    <page leafNum="5">
+      <pageType>Normal</pageType>
+      <addToAccessFormats>true</addToAccessFormats>
+      <origWidth>2550</origWidth>
+      <origHeight>3301</origHeight>
+      <cropBox>
+        <x>0</x>
+        <y>0</y>
+        <w>2550</w>
+        <h>3301</h>
+      </cropBox>
+    </page>
+  </pageData>
+</book>

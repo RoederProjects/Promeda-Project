@@ -1,0 +1,2080 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files>
+  <file name="CC_2016_RAPII.txt" source="original">
+    <format>Text</format>
+    <mtime>1497458732</mtime>
+    <size>707</size>
+    <md5>000ef7b4670530f97bd559d6b8b3fb9f</md5>
+    <crc32>2b9f1e26</crc32>
+    <sha1>d45cf48c03ff6192070bfb7ef9ef17141f9bcf2b</sha1>
+  </file>
+  <file name="ColorHistogram3D.gif" source="derivative">
+    <format>Animated GIF</format>
+    <original>ColorHistogram3D.mp4</original>
+    <mtime>1441289533</mtime>
+    <size>6510</size>
+    <md5>9b3513bfb9a6f2a0a20cee75ac6f2105</md5>
+    <crc32>570765f8</crc32>
+    <sha1>1a2ffaaf0bca3ad2d8108a1db287c547ce00d161</sha1>
+  </file>
+  <file name="ColorHistogram3D.mp4" source="original">
+    <format>MPEG4</format>
+    <length>6.6</length>
+    <height>420</height>
+    <width>560</width>
+    <mtime>1441288455</mtime>
+    <size>1305834</size>
+    <md5>85c87cafc181ee92b92d634a5e6b751d</md5>
+    <crc32>4fb48717</crc32>
+    <sha1>db3f16680b013cbf8cd1abb539e8564b26640282</sha1>
+    <title>Short animation of a 3D color histogram</title>
+  </file>
+  <file name="ColorHistogram3D.ogv" source="derivative">
+    <format>Ogg Video</format>
+    <original>ColorHistogram3D.mp4</original>
+    <length>6.6</length>
+    <height>300</height>
+    <width>400</width>
+    <mtime>1441289542</mtime>
+    <size>438997</size>
+    <md5>e7891527c599870ab06bb9ac526af469</md5>
+    <crc32>911b0679</crc32>
+    <sha1>798d13e0dfc919186f3a610a154ebe3886ce4a8f</sha1>
+  </file>
+  <file name="DS_Fonts_6.7_TT.exe" source="original">
+    <format>Windows Executable</format>
+    <title>Design Science TrueType math fonts v.6.7</title>
+    <mtime>1316621398</mtime>
+    <size>1090584</size>
+    <md5>fb921ce957cd0d284de1c278ee94b990</md5>
+    <crc32>b52b88a4</crc32>
+    <sha1>a50c4b5f215ba212194581b537eb2926af173014</sha1>
+  </file>
+  <file name="EECE_4353_01_Intro.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497454003</mtime>
+    <size>15877426</size>
+    <md5>cb63d272149cd24334c3ab7c49ff9df2</md5>
+    <crc32>737813e3</crc32>
+    <sha1>7f066b80601f302c687a65bec2335b793a97d758</sha1>
+  </file>
+  <file name="EECE_4353_01_Intro.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497453026</mtime>
+    <size>37403744</size>
+    <md5>0081bc2ff06b8e59efd1d5e9fad86b89</md5>
+    <crc32>e2e6b3a3</crc32>
+    <sha1>b6179af53cd4e7f41253a3890bcc93b1065df767</sha1>
+  </file>
+  <file name="EECE_4353_01_Intro_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_01_Intro_jp2.zip</original>
+    <mtime>1497655460</mtime>
+    <size>372539</size>
+    <md5>741c5379b50ef9377967c82896020574</md5>
+    <crc32>05056de0</crc32>
+    <sha1>46e412cd8f7c18ab858b31e16fb43e942c989877</sha1>
+  </file>
+  <file name="EECE_4353_01_Intro_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_01_Intro_djvu.xml</original>
+    <mtime>1497668396</mtime>
+    <size>24823</size>
+    <md5>706d7ed313e1f1fcb73fa5d15a83feed</md5>
+    <crc32>b333faf3</crc32>
+    <sha1>8768718d989da4ca3bb30e42d723e153ffc36cba</sha1>
+  </file>
+  <file name="EECE_4353_01_Intro_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_01_Intro_abbyy.gz</original>
+    <mtime>1497668240</mtime>
+    <size>310313</size>
+    <md5>f500e5567a1e0582b2cbfe1096349e23</md5>
+    <crc32>87537d86</crc32>
+    <sha1>830b409dc94a5f7bb94ac5ea911dd1005e809493</sha1>
+  </file>
+  <file name="EECE_4353_01_Intro_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_01_Intro.pdf</original>
+    <mtime>1497623476</mtime>
+    <size>39495444</size>
+    <md5>be37b0a2b69e3a633a542c3f6a70e182</md5>
+    <crc32>688b714d</crc32>
+    <sha1>8de8d67439a224d951f8b5ee56fd8a6917ad5e2e</sha1>
+  </file>
+  <file name="EECE_4353_01_Intro_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_01_Intro_djvu.xml</original>
+    <mtime>1497668400</mtime>
+    <size>24449</size>
+    <md5>a4cd475c3f64d2ebb9507d360243303c</md5>
+    <crc32>e0a18dd0</crc32>
+    <sha1>2cffbe0e631333e8a389defe45e665827f80e3a6</sha1>
+  </file>
+  <file name="EECE_4353_02_DigitalImagesAndMatlab.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497454005</mtime>
+    <size>17704027</size>
+    <md5>f4be61f7624476fbdcfe60915151bd2b</md5>
+    <crc32>cd13c217</crc32>
+    <sha1>2f11a8f1c4bc194e5cd4e3a0dae1c505cd0cfde5</sha1>
+  </file>
+  <file name="EECE_4353_02_DigitalImagesAndMatlab.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497453031</mtime>
+    <size>42417286</size>
+    <md5>44163aaff8ac60610d64adac3ea95bea</md5>
+    <crc32>1f4f399e</crc32>
+    <sha1>5ee5fa3ba11446340659deda82d6884116026017</sha1>
+  </file>
+  <file name="EECE_4353_02_DigitalImagesAndMatlab_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_02_DigitalImagesAndMatlab_jp2.zip</original>
+    <mtime>1497654189</mtime>
+    <size>710865</size>
+    <md5>1b3d1b2ddfa393fb60a3fe6fe76bb69c</md5>
+    <crc32>68a0d7de</crc32>
+    <sha1>aa86900c9c9f33f8484e8180f09963eda11e013b</sha1>
+  </file>
+  <file name="EECE_4353_02_DigitalImagesAndMatlab_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_02_DigitalImagesAndMatlab_djvu.xml</original>
+    <mtime>1497668403</mtime>
+    <size>48043</size>
+    <md5>8cfaca2c085c5005e50fabf01b666342</md5>
+    <crc32>d584cbfc</crc32>
+    <sha1>ca88493a2ad08376cf1c43068c7212d2b401cced</sha1>
+  </file>
+  <file name="EECE_4353_02_DigitalImagesAndMatlab_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_02_DigitalImagesAndMatlab_abbyy.gz</original>
+    <mtime>1497668227</mtime>
+    <size>611129</size>
+    <md5>2a260add02e7f1ac2f6ce21557ca02de</md5>
+    <crc32>bf7b2d08</crc32>
+    <sha1>850565eb8f0419efb292c10df1e68ecab12b98d6</sha1>
+  </file>
+  <file name="EECE_4353_02_DigitalImagesAndMatlab_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_02_DigitalImagesAndMatlab.pdf</original>
+    <mtime>1497624418</mtime>
+    <size>51871691</size>
+    <md5>4f16272c27b455877d82fd4aeb916b61</md5>
+    <crc32>2b5414bc</crc32>
+    <sha1>f67e393e633cc56ca32896e38e6b5608fc71254a</sha1>
+  </file>
+  <file name="EECE_4353_02_DigitalImagesAndMatlab_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_02_DigitalImagesAndMatlab_djvu.xml</original>
+    <mtime>1497668408</mtime>
+    <size>28635</size>
+    <md5>9fa1baf9abf71d97bba9b9959b5ff680</md5>
+    <crc32>eb3c90d7</crc32>
+    <sha1>036cda612dd1450146f9f37c103c7daa69810222</sha1>
+  </file>
+  <file name="EECE_4353_03_ImageHistograms.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497454203</mtime>
+    <size>5634266</size>
+    <md5>b6956f12265ec7b8872f0e84017a304a</md5>
+    <crc32>7f782865</crc32>
+    <sha1>6226744363aa4e991a929f24b33b3dfe4d0c8b4a</sha1>
+  </file>
+  <file name="EECE_4353_03_ImageHistograms.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454119</mtime>
+    <size>10927920</size>
+    <md5>7d1b550a31ea8e1dcd2148af5a192972</md5>
+    <crc32>b3e55fbe</crc32>
+    <sha1>12ca5c5fe345bdc30117ce2776e1d998fce20418</sha1>
+  </file>
+  <file name="EECE_4353_03_ImageHistograms_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_03_ImageHistograms_jp2.zip</original>
+    <mtime>1497631516</mtime>
+    <size>315235</size>
+    <md5>d1abad9f4df31c5ab7c5af30297f2607</md5>
+    <crc32>b2858f0c</crc32>
+    <sha1>f57f8e0aa2935dd32d875e976f5953c357e87aa4</sha1>
+  </file>
+  <file name="EECE_4353_03_ImageHistograms_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_03_ImageHistograms_djvu.xml</original>
+    <mtime>1497668409</mtime>
+    <size>20867</size>
+    <md5>44b7b3c15beea2745644a3879f1ac7fc</md5>
+    <crc32>6dcf0ba3</crc32>
+    <sha1>5f5eb1a661ad42e9a715c5c83c07b851401d819b</sha1>
+  </file>
+  <file name="EECE_4353_03_ImageHistograms_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_03_ImageHistograms_abbyy.gz</original>
+    <mtime>1497668022</mtime>
+    <size>235996</size>
+    <md5>273216429a0f18a1d9abc4f7e1a66357</md5>
+    <crc32>bb933862</crc32>
+    <sha1>43cb79001b1e4e094587ef27d9239ecd0d149a21</sha1>
+  </file>
+  <file name="EECE_4353_03_ImageHistograms_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_03_ImageHistograms.pdf</original>
+    <mtime>1497616280</mtime>
+    <size>22950475</size>
+    <md5>4af07f9ea169aff6c34b802ecb31b1cd</md5>
+    <crc32>0302b75f</crc32>
+    <sha1>05df2b497d8b78388236d8000a4ab538ad779d0b</sha1>
+  </file>
+  <file name="EECE_4353_03_ImageHistograms_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_03_ImageHistograms_djvu.xml</original>
+    <mtime>1497668412</mtime>
+    <size>11891</size>
+    <md5>fbd6a277de659a0a303ed81465269630</md5>
+    <crc32>95db15f0</crc32>
+    <sha1>f5786f7914ba7d9d25678b5fe41f1379859d1f34</sha1>
+  </file>
+  <file name="EECE_4353_04_PointProcessing.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497454218</mtime>
+    <size>17611876</size>
+    <md5>89fee07de4484b234f8adbe75b86bebc</md5>
+    <crc32>1303b3e3</crc32>
+    <sha1>e6491e5eb84eea49330f37a4a72690177defcb84</sha1>
+  </file>
+  <file name="EECE_4353_04_PointProcessing.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454121</mtime>
+    <size>22637259</size>
+    <md5>8b92a25f48b9981185b8b7d03224170d</md5>
+    <crc32>6522d6f4</crc32>
+    <sha1>0c79dd233dea471b0afad04e534780b7a55fef0c</sha1>
+  </file>
+  <file name="EECE_4353_04_PointProcessing_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_04_PointProcessing_jp2.zip</original>
+    <mtime>1497633365</mtime>
+    <size>658268</size>
+    <md5>b658d9bd0fe25ec3491baaa871a62665</md5>
+    <crc32>0aba7154</crc32>
+    <sha1>0ae9717e967ebbb567f2ed4af623fa550ed7e341</sha1>
+  </file>
+  <file name="EECE_4353_04_PointProcessing_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_04_PointProcessing_djvu.xml</original>
+    <mtime>1497668414</mtime>
+    <size>42903</size>
+    <md5>43bbcfe6d99f93ecc6d169a33b90c176</md5>
+    <crc32>cc725746</crc32>
+    <sha1>8b0938d0ada435f410c6a15b78d5524218ea4195</sha1>
+  </file>
+  <file name="EECE_4353_04_PointProcessing_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_04_PointProcessing_abbyy.gz</original>
+    <mtime>1497668046</mtime>
+    <size>529686</size>
+    <md5>d3ff5ddb504ced3a04ec36cc0947306c</md5>
+    <crc32>3a0ad482</crc32>
+    <sha1>abde360853263870befaaab93442cf40bcac06df</sha1>
+  </file>
+  <file name="EECE_4353_04_PointProcessing_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_04_PointProcessing.pdf</original>
+    <mtime>1497617171</mtime>
+    <size>61787589</size>
+    <md5>f0b2e749ce9ee47b749c2c9ac240d400</md5>
+    <crc32>49f21d9e</crc32>
+    <sha1>e658417f25f58081fe86dc2ee0a5f7315a30f155</sha1>
+  </file>
+  <file name="EECE_4353_04_PointProcessing_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_04_PointProcessing_djvu.xml</original>
+    <mtime>1497668419</mtime>
+    <size>31931</size>
+    <md5>35846e73fa0fc9ef32dd69c9a8b6d9cd</md5>
+    <crc32>c771aee4</crc32>
+    <sha1>55669336b35696d9d7c1789c458e6f58d70bd1a5</sha1>
+  </file>
+  <file name="EECE_4353_05_ColorPerception.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497454227</mtime>
+    <size>12638725</size>
+    <md5>85965f1c155fb91cc8009b0994605069</md5>
+    <crc32>54a6b6e5</crc32>
+    <sha1>a72268b1fe2f2a547b015569874a70ec7997c4bd</sha1>
+  </file>
+  <file name="EECE_4353_05_ColorPerception.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454125</mtime>
+    <size>40844797</size>
+    <md5>7743611215dc568936f34104d3a45761</md5>
+    <crc32>92e53b15</crc32>
+    <sha1>6e92082975699e4d557bcac8b8769d74e80caec5</sha1>
+  </file>
+  <file name="EECE_4353_05_ColorPerception_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_05_ColorPerception_jp2.zip</original>
+    <mtime>1497635425</mtime>
+    <size>349272</size>
+    <md5>e036b805172829166f0606c64096efd1</md5>
+    <crc32>ea31e405</crc32>
+    <sha1>03fb34b20f8d3e0f9ee34eea7f4b2fd8b3b85298</sha1>
+  </file>
+  <file name="EECE_4353_05_ColorPerception_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_05_ColorPerception_djvu.xml</original>
+    <mtime>1497668421</mtime>
+    <size>23139</size>
+    <md5>c1ed8d118fa48f97818df0bfe786664c</md5>
+    <crc32>85cd1bbc</crc32>
+    <sha1>89085768fd96bda87b4b94ddaad05b51a5c93149</sha1>
+  </file>
+  <file name="EECE_4353_05_ColorPerception_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_05_ColorPerception_abbyy.gz</original>
+    <mtime>1497668058</mtime>
+    <size>270359</size>
+    <md5>cbe272fd577d498ac114adae97e0d9fa</md5>
+    <crc32>78f51420</crc32>
+    <sha1>afed58cd7e1567139e84b00c8310690b1e62386e</sha1>
+  </file>
+  <file name="EECE_4353_05_ColorPerception_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_05_ColorPerception.pdf</original>
+    <mtime>1497617913</mtime>
+    <size>39179968</size>
+    <md5>0a304b0be1aba1bb0dea9ced127efaf0</md5>
+    <crc32>1813bc79</crc32>
+    <sha1>260d1dda76f902f28c9dda870501262ad379ed02</sha1>
+  </file>
+  <file name="EECE_4353_05_ColorPerception_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_05_ColorPerception_djvu.xml</original>
+    <mtime>1497668425</mtime>
+    <size>20861</size>
+    <md5>01dcaca11ed59494f0b143ed5b4e7de6</md5>
+    <crc32>ce0dcf3b</crc32>
+    <sha1>7b6d4353daeee4d3fe01497f43601a20c16092f4</sha1>
+  </file>
+  <file name="EECE_4353_06_RGBandHSVColor.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497454234</mtime>
+    <size>12834696</size>
+    <md5>e5b0dcf47403bf4850fa6de23a33ec15</md5>
+    <crc32>20a093aa</crc32>
+    <sha1>65b6621bbb9effef0c7e8546856a851906bcbf8d</sha1>
+  </file>
+  <file name="EECE_4353_06_RGBandHSVColor.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454129</mtime>
+    <size>38172167</size>
+    <md5>5796bc7b92ff3c1eb538148d963b9573</md5>
+    <crc32>e541b228</crc32>
+    <sha1>9405624713b08a56af0db95d8e622220b4c83fb7</sha1>
+  </file>
+  <file name="EECE_4353_06_RGBandHSVColor_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_06_RGBandHSVColor_jp2.zip</original>
+    <mtime>1497637886</mtime>
+    <size>916975</size>
+    <md5>c7105333dc7307a454c7414e7337adaf</md5>
+    <crc32>316fe858</crc32>
+    <sha1>ef04e1fde768f82a33c8bcafee94e6a7e962e508</sha1>
+  </file>
+  <file name="EECE_4353_06_RGBandHSVColor_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_06_RGBandHSVColor_djvu.xml</original>
+    <mtime>1497668427</mtime>
+    <size>60743</size>
+    <md5>771153ac768e65d7e1793ced83027917</md5>
+    <crc32>806db1a5</crc32>
+    <sha1>c8a90948658575d2ee56c5a65fe45faaa5a56720</sha1>
+  </file>
+  <file name="EECE_4353_06_RGBandHSVColor_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_06_RGBandHSVColor_abbyy.gz</original>
+    <mtime>1497668093</mtime>
+    <size>760390</size>
+    <md5>0323a753e612709afa3d033e424439cf</md5>
+    <crc32>593148f0</crc32>
+    <sha1>9dc78d8edca23db05c830439c6b007cf07bbe7e1</sha1>
+  </file>
+  <file name="EECE_4353_06_RGBandHSVColor_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_06_RGBandHSVColor.pdf</original>
+    <mtime>1497618900</mtime>
+    <size>58592088</size>
+    <md5>1845a729af31d5cf3743172ac2299629</md5>
+    <crc32>88db0bcf</crc32>
+    <sha1>55ec3e4218335b4758ced917bf65cb1b7559aca6</sha1>
+  </file>
+  <file name="EECE_4353_06_RGBandHSVColor_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_06_RGBandHSVColor_djvu.xml</original>
+    <mtime>1497668433</mtime>
+    <size>38831</size>
+    <md5>210702782c2f6559573717fbf9849b6e</md5>
+    <crc32>18b946ad</crc32>
+    <sha1>c119510bf374325987c3ef06b9578835b92e602c</sha1>
+  </file>
+  <file name="EECE_4353_07_ColorCorrection.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497454236</mtime>
+    <size>10707019</size>
+    <md5>40bb4ba5ddb01b1f18d660ed8bc41c03</md5>
+    <crc32>ebe08abc</crc32>
+    <sha1>daf54a70789327390d1d6c2aa3589c55e57129a8</sha1>
+  </file>
+  <file name="EECE_4353_07_ColorCorrection.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454132</mtime>
+    <size>15847414</size>
+    <md5>df9228bba74e7ef6ccfb35b9be80cf44</md5>
+    <crc32>6746a3eb</crc32>
+    <sha1>b744959e63f49623cc6f6a6911943f3d95e3e785</sha1>
+  </file>
+  <file name="EECE_4353_07_ColorCorrection_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_07_ColorCorrection_jp2.zip</original>
+    <mtime>1497638570</mtime>
+    <size>393231</size>
+    <md5>ae266cee3518bbb7986b18cc2b1a5b2b</md5>
+    <crc32>c32fe6fc</crc32>
+    <sha1>679c3c9b50331d72ecf5779e3242a373c65efe90</sha1>
+  </file>
+  <file name="EECE_4353_07_ColorCorrection_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_07_ColorCorrection_djvu.xml</original>
+    <mtime>1497668448</mtime>
+    <size>26085</size>
+    <md5>da2c220f6766fa6fe451195e9b95ff09</md5>
+    <crc32>3a485fe5</crc32>
+    <sha1>03f249510d09157d3a07ba40bd5052595da9e67e</sha1>
+  </file>
+  <file name="EECE_4353_07_ColorCorrection_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_07_ColorCorrection_abbyy.gz</original>
+    <mtime>1497668108</mtime>
+    <size>351202</size>
+    <md5>475d5ac18cc0569ef317547c0319175a</md5>
+    <crc32>5407ed1c</crc32>
+    <sha1>f6a1b5beea741e36f42b4afb119a80300b3e03e5</sha1>
+  </file>
+  <file name="EECE_4353_07_ColorCorrection_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_07_ColorCorrection.pdf</original>
+    <mtime>1497619541</mtime>
+    <size>37909230</size>
+    <md5>7a86dba1db6ad781a93d32842fc83fe5</md5>
+    <crc32>4cd31c4f</crc32>
+    <sha1>8881dc4dd1366a7b022151076c28e766e98ae84e</sha1>
+  </file>
+  <file name="EECE_4353_07_ColorCorrection_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_07_ColorCorrection_djvu.xml</original>
+    <mtime>1497668437</mtime>
+    <size>22057</size>
+    <md5>fbb3797507f1951cb5470f8490b3e2d5</md5>
+    <crc32>e8c68ef4</crc32>
+    <sha1>b20199048c1c8fe2a7d37e0b29f2da1174d573b0</sha1>
+  </file>
+  <file name="EECE_4353_08_FourierTransform.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497454251</mtime>
+    <size>14250303</size>
+    <md5>219113cb1fc48fcc12fb043931d9ef89</md5>
+    <crc32>3c93b580</crc32>
+    <sha1>04978f1dcd64e4542ad66e558fb3e261316afe93</sha1>
+  </file>
+  <file name="EECE_4353_08_FourierTransform.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454135</mtime>
+    <size>19871904</size>
+    <md5>7abac1875252c20bcda4392469fa5d2e</md5>
+    <crc32>6b3f6389</crc32>
+    <sha1>597be75f5e401c97806b6b3c36ecbbc4749a4ed9</sha1>
+  </file>
+  <file name="EECE_4353_08_FourierTransform_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_08_FourierTransform_jp2.zip</original>
+    <mtime>1497640851</mtime>
+    <size>736353</size>
+    <md5>e805446935eca64fae27267d9e145c92</md5>
+    <crc32>6c668734</crc32>
+    <sha1>6f3921969c40c4122e01075ca6e9e91afa2ede7a</sha1>
+  </file>
+  <file name="EECE_4353_08_FourierTransform_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_08_FourierTransform_djvu.xml</original>
+    <mtime>1497668439</mtime>
+    <size>49674</size>
+    <md5>2876003b1da4f2d4ce7c97cb465f2847</md5>
+    <crc32>ae28afd2</crc32>
+    <sha1>256bdaca2790aa207b4c1a75c104ab4206e4aba9</sha1>
+  </file>
+  <file name="EECE_4353_08_FourierTransform_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_08_FourierTransform_abbyy.gz</original>
+    <mtime>1497668133</mtime>
+    <size>795890</size>
+    <md5>eab391565a35ddb6d936d8e02da5bd8b</md5>
+    <crc32>c3eb2540</crc32>
+    <sha1>90dd86cacdeb6fb74a50ef72120a87e1f279e827</sha1>
+  </file>
+  <file name="EECE_4353_08_FourierTransform_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_08_FourierTransform.pdf</original>
+    <mtime>1497620289</mtime>
+    <size>57951557</size>
+    <md5>131449b50684fe42e974e2aab263afd0</md5>
+    <crc32>ea826e72</crc32>
+    <sha1>bcaf49d03535386fb6edfbfb895a17bbe499a8a6</sha1>
+  </file>
+  <file name="EECE_4353_08_FourierTransform_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_08_FourierTransform_djvu.xml</original>
+    <mtime>1497668442</mtime>
+    <size>31631</size>
+    <md5>67fbe5f0ec7e59b3f8f42cd378b9e8f1</md5>
+    <crc32>29f1b712</crc32>
+    <sha1>6d685317783c05fc24074503adedf21a1a2802c1</sha1>
+  </file>
+  <file name="EECE_4353_09_Convolution.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497454256</mtime>
+    <size>7413803</size>
+    <md5>ca69927340f12c29cb6991ddb93a9429</md5>
+    <crc32>56a84084</crc32>
+    <sha1>11fcc5104c9257269b0c245329c28cf31f915091</sha1>
+  </file>
+  <file name="EECE_4353_09_Convolution.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454137</mtime>
+    <size>11838921</size>
+    <md5>022eb1adb6f8f41cd8b0026267d989ea</md5>
+    <crc32>4b606d0c</crc32>
+    <sha1>162c720e5a7eb6d7c5b44e94aff608a6bed66c84</sha1>
+  </file>
+  <file name="EECE_4353_09_Convolution_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_09_Convolution_jp2.zip</original>
+    <mtime>1497643504</mtime>
+    <size>369126</size>
+    <md5>8d4ba32a4aae6a6ab5bd27b1a4a3b8ef</md5>
+    <crc32>5fd445f0</crc32>
+    <sha1>868d73e4d56bf2df42c3d67acc3bce9e37307f17</sha1>
+  </file>
+  <file name="EECE_4353_09_Convolution_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_09_Convolution_djvu.xml</original>
+    <mtime>1497668444</mtime>
+    <size>25176</size>
+    <md5>fbb9fd6213109798947436d528a14a8f</md5>
+    <crc32>dc6563f5</crc32>
+    <sha1>c95d71d0c0a8bcb9e7e229c8aafeb5c441deca16</sha1>
+  </file>
+  <file name="EECE_4353_09_Convolution_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_09_Convolution_abbyy.gz</original>
+    <mtime>1497668147</mtime>
+    <size>347382</size>
+    <md5>e3b2fd50d3aa5d65cf2cfbf586fc1349</md5>
+    <crc32>c6c0fecf</crc32>
+    <sha1>07e7aca86355f177f648ffa88e755f53b4a6cfb5</sha1>
+  </file>
+  <file name="EECE_4353_09_Convolution_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_09_Convolution.pdf</original>
+    <mtime>1497620883</mtime>
+    <size>30808786</size>
+    <md5>8cd3740b2d1bd67138f81e7fcdf4468d</md5>
+    <crc32>73d98068</crc32>
+    <sha1>b87d1698e4528eaaa63024adfdf12228f1a4dfaf</sha1>
+  </file>
+  <file name="EECE_4353_09_Convolution_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_09_Convolution_djvu.xml</original>
+    <mtime>1497668447</mtime>
+    <size>17871</size>
+    <md5>53f069ab8ceccefdf83de3074ede5583</md5>
+    <crc32>0b2028f6</crc32>
+    <sha1>38b9ff1ff72595106a80692b9c75fa81ff2bafa0</sha1>
+  </file>
+  <file name="EECE_4353_10_FrequencyFiltering.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497454269</mtime>
+    <size>12891709</size>
+    <md5>39e9d89b18382d0097c42d83010c3d04</md5>
+    <crc32>e1ef9c72</crc32>
+    <sha1>67afbe1fbb4567990b2660a164320d3f4fe4ff1d</sha1>
+  </file>
+  <file name="EECE_4353_10_FrequencyFiltering.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454145</mtime>
+    <size>30494927</size>
+    <md5>f58b5a57420fb21b301af69c06fa5c02</md5>
+    <crc32>8ef172d9</crc32>
+    <sha1>22ce9e6dac59528987f82415929f262aeefc6b52</sha1>
+  </file>
+  <file name="EECE_4353_10_FrequencyFiltering_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_10_FrequencyFiltering_jp2.zip</original>
+    <mtime>1497644993</mtime>
+    <size>476666</size>
+    <md5>f231773ffeacd962606b4b17329d8e8e</md5>
+    <crc32>9f1d9993</crc32>
+    <sha1>9416f84f1233b8b37703a3df880e4ad8b5454ff6</sha1>
+  </file>
+  <file name="EECE_4353_10_FrequencyFiltering_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_10_FrequencyFiltering_djvu.xml</original>
+    <mtime>1497668449</mtime>
+    <size>31654</size>
+    <md5>7a55281d160772fcd633aee11c3c41a4</md5>
+    <crc32>9d350d8f</crc32>
+    <sha1>035ec033f3df866e91d4da12d58962d20c536fa3</sha1>
+  </file>
+  <file name="EECE_4353_10_FrequencyFiltering_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_10_FrequencyFiltering_abbyy.gz</original>
+    <mtime>1497668164</mtime>
+    <size>468958</size>
+    <md5>b322c9f4a0603412bba78c2a0c0f83ba</md5>
+    <crc32>0553df3f</crc32>
+    <sha1>11108e73b1d19db920df262659cb0f405cd2e4f5</sha1>
+  </file>
+  <file name="EECE_4353_10_FrequencyFiltering_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_10_FrequencyFiltering.pdf</original>
+    <mtime>1497621763</mtime>
+    <size>48852765</size>
+    <md5>af0c1af0392ed09a47a8fcf7c0332930</md5>
+    <crc32>9f76f61c</crc32>
+    <sha1>83f60c33a3ab128b01744d918e07ed3e5fc5f187</sha1>
+  </file>
+  <file name="EECE_4353_10_FrequencyFiltering_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_10_FrequencyFiltering_djvu.xml</original>
+    <mtime>1497668452</mtime>
+    <size>29831</size>
+    <md5>e4f43de5d6a80e5c067619239d542994</md5>
+    <crc32>6ec4785e</crc32>
+    <sha1>fb553e619324dc531dee44a047eb5a1e628cbde3</sha1>
+  </file>
+  <file name="EECE_4353_11_Sharpening.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497454283</mtime>
+    <size>15084599</size>
+    <md5>eeb60e25976fb3cc01a159f76d73c2be</md5>
+    <crc32>1d0a64b9</crc32>
+    <sha1>a0875e0802727a981cd2889a2c47f12cc5a0be0b</sha1>
+  </file>
+  <file name="EECE_4353_11_Sharpening.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454149</mtime>
+    <size>60879483</size>
+    <md5>ce5944c9cfb6f403ec383a2f67c14329</md5>
+    <crc32>d9b0c08b</crc32>
+    <sha1>ac859dab8fef40db82bd38be5d92b06369fa2f48</sha1>
+  </file>
+  <file name="EECE_4353_11_Sharpening_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_11_Sharpening_jp2.zip</original>
+    <mtime>1497648095</mtime>
+    <size>443691</size>
+    <md5>c3f570059f19f487dafc935cd2d0955d</md5>
+    <crc32>d3111ec7</crc32>
+    <sha1>8675ded0c959819efd0ea9fc8b3af8c25b7b7b62</sha1>
+  </file>
+  <file name="EECE_4353_11_Sharpening_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_11_Sharpening_djvu.xml</original>
+    <mtime>1497668454</mtime>
+    <size>29121</size>
+    <md5>73f50846be4bb0e44e75ee57e7633419</md5>
+    <crc32>fb8c4efe</crc32>
+    <sha1>319b0f05e6b8b7a728506f2cb2e60eed75bdff19</sha1>
+  </file>
+  <file name="EECE_4353_11_Sharpening_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_11_Sharpening_abbyy.gz</original>
+    <mtime>1497668180</mtime>
+    <size>349744</size>
+    <md5>96dc5e722288d694c94a84d63ea9293a</md5>
+    <crc32>28c2a0f4</crc32>
+    <sha1>fc30af14b578c7cb4e40e1293d7be5133756505e</sha1>
+  </file>
+  <file name="EECE_4353_11_Sharpening_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_11_Sharpening.pdf</original>
+    <mtime>1497622751</mtime>
+    <size>63811384</size>
+    <md5>f3b27c76b5975e607c0a4422141c32c6</md5>
+    <crc32>3483df28</crc32>
+    <sha1>210e479948b3d052ea1aa7a849f7d04ce5630380</sha1>
+  </file>
+  <file name="EECE_4353_11_Sharpening_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_11_Sharpening_djvu.xml</original>
+    <mtime>1497668460</mtime>
+    <size>29532</size>
+    <md5>efe138d8fd9fe5735c1216057f9e07b0</md5>
+    <crc32>2f12e0e2</crc32>
+    <sha1>ee283d80d323e10183c21ad24f44eb13154eb1c1</sha1>
+  </file>
+  <file name="EECE_4353_12_PixelizationQuantization.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497454298</mtime>
+    <size>12044364</size>
+    <md5>b8ce2decbf1594fbc0019051d982b412</md5>
+    <crc32>3866771a</crc32>
+    <sha1>a1009eccd96fdb9ef2a90318c9d203966034273b</sha1>
+  </file>
+  <file name="EECE_4353_12_PixelizationQuantization.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454153</mtime>
+    <size>22237747</size>
+    <md5>e28e77e7edf5e3cd0653a26da2a79365</md5>
+    <crc32>5bff7d17</crc32>
+    <sha1>031d38103db9d7232b0fce722a4165a881670d41</sha1>
+  </file>
+  <file name="EECE_4353_12_PixelizationQuantization_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_12_PixelizationQuantization_jp2.zip</original>
+    <mtime>1497650713</mtime>
+    <size>333141</size>
+    <md5>3a2a2e35102b9cee3e597836dae7656e</md5>
+    <crc32>ab2a5335</crc32>
+    <sha1>bf21cc7d42260a97a967daffc8e8f7d7193f0c0b</sha1>
+  </file>
+  <file name="EECE_4353_12_PixelizationQuantization_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_12_PixelizationQuantization_djvu.xml</original>
+    <mtime>1497668462</mtime>
+    <size>21740</size>
+    <md5>e96a663d5471433d58cb2096f3538eb2</md5>
+    <crc32>e432c2b5</crc32>
+    <sha1>2da2cf53a72bf648534d5ad81e1ea4506980e9fb</sha1>
+  </file>
+  <file name="EECE_4353_12_PixelizationQuantization_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_12_PixelizationQuantization_abbyy.gz</original>
+    <mtime>1497668192</mtime>
+    <size>265919</size>
+    <md5>979e747e6d088c9ffc5fdc74249c6ce2</md5>
+    <crc32>5e476ac2</crc32>
+    <sha1>e05a5d8d838c56ab5f3c965fb183f0135d078529</sha1>
+  </file>
+  <file name="EECE_4353_12_PixelizationQuantization_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_12_PixelizationQuantization.pdf</original>
+    <mtime>1497615943</mtime>
+    <size>37867547</size>
+    <md5>4f2a0bb499018eedf99de83a448fe7bf</md5>
+    <crc32>7f7cb0fe</crc32>
+    <sha1>609f5b7bb971a5b2270cfd09d23863bd600dc276</sha1>
+  </file>
+  <file name="EECE_4353_12_PixelizationQuantization_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_12_PixelizationQuantization_djvu.xml</original>
+    <mtime>1497668467</mtime>
+    <size>20861</size>
+    <md5>01dcaca11ed59494f0b143ed5b4e7de6</md5>
+    <crc32>ce0dcf3b</crc32>
+    <sha1>7b6d4353daeee4d3fe01497f43601a20c16092f4</sha1>
+  </file>
+  <file name="EECE_4353_13_HDRImaging.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497454303</mtime>
+    <size>4620597</size>
+    <md5>5b0d98512feb5e8d5a7ee5c0d3cf29b8</md5>
+    <crc32>2933416e</crc32>
+    <sha1>6298d70eabc3f373aecd6f2d8fdc5fb1c7661e71</sha1>
+  </file>
+  <file name="EECE_4353_13_HDRImaging.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454155</mtime>
+    <size>8606009</size>
+    <md5>413a91080022a531feab6d95b8b62ac5</md5>
+    <crc32>7112cd2f</crc32>
+    <sha1>20565df26781bd2d5606b44d67357ecea92e55d8</sha1>
+  </file>
+  <file name="EECE_4353_13_HDRImaging_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_13_HDRImaging_jp2.zip</original>
+    <mtime>1497652710</mtime>
+    <size>260431</size>
+    <md5>380f2f8268f1f9ed0ed08b27ab0df539</md5>
+    <crc32>0684319a</crc32>
+    <sha1>161f5b8e1758a61d70caf7441e40e3b2bf77cd9c</sha1>
+  </file>
+  <file name="EECE_4353_13_HDRImaging_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_13_HDRImaging_djvu.xml</original>
+    <mtime>1497668507</mtime>
+    <size>17448</size>
+    <md5>31f2ae1f852adef3e93aeb321206b7c5</md5>
+    <crc32>c65d5390</crc32>
+    <sha1>9d1ba1603bd4632d4813971b8a0dd7aa5314bd9a</sha1>
+  </file>
+  <file name="EECE_4353_13_HDRImaging_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_13_HDRImaging_abbyy.gz</original>
+    <mtime>1497668202</mtime>
+    <size>197226</size>
+    <md5>fa07b278abb2cc78605eccc4ac236213</md5>
+    <crc32>1404e31a</crc32>
+    <sha1>ad727a53607079f6c8f71cc7867637903446d8e6</sha1>
+  </file>
+  <file name="EECE_4353_13_HDRImaging_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_13_HDRImaging.pdf</original>
+    <mtime>1497630504</mtime>
+    <size>19960077</size>
+    <md5>606476c21bdc91f86ce6a0d056bd486a</md5>
+    <crc32>99bbd56b</crc32>
+    <sha1>375769b99b26de317bcf53f66aabd09c64f593a0</sha1>
+  </file>
+  <file name="EECE_4353_13_HDRImaging_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_13_HDRImaging_djvu.xml</original>
+    <mtime>1497668493</mtime>
+    <size>11592</size>
+    <md5>fcb6bc0eab5362a2e9603db8ee6597b5</md5>
+    <crc32>0d7bc80d</crc32>
+    <sha1>bd78f2bdb8bafba90beda63f76f0580f921ac218</sha1>
+  </file>
+  <file name="EECE_4353_14_SamplingAliasing.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497454306</mtime>
+    <size>8145433</size>
+    <md5>f1471c8aae4b56532e66f6d9e761a388</md5>
+    <crc32>8ba5d2a3</crc32>
+    <sha1>2347a129e9159be4137b8f30623bc2eb2adfb3ce</sha1>
+  </file>
+  <file name="EECE_4353_14_SamplingAliasing.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454158</mtime>
+    <size>17588042</size>
+    <md5>0aeb1539f7f4f4f0f9ffd7fc1548b25d</md5>
+    <crc32>cefb2d0c</crc32>
+    <sha1>eea49be90c83a7aeca9bbc07331b645a34749891</sha1>
+  </file>
+  <file name="EECE_4353_14_SamplingAliasing_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_14_SamplingAliasing_jp2.zip</original>
+    <mtime>1497668007</mtime>
+    <size>341838</size>
+    <md5>223b48016a95232de84ad508bd0fc4b0</md5>
+    <crc32>af512e4f</crc32>
+    <sha1>0c3608d7c317d2d9bfd0fa9ed42353f46ca32c1b</sha1>
+  </file>
+  <file name="EECE_4353_14_SamplingAliasing_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_14_SamplingAliasing_djvu.xml</original>
+    <mtime>1497668469</mtime>
+    <size>24074</size>
+    <md5>f649aab23925b51819575e7da3b7039d</md5>
+    <crc32>1a732d78</crc32>
+    <sha1>8dd799e63d46b0ec80aff1e0e3c2f49744ba8816</sha1>
+  </file>
+  <file name="EECE_4353_14_SamplingAliasing_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_14_SamplingAliasing_abbyy.gz</original>
+    <mtime>1497668393</mtime>
+    <size>264477</size>
+    <md5>9c570ac3a28abb3fe0e166b97af9fb6f</md5>
+    <crc32>6e6e9fe9</crc32>
+    <sha1>e6c414f6c32cf9cc0844af5d6630dd47cf4ab601</sha1>
+  </file>
+  <file name="EECE_4353_14_SamplingAliasing_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_14_SamplingAliasing.pdf</original>
+    <mtime>1497624988</mtime>
+    <size>32428350</size>
+    <md5>82494bd5a63dcc3fdf315c6dce63fdae</md5>
+    <crc32>81455a47</crc32>
+    <sha1>602e38730c6064abdba30cb2098f125a4fd0e0a7</sha1>
+  </file>
+  <file name="EECE_4353_14_SamplingAliasing_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_14_SamplingAliasing_djvu.xml</original>
+    <mtime>1497668471</mtime>
+    <size>18469</size>
+    <md5>7dac468741c08a68357ed2c0910a71cc</md5>
+    <crc32>a16faf23</crc32>
+    <sha1>c240396f2c1929f1f5f58f177ae1dee9e1353275</sha1>
+  </file>
+  <file name="EECE_4353_15_Resampling.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497454311</mtime>
+    <size>14478703</size>
+    <md5>b2803df5eb29a78934d678c2fcea8bb5</md5>
+    <crc32>2820660a</crc32>
+    <sha1>23878b27c8f41604e5f5339232327a450e89fb44</sha1>
+  </file>
+  <file name="EECE_4353_15_Resampling.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454161</mtime>
+    <size>20828196</size>
+    <md5>287e1684abd5d9a4b3ca2b7b5e91fbc7</md5>
+    <crc32>685935bd</crc32>
+    <sha1>da73babe02a148216dfeda91638ac3a008ead837</sha1>
+  </file>
+  <file name="EECE_4353_15_Resampling_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_15_Resampling_jp2.zip</original>
+    <mtime>1497666987</mtime>
+    <size>815622</size>
+    <md5>a4ab58040f3d8e99e37a51fedcc824c1</md5>
+    <crc32>134d9b80</crc32>
+    <sha1>3c6c5ae420b081a7af17b8962858b07edb0572b2</sha1>
+  </file>
+  <file name="EECE_4353_15_Resampling_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_15_Resampling_djvu.xml</original>
+    <mtime>1497668472</mtime>
+    <size>54668</size>
+    <md5>f08f9b4b8eea7629c880c2e1eea16e8e</md5>
+    <crc32>777183e6</crc32>
+    <sha1>789f265a9d57e9c33688fe6d850a52cfd162c03e</sha1>
+  </file>
+  <file name="EECE_4353_15_Resampling_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_15_Resampling_abbyy.gz</original>
+    <mtime>1497668380</mtime>
+    <size>797415</size>
+    <md5>96b7dbc4b8441c76dfa5725d3ff214a8</md5>
+    <crc32>8fe1c329</crc32>
+    <sha1>8b9b01851c6502b19e0f23f67a3141fdb093dec6</sha1>
+  </file>
+  <file name="EECE_4353_15_Resampling_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_15_Resampling.pdf</original>
+    <mtime>1497626110</mtime>
+    <size>69913992</size>
+    <md5>fac6df4fc2b2f813ba8261cd7dec04f6</md5>
+    <crc32>43e3ac5a</crc32>
+    <sha1>a28830feb8844a9bce5a7594930a15e85ddafa3a</sha1>
+  </file>
+  <file name="EECE_4353_15_Resampling_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_15_Resampling_djvu.xml</original>
+    <mtime>1497668475</mtime>
+    <size>38531</size>
+    <md5>95003bae2a755cd83ff57f01ec4bd6b5</md5>
+    <crc32>ff29c630</crc32>
+    <sha1>e10e7a0e62b7b460067a2167c8cc550e1f967ee6</sha1>
+  </file>
+  <file name="EECE_4353_16_WarpingAndRotation.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497455325</mtime>
+    <size>8243492</size>
+    <md5>0b757a3587d804b138c5fc34b581aa24</md5>
+    <crc32>a2fd7c9f</crc32>
+    <sha1>b6ebe930b07a135e6982ed1646a4f290961ddc54</sha1>
+  </file>
+  <file name="EECE_4353_16_WarpingAndRotation.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454164</mtime>
+    <size>10960461</size>
+    <md5>a6cb6204f114425d7ff11f9c7da6b80b</md5>
+    <crc32>50672b84</crc32>
+    <sha1>b4d60cabafc60e68852e957dc5fbdd2eeec2d87f</sha1>
+  </file>
+  <file name="EECE_4353_16_WarpingAndRotation_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_16_WarpingAndRotation_jp2.zip</original>
+    <mtime>1497656236</mtime>
+    <size>386809</size>
+    <md5>5ced4d977b0d2e13a66f28c48ad268b9</md5>
+    <crc32>2e309e0d</crc32>
+    <sha1>071c825ca2802b9ca007fa0a2a0e8ed95d9fe9ef</sha1>
+  </file>
+  <file name="EECE_4353_16_WarpingAndRotation_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_16_WarpingAndRotation_djvu.xml</original>
+    <mtime>1497668489</mtime>
+    <size>25213</size>
+    <md5>36ae75d36b4331f246e890886babd934</md5>
+    <crc32>62e9efdc</crc32>
+    <sha1>e69d5ce4d1196190d579034d55d2973de8dc5de3</sha1>
+  </file>
+  <file name="EECE_4353_16_WarpingAndRotation_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_16_WarpingAndRotation_abbyy.gz</original>
+    <mtime>1497668258</mtime>
+    <size>322243</size>
+    <md5>0228637ffef76c1e8102e0bd7fe65294</md5>
+    <crc32>ecb35673</crc32>
+    <sha1>91390d607ae1c80765fee8f6c6cbb2d562694e39</sha1>
+  </file>
+  <file name="EECE_4353_16_WarpingAndRotation_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_16_WarpingAndRotation.pdf</original>
+    <mtime>1497626728</mtime>
+    <size>30914164</size>
+    <md5>2a546b29322436d29a99d8e5e84f017c</md5>
+    <crc32>d87717f4</crc32>
+    <sha1>915e542d1bd3e9d1aaeaefa61837a2903c41a1e1</sha1>
+  </file>
+  <file name="EECE_4353_16_WarpingAndRotation_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_16_WarpingAndRotation_djvu.xml</original>
+    <mtime>1497668479</mtime>
+    <size>17871</size>
+    <md5>53f069ab8ceccefdf83de3074ede5583</md5>
+    <crc32>0b2028f6</crc32>
+    <sha1>38b9ff1ff72595106a80692b9c75fa81ff2bafa0</sha1>
+  </file>
+  <file name="EECE_4353_17_UncorrelatedNoise.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497455466</mtime>
+    <size>15043046</size>
+    <md5>4933d242e1eedf79924ef5253f88ffb5</md5>
+    <crc32>7a50ad8b</crc32>
+    <sha1>920bbe3e84e5b14f638fdb940f8b74d6ac574612</sha1>
+  </file>
+  <file name="EECE_4353_17_UncorrelatedNoise.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454167</mtime>
+    <size>33977131</size>
+    <md5>87430b9da7892de0ba0391d4247506f1</md5>
+    <crc32>b0a8e98f</crc32>
+    <sha1>456442c0ad04b9901ee369d6c1d0f997afa4394a</sha1>
+  </file>
+  <file name="EECE_4353_17_UncorrelatedNoise_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_17_UncorrelatedNoise_jp2.zip</original>
+    <mtime>1497657468</mtime>
+    <size>397114</size>
+    <md5>1bd79ce80ad7fb36e24674fd00c1ec9a</md5>
+    <crc32>4fa12c1c</crc32>
+    <sha1>f3eabca71317cc3f1f0ae64da7d5c75c7ccaece9</sha1>
+  </file>
+  <file name="EECE_4353_17_UncorrelatedNoise_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_17_UncorrelatedNoise_djvu.xml</original>
+    <mtime>1497668481</mtime>
+    <size>25780</size>
+    <md5>a61db5225719ce10517db39a2fb8aa11</md5>
+    <crc32>40fbd684</crc32>
+    <sha1>570f443fa4a4acd3fba621107f8fe1f828e4c3ba</sha1>
+  </file>
+  <file name="EECE_4353_17_UncorrelatedNoise_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_17_UncorrelatedNoise_abbyy.gz</original>
+    <mtime>1497668272</mtime>
+    <size>317833</size>
+    <md5>e596d8f923fe5fb08190d55955019b91</md5>
+    <crc32>7e075988</crc32>
+    <sha1>0332622ae2849f971744513391cfb0c20385cb06</sha1>
+  </file>
+  <file name="EECE_4353_17_UncorrelatedNoise_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_17_UncorrelatedNoise.pdf</original>
+    <mtime>1497627377</mtime>
+    <size>41724548</size>
+    <md5>0637c04f6825469a40263757535bf031</md5>
+    <crc32>f07e5b1e</crc32>
+    <sha1>40bbe004d3df9e2a6aa855cf0a83888243d31d4c</sha1>
+  </file>
+  <file name="EECE_4353_17_UncorrelatedNoise_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_17_UncorrelatedNoise_djvu.xml</original>
+    <mtime>1497668483</mtime>
+    <size>21160</size>
+    <md5>cd1d900e3244a084f8c22bfd12755a67</md5>
+    <crc32>a1afb489</crc32>
+    <sha1>07f07f412da58fedb4b36aedd4a07635a3c2b783</sha1>
+  </file>
+  <file name="EECE_4353_18_CorrelatedNoise.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497455593</mtime>
+    <size>10135371</size>
+    <md5>d2620b987ca73323af48c2e86ba56798</md5>
+    <crc32>6c1e3592</crc32>
+    <sha1>a7e71ea58743d020719f93869cf9a072b21a4d81</sha1>
+  </file>
+  <file name="EECE_4353_18_CorrelatedNoise.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454171</mtime>
+    <size>41758082</size>
+    <md5>c47b93837b4282d3610a40a28de6276b</md5>
+    <crc32>c8654efc</crc32>
+    <sha1>d7e255550b2e6fb3ce626db0366f8616c3bbaa26</sha1>
+  </file>
+  <file name="EECE_4353_18_CorrelatedNoise_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_18_CorrelatedNoise_jp2.zip</original>
+    <mtime>1497659276</mtime>
+    <size>256476</size>
+    <md5>388797220749ac1b2e4eed94b6346fba</md5>
+    <crc32>ee83b689</crc32>
+    <sha1>3bb9b115962603d1efd056d84faf8e2b69eed7bb</sha1>
+  </file>
+  <file name="EECE_4353_18_CorrelatedNoise_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_18_CorrelatedNoise_djvu.xml</original>
+    <mtime>1497668485</mtime>
+    <size>16601</size>
+    <md5>929deb731ca13c1a8e7bc3e413d1f177</md5>
+    <crc32>d72bd9b7</crc32>
+    <sha1>779ca31bd735b925091d64426fbc3cb1b7233e23</sha1>
+  </file>
+  <file name="EECE_4353_18_CorrelatedNoise_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_18_CorrelatedNoise_abbyy.gz</original>
+    <mtime>1497668282</mtime>
+    <size>200388</size>
+    <md5>4f0b36ef153baf2984c6fc3fb03f9a43</md5>
+    <crc32>643461b4</crc32>
+    <sha1>3f1802faac891706754351e79200738c17f83c65</sha1>
+  </file>
+  <file name="EECE_4353_18_CorrelatedNoise_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_18_CorrelatedNoise.pdf</original>
+    <mtime>1497628088</mtime>
+    <size>31743278</size>
+    <md5>616e589179aca6c839088819ee641338</md5>
+    <crc32>77474097</crc32>
+    <sha1>1601cc1a4f6b46b3dbe48e03eb76e9c2b1e8afd2</sha1>
+  </file>
+  <file name="EECE_4353_18_CorrelatedNoise_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_18_CorrelatedNoise_djvu.xml</original>
+    <mtime>1497668487</mtime>
+    <size>15479</size>
+    <md5>5a58dc91d88ada7561205270b67b9919</md5>
+    <crc32>1227d816</crc32>
+    <sha1>f071de00b1162f297b5fc65b0d5e3696fc1cc2f2</sha1>
+  </file>
+  <file name="EECE_4353_19_MedianFilters.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497455603</mtime>
+    <size>8123400</size>
+    <md5>52133995e501dfcff6a0390c73a9ec50</md5>
+    <crc32>2058046e</crc32>
+    <sha1>4184daf1ea071e614e2ce77dc0730e4d3b95083a</sha1>
+  </file>
+  <file name="EECE_4353_19_MedianFilters.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454173</mtime>
+    <size>10840890</size>
+    <md5>2688f6b8c1b2be5a8cd72f8a4500f31f</md5>
+    <crc32>abe88484</crc32>
+    <sha1>f0da4a987ee77335319435c5b5386831f80c9006</sha1>
+  </file>
+  <file name="EECE_4353_19_MedianFilters_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_19_MedianFilters_jp2.zip</original>
+    <mtime>1497660136</mtime>
+    <size>239963</size>
+    <md5>e2e6403168b8648305a521193fadf517</md5>
+    <crc32>3e54b820</crc32>
+    <sha1>16d3d888b38b051ce168f28c3f8a76f6b5f08246</sha1>
+  </file>
+  <file name="EECE_4353_19_MedianFilters_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_19_MedianFilters_djvu.xml</original>
+    <mtime>1497668490</mtime>
+    <size>15703</size>
+    <md5>d4c014f916c7726c6f39c1c10cda07d0</md5>
+    <crc32>861ece48</crc32>
+    <sha1>800c0eb0bff5a00d5a6bb5f0b07eb3b5f00bca08</sha1>
+  </file>
+  <file name="EECE_4353_19_MedianFilters_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_19_MedianFilters_abbyy.gz</original>
+    <mtime>1497668291</mtime>
+    <size>210493</size>
+    <md5>bd62f4f56daad1a3bf994807104248a3</md5>
+    <crc32>1583f2ae</crc32>
+    <sha1>62a263da4075fa1d9d2eecb83215d6adbd3b2ce2</sha1>
+  </file>
+  <file name="EECE_4353_19_MedianFilters_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_19_MedianFilters.pdf</original>
+    <mtime>1497628459</mtime>
+    <size>25986164</size>
+    <md5>584966e97f469f67acae782223f28c59</md5>
+    <crc32>e9738b2c</crc32>
+    <sha1>7b029c21239972d770d4a98bfa63305c9b813d2b</sha1>
+  </file>
+  <file name="EECE_4353_19_MedianFilters_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_19_MedianFilters_djvu.xml</original>
+    <mtime>1497668495</mtime>
+    <size>13386</size>
+    <md5>55b446c61e674dbc58694bb32a659f5b</md5>
+    <crc32>77f6435f</crc32>
+    <sha1>b54ed0e8f2360aadd8317fc681a06d6ff48ec2ce</sha1>
+  </file>
+  <file name="EECE_4353_20_BinaryMorphology.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497455605</mtime>
+    <size>4996451</size>
+    <md5>075b6b798ea49588e48574bc046a0a72</md5>
+    <crc32>4a1acbd9</crc32>
+    <sha1>038e20b7a4a4c80e7f2a17a2a77c05928f9ab928</sha1>
+  </file>
+  <file name="EECE_4353_20_BinaryMorphology.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454175</mtime>
+    <size>1741285</size>
+    <md5>a090ba84db28dddac73ecc8bed025809</md5>
+    <crc32>23be66cc</crc32>
+    <sha1>23030fad04cdbc878d5c685871530e69d087ee04</sha1>
+  </file>
+  <file name="EECE_4353_20_BinaryMorphology_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_20_BinaryMorphology_jp2.zip</original>
+    <mtime>1497663178</mtime>
+    <size>382739</size>
+    <md5>73d7a21ae3ffeadf055baececf6471d7</md5>
+    <crc32>3f135406</crc32>
+    <sha1>afe6d79780c5453d39805410665a8c1e23fcb3f3</sha1>
+  </file>
+  <file name="EECE_4353_20_BinaryMorphology_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_20_BinaryMorphology_djvu.xml</original>
+    <mtime>1497668497</mtime>
+    <size>27552</size>
+    <md5>4ed535f376a098d5f4c6878ba9854494</md5>
+    <crc32>139646e1</crc32>
+    <sha1>624f3ba61f1a17a9d2ce3f251b352f381683a3a7</sha1>
+  </file>
+  <file name="EECE_4353_20_BinaryMorphology_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_20_BinaryMorphology_abbyy.gz</original>
+    <mtime>1497668306</mtime>
+    <size>430892</size>
+    <md5>a7710d1a53e7e46e83968c9fb5270f02</md5>
+    <crc32>6bf678b0</crc32>
+    <sha1>59b0457b554a7db3188117ffd180e2d3f507da23</sha1>
+  </file>
+  <file name="EECE_4353_20_BinaryMorphology_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_20_BinaryMorphology.pdf</original>
+    <mtime>1497628985</mtime>
+    <size>29469251</size>
+    <md5>13b0a62abea607b7faba047a3647d44d</md5>
+    <crc32>efe3c4ea</crc32>
+    <sha1>a4a7e9cdd0ccce3b84ecf1b4344a5ee5a0d89a23</sha1>
+  </file>
+  <file name="EECE_4353_20_BinaryMorphology_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_20_BinaryMorphology_djvu.xml</original>
+    <mtime>1497668500</mtime>
+    <size>17273</size>
+    <md5>c784217c80f2884201dcb45a7ec46d7e</md5>
+    <crc32>575e1948</crc32>
+    <sha1>1800ede5a21d6d33ba62d2127a7f9a1d58a76ff1</sha1>
+  </file>
+  <file name="EECE_4353_21_GrayMorphology.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497455612</mtime>
+    <size>5566041</size>
+    <md5>1ca6a74d97e58a24fdc988efe4f12d0d</md5>
+    <crc32>eae03a8f</crc32>
+    <sha1>2f258076789b47e65ab6ac2d5eb327b2f8ba007a</sha1>
+  </file>
+  <file name="EECE_4353_21_GrayMorphology.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454177</mtime>
+    <size>4468429</size>
+    <md5>c5adb133e5b676e3505c12c105d0f3c3</md5>
+    <crc32>ce9e9557</crc32>
+    <sha1>a5ab87951f6525d00ae4d37038770fc1f1f61a6e</sha1>
+  </file>
+  <file name="EECE_4353_21_GrayMorphology_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_21_GrayMorphology_jp2.zip</original>
+    <mtime>1497663906</mtime>
+    <size>305066</size>
+    <md5>e9c0d20c5599fdf6a96458d869e817aa</md5>
+    <crc32>7f164e58</crc32>
+    <sha1>68c7679f421e993a95bebb9cac2cb395003c3247</sha1>
+  </file>
+  <file name="EECE_4353_21_GrayMorphology_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_21_GrayMorphology_djvu.xml</original>
+    <mtime>1497668502</mtime>
+    <size>19502</size>
+    <md5>9129831d8351f8d3069d51feaa137fa3</md5>
+    <crc32>6bd8407b</crc32>
+    <sha1>268a5c6eb62f6a6d37e574025b700f6635579ac0</sha1>
+  </file>
+  <file name="EECE_4353_21_GrayMorphology_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_21_GrayMorphology_abbyy.gz</original>
+    <mtime>1497668317</mtime>
+    <size>235259</size>
+    <md5>186a953cf078ef8c2f7d77cbc637f18e</md5>
+    <crc32>db98dff3</crc32>
+    <sha1>54e12abff428bd971c6a6d944ee8fa874946e287</sha1>
+  </file>
+  <file name="EECE_4353_21_GrayMorphology_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_21_GrayMorphology.pdf</original>
+    <mtime>1497629438</mtime>
+    <size>24735860</size>
+    <md5>10e2062ebaa534bc12a7d1e3b2f706be</md5>
+    <crc32>bed228df</crc32>
+    <sha1>3bfcea29ac6fec06e8c3b396c0aaffa9ef4e2c42</sha1>
+  </file>
+  <file name="EECE_4353_21_GrayMorphology_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_21_GrayMorphology_djvu.xml</original>
+    <mtime>1497668506</mtime>
+    <size>14582</size>
+    <md5>1b7e3389264c5f7d12d7cbd12e3b5087</md5>
+    <crc32>b0c55cdb</crc32>
+    <sha1>d3f6a12eca60ab0e02a508a1af8f5fa4f86bc940</sha1>
+  </file>
+  <file name="EECE_4353_22_JPEGCompression.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497455618</mtime>
+    <size>9092823</size>
+    <md5>cb450ae9fc3acea344d310316b367d73</md5>
+    <crc32>e2baa1c9</crc32>
+    <sha1>5f86ab3a64715f693d6a3837422f2ec4c06c2789</sha1>
+  </file>
+  <file name="EECE_4353_22_JPEGCompression.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454180</mtime>
+    <size>34003896</size>
+    <md5>d61b8101af0a3186aa0330eed1db2f08</md5>
+    <crc32>c6b4919a</crc32>
+    <sha1>6368ed69fa1a27f0f698f87fde99a0219e2ef181</sha1>
+  </file>
+  <file name="EECE_4353_22_JPEGCompression_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_22_JPEGCompression_jp2.zip</original>
+    <mtime>1497665321</mtime>
+    <size>528634</size>
+    <md5>20cae3148059b8ebb85846f72d57dfc1</md5>
+    <crc32>175a9178</crc32>
+    <sha1>d773a3cf2cbfd3c786c210eeae0cddefb6d42ad2</sha1>
+  </file>
+  <file name="EECE_4353_22_JPEGCompression_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_22_JPEGCompression_djvu.xml</original>
+    <mtime>1497668518</mtime>
+    <size>38709</size>
+    <md5>a9a6ab475be20f113c8e0d974bf21914</md5>
+    <crc32>af762d3b</crc32>
+    <sha1>e47707037aa2cb0860d2895a0ea6e3df510c1e68</sha1>
+  </file>
+  <file name="EECE_4353_22_JPEGCompression_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_22_JPEGCompression_abbyy.gz</original>
+    <mtime>1497668338</mtime>
+    <size>474219</size>
+    <md5>a6ac9e0df7b8968a13732ec6d22e4e77</md5>
+    <crc32>3a5f90af</crc32>
+    <sha1>79028c926f0825b95771cc425ea739130590ad2d</sha1>
+  </file>
+  <file name="EECE_4353_22_JPEGCompression_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_22_JPEGCompression.pdf</original>
+    <mtime>1497629964</mtime>
+    <size>38720201</size>
+    <md5>6d2b4a4f216ef0f8efefcb4fb3ad59ce</md5>
+    <crc32>937eb591</crc32>
+    <sha1>e284401593a31238e56dd9b015ee01be98b28d9e</sha1>
+  </file>
+  <file name="EECE_4353_22_JPEGCompression_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_22_JPEGCompression_djvu.xml</original>
+    <mtime>1497668510</mtime>
+    <size>19964</size>
+    <md5>e8c30beca458daad1d038a60f2a5e22c</md5>
+    <crc32>945d0b5c</crc32>
+    <sha1>9e2309926ea92f3f155c47afb47bafe91d323a03</sha1>
+  </file>
+  <file name="EECE_4353_23_Compositing.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497455621</mtime>
+    <size>3196745</size>
+    <md5>110f5cd3d0c2578c701e2328d5bbdf7c</md5>
+    <crc32>9c1875ed</crc32>
+    <sha1>347b6ec5e9853b0ed0b2c6c5f476c1d6d345d9d9</sha1>
+  </file>
+  <file name="EECE_4353_23_Compositing.pptx" source="original">
+    <format>Powerpoint</format>
+    <mtime>1497454199</mtime>
+    <size>25802944</size>
+    <md5>0ce54b1e92d4b38ca1a267fb896e44e1</md5>
+    <crc32>8eddf31e</crc32>
+    <sha1>f2ed726ee4d8033a4861047b66118c8eab945deb</sha1>
+  </file>
+  <file name="EECE_4353_23_Compositing_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_23_Compositing_jp2.zip</original>
+    <mtime>1497665496</mtime>
+    <size>66741</size>
+    <md5>e908586398d2e5820f4ce8948075d489</md5>
+    <crc32>0e456427</crc32>
+    <sha1>cd5ca46a340d336e54e54ef34705894d91a3a2ac</sha1>
+  </file>
+  <file name="EECE_4353_23_Compositing_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_23_Compositing_djvu.xml</original>
+    <mtime>1497668511</mtime>
+    <size>4265</size>
+    <md5>f5d24850d034bcbe391da62fce3f32f7</md5>
+    <crc32>0d1ada6b</crc32>
+    <sha1>000554ac52bf5aa3e3c1c891eaab63e42b371cf7</sha1>
+  </file>
+  <file name="EECE_4353_23_Compositing_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_23_Compositing_abbyy.gz</original>
+    <mtime>1497668341</mtime>
+    <size>50485</size>
+    <md5>c906b4ff5257255a9a56b17024db3928</md5>
+    <crc32>42145b01</crc32>
+    <sha1>d32f5f47d328bea17b6c70baf0d4a94d5f97cd12</sha1>
+  </file>
+  <file name="EECE_4353_23_Compositing_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_23_Compositing.pdf</original>
+    <mtime>1497630178</mtime>
+    <size>8389530</size>
+    <md5>5b0b8ea46b426a976f391b6d004074b5</md5>
+    <crc32>feb04fde</crc32>
+    <sha1>68174e741c38dcd19cb6ebcc4fef4914ec44e394</sha1>
+  </file>
+  <file name="EECE_4353_23_Compositing_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_23_Compositing_djvu.xml</original>
+    <mtime>1497668513</mtime>
+    <size>4715</size>
+    <md5>5167ffebf62e254bf64f900412525179</md5>
+    <crc32>89282c15</crc32>
+    <sha1>895af7beb53a84b9c7118a6e358b19514670ad8d</sha1>
+  </file>
+  <file name="EECE_4353_syllabus_F2016.pdf" source="original">
+    <format>Text PDF</format>
+    <mtime>1497458750</mtime>
+    <size>173587</size>
+    <md5>8a675b8109a49481d14a2517ebcaf3c2</md5>
+    <crc32>8d4483ce</crc32>
+    <sha1>3c93f637cb0b643116453d0bb7c556ff573e98d6</sha1>
+  </file>
+  <file name="EECE_4353_syllabus_F2016_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>EECE_4353_syllabus_F2016_jp2.zip</original>
+    <mtime>1497665558</mtime>
+    <size>223894</size>
+    <md5>850375e631481ee7084640528ffe6e14</md5>
+    <crc32>5c029a79</crc32>
+    <sha1>620f259621a982bcc4bef170159da4241ae8030e</sha1>
+  </file>
+  <file name="EECE_4353_syllabus_F2016_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>EECE_4353_syllabus_F2016_djvu.xml</original>
+    <mtime>1497668515</mtime>
+    <size>16223</size>
+    <md5>d51c24e416535215d182d4fba2d55ad2</md5>
+    <crc32>9f3f8671</crc32>
+    <sha1>a67a7494308b50777c5e17187cca214fd3e8f5e0</sha1>
+  </file>
+  <file name="EECE_4353_syllabus_F2016_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>EECE_4353_syllabus_F2016_abbyy.gz</original>
+    <mtime>1497668351</mtime>
+    <size>141033</size>
+    <md5>dcfcfcaa7bc7133b270d831dfebbe32e</md5>
+    <crc32>6e4b4d4f</crc32>
+    <sha1>615d15dfc430c404272a0a36dbdd1e26af6a3db1</sha1>
+  </file>
+  <file name="EECE_4353_syllabus_F2016_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>EECE_4353_syllabus_F2016.pdf</original>
+    <mtime>1497630191</mtime>
+    <size>3088838</size>
+    <md5>c86203909fd8453118f3703ec7aa31e1</md5>
+    <crc32>e9b21d21</crc32>
+    <sha1>6729c3778f19abe851b9ca2149d15133befb5ee0</sha1>
+  </file>
+  <file name="EECE_4353_syllabus_F2016_scandata.xml" source="derivative">
+    <format>Scandata</format>
+    <original>EECE_4353_syllabus_F2016_djvu.xml</original>
+    <mtime>1497668516</mtime>
+    <size>2028</size>
+    <md5>fc5a09e015e36b241f86c68e23d7ed85</md5>
+    <crc32>bdf00579</crc32>
+    <sha1>f82a658738efe3c984f42f6b4f774a861b415a8c</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/ColorHistogram3D_000001.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>ColorHistogram3D.mp4</original>
+    <mtime>1441289535</mtime>
+    <size>4303</size>
+    <md5>05d6caabbc57d871b32a4551561d7400</md5>
+    <crc32>915ff88e</crc32>
+    <sha1>5ba76cb414e76dda85d3f39f0ff3dbc21f484305</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/Vector_Median_000001.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>Vector_Median.mp4</original>
+    <mtime>1452216370</mtime>
+    <size>2711</size>
+    <md5>83470149176d4d33c2acea2b6e25a95a</md5>
+    <crc32>75394e97</crc32>
+    <sha1>04177867fe7af52ff7e2d2072f7e866da47e9aa7</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/Vector_Median_000002.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>Vector_Median.mp4</original>
+    <mtime>1452216371</mtime>
+    <size>2543</size>
+    <md5>0e018e64c988f29c02887e7b37cc52ec</md5>
+    <crc32>1b9c5b6c</crc32>
+    <sha1>5586bf453a5081be0ee314f2dd1867515df70fcc</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/WagonWheelFrames_000001.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>WagonWheelFrames.mp4</original>
+    <mtime>1452216387</mtime>
+    <size>9001</size>
+    <md5>52fc3f8815c426c6694c816fb763dc06</md5>
+    <crc32>ff2367c0</crc32>
+    <sha1>982b3353cb0ae7e383ba09c129cf04223ac3c23b</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/WagonWheelFrames_000007.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>WagonWheelFrames.mp4</original>
+    <mtime>1452216388</mtime>
+    <size>6628</size>
+    <md5>30b700dcc19230049b1fafc0a0549b27</md5>
+    <crc32>fd61d12e</crc32>
+    <sha1>dd08460119f4ee9a6bda7cf15c35958d555ade49</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/WagonWheelFrames_000012.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>WagonWheelFrames.mp4</original>
+    <mtime>1452216388</mtime>
+    <size>5159</size>
+    <md5>e7fd8a3c9a9da6d78f42b290755438e4</md5>
+    <crc32>2ac94f97</crc32>
+    <sha1>70b93d2bca5e70ea8602a4f764cb4fcee72d9b0f</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/WagonWheelFrames_000017.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>WagonWheelFrames.mp4</original>
+    <mtime>1452216389</mtime>
+    <size>4553</size>
+    <md5>f711ba4c5ee9c36e2e639e7b0f7b8632</md5>
+    <crc32>bbb035ac</crc32>
+    <sha1>828923a0568645b67d54761f845f88538482b7e8</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/WagonWheelFrames_000022.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>WagonWheelFrames.mp4</original>
+    <mtime>1452216391</mtime>
+    <size>4005</size>
+    <md5>0f975b6b649130c9e34d02f47e280cd3</md5>
+    <crc32>ea5b84fe</crc32>
+    <sha1>cfe1d629d8df69253465ce68fef3133169c3449b</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/WagonWheelFrames_000027.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>WagonWheelFrames.mp4</original>
+    <mtime>1452216392</mtime>
+    <size>3581</size>
+    <md5>b78a427a2febb42c22ad30197738c58c</md5>
+    <crc32>f4d8c531</crc32>
+    <sha1>82d6c4ca39e8549c662c27f802031251f199c3ef</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/WagonWheelFrames_000032.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>WagonWheelFrames.mp4</original>
+    <mtime>1452216393</mtime>
+    <size>3212</size>
+    <md5>49bac5663ec5f04e8c523b67b20ee9d2</md5>
+    <crc32>1de681e9</crc32>
+    <sha1>d0038a74d2eee18089bddecadca024ad78d83b5a</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/WagonWheelFrames_000037.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>WagonWheelFrames.mp4</original>
+    <mtime>1452216394</mtime>
+    <size>2990</size>
+    <md5>b324f10a555819145f1788c29c328156</md5>
+    <crc32>0283eb6e</crc32>
+    <sha1>e69f00b8f52cb78eb6609143ed7919b477b80c6c</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/WagonWheelFrames_000042.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>WagonWheelFrames.mp4</original>
+    <mtime>1452216394</mtime>
+    <size>2777</size>
+    <md5>d17f0d951e41166bf8149a4403050e47</md5>
+    <crc32>4b118c77</crc32>
+    <sha1>997091614b658a38a30280281244a53b834c354a</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/WagonWheel_000001.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>WagonWheel.avi</original>
+    <mtime>1418143617</mtime>
+    <size>8852</size>
+    <md5>f456a72b69af37b0f705e661bead9e4a</md5>
+    <crc32>9fc972bc</crc32>
+    <sha1>a63c147673ae58d5f130c91940a0f5553abcf345</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/WagonWheel_000007.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>WagonWheel.avi</original>
+    <mtime>1418143618</mtime>
+    <size>6476</size>
+    <md5>1216ada2b67d6d80679a62192f58d0f7</md5>
+    <crc32>5a594238</crc32>
+    <sha1>5c51d85cb85fbb2fea954d7f9799b1e8726d8cbb</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/WagonWheel_000012.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>WagonWheel.avi</original>
+    <mtime>1418143619</mtime>
+    <size>5072</size>
+    <md5>187d4125a6dddf7928b85d266495e0bf</md5>
+    <crc32>380bc828</crc32>
+    <sha1>fdac8ebb69855094b6f0b59b4300a3d0ec1e367f</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/WagonWheel_000017.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>WagonWheel.avi</original>
+    <mtime>1418143619</mtime>
+    <size>4502</size>
+    <md5>b7ed47388c468f19e47c7e3d54c503b0</md5>
+    <crc32>388118d4</crc32>
+    <sha1>2a2ba5bfbd585a0e986ab1970a5fc4b3d718f683</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/WagonWheel_000022.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>WagonWheel.avi</original>
+    <mtime>1418143620</mtime>
+    <size>3901</size>
+    <md5>25cb03057d769528eb760d402d260678</md5>
+    <crc32>71d903ed</crc32>
+    <sha1>15e2d00073362ad340106bfdaed78345876f06c5</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/WagonWheel_000027.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>WagonWheel.avi</original>
+    <mtime>1418143621</mtime>
+    <size>3471</size>
+    <md5>9445edeba302d3729d722ccd2d392335</md5>
+    <crc32>fdaeb1bc</crc32>
+    <sha1>f27523d2183e8b5fb88831bc74cfa37342e93c2f</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/WagonWheel_000032.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>WagonWheel.avi</original>
+    <mtime>1418143621</mtime>
+    <size>3149</size>
+    <md5>7abacc141f857430a8125a789423e978</md5>
+    <crc32>eb84168d</crc32>
+    <sha1>9d5ee2db365fc0ffd15f2a5805a5a1f7907bef20</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/WagonWheel_000037.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>WagonWheel.avi</original>
+    <mtime>1418143622</mtime>
+    <size>2913</size>
+    <md5>fc55f47360ed1a3bba5fea94b6265ab2</md5>
+    <crc32>0cc38317</crc32>
+    <sha1>37472198ad57ae519a84c30f248cfd5d426ae22d</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/WagonWheel_000042.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>WagonWheel.avi</original>
+    <mtime>1418143623</mtime>
+    <size>2710</size>
+    <md5>bd3519113069283b98a407f926d53f59</md5>
+    <crc32>09750697</crc32>
+    <sha1>507720309d5da57ebca33fc763f697e1cc11e3e2</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/race_comp_000001.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>race_comp.mp4</original>
+    <mtime>1443733502</mtime>
+    <size>4564</size>
+    <md5>38a6751dddddb8c4cfd78bb261ba762b</md5>
+    <crc32>561624b8</crc32>
+    <sha1>9470cb89a544f9f23b123442b412d51cea3dfdf0</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/race_comp_000002.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>race_comp.mp4</original>
+    <mtime>1443733502</mtime>
+    <size>4565</size>
+    <md5>9bccb6c66e38f66c8bed8d3e37d5ab6b</md5>
+    <crc32>859496e7</crc32>
+    <sha1>b6a21f421e3d6f20b1a714f1758e59d3d63b6880</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/race_comp_000003.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>race_comp.mp4</original>
+    <mtime>1443733502</mtime>
+    <size>4677</size>
+    <md5>9e56944f999b96cd15939dd714871347</md5>
+    <crc32>82894199</crc32>
+    <sha1>cb84e09bdfd2ffcbf8a22220926a8e21e63097b3</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/race_comp_000004.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>race_comp.mp4</original>
+    <mtime>1443733502</mtime>
+    <size>5105</size>
+    <md5>a1a09fe0d13c34fc2113da365062d6ff</md5>
+    <crc32>44d77bbb</crc32>
+    <sha1>97fa1f049e5988bb0eeaf5e13d8e23d25ac516ae</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/race_ps_000001.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>race_ps.mp4</original>
+    <mtime>1452216378</mtime>
+    <size>4614</size>
+    <md5>ad066c099d4cb8fba1bff4f3877c547a</md5>
+    <crc32>7f77f72a</crc32>
+    <sha1>645ee5bfed12e70110ab9cc8856f81351bd8dfef</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/race_ps_000007.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>race_ps.mp4</original>
+    <mtime>1452216380</mtime>
+    <size>5029</size>
+    <md5>7cbaaddefacb3dc93e4b4b865cd82751</md5>
+    <crc32>306b1801</crc32>
+    <sha1>9b1b61fae061c6df3b4eaae97afe2ff66c2287a0</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/rigid_rotation_2_000001.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>rigid_rotation_2.mp4</original>
+    <mtime>1452216374</mtime>
+    <size>2687</size>
+    <md5>b92783d1fa319050def44db47afe169e</md5>
+    <crc32>cdede52a</crc32>
+    <sha1>579c9086535fb0d5d8903b19e04e169813d71a38</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/rigid_rotation_2_000002.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>rigid_rotation_2.mp4</original>
+    <mtime>1452216375</mtime>
+    <size>2561</size>
+    <md5>3cd557df92fc1b86339217b39bf9901c</md5>
+    <crc32>ef24ab32</crc32>
+    <sha1>d1054041292d73b25d48416d8fcff1b7b6423bc6</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/vector_median_000001.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>vector_median.avi</original>
+    <mtime>1418143626</mtime>
+    <size>2472</size>
+    <md5>3b62573718676d4ec2d2ff9d7f295bce</md5>
+    <crc32>3bef8c4e</crc32>
+    <sha1>e191e84340e963566437dc47cb1e7cea02aa896e</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing.thumbs/vector_median_000002.jpg" source="derivative">
+    <format>Thumbnail</format>
+    <original>vector_median.avi</original>
+    <mtime>1418143626</mtime>
+    <size>2371</size>
+    <md5>44d7d4f3182a72e9af60e512ec5ba86b</md5>
+    <crc32>6bbd9392</crc32>
+    <sha1>f48062273cc5e2d136e16eb60c4797d02eb877b0</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing_archive.torrent" source="metadata">
+    <btih>9eb959acf6dcb307abc977ae7c4a7100ac1efce0</btih>
+    <mtime>1535475123</mtime>
+    <size>72216</size>
+    <md5>40e6726e9797822cbf2267a8b94859ad</md5>
+    <crc32>861bb19c</crc32>
+    <sha1>3c01b1571fa00a8d9f0e28758e1bf6f5bf151d9f</sha1>
+    <format>Archive BitTorrent</format>
+  </file>
+  <file name="Lectures_on_Image_Processing_files.xml" source="metadata">
+    <format>Metadata</format>
+    <md5>28c7d257a969ce18b257912aa8440e9f</md5>
+  </file>
+  <file name="Lectures_on_Image_Processing_meta.xml" source="metadata">
+    <format>Metadata</format>
+    <mtime>1535475104</mtime>
+    <size>22680</size>
+    <md5>bf23fe1901dddf6fa297d6fd1178cfa2</md5>
+    <crc32>1f39a1c7</crc32>
+    <sha1>7e080be546af1b4b1577e95f62b749ca25bb272b</sha1>
+  </file>
+  <file name="Lectures_on_Image_Processing_reviews.xml" source="metadata">
+    <format>Metadata</format>
+    <mtime>1535475104</mtime>
+    <size>10304</size>
+    <md5>bfc43cb044635f5439dc65ecaa38e47a</md5>
+    <crc32>39a49427</crc32>
+    <sha1>c4061356394a5d607ef5a80bbcbd92398ec9e938</sha1>
+  </file>
+  <file name="Vector_Median.gif" source="derivative">
+    <format>Animated GIF</format>
+    <original>Vector_Median.mp4</original>
+    <mtime>1452216357</mtime>
+    <size>6930</size>
+    <md5>a43f13e6f22513350080c268d0fd0dcc</md5>
+    <crc32>813c53d7</crc32>
+    <sha1>589e57996c5d28349e88b8df81709ca663ac7abf</sha1>
+  </file>
+  <file name="Vector_Median.mp4" source="original">
+    <format>MPEG4</format>
+    <length>3.37</length>
+    <height>762</height>
+    <width>662</width>
+    <mtime>1452215212</mtime>
+    <size>1518413</size>
+    <md5>1f787a27e3927cad8b4fc0913be66ceb</md5>
+    <crc32>1ec3714a</crc32>
+    <sha1>29849d8f9410186e7d6764817191260bd1066845</sha1>
+  </file>
+  <file name="Vector_Median.ogv" source="derivative">
+    <format>Ogg Video</format>
+    <original>Vector_Median.mp4</original>
+    <mtime>1452216446</mtime>
+    <size>221944</size>
+    <md5>76d649b4c003969a1551b82df475a3ba</md5>
+    <crc32>eb8c30fd</crc32>
+    <sha1>baf2000b9af6ce6bdd3f1a42eb67964704b5a187</sha1>
+    <length>3.37</length>
+    <height>300</height>
+    <width>261</width>
+  </file>
+  <file name="WagonWheel.avi" source="original">
+    <format>Cinepack</format>
+    <length>45.99</length>
+    <mtime>1342479814</mtime>
+    <size>10677704</size>
+    <md5>010bc934d56fadd8bf7e36538d362523</md5>
+    <crc32>72859b1d</crc32>
+    <sha1>f1ac6c9ab01e9fe84ab71fca5107e3aac9e0d353</sha1>
+    <title>Wagon Wheel Aliasing (animation)</title>
+    <height>248</height>
+    <width>494</width>
+  </file>
+  <file name="WagonWheel.gif" source="derivative">
+    <format>Animated GIF</format>
+    <original>WagonWheel.avi</original>
+    <mtime>1418143614</mtime>
+    <size>109058</size>
+    <md5>924978f2abf0d414e6c506f2cc4aedad</md5>
+    <crc32>b59075ea</crc32>
+    <sha1>d491e140685e6f4a60400d37fa343bd1fd30bc27</sha1>
+  </file>
+  <file name="WagonWheel.mp4" source="derivative">
+    <title>Wagon Wheel Aliasing (animation)</title>
+    <format>h.264</format>
+    <original>WagonWheel.avi</original>
+    <mtime>1418143661</mtime>
+    <size>3962725</size>
+    <md5>ca614abd4826bf043275d572569cafc0</md5>
+    <crc32>99cbe2ca</crc32>
+    <sha1>93b377b22c074d80689b29d1aec4aa906bd2a3fa</sha1>
+    <length>46</length>
+    <height>360</height>
+    <width>716</width>
+  </file>
+  <file name="WagonWheel.ogv" source="derivative">
+    <title>Wagon Wheel Aliasing (animation)</title>
+    <format>Ogg Video</format>
+    <original>WagonWheel.avi</original>
+    <mtime>1418143701</mtime>
+    <size>2963039</size>
+    <md5>b39122042df12a04672a2efdb9ef6fee</md5>
+    <crc32>15984a16</crc32>
+    <sha1>657d5e5783d13824ca30b7079f5533a9985b91d7</sha1>
+    <length>46</length>
+    <height>300</height>
+    <width>598</width>
+  </file>
+  <file name="WagonWheelFrames.gif" source="derivative">
+    <format>Animated GIF</format>
+    <original>WagonWheelFrames.mp4</original>
+    <mtime>1452216352</mtime>
+    <size>108180</size>
+    <md5>b68652683a460f128e9b7226565ebd67</md5>
+    <crc32>ee356c75</crc32>
+    <sha1>75b263ec8f078bc3fa66dec2d179f4f7dfdf1a9d</sha1>
+  </file>
+  <file name="WagonWheelFrames.mp4" source="original">
+    <format>MPEG4</format>
+    <length>46.04</length>
+    <height>248</height>
+    <width>494</width>
+    <mtime>1452215214</mtime>
+    <size>3866814</size>
+    <md5>da03d147f3cc5036ef75b7e4e916e7f0</md5>
+    <crc32>c6611e46</crc32>
+    <sha1>27f89f4d16aacc69415a5788496bf455f5700ea6</sha1>
+  </file>
+  <file name="WagonWheelFrames.ogv" source="derivative">
+    <format>Ogg Video</format>
+    <original>WagonWheelFrames.mp4</original>
+    <mtime>1452216491</mtime>
+    <size>2971849</size>
+    <md5>37f461c578763cdc7a88d86fea8868a2</md5>
+    <crc32>18ce2ef8</crc32>
+    <sha1>c8160799d36de5713ae8bd0ce5411bdf44031463</sha1>
+    <length>46.04</length>
+    <height>300</height>
+    <width>598</width>
+  </file>
+  <file name="__ia_thumb.jpg" source="original">
+    <mtime>1535475103</mtime>
+    <size>2789</size>
+    <md5>8cdd3e8f025d0cf1caa66a80a8677529</md5>
+    <crc32>bb07b97b</crc32>
+    <sha1>7f0c4a344c609b76aeb2dc8a6ad0d1b3faca3251</sha1>
+    <format>Item Tile</format>
+    <rotation>0</rotation>
+  </file>
+  <file name="race_comp.gif" source="derivative">
+    <format>Animated GIF</format>
+    <original>race_comp.mp4</original>
+    <mtime>1443733500</mtime>
+    <size>40672</size>
+    <md5>fc56c2e9406e4e923a08fc567988dfdb</md5>
+    <crc32>359cd65e</crc32>
+    <sha1>6f9b54a27a2159b2bd88597b32dee73c729181de</sha1>
+  </file>
+  <file name="race_comp.mp4" source="original">
+    <format>MPEG4</format>
+    <length>4.96</length>
+    <height>360</height>
+    <width>1088</width>
+    <mtime>1443733442</mtime>
+    <size>1579780</size>
+    <md5>66553bdc4ad062f42569a92917adf617</md5>
+    <crc32>144a8c8d</crc32>
+    <sha1>23d3da8a39dbc63ecfc925d648057f3f66a54176</sha1>
+  </file>
+  <file name="race_comp.ogv" source="derivative">
+    <format>Ogg Video</format>
+    <original>race_comp.mp4</original>
+    <mtime>1443733512</mtime>
+    <size>341689</size>
+    <md5>539fb74dd70c98b43ca29b154af3468c</md5>
+    <crc32>3c2cc6b3</crc32>
+    <sha1>40f26f72b55c668d986592ba1f89b67b4f984332</sha1>
+    <length>4.96</length>
+    <height>300</height>
+    <width>907</width>
+  </file>
+  <file name="race_ps.gif" source="derivative">
+    <format>Animated GIF</format>
+    <original>race_ps.mp4</original>
+    <mtime>1452216368</mtime>
+    <size>20488</size>
+    <md5>f4f23f72ab8f90b21da669ed6b876356</md5>
+    <crc32>3bf17d2a</crc32>
+    <sha1>e3a79be01d673c2d59990fad7bafb73190ff3184</sha1>
+  </file>
+  <file name="race_ps.mp4" source="original">
+    <format>MPEG4</format>
+    <length>11.52</length>
+    <height>360</height>
+    <width>1088</width>
+    <mtime>1452215208</mtime>
+    <size>6962297</size>
+    <md5>dbe200581213f9e5ca1cce72c8ef08f5</md5>
+    <crc32>dbd01097</crc32>
+    <sha1>88ff464ca5176a22dc0c49b84a313cb8335803f4</sha1>
+  </file>
+  <file name="race_ps.ogv" source="derivative">
+    <format>Ogg Video</format>
+    <original>race_ps.mp4</original>
+    <mtime>1452216428</mtime>
+    <size>753222</size>
+    <md5>82c1227ea0486fe2dc5db614eda9b6ce</md5>
+    <crc32>f87b4faa</crc32>
+    <sha1>19d22a5b87f249df1786819a723f47d1488c9ed0</sha1>
+    <length>11.52</length>
+    <height>300</height>
+    <width>907</width>
+  </file>
+  <file name="rigid_rotation_2.gif" source="derivative">
+    <format>Animated GIF</format>
+    <original>rigid_rotation_2.mp4</original>
+    <mtime>1452216362</mtime>
+    <size>5120</size>
+    <md5>b5f04d225e21cbfce7de117a7c73f4e7</md5>
+    <crc32>0cc3d773</crc32>
+    <sha1>fb4a4729e362de287fbf232a2953ba8158fd2be9</sha1>
+  </file>
+  <file name="rigid_rotation_2.mp4" source="original">
+    <format>MPEG4</format>
+    <length>3.33</length>
+    <height>708</height>
+    <width>888</width>
+    <mtime>1452215210</mtime>
+    <size>151873</size>
+    <md5>b519fe2126d6e50eec03899556436176</md5>
+    <crc32>5e855a2d</crc32>
+    <sha1>08b250e9e89df62d9ea4ca47e2835429aed3317d</sha1>
+  </file>
+  <file name="rigid_rotation_2.ogv" source="derivative">
+    <format>Ogg Video</format>
+    <original>rigid_rotation_2.mp4</original>
+    <mtime>1452216439</mtime>
+    <size>174712</size>
+    <md5>15ca1ff5c7568f4d49cc6531c20c378f</md5>
+    <crc32>9b6fa82a</crc32>
+    <sha1>4b34f7af2e73ed190767a5a7c6dad600d65d4dc2</sha1>
+    <length>3.33</length>
+    <height>300</height>
+    <width>376</width>
+  </file>
+  <file name="vector_median.avi" source="original">
+    <format>Cinepack</format>
+    <title>Vector median of 3-D vectors (animation)</title>
+    <mtime>1183773031</mtime>
+    <size>1052672</size>
+    <md5>901243d118d81ebcd1fdc099e8148cd8</md5>
+    <crc32>7941d85b</crc32>
+    <sha1>87aab345dc92281adfd48ea8a85319767f33211b</sha1>
+    <length>3.33</length>
+    <height>763</height>
+    <width>662</width>
+  </file>
+  <file name="vector_median.gif" source="derivative">
+    <format>Animated GIF</format>
+    <original>vector_median.avi</original>
+    <mtime>1418143616</mtime>
+    <size>7670</size>
+    <md5>ec58e0b9b4a36cadf174450622cfb6a5</md5>
+    <crc32>e5222709</crc32>
+    <sha1>63a0b627a521da53ee722177342ef70455c5167e</sha1>
+  </file>
+  <file name="vector_median.mp4" source="derivative">
+    <title>Vector median of 3-D vectors (animation)</title>
+    <format>h.264</format>
+    <original>vector_median.avi</original>
+    <mtime>1418143632</mtime>
+    <size>243463</size>
+    <md5>20e2f597214da52a9f36f260ebab9bf9</md5>
+    <crc32>1a5414ba</crc32>
+    <sha1>db35be4e586941ae37fd2718d016366da7b34ad0</sha1>
+    <length>3.33</length>
+    <height>480</height>
+    <width>416</width>
+  </file>
+  <file name="vector_median.ogv" source="derivative">
+    <title>Vector median of 3-D vectors (animation)</title>
+    <format>Ogg Video</format>
+    <original>vector_median.avi</original>
+    <mtime>1418143666</mtime>
+    <size>220604</size>
+    <md5>67ee6104072f1db00564036beb529cf7</md5>
+    <crc32>c77f02eb</crc32>
+    <sha1>3e9fb68e2f461e45d016e055ef95552bb8ee886a</sha1>
+    <length>3.33</length>
+    <height>300</height>
+    <width>260</width>
+  </file>
+</files>

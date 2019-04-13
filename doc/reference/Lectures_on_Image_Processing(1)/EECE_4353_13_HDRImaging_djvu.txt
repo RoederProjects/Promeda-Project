@@ -1,0 +1,1354 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+High Dynamic Range Imaging and Images 
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution-Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Primary References 
+
+[1] Paul E. Debevec and Jitendra Malik. “Recovering high dynamic range 
+radiance maps from photographs.” In ACM SIGGRAPH 2008 classes 
+(SIGGRAPH ’08). ACM, New York, NY, USA, Article 31, 10 pages. 
+
+[2] Paul E. Debevec ’s web pages on HDR: 
+
+http : / / ict . debevec . org/-debevec/Research/HDR/ 
+
+
+[3] Raanan Fattal, Dani Lischinski, and Michael Werman. “Gradient domain 
+high dynamic range compression.” In Proceedings of the 29th annual 
+conference on Computer graphics and interactive techniques (SIGGRAPH ’02). 
+ACM, New York, NY, USA, 249-256. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+The Process of Imaging 
+
+
+Lens 
+
+
+Shutter 
+
+
+Film 
+
+
+Development 
+
+
+CCD 
+
+
+ADC 
+
+
+Remapping 
+
+
+scene 
+radiance ■ 
+(L) 
+
+
+^ sensor I 
+— irradiance — | J | — ► 
+
+
+
+analog _ 
+voltages^ 
+
+
+
+
+digital _ 
+values j/ 
+
+
+final 
+
+digital 
+
+values 
+
+(Z) 
+
+
+Image Acquisition Pipeline. From scene radiance to pixel 
+values for both film and digital cameras. Usually all quantities 
+are unknown except for the pixel values and the exposure time. 
+Unknown nonlinear mappings include exposure, development, 
+scanning, digitization, and remapping. 
+
+
+This page ref: [1] 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+The Process of Imaging — Radiometry 
+
+
+1 
+
+
+
+Solid Angle: The area traced out 
+on the surface of a unit sphere by 
+a cone with vertex on the center 
+of the sphere. 
+
+Units: steradians. 
+
+The total solid angle of a single 
+point in space is 4% steradians. 
+
+
+If a surface patch of area^ is a distance, d, away from the source point and the 
+surface normal, n, makes an angle, 9, with the cone axis, and if >/a , then 
+the solid angle, Q, subtended by the patch is approximately Q = d~^Acosd. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+
+Vanderbilt University School of Engineering 
+
+
+The Process of Imaging — Radiometry 
+
+
+L - radiance: the amount of light emitted from a surface; the power per 
+unit foreshortened area emitted into a unit solid angle. 
+
+Units: (watts/meter^)/steradian. 
+
+E - irradiance: the amount of light impinging on a surface; the power 
+per unit area. Units: watts/meter^. In the case of imaging, the surface 
+being irradiated is the camera’s image plane. 
+
+The irradiance at a surface due to a point source radiator of constant 
+intensity, /q, has power per unit area Q = d~^lQ cos0. If the patch is at a 
+rectangular distance of d = VP~+~a2, then the surface irradiance is 
+
+
+
+h 1 h f 0 3 A 
+
+— T = -V „ = -^COS 0 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+High Dynamic Range Images 
+
+Require more than 8-bits per pixel to view. 
+
+Cannot be displayed properly on conventional monitors nor 
+printed on conventional printers. 
+
+Created through computer graphic rendering, 
+specialized imaging devices (e.g. medical imagers), or 
+through the compositing of multiple ordinary images of the 
+same scene each made with different exposure times — a.k.a. 
+Bracketed Images . 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Example: Bracketed Image Set 
+
+
+exposure: 
+
+l/20s 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Example: Bracketed Image Set 
+
+
+exposure: 
+
+l/60s 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Example: Bracketed Image Set 
+
+
+exposure: 
+
+1/250S 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Example: Bracketed Image Set 
+
+
+M 
+
+
+’< *s>?i 
+
+
+exposure: 
+
+1/lOOOs 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Make an HDR Image from Bracketed Images 
+
+
+
+1 . Estimate the camera characteristic for each color band. 
+
+2. Remap each band of the BI set through the characteristic. 
+
+3. Tone-map the result of step 2 into a viewable image. 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The Camera Characteristic Curve 
+
+X = wavelength of incident radiation, 
+
+Rp = spectral response of sensing element at pixel p = (r,c), 
+At. = exposure time of image i from the bracketed image set, 
+-Ep = irradiance at pixel p,^ 
+
+f Q = nonlinear mapping function (characteristic curve), and 
+Z = numerical value of pixel p in image i. 
+
+P 
+
+^The images are assumed to be taken in succession quickly enough that the scene lighting does not change. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+The Camera Characteristic Curve 
+
+This is usually simplified by assuming a uniform spectral response 
+so that the equation becomes 
+
+Z . = fiE At] 
+
+At. = exposure time of image i from the bracketed image set, 
+
+= irradiance at pixel p = (r,c), 
+
+/{■)= nonlinear mapping function (characteristic curve), and 
+Z = numerical value of pixel p in image i. 
+
+P 
+
+Slides 13-21 & 24 were derived from reference [1]. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+
+Vanderbilt University School of Engineering 
+
+
+The Camera Characteristic Curve 
+
+We can assume that we know both the pixel values and the 
+exposure times for each image in the bracketed image set. 
+
+To form an HDR image we must estimate /globally and E at each 
+pixel location p = (r,c). [E is the irradiance map - E for all p.] 
+We assume that/is monotonic, therefore invertible, and write 
+
+
+
+( 1 ) 
+
+
+Take the natural logarithm of both sides to transform 
+multiplication into addition. 
+
+
+ln/-'(z,,) = ln£,+lnA»,. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Camera Characteristic Curve 
+
+Lump the logarithm with the inverse mapping to define g. 
+
+§(2p,,) = ln£p+lnAr., (2) 
+
+where 
+
+/"(•)■ 
+
+In the equation, Z , and At, are assumed to he known, E and g are 
+unknown. But g is assumed to be smooth and monotonic. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+
+Vanderbilt University School of Engineering 
+
+
+Computing the Camera Characteristic Curve 
+
+The idea is to reeover the g and E that best satisfy (2) in a least- 
+squared error sense. In a digital image, g can take on only a finite 
+number of values from to 
+
+Let N = RxChe the number of pixels in each image and let M be 
+the number of images. 
+
+Then we want to find the Zmax-Zmin-t 1 values of g(Z) and the N 
+values of In that minimize:^ 
+
+
+
+(3) 
+
+
+^The variable, p, is a linear index through the set of pixels, p. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Computing the Camera Characteristic Curve 
+
+The first term of (3) satisfies (2). The second term — the 
+derivative of g — ensures that g is smooth. Here we let 
+
+g(z) = g(z-l)-2g(z) + g(z + l). 
+
+XgM is a Lagrange multiplier. It weights the smoothness term rela- 
+tive to the data fitting term. It was found in [1] that the additional 
+constraint, 
+
+
+causes the midpoint of g to have unit exposure and . . . 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Computing the Camera Characteristic Curve 
+
+
+. . .that the following intensity weighting fiinetion, 
+
+
+w 
+
+
+
+for 
+
+^^max - Z for Z > + ^max ) ’ 
+
+
+
+emphasizes the smoothness of g near the middle of the curve. 
+Then (3) becomes: 
+
+
+N M 
+
+
+Z -1 
+
+V 2 max 
+
+
+^ = IIty(z,„)[4z,„)-ln£p+lnAr,1 • (5) 
+
+
+p=l i=l 
+
+
+Z ^min "1"^ 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Computing the Camera Characteristic Curve 
+
+Notes: 
+
+1. Not all pixels need to be used in the minimization. It is sufficient 
+to have N such that N(P-1) > 
+
+2. The g found by solving (5) may not be monotonic non-decreasing 
+(MND). It can be forced to be so with a hold function. 
+
+3 . We find E = { E I p G supp(I) } by mapping the pixel values from 
+the bracketed image set through g, weighting them and summing 
+them. 
+
+4. Matlab code is included in [1] and is reproduced on the next 
+pages. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Computing the Camera Characteristic Curve 
+
+
+% gsolve . m - Solve for imaging system response function 
+% 
+
+% Given a set of pixel values observed for several pixels in several 
+% images with different exposure times, this function returns the 
+% imaging system's response function g as well as the log film irradiance 
+% values for the observed pixels. 
+
+% 
+
+% Assumes : 
+
+% 
+
+% Zmin = 0 
+% Zmax = 255 
+
+% 
+
+% Arguments : 
+
+% 
+
+% Z(i,j) is the pixel values of pixel location number i in image j 
+% B(j) is the log delta t, or log shutter speed, for image j 
+% I is lamdba, the constant that determines the amount of smoothness 
+% w(z) is the weighting function value for pixel value z 
+
+% 
+
+% Returns: 
+
+% 
+
+% g(z) is the log exposure corresponding to pixel value z 
+% lE(i) is the log film irradiance at pixel location i 
+
+
+n 
+
+o 
+
+Cl- 
+
+ft) 
+
+
+o 
+
+CD 
+
+O" 
+
+CD 
+
+< 
+
+CD 
+
+O 
+
+P 
+
+
+3 
+
+& 
+
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Computing the Camera Characteristic Curve 
+
+
+function [g,lE]=gsolve(Z,B,l,w) 
+n = 256; 
+
+A = zeros (size(Z, l)*size(Z, 2)+n+l, n+size(Z, 1) ) ; 
+b = zeros (size(A, 1) , 1) ; 
+
+%% Include the data-fitting equations 
+k = 1; 
+
+for i=l: size(Z, 1) 
+
+for j=l:size(Z,2) 
+
+wij = w(Z(i,j)+l); 
+
+A(k,Z(i, j )+l) = wij; A(k,n+i) = -wij; b(k,l) = wij * B(i,j); 
+k=k-i-l; 
+
+end I 
+
+end 
+
+%% Fix the curve by setting its middle value to 0 | 
+
+A(k,129) = 1; 
+
+k=k-i-l; 
+
+%% Include the smoothness equations 
+for i=l:n-2 
+
+A(k,i)=l*w(i-i-l) ; A( k, i-i-l) = -2*l*w( i-i-1) ; A(k, i-i-2)=l*w(i-i-l) ; 
+k=k-i-l; 
+end 
+
+%% Solve the system using SVD 
+X = A\b; 
+g = x(l:n); 
+
+IE = x(n-Hl:size(x,l) ) ; | 
+
+
+n 
+
+o 
+
+a. 
+
+ft) 
+
+
+O 
+
+
+ft) 
+
+ft) 
+
+< 
+
+ft) 
+
+o 
+
+p 
+
+
+S 
+
+CL 
+
+
+h-** 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Example: Sample the Bracketed Image Set 
+
+1000 pixel locations are 
+selected at random. Pixel 
+values are taken at the 
+those locations from each 
+band of each image in the 
+bracketed set . 
+
+
+
+exposure: 
+
+l/20s 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Example: Camera Characteristic Curves 
+
+Camera Characteristic Curves 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Constructing the HDR Irradiance Image 
+
+
+From (2) the image irradiance at pixel p, is given by 
+
+=g(Zp.)-lnAt.. (6) 
+
+
+Create the log irradiance map by summing from the bracketed 
+image set using 
+
+
+
+for each pixel, p. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Example: HDR Log Irradiance Map 
+
+
+NTSC weighted luminance 
+of log irradiance map. 
+False color shows the full 
+
+
+
+
+
+L = 0.299Ered+0.587Egreen+0-114Eb|ue 
+L 255{[L-mln(L)]/[max(L)-min(L)]} 
+lmage(L),colormap(jet(256)) 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Example: HDR Log Irradiance Map 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Original Image, 1/20 s Exposure 
+
+
+exposure: 
+
+l/20s 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Tonemapped HDR Combination of BI Set 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Tonemapped HDR Combination of BI Set 
+
+
+Constructed 
+via Adobe 
+Photoshop 
+C55 V12.0A 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Procedure: BI Set ^ Camera Curves 
+
+1. Load N exposure-bracketed images, I1,...,IN. 
+
+2. Load N exposure times, t ( 1 t ( N ) . 
+
+3. Extractcolorbands, Rl,...,RN, Gl,...,GN, 
+
+4. Get n»1000 random cdt pairs ( r ( j ) , c ( j ) ) for j =1 : n. 
+
+5. Convert coordinates to indices: p = sub2ind(size(Rl) , r,c). 
+
+6. Let ZR = [Rl(p) R2(p) ... RN(p)]; size: nxN. Sim: ZG and ZB. 
+
+7. Compute weights, w = [1:128 256- (128:255) ] ; 
+
+8. Make a row vector of the log exposure times. 
+
+It = [ln(t(l)) ... ln(t(N))]; 
+
+9. Replicate it for use by gsolve: T=repmat(lt, [n 1] ) ; size: nxN. 
+
+10. Let smoothness weight 1=10 ; (This is A, the Lagrange mult.) 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Procedure: BI Set Camera Curves 
+
+10. Solve for the r, g, and b camera characteristics: 
+[gR,lER]=gsolve(ZR,T,l,w) ; 
+
+[gG,lEG]=gsolve(ZG,T,l,w) ; 
+
+[gB;lEB]=gsolve(ZB,T,l,w) ; 
+
+11. Make the curves monotone nondecreasing: 
+mgR=MakeMonotone(gR) ; 
+mgG=MakeMonotone(gG) ; 
+mgB=MakeMonotone(gB) ; 
+
+12. Consolide the curves: g=[mgR mgG mgG]; size: 256x3. 
+
+13. Consolidate the images into a cell array: I={I1, 12 ,..., IN}; 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Camera Curves HDR Log Irradiance Image 
+
+14. Construct a log irradiance image, E, using (7) and (4): 
+
+[R,C,B] = size(Il); 
+
+E = zeros(R,C,B) ; 
+
+for d = 1:3 % for each colorband 
+
+gd = g( : ,d) ; 
+
+Dn = zeros(R,C); Nm = Dn; 
+
+for j = 1:N % for each image in the BI set 
+
+Nm = Nm + w(I{j}( : , : ,d)+l) .*(gd(I{j}( : , : ,d)+l) -lt( j ) ) ; 
+Dn = Dn + w(I{j}( : , : ,d)+l) ; 
+end 
+
+z = Dn == 0; % find zeros in the denominator 
+
+Dn(z) = 1; Nm(z) = 0; % make the output 0 there 
+E(:,:,d) = Nm./Dn; % log irradiance image 
+end 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+HDR ^ 8-Bit Image: Tone Mapping 
+
+The dynamic range of an HDR image is much greater than the 256 
+levels that a standard digital image can represent and much greater 
+than that of a standard monitor. The conversion of an HDR image 
+to 8-bits requires tone mapping. 
+
+This can be done with point operators like a contrast mapping, 
+gamma correction, or histogram remapping. But those results are 
+often not very good. 
+
+Better are local operators that remap as a function of the contrast 
+of edges . 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+HDR ^ 8-Bit Image: Photoshop Algorithm 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+HDR 8-Bit Image: Linear Contrast Map 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+HDR ^ 8-Bit Image: Gamma Correction 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+HDR 8-Bit Image: Histogram EQ 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+HDR 8-Bit Image: FEW Algorithm^’^ 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+

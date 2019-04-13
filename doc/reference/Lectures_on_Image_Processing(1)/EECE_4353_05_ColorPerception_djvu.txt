@@ -1,0 +1,2257 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes on Color Perception 
+
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+kiiniSHiii 
+
+
+This work is licensed under the Creative Commons Attribution-Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Images 
+
+• Are constructed from three 
+intensity maps. 
+
+• Each intensity map is projected 
+through a color filter (e.g., red, 
+green, or blue, or cyan, magenta, 
+or yellow) to create a single 
+color image. 
+
+• The intensity maps are overlaid 
+to create a color image. 
+
+• Each pixel in a color image is a 
+three element vector. 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Color 
+Images 
+on a 
+CRT or 
+LCD 
+Display 
+
+
+color image 
+
+
+red pixels 
+
+
+red phosphor 
+
+
+Projected image 
+primary colors: 
+red, green, and 
+blue. 
+
+
+red 
+
+intensity 
+
+map 
+
+
+green 
+
+intensity 
+
+map 
+
+
+distant appearance combination 
+
+
+blue pixels 
+
+
+rii 
+
+
+red pixels green pixels blue pixels 
+
+
+blue phosphor 
+
+
+blue 
+
+intensity 
+
+map 
+
+
+Intensity images 
+are projected 
+through dot-array 
+color filters which 
+are slightly offset 
+from one another. 
+
+
+20 September 2016 
+
+
+1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color 
+Images 
+on a 
+CRT or 
+LCD 
+Display 
+
+
+Photographs of various displays, showing 
+various pixel geometries. Clockwise from 
+top left, a standard definition CRT television, 
+a CRT computer monitor, a laptop LCD, and 
+the OLPC XO- 1 LCD display. [Peter Halasz 
+(useriPengo), Wikipedia, 
+http://en.wikipedia.org/wiki/Pixel geometry] 
+
+
+
+• 
+
+« # 
+
+
+> 
+
+m 
+
+• • 
+
+* • 
+
+
+
+• # 
+
+
+• 
+
+k 
+
+• • 
+
+
+f 
+
+• 
+
+w m 
+
+• i 
+
+TV CRT 
+
+• 
+
+PCgR-f * 
+
+w * * 
+
+P * 0 
+
+
+
+
+
+
+- • ® 
+
+m • O 
+
+* # 
+
+
+
+XO-J LCD * * 
+
+
+LCD 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+► 
+
+
+
+Images are separated Into four color 
+bands, each of which is printed as a 
+grid regularly spaced dots. A dot's 
+diameter varies In proportion to the 
+Intensity of the color. 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color 
+Images 
+in Print 
+
+
+
+The four 
+colors are 
+magenta, 
+cyan, 
+yellow, 
+and black 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Standard Halftone Screen Angles 
+
+
+I The dot grids are created with a screen 
+
+that overlays the intensity images. 
+
+
+
+Gvan: 
+
+IQS'-’ 
+
+Yellow: 
+
+90* 
+
+Magenta: 
+
+75* 
+
+Black: 
+
+45* 
+
+
+The screens are 
+oriented at 
+different angles. 
+
+The resulting 
+patterns are 
+called "rosettes". 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Color Separation / Halftoning 
+
+
+
+in 
+
+
+
+The original is separated into 
+an intensity image for each of 
+the four color bands. 
+
+
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Color Separation / Halftoning 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Color Separation / Halftoning 
+
+
+Each Intensity Image Is multiplied 
+by a corresponding "screen", 
+
+
+
+Each screened Image Is printed In 
+Its own color on the same page. 
+
+
+
+
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Color Separation / Halftoning 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Eye 
+
+
+
+Pupil 
+
+
+Sclera 
+
+
+Choroid 
+
+Retina 
+
+
+Cornea 
+
+
+Iris 
+
+
+Optic nerve 
+
+
+Ciliary body 
+
+
+Fig. 1.1. A drawing of a section through the human eye 
+with a schematic eniargement of the retina. 
+
+Diagram from http://webvision.med.utah.edu/ 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+
+
+'Klaus Rohrschneider, “Determination of the Location 
+of the Fovea on the Fundus,” Invest. Ophthalmol. Vis. 
+Sci. September 2004 vol. 45 no. 9 3257-3258 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The 
+Retina 
+
+When measured in 104 
+healthy people, the 
+horizontal angle from the 
+center of the fovea to the 
+meridian through the 
+center of the optic nerve 
+head varied from 13.0° to 
+17.9°; the vertical angle 
+from the foveal center to 
+the parallel through the 
+optic nerve head was in 
+the range -3.65 to -1-0.65°.^ 
+
+Diagram from http://webvision.med.utah.edu/ 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The Retina 
+
+
+
+pigment 
+epithelium 
+
+rods 
+
+outer limiting 
+membrane 
+Muller 
+
+horizontal 
+cells 
+bipolar 
+cells 
+
+amacrine 
+cells - 
+
+
+ganglion 
+cells 
+
+
+nerve fiber 
+layer 
+
+
+inner 
+membrane 
+
+
+Fig. 2. Simple diagram of the organization of the retina. 
+
+
+Diagram from http://webvision.med.utah.edu/ 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Photoreceptor Densities 
+
+
+
+Fig. 20. Graph to show rod and cone densities along the horizontal meridian. 
+
+
+Diagrams from http://webvision.med.utah.edu/ 
+
+
+
+Fig. 21. Cone densities in human retina as revealed in whole mount. 
+The fovea! area is enlaged in B. (from Curcio et al., 1987). 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Photoreceptor Densities 
+
+
+The density of cone photoreceptors 
+decreases from the high-resolution 
+fovea to the periphery of the eye. A 
+human eye’s field of view is about 155° 
+of that, the fovea comprises the central 
+2°. To see the world in detail requires 
+active scanning by the eyes. A person 
+does not see much more than he or she 
+does see in most situations. The slides 
+that follow mimic a multiresolution scan 
+of a painting by a single eye. (The digital 
+image processing in this case was done 
+with a log-polar transform.) 
+
+
+Figure: Anatomical Distribution of Rods and Cones 
+from Neuroscience. 2nd edition. 
+
+Purves D, Augustine GJ, Fitzpatrick D, et al., editors. 
+Sunderland (MA): Sinauer Associates; 2001. 
+http://www.ncbi.nlm.nih.gov/books/NBK10848/ 
+
+
+
+Tempt>ral Eccentricity Nasal 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Retinal Space- Variant Sensing 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Retinal Space- Variant Sensing 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Retinal Space- Variant Sensing 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Retinal Space- Variant Sensing 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Retinal Space- Variant Sensing 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Retinal Space- Variant Sensing 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Retinal Space- Variant Sensing 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Retinal Space- Variant Sensing 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Retinal Space- Variant Sensing 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+The Log Polar Transform 
+
+
+L(yo(x, = where 
+
+p{x,y) = M\og[r{x,y) + a)-p, with 
+
+r{x, y) = y]{x-x^f +{y-y^)\ and 
+
+
+^[x, y) = tan 
+
+
+-1 J-Jo 
+
+
+A 
+
+
+x-x^J 
+
+
+M ,a,p such that P> M \oga. 
+
+
+
+(a) Original image with a left-handed 
+coordinate system originating at (Xg, yg), 
+the center of the image, (b) Fovea (actual 
+size for this particular transform). 
+
+(c) Fovea (enlarged 2x). (d) Log-polar 
+transform (LPT), unwrapped (actual size). 
+The origin is in the upper left-hand 
+corner. The p-axis is down and the (p-axis 
+is to the right, (e) LPT, unwrapped, 
+enlarged 2x. (f) LPT on cylinder. The 
+origin is at the bottom. The p-axis is up 
+and the (p-axis is clockwise to the left. 
+
+(g) LPT image backward-mapped onto 
+the original image. 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Space Variant Visual Motion 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Retina: 
+
+Center- 
+
+Surround 
+
+Edge 
+
+Detector 
+
+
+The interconnection of the 
+photoreceptors by the 
+other cells in the retina 
+cause its output to be an 
+edge map, similar to the 
+action of a Laplacian of 
+Gaussian filter on a digital 
+image. 
+
+
+
+
+
+2 A 
+
+
+J 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Center-Surround Brightness Perception 
+
+
+
+intensity profile 
+
+False bright edge next to dark edge. 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Center-Surround Brightness Perception 
+
+
+
+60% 70% 80% 90% 100% 
+
+
+0° 33 
+
+
+65" 9r 131° 164° 196° 
+
+
+
+False gradients across constant bands 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Center-Surround Brightness Perception 
+
+
+
+intensity profile 
+
+Linear intensity changes are not seen as such. 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Brightness Perception: Weber-Fechner 
+
+
+The previous slide 
+demonstrates the Weber- 
+Fechner relation. The 
+linear slope of the 
+intensity change is ^ 
+
+C/) 
+
+perceived as logarithmic. I 
+
+.,-.,1 i 
+
+^1 +^2 
+
+The green curve is the actual 
+intensity; the blue curve is the 
+perceived intensity. 
+
+
+
+Apparent Brightness 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+uniform in fact t 
+uniform in perception 
+
+
+Uniform Change in Intensity 
+
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+uniform in fact t 
+uniform in perception 
+
+
+Uniform Change in Frequency and Contrast 
+
+
+
+increasing frequency 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Center Surround Retinal Edge Detection 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Space V ariant Retinal Edge Detection 
+
+r 
+
+o 
+
+c/3’ 
+
+dd 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The Retinal Transform Minimizes Data Bandwidth 
+
+
+r 
+
+o 
+
+c/3’ 
+
+dd 
+
+o 
+
+
+o^ 
+
+
+00 
+
+-1^ 
+
+
+a 
+
+Vi 
+
+I 
+
+S' 
+
+p 
+
+o 
+
+O) 
+
+
+m 
+
+X 
+
+
+o 
+
+p 
+
+tr 
+
+o 
+
+
+O) 
+
+crq 
+
+p 
+
+<’ 
+
+O) 
+
+
+r 
+
+o 
+
+o 
+
+o 
+
+p 
+
+p 
+
+
+
+
+
+
+
+
+This Is the reduction in size 
+from the full Image to a 
+compact multiresolution 
+representation Including 
+the fovea (the disk) and the 
+periphery. 
+
+
+
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Retinal Mosaic 
+
+
+Human retina: 
+#(R+G) receptors = 
+10 X #B receptors 
+
+
+
+
+Cepko, Connie, “Giving in to the blues”, 
+Nature Genetics, 24, 99 - 100 (2000) 
+cepko @ genetics.med.harvard.edu 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+L - downsample factor 
+R - information content 
+
+
+Pixelization of 
+Color Images: 
+All Bands Equal 
+
+
+
+
+
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+Photo: R. A. Peters II, 1998, The Lake, Central Park, NYC. 
+
+
+39 
+
+
+20 September 2016 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+L - downsample factor 
+R - information content 
+
+
+16x Pixelization 
+of Color Images: 
+R, G, & B Bands 
+
+
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+Photo: R. A. Peters II, 1998, The Lake, Central Park, NYC. 
+
+
+40 
+
+
+20 September 2016 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Visual Areas in the Brain 
+
+
+Retina: center-surround 
+color feature 
+detectors 
+
+LGN: (lateral geniculate 
+nucleus) relay to V1 ; 
+audio attention 
+V1: selective 
+
+spatiotemporal 
+
+filters 
+
+V2: feature aggregation 
+V3: visual attention 
+IT: (Inferior temporal 
+gyrus) complex 
+object features 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+41 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+In the Brain: from RGB to LHS 
+
+
+C 
+
+3 
+
+3 
+
+O 
+
+CD 
+
+
+C 
+
+CD 
+
+
+C/) 
+
+CD 
+
+
+Bi 
+
+o 
+
+
+
+The brain transforms RGB into separate 
+brightness and color channels (e.g., LHS). 
+
+
+The eye has 3 types of photoreceptors: 
+sensitive to red, green, or blue light. 
+
+
+brain photo receptors 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+42 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+L - downsample factor 
+R - information content 
+
+
+16x Pixelization 
+of Color Images: 
+Luminance Only 
+
+
+
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+Photo: R. A. Peters II, 1998, The Lake, Central Park, NYC. 
+
+
+43 
+
+
+20 September 2016 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+L - downsample factor 
+R - information content 
+
+
+16x Pixelization 
+of Color Images: 
+Chrominance 
+
+
+(H+S) Only 
+
+
+
+
+
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+Photo: R. A. Peters II, 1998, The Lake, Central Park, NYC. 
+
+
+44 
+
+
+20 September 2016 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+L - downsampled band 
+R - information content 
+
+
+
+X 
+
+SO 
+
+
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+Photo: R. A. Peters II, 1998, The Lake, Central Park, NYC. 
+
+
+45 
+
+
+20 September 2016 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+L - downsampled band 
+R - information content 
+
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+Photo: R. A. Peters II, 1998, The Lake, Central Park, NYC. 
+
+
+46 
+
+
+20 September 2016 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+L - downsampled band 
+R - information content 
+
+
+a 
+
+o 
+
+
+
+
+(D 
+
+
+X 
+
+
+
+X 
+
+so 
+
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+Photo: R. A. Peters II, 1998, The Lake, Central Park, NYC. 
+
+
+47 
+
+
+20 September 2016 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Color Sensing / Color Perception 
+
+
+
+Called L, M, <& S 
+receptors in the 
+bio-vision literature 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+48 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Color Sensing / Color Perception 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+49 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Color Sensing / Color Perception 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+50 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Color Sensing / Color Perception 
+
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+51 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Color Sensing / Color Perception 
+
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+52 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Color Sensing / Color Perception 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+53 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Sensing / Color Perception 
+
+
+These are 
+approximations of 
+the responses to 
+the visible 
+spectrum of the 
+"red", "green", and 
+"blue" receptors of 
+a typical human eye 
+
+
+Receptor Spectral Sensitivity 
+
+
+
+wavelength (nm) 
+
+
+
+The simultaneous red + blue 
+response causes us to 
+perceive a continuous range 
+of hues on a circle. No hue is 
+greater than or less than any 
+other hue. 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+54 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Complementary Colors 
+
+
+
+^ • • • • • 
+
+C YAj J - RED GREEN - MAGENTA BLUE - YELLOW 
+
+
+Colors opposite each other on the color disk are called “complementary”. 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+55 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Complementary Colors 
+
+
+
+response 
+
+t 
+
+color 
+
+
+
+
+red 
+
+green 
+
+blue 
+
+
+0 ° 
+
+
+color 
+
+i 
+
+response 
+
+
+
+180 ° 
+
+
+red 
+
+green 
+
+blue 
+
+
+photoreceptor response is represented as proportional to brightness 
+
+
+To complementary colors, the response of the retina’s photoreceptors is opposite. 
+
+
+201Se^fiH2l6er 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+56 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Color Perception: The Afterimage Effect 
+
+
+
+Stare at the dot in the center of the image 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+57 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Perception: The Afterimage Effect 
+
+
+
+The color “negatives” saturate the local receptors so that when the color is removed the 
+agonist (opposite) color receptors remain saturated. 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+61 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Perception: the Comsweet Effect 
+
+
+
+Dale Purves, R. Beau Lotto, Surajit Nundy, “Why We See What We Do”, 
+American Scientist, Volume 90, No. 3, May- June 2002 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+62 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Perception: the Comsweet Effect 
+
+
+
+Dale Purves, R. Beau Lotto, Surajit Nundy, “Why We See What We Do”, 
+American Scientist, Volume 90, No. 3, May- June 2002 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+63 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Perception: the Comsweet Effect 
+
+
+
+Dale Purves, R. Beau Lotto, Surajit Nundy, “Why We See What We Do”, 
+American Scientist, Volume 90, No. 3, May- June 2002 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+64 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Perception: the Comsweet Effect 
+
+
+
+Dale Purves, R. Beau Lotto, Surajit Nundy, “Why We See What We Do”, 
+American Scientist, Volume 90, No. 3, May- June 2002 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+65 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Perception: the Munker Illusion 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+66 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Perception: the Munker Illusion 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+67 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Perception: the Munker Illusion 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+68 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+An Excellent and Amusing Website 
+
+
+Optical Illusions & Visual Phenomena 
+
+
+[ ^Tour I 
+
+[ ^N0w I 
+
+[ eyes on ] 
+
+
+113 of them - by Michael Bach 
+
+[other languages: Bulgarian, German, Russian] 
+
+
+Optical illusion are fasdnatingl They also teach us about our \Tsual perception, and its limita- 
+tions. Emphasis here is on the beaut>" of perceptual phenomena, on interactive experiments, 
+and explanation of the \Tsual mechanisms involved - to the degree that they are understood 
+
+Befriending mobile devices: > 70 interactive demos now wthout Flash, but requiring up- 
+to-date browsa: V'srsions. 
+
+Don’t let it irk you if you don’t see all the phenomena described. For many illusions, there is a 
+percentage of people with perfectly normal vision who just don’t see it, often for reasons cur- 
+rently unknowm. 
+
+If you are not a vision scientist, you might find my explanation attempts too highbrow. That is 
+not on purpose, but vision research is not trivial, like anv^ science. So, if the explanation seems 
+gibberish, simply enjoy the phenomenon ;-). More: Bach & Poloschek (2006) Optical Illu- 
+sions Primer. 
+
+Optical iflusion^ sounds pejorativ^e, as if exposing a malfunction of the visual system. Rather, I 
+view these phenomena as highlighting particular good adaptations of our visual system to expe- 
+rience. with standard viewing situations. These experiences are based on normal visual experi- 
+ences, Eind thus under unusual contexts can lead to tnappropriate interpretations of a visual 
+scene (= Bayesian interpretation of perception). 
+
+Before we delv^e in. I’d like to express my thanks for V'our ©feedback; any advice is appreci- 
+ated. 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+69 
+
+
+

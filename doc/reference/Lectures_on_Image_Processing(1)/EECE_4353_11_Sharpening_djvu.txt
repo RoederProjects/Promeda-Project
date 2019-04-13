@@ -1,0 +1,3021 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes: Sharpening and Edge Enhancement 
+
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution-Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Sharpening 
+
+• Results from high frequency enhancement since 
+small features correspond to short wavelength 
+sinusoids. 
+
+• Relative amplification of high frequencies in the 
+Fourier domain corresponds to differentiation in 
+the spatial domain. 
+
+• On a discrete image, differentiation corresponds 
+to pixel differencing. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Derivative Property of the Fourier Transform 
+
+
+The FT of the partial 
+derivative w.r.t. r (in g: 
+the row direction) of 1 
+an image, I ... 
+
+
+00 00 
+
+—00 —00 
+
+
+00 00 
+
+—00 —00 
+
+
+Integration 
+by parts 
+
+
+00 00 
+
+—00 —00 
+
+
+... is equal to the product of 
+the FT of the image and the 
+corresponding frequency 
+variable, v. 
+
+
+00 00 
+
+= -i 27 rv\ I I(r,c)e-'^™' JcJr 
+
+00 00 • I I • 
+
+This results in 
+
+= -Hkv^ { I} = -/2;tvF(w,v). horizontal HF 
+
+enhancement 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Differentiation is Highpass Filtering 
+
+
+Directional 
+derivative in c. 
+
+J 
+
+
+Vertical HF 
+Enhancement 
+
+
+
+
+Directional 
+derivative in r. 
+
+
+
+Horizontal HF 
+Enhancement 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Fourier Transforms of Sums of Derivatives 
+
+
+
+
+d d 
+dr dc 
+
+
+= =-i27r(u-\-v^F(u,v^, 
+
+
+Sum of f irst-order 
+partial derivatives... 
+
+
+...linear amplification 
+of high frequencies 
+
+
+
+
+a' a' 
+
+
+dr^ dc^ 
+
+
+I =-4;r2 Mtyv^p{l}=-4;r2 F(m,v), 
+
+
+Sum of second-order 
+partial derivatives... 
+
+
+...quadratic amplification 
+of high frequencies 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Sharpening via Differencing or Highpass Filtering 
+
+Sharpening results from adding to the image a 
+copy of itself that has been: 
+
+• Pixel-differenced in the spatial domain: 
+
+- Each pixel in the output is a difference between itself 
+and a weighted average of its neighbors. 
+
+- Is a convolution whose weight matrix sums to 0. 
+
+• Highpass filtered in the frequency domain: 
+
+- High frequencies are enhanced or amplified. 
+
+- Individual frequency components are multiplied by an 
+increasing function of co such as aco = a a/(w^+v^), where 
+a is a constant. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Image 
+
+
+Left (back) 
+Difference 
+
+
+Right (fwd) 
+Difference 
+
+
+'0 
+
+
+^0 
+
+
+'0 
+
+
+Sum of 
+
+T 
+
+Differences 0 
+
+
+
+
+
+
+I(r„,c)-l(r„,c-l) 
+
+
+I(r„,c)-l(r„,c + l) 
+
+
+C 
+
+
+
+2l(r(„c)-l{r(„c + l) 
+
+
+C 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Horizontal Differencing / Sharpening 
+
+
+
+original: I(r,c) upward diff: I(r,c)-I(r-l,c) sharpened: 2I(r,c)-I(r-l,c) 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Horizontal Differencing / Sharpening 
+
+
+
+original: I(r,c) downward diff: I(r,c)-I(r+l,c) sharpened: 2I(r,c)-I(r+l,c) 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Horizontal Differencing / Sharpening 
+
+
+
+original: I(r,c) 2I(r,c)-I(r-l,c)-I(r+l,c) 3I(r,c)-I(r-l,c)-I(r+l,c) 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Vertical Differencing / Sharpening 
+
+
+
+original: I(r,c) backward diff: I(r,c)-I(r,c-1) sharpened: 2I(r,c)-I(r,c-l) 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+II 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Vertical Differencing / Sharpening 
+
+
+
+original: I(r,c) forward diff: I(r,c)-I(r,c+1) sharpened: 2I(r,c)-I(r,c+l) 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Vertical Sharpening 
+
+
+
+original: I(r,c) 2I(r,c)-I(r,c-l)-I(r,c+l) 3I(r,c)-I(r,c-l)-I(r,c+l) 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Horizontal + Vertical Sharpening 
+
+
+
+original: I(r,c) 
+
+
+4I(r,c)-I(r,c+ 1 )-I(r,c- 1 )- 
+I(r+7,c)-I(r-l,c) 
+
+
+5I(r,c)-I(r,c+ 1 )-I(r,c- 1 )- 
+I(r+7,c)-I(r-l,c) 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+That our visual system does something like the edge 
+enhancement of the disk on the left Is strongly 
+^ IN UlC suggested by the appearance of the disk on the 
+
+right. It contains only 2 intensity levels. But, we see 
+4 - the background, the disk, and concentric dark 
+and bright circles surrounding the disk. 
+
+
+
+5I(r,c)-I(r,c+l)-I(r,c-l)- 
+
+
+
+a two-level image: 
+l(r,c) £{64,192} 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Differencing / Highpass Filtering 
+
+
+
+original image, I power spectrum 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Differencing / Highpass Filtering 
+
+
+
+power spectrum of h = [-1 10] power spectrum of I*h = I(r,c)-I(r,c+1) 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Differencing / Highpass Filtering 
+
+
+
+negative pixels in differenced image 
+
+
+
+positive pixels in differenced image 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Differencing / Highpass Filtering 
+
+
+
+original image, I power spectrum 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Add the differenced image, 
+I(r,c)-I(r,c+1), back to the 
+original to get a HF enhanced 
+version. It is a "sharper" 
+version of the original. 
+
+
+irpening 
+
+
+
+sharpened image, 2I(r,c)-I(r,c+l) power spectrum 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Sharpening 
+
+
+
+original image, I power spectrum 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Sharpening 
+
+
+
+
+Note the apparent 
+shift to the right of 
+the sharpened image. 
+
+
+sharpened image, 2I(r,c)-I(r,c+l) 
+
+
+power spectrum 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Sharpening: Edge Enhancement 
+
+Blurred Edge (Rise) + Forward Difference Blurred Edge (Drop) + Forward Difference 
+
+
+
+Adding a differenced image back to the original increases the high frequency content. It 
+steepens the slopes of the edges which makes the image look “sharper.” Note also that a 
+forward difference, I(r,c)-I(r,c+1), causes the apparent edge to shift to the right. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Sharpening: Edge Enhancement 
+
+Blurred Edge (Rise) + Backward Difference Blurred Edge (Drop) + Backward Difference 
+
+
+
+Adding a differenced image back to the original increases the high frequency content. It 
+steepens the slopes of the edges which makes the image look “sharper.” Note also that a 
+backward difference, I(r,c)-I(r,c-1), causes the apparent edge to shift to the left. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+
+The shift occurs because the 
+direction of the differencing 
+operation pushes edges in the 
+same direction. 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Sharpening: uiiierencmg / Highpass Filtering 
+
+
+
+original image sharpened image, 2I(r,c)-I(r,c-l) 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+
+The shift occurs because the 
+direction of the differencing 
+operation pushes edges in the 
+same direction, (see pp.7-8) 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Sharpening: uiirerencing / Highpass Filtering 
+
+
+
+sharpened image, 2I(r,c)-I(r,c-l) original image 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Apparent Shift due to HF Enhancement 
+
+
+
+original 
+
+
+backward diff: I(r,c)-I(r,c-1) enhanced: 2I(r,c)-I(r,c-l) 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Apparent Shift due to HF Enhancement 
+
+
+
+enhanced: 2I(r,c)-I(r,c-l) backward diff: I(r,c)-I(r,c-1) 
+
+
+original 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Differentiation Through Integration 
+
+
+
+— [l*hl(r,c) = 
+dw^ ’ 
+
+w = ax + /3y, 
+
+
+d 
+
+
+11 
+
+
+dw 
+
+= \ 
+
+
+pp(i) 
+
+2 . nl 
+
+
+Assume that h(p,x) = 
+5(p,x)- Then I*h = I. and 
+^I/^w = ^(I*h)/^w. 
+
+
+
+Differentiation property 
+of the Fourier Transform. 
+
+
+Z — CIU + y^V, Ot P — 1 
+
+
+Convolution property of 
+the Fourier Transform. 
+
+
+h/h\N is a directional 
+derivative with direction 
+vector [a (3]"'’. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Differentiation Through Integration 
+
+
+
+
+
+•^{h} 
+
+g{I}. 
+
+jz- 
+
+
+
+Z — ecu + y^V, CC P — 1 
+
+
+
+— [I*h](r,c) 
+dw^ ’ 
+
+
+I* 
+
+
+d 
+
+dw 
+
+
+h 
+
+
+
+Apply 2 and 3 to 
+1 to get 4 <& 5. 
+
+
+[a p]"'" is a direction in 
+the plane. M/and zare 
+projections along that 
+direction. 
+
+
+The derivative of a 
+convolution of I by h 
+is the convolution of I 
+by the derivative of h. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+
+Symmetric Differences 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+□ 510 
+
+□ 255 
+
+□ 0 
+■ -255 
+
+legend 
+
+
+
+c + l) 
+
+
+
+
+
+-I 
+
+2 
+
+-1 
+
+
+
+
+
+2l(r(„c)-l(r-l,C(,) 
+
+
+
+-1 
+
+
+
+2 
+
+
+
+-1 
+
+
+
+41 (r,c) 
+
+-I(r-U)-I(r + I,c) 
+-I(r,c-1)-I(r,c + 1) 
+
+
+
+-1 
+
+
+-I 
+
+4 
+
+-1 
+
+
+-1 
+
+
+
+convolution matrices 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+A note on FBUD* * differences & convolution 
+
+
+
+A backward difference on I is the same as 
+
+
+*forward, backward, up, down 
+
+
+right shifting a copy of I by one pixel and 
+
+subtracting it from I. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+A note on FBUD* * differences & convolution 
+
+
+
+^3 
+
+
+That is, to compute 
+I(ro,c)-I(ro,c-l) ... 
+
+
+
+
+— I ... convolve I with 
+
+I h=[0 1 -1]. 
+
+
+■ 1 
+
+
+A backward difference is the same as... ... right shifting a copy and subtracting it. 
+
+hb=[0 1 -1] is a backward difference whereas 
+
+*forward, backward, up, down hf=[-l 1 0] is a forward difference. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+A note on FBUD* differences & convolution 
+
+
+
+backward diff: I(r,c)-I(r,c-1) enhanced: 2I(r,c)-I(r,c-l) 
+
+
+*forward, backward, up, down 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+A note on FBUD* differences & convolution 
+
+1 
+
+1 
+
+A 
+
+original 
+
+*forward, backward, up, down 
+
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution Examples: Original Images 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+
+signed image; 
+
+0 is middle gray 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+-1 
+
+2 
+
+-1 
+
+
+Convolution Examples: Vertical Difference 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+
+[-1 2 - l ] 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+signed image; 
+
+0 is middle gray 
+
+
+Convolution Examples: Horizontal Difference 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+0 -1 
+-1 4 
+0 -1 
+
+
+0 
+
+-1 
+
+0 
+
+
+signed image; 
+
+0 is middle gray 
+
+
+Convolution Examples: H + V Diff. 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+39 
+
+
+
+
+
+signed image; 
+
+0 is middle gray 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+■-1 
+
+0 
+
+o ' 
+
+
+0 
+
+2 
+
+0 
+
+
+0 
+
+0 
+
+-1 
+
+
+
+Convolution Examples: Diagonal Difference 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+40 
+
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+■ 0 
+
+0 
+
+-1 
+
+
+0 
+
+2 
+
+0 
+
+
+-1 
+
+0 
+
+0 
+
+
+
+signed image; 
+
+0 is middle gray 
+
+
+Convolution Examples: Diagonal Difference 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+41 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+-1 0 -1 
+
+0 4 0 
+
+-1 0 -1 
+
+
+signed image; 
+
+0 is middle gray 
+
+
+Convolution Examples: D + D Difference 
+
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+42 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+-1 -1 -1 
+-1 8 -1 
+-1 -1 -1 
+
+
+signed image; 
+
+0 is middle gray 
+
+
+Convolution Examples: H + V + D Diff. 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+43 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution Examples: Original Images 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+44 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Original Image 
+
+
+
+power spectrum of I 
+
+
+
+image I 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+45 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Left Difference 
+
+
+
+power spectrum of I*h = I*[-l 1 0] I*h = I*[0 1 -1] 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+46 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Original Image + Left Difference 
+
+
+
+image I I+(I*h) = I+(I*[0 1-1]) 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+47 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Right Difference 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+48 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Original Image + Right Difference 
+
+
+
+image I 
+
+
+I+(I*h) = I+(I*[-l 1 0]) 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+49 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Vertical Edges (L+R Diffs) 
+
+
+
+power spectrum of I*h = I*[-l 2 -1] I*h = I*[-l 2 -1] 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+50 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Original Image + Vertical Edges 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+51 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Down Difference 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+52 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Original Image + Down Difference 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+53 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Up Difference 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+54 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Original Image + Up Difference 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+55 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Horizontal Edges (D+U Diffs) 
+
+
+
+I*h = I* J 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+56 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Original Image + Horizontal Edges 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+57 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Horiz. + Vert. Edges (L+R+D+U Diffs) 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+58 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Original Image + Horiz. + Vert. Edges 
+
+
+
+original sharpened 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+59 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Original Image + Horiz. + Vert. Edges 
+
+
+
+sharpened 
+
+
+original 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+60 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Unsharp Masking 
+
+is a film-photography darkroom technique for sharpening an image. A blurred copy of 
+the photonegative is contrast reduced and used to mask the original image. 
+
+
+
+
+original 
+
+O 
+
+
+blurred 
+
+negative 
+
+lo-contrast 
+
+USM 
+
+
++ 
+
+O = 
+
+• 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+61 
+
+
+
+
+
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+
+Vanderbilt University School of Engineering 
+
+
+Sharpening Through Blurring: Unsharp Masking 
+
+Let I be an image. 
+
+Let Gjj be a Gaussian eonvolution mask. 
+
+Then J = I * is a blurred image and K = I - J eontains 
+all the high spatial frequeneies from 1. 
+
+
+U — (l+ct) K + J — (X K + I, 
+where, typically 0 < a < 2. 
+
+U is called the unsharp masking of image I. 
+
+
+Define: 
+
+
+Often, the control, a, is 
+given as a percent value. 
+
+Then the formula is 
+(a/100)* K+I. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+62 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Sharpening Through Blurring: Unsharp Masking 
+
+
+
+original image 
+
+
+
+log power spectrum 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+63 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Sharpening Through Blurring: Unsharp Masking 
+
+
+
+Gaussian blur ct= 4 log power spectrum 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+64 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Sharpening Through Blurring: Unsharp Masking 
+
+
+original minus Gaussian blur 
+
+
+
+log power spectrum 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+65 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Sharpening Through Blurring: Unsharp Masking 
+
+
+
+unsharp masked image 
+
+
+
+log power spectrum 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+66 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Sharpening Through Blurring: Unsharp Masking 
+
+
+
+original image 
+
+
+
+unsharp masked image 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+67 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Sharpening above a Specific Scale. 
+
+
+An image is sharpened by taking a linear combination of the 
+image and a highpass filtered version of itself. The scale of 
+the sharpening can be controlled via the cutoff of the HPF. In 
+the following examples the image has been sharpened via 
+
+
+Ii.f — I “t" f 
+
+hfe,cr hpf, cr 
+
+
+= l + a 1- 
+
+
+[l * ^(cr)]) = (l+ a)l- a[l * g (cr)], 
+
+
+where g is a 2D Gaussian with a e { 1, 2, 4, 8, 16, 32, 64, 
+128, 256} and a is a scale factor, usually in (0,2). After the 
+computation, each image was histogram matched to I. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+68 
+
+
+
+Original Image 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Sharpening above a Specific Scale 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+69 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+1, a=l 
+
+
+Sharpening above a Specific Scale 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+70 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+2, a=l 
+
+
+Sharpening above a Specific Scale 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+71 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+4, a=l 
+
+
+Sharpening above a Specific Scale 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+72 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+(Tq = 8, a=l 
+
+
+Sharpening above a Specific Scale 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+73 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Gq = 16 , a=l 
+
+
+Sharpening above a Specific Scale 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+74 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+CTq = 32, a=l 
+
+
+Sharpening above a Specific Scale 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+75 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+64, a=l 
+
+
+Sharpening above a Specific Scale 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+76 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+CTq = 128 , a=l 
+
+
+Sharpening above a Specific Scale 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+77 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+256, a=l 
+
+
+Sharpening above a Specific Scale 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+78 
+
+
+
+ctq = 0 Original Image 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Sharpening above a Specific Scale 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+79 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Emphasizing a Specific Pass Band. 
+
+
+An image can be bandpass filtered by subtracting two differently 
+Gaussian filtered copies of it. That specific band can be 
+emphasized in the image by adding it back to the image. In the 
+following examples the image has been emphasized via 
+
+
+^bpe,O0,<T| ^ 
+
+
+= l + a I-([l*g((To)]-[l*g(crj)_ 
+= (l + «)l-a(l*[g(a-o)-g(crj)]), 
+
+
+where Oq, e { 1, 2, 4, 8, 16, 32, 64, 128, 256} and a is a scale 
+factor, usually in (0,2). After the computation, each image was 
+histogram matched to I. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+80 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+(ai,ao) = (l,0), a=l 
+
+
+Emphasizing a Specific Pass Band 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+81 
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+(ai,ao) = (2,l), a=l 
+
+
+Emphasizing a Specific Pass Band 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+82 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+(ai,ao) = (4,2), a=l 
+
+
+Emphasizing a Specific Pass Band 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+83 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+(ai,ao) = (8,4), a=l 
+
+
+Emphasizing a Specific Pass Band 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+84 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+(ai,ao) = ( 16 , 8 ), a=l 
+
+
+Emphasizing a Specific Pass Band 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+85 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+(ai,ao) = (32,16), a=l 
+
+
+Emphasizing a Specific Pass Band 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+86 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+(ai,ao) = (64,32), a=l 
+
+
+Emphasizing a Specific Pass Band 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+87 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+(ai,ao) = (128,64), a=l 
+
+
+Emphasizing a Specific Pass Band 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+88 
+
+
+
+(ai,ao) = (256,128), a=l 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Emphasizing a Specific Pass Band 
+
+
+CSX SW1500 at N, Charleston. SC, 3B> 1990 
+Photo ty T, M?5R5 (c) 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+89 
+
+
+
+
+Original Image 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Emphasizing a Specific Pass Band 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+90 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Noise Enhancement: the Problem with Sharpening 
+
+• Noise occurs in every natural imaging device 
+
+- Quantum effects in CCD arrays 
+
+- Random distribution of silver halide grains in film 
+
+- Neuronal noise in the retina 
+
+• spatially independent noise 
+
+- The noise in one sensor has no effect on that in its neighbors 
+
+- ^ the autocorrelation of the signal is an impulse at the origin 
+
+- The chances of getting repeated patterns of any frequency are virtually nil 
+
+- ^ the frequency spectrum of the noise is flat 
+
+Recall: Autocorrelation = Inverse Fourier transform of power 
+spectrum; Fourier transform of an Impulse at (0,0) Is a constant. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+91 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Noise Enhancement: the Problem with Sharpening 
+
+
+• The spectra of most natural images fall-off toward the high 
+frequencies. 
+
+• IID noise has a flat spectrum. 
+
+• Therefore, at some relatively high frequency (HF) the 
+energy in the noise is greater than that in the uncorrupted 
+image. 
+
+• Sharpening multiplies the FT of the image by u and v (or 
+by linear combinations of them) which, at HF, increases 
+the noise more than the uncorrupted image. 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+92 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Effects of Noise on Linear Enhancement of HE 
+
+
+
+original image 
+
+
+% 
+
+
+
+noisy image 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+93 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Effects of Noise on Linear Enhancement of HE 
+
+
+
+
+HF enhanced original 
+
+
+HF enhanced noisy image 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+94 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Effects of Noise on Linear Enhancement of HE 
+
+
+
+original image noisy image 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+95 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Effects of Noise on Linear Enhancement of HE 
+
+
+
+HF enhanced original 
+
+
+HF enhanced noisy image 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+96 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Effects of Noise on Linear Enhancement of HE 
+
+
+
+original image 
+
+
+HF enhanced original 
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+97 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Effects of Noise on Linear Enhancement of HE 
+
+
+
+noisy image 
+
+
+HF enhanced noisy image 
+
+
+
+20 October 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+98 
+
+

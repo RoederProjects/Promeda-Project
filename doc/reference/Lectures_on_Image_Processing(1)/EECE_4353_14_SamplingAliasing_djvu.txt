@@ -1,0 +1,2052 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes: Sampling and Aliasing 
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution -Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Warning: 
+
+
+Image Resampling Can Lead to the J aggies ! 
+
+
+
+Image: T. Moses, CSX SW1500 
+at N. Charleston, SC, Sept. 1999 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+
+
+This is a bad way to do it. 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Downsampling (Decimation) 
+
+» J = I (1 : 2 :R, 1 : 2 :C, : ) ; 
+
+
+E.g. : every 2 nd pixel in every 2 nd row 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+
+Bad, bad - very bad. 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Downsampling (Decimation) 
+
+
+
+» J = I (1:2:R,1:2:C, :) ; 
+
+
+E.g. : every 2 nd pixel in every 2 nd row 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Jaggies and Moire 
+
+
+Another fine mess: 
+Moire distortion. 
+
+
+
+original image 
+
+
+decimated by 3: 
+
+
+upsampled by 3: 
+
+
+Images: C. Burnett, Wikimedia Commons, 
+
+http ://en . wikipedia. org/wiki/File : Moire_pattern_of_bricks .jpg 
+
+
+016 by Richard Alan Peters II 
+
+
+
+Recall: 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Power Spectrum from Discrete Fourier Transform 
+
+
+DFT 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+
+
+Recall: 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Power Spectrum from Discrete Fourier Transform 
+
+
+
+The DFT of an image is the same size as the image. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+
+Recall: 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+The Scaling Property of the FT 
+
+
+00 00 
+
+
+If 5 {I}(v,m)= J Ji (r,c)e 
+
+
+-i 27 i(uc+vr) 
+
+
+dcdr. 
+
+
+—00 —00 
+
+
+then I 
+
+
+r c' 
+\a ’ b) 
+
+
+
+
+M3fi}( av,bu ). 
+
+
+This implies that if an image is reduced in size, its 
+features in the spatial domain become smaller and 
+its features in the frequency domain become larger. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+
+Recall: 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Uncertainty Relation 
+
+
+
+
+If AxAy is the extent of 
+the object in space and 
+if AxAy is its extent in 
+frequency then 
+
+1 
+
+AxAy ■ AuAv > 7 
+
+16;r 2 
+
+
+A small object in space 
+has a large frequency 
+extent and vice-versa. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+
+Contradiction? 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Effect of Decimation on the DFT of an Image 
+
+1. Decimation of an RxC image, I, by a factor of n results 
+in an [R/n\ x [C/nJ image, J. 
+
+2. The DFT of image J is the same size as J. 
+
+3 . The uncertainty relation implies that the FT of J should 
+be (R-l) x (C-l) < n lR/n\ x n LC/nJ < R x C. 
+
+
+— 
+
+Q: How can these 3 facts be true simultaneously? 
+
+A: The FT of J folds over or aliases itself on the DFT of J 
+because the DFT is defined on a torus. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+Discrete FT is on a Torus 
+
+
+CSXSW15O0 al N Charles! on : 
+Photo by T. Mxes (c) 
+
+
+Recall: the DFT of a 
+digital image assumes 
+the image has a 
+toroidal topology... 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Discrete Fourier Transform is on a Torus 
+
+
+
+
+... which implies that 
+the result also has a 
+toroidal topology. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+
+Point 1 (p. 9) 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Discrete FT is on a Torus 
+
+
+If the image is made 
+smaller the torus is 
+likewise ... 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+
+Point 2 (p. 9) 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Discrete FT is on a Torus 
+
+
+... and the DFT is the 
+same size. 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Ideal PS of 2 x Decimated Image 
+
+
+zoomed * 2 
+
+
+
+
+i ®ifl 
+
+iWm. 
+
+... * ,*♦•.; ty 'r 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+I All of the larger one is present 
+
+in the smaller one. 
+
+
+To Make Actual PS of 2 x Decimated Image: 
+
+
+
+3 November 2016 
+
+
+©1999-2 Partition £{1} into these four parts, 
+
+
+16 
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Actual PS of 2x Dec: 
+
+
+
+... four parts that are contiguous 
+on the full-sized DFT torus. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+
+
+
+Each of the 4 PS regions 
+forms a torus. The 4 torii 
+are superpositioned onto 1. 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Actual PS of 2x Decimated Image 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+DFT Aliasing on the Torus 
+
+
+
+
+The 4 superpositioned torii 
+alias the high frequencies 
+onto the low frequencies. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+PS of Original and PS of 2x Decimated Image 
+
+
+
+3 November 2016 © 1999-2016 by Richard Alan Peters II 20 
+
+
+
+
+
+
+... lead to jaggies in 
+the decimated image. 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Original Image and 2x Decimated Image 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+First Alternative Explanation of Aliasing 
+
+The aliasing phenomenon can be described in terms of the so-called “wagon 
+wheel” effect. The name comes from the appearance in a 24 frame per 
+second movie of a wagon wheel rotating slightly faster than 12 frames per 
+second. It appears to be rotating slowly backward. 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Signal Aliasing 
+
+
+
+An under-sampled sinusoid is a sinusoid of a 
+different frequency. 
+
+
+Figure from George Bebis, Univ. of Nevada, Reno, CS474, Image Processing and Interpretation, Lecture 4.3. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nyquist-Shannon & Whittaker-Shannon Sampling 
+
+If a function [signal or image] x(t) contains no frequencies higher than B hertz, it is completely 
+determined by giving its ordinates at a series of points spaced 1/(2B) seconds apart. In other 
+words, a band-limited function can be perfectly reconstructed from a countable sequence of 
+samples if the band limit, B, is no greater than half the sampling rate (samples per second). 1 
+
+Given a sequence of real numbers, x[n], the continuous function: 
+
+
+00 
+
+*(0= Z x [ n \ 
+
+n=— oo 
+
+
+sine 
+
+
+r t-nT^ 
+
+r J 
+
+
+has a Fourier transform, X(f ), whose non-zero values are confined to the region: l/| < 1/2 T. 
+When parameter 7" has units of seconds, the band limit, 1/27", has units of cycles/sec (hertz). 
+When the x[n] sequence represents time samples, at interval T, of a continuous function, the 
+quantity f s = 1/7" is known as the sample rate, and/ s /2 is the corresponding Nyquist frequency. 
+When the sampled function has a bandlimit, B, less than the Nyquist frequency, x(t) is a perfect 
+reconstruction of the original function. 2 
+
+1 http://en.wikipedia.org/wiki/Nyquist-Shannon_sampling_theorem 
+
+2 http://en.wikipedia.org/wikiAVhittaker-Shannon_interpolation_formula 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Second Alternative Explanation of Aliasing 
+
+The aliasing phenomenon can also be described in terms of 
+the convolution property of the Fourier Transform. In fact, 
+this is the way it is usually explained. 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The Sampling Function 
+
+
+oo oo 
+
+
+The sampling 
+function is a 
+set of impulses 
+evenly spaced 
+on a grid. 
+
+
+samp v (r,c) = £ £ 8(r -jN)S(c - kN) 
+
+N j — oo k =-oo 
+
+
+f j W 1 
+
+4±t. 
+
+t 7 r r r 1 
+
+1 V V 
+
+
+v v y [ \ f 
+
+vf r t t to 
+
+
+wv v 1 \ t t i ... 
+
+
+N 
+
+
+$ • 
+
+# i 
+
+# • 
+
+
+i % 
+
+i % 
+
+i % 
+
+
+27 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The Sampling of an Image 
+
+
+An image is sampled 
+by multiplying it by 
+the sampling function 
+
+I (r,c)- samp v (r,c) 
+
+
+oo oo 
+
+
+samp (r, c) = X X 5(r - jN) 5(c - kN ) 
+
+JV /'=-oo k=-<x> 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Sampling in the Spatial Domain 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution Property of the Fourier Transform 
+
+
+Let functions f(r,c) and g(r,c) have 
+Fourier Transforms F{u,v) and G(w,v). 
+Then, 
+
+${f*g} = F-G. 
+
+Moreover, 
+
+${f-g} = F*G. 
+
+* represents convolution 
+
+• represents pointwise multiplication 
+
+
+The Fourier Transform of a 
+product equals the convolution 
+of the Fourier Transforms. 
+Similarly, the Fourier 
+Transform of a convolution is 
+the product of the Fourier 
+Transforms 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Fourier Transform of the Sampling Function 
+
+
+The Fourier 
+Transform of the 
+sampling function is 
+another sampling 
+
+samp (u,v) = l t 8(«- at)8(v--^- ) 
+
+y =— oo k = — oo 
+
+I 1 1 1 
+
+function but with 
+impulses UN apart. 
+
+/ / ' 
+
+1 \ 
+
+
+N X 
+
+A 
+
+r/ i 
+
+t 
+
+
+A ► 
+
+1 
+
+N 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution by an Impulse 
+
+
+An impulse is a digital image, that has a single 
+pixel with value 1; all others have value zero. An 
+impulse at location (p, x) is represented by: 
+
+
+S(r-p,c-%) 
+
+
+jl, if r = p and c = % 
+0, otherwise 
+
+
+If an image is convolved with an impulse at location 
+(p, x), the image is shifted in location down by p 
+pixels and to the right by x pixels. 
+
+
+\\*8{r- p,c- z)~\(r,c) = l(r-p,c- %). 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution by an Impulse 
+
+
+
+The convolution of any function with a delta function 
+translates the function to the location of the impulse. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Fourier Transform of a Sampled Image 
+
+
+The 
+
+sampling of 
+image I 
+causes its 
+Fourier 
+Transform 
+£{1} to be 
+repeated at 
+intervals of 
+
+1 IN. 
+
+00 00 , 
+
+j=— oo £=—oo 
+
+1^1 ^ 
+
+A J k\ 
+
+■ J ~ \*S v- — 
+
+n) \ n) 
+
+1 ^ 1 
+
+If the 
+support of 
+5{i} has 
+a radius 
+
+> l/(2N) 
+
+then 
+
++ln&r& ia/ ill 
+
+1 't 
+
+| x m 
+
+◄ 
+
+◄ 
+
+ilff 
+
+be over 
+— aliasi 
+
+lap 
+
+ng 
+
+
+◄ ► 
+
+1 
+
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The FT of a Sampled Image with No Aliasing 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Part of the Transform Computed by the FFT 
+
+
+V 
+
+
+
+as computed origin shifted 
+
+(aliasing) (aliasing) 
+
+
+
+V 
+
+112 
+
+r 
+
+
+as computed origin shifted 
+
+(no aliasing) (no aliasing) 
+
+
+Although the FT of the sampled image continues on indefinitely in theory, only 
+one copy of the complete pattern is required for processing. The Fast Fourier 
+Transform (FFT) algorithm computes the transform with the origin in the upper 
+left. Usually the transform is displayed with the origin in the center. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Filtering Before Downsampling to Prevent Aliasing 
+
+
+
+Thus, to down- 
+sample I (r,c) 
+by a factor of 2, 
+use a spatial 
+filter of width 4. 
+Since this is 
+midway be- 
+tween 3 and 5, 
+use a 5x5 
+convolution 
+mask. 
+
+If the image 
+is a bit blurry 
+then a 3x3 will 
+usually suff ice 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+
+Filtering to Prevent Aliasing 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+original image 
+
+
+power spectrum 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+
+
+Filtering to Prevent Aliasing 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+to decimate original by 2 ... 
+
+
+... zero outside red square. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Filtering to Prevent Aliasing 
+
+
+
+Notice the shift & ringing in the result 
+
+
+
+ideal filter 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+39 
+
+
+
+
+Filtering to Prevent Aliasing 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+To reduce ringing try multiplying the FT by a Gaussian w/ (cr v ,a u )=(%R, ViC) 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+40 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Filtering to Prevent Aliasing 
+
+
+
+PS of FT x Gaussian ringing is reduced but result is blurry 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+41 
+
+
+
+
+
+Filtering to Prevent Aliasing 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+try multiplying the FT by a Gaussian w/ (a v ,a u )=( 1 /2R, V2C) 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+42 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Filtering to Prevent Aliasing 
+
+
+
+PS of FT x Gaussian 
+
+
+
+some aliasing but result is less blurry 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+43 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Filtering to Prevent Aliasing 
+
+
+
+ideal filtered original 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+44 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Filtering to Prevent Aliasing 
+
+
+CSX9M500* N OwUnton 1 
+Rnloby T Mm(0 
+
+
+
+original 
+
+
+
+Gaussian w/ (a v ,a u )=(%R, VaC) 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+45 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Filtering to Prevent Aliasing 
+
+
+
+Gaussian w/ (ov,ou)={V2R, V2C) 
+
+
+
+original 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+46 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Filtering to Prevent Aliasing 
+
+
+
+original 
+
+
+decimated by factor of 2 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+47 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Reconstruction of a Downsampled Image 
+
+A band-limited image that was downsampled by a factor of 
+two can be reconstructed - upsampled - using the Fourier 
+Transform. 
+
+Simply copy the FT of the downsampled image into the 
+center of a complex-valued image of all zeros that has twice 
+the dimensions of the downsampled image. Then take the 
+inverse FT. 
+
+This follows from the FT that results from multiplying the 
+image with a “checkerboard” sampling grid. The following 
+example with a Gaussian distribution demonstrates this. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+48 
+
+
+Reconstruction 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+49 
+
+
+
+Reconstruction 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+256x384 image 
+of downsampled 
+(1:2:512,1:2:768) 
+c=4 Gaussian. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+50 
+
+
+
+Reconstruction 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+51 
+
+
+
+Reconstruction 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+■ Power spectrum 
+
+of downsampled 
+a=4 Gaussian. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+52 
+
+
+
+
+Reconstruction 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+
+: 
+
+- : - - - : - -- - " - -- - " - -- - : - - - : - 
+
+: 
+
+: : 
+
+: : 
+
+: j 
+
+: : 
+
+: : 
+
+: : 
+
+: j 
+
+: : 
+
+"i" y> - JSg “xfyXfxxyX" S : 
+
+; : 
+
+: j 
+
+: j 
+
+
+: = :■=: : : ■ : : I*:*: : : : : : : x : : ■ : : ° . : : ■ : : : ■ : : ftftftft 
+
+: : 
+
+
+XyXyXyXyXyXyXyXy:^^ 
+
+
+
+
+/Xv:-:-:-:"""""""""""""""""""""""""""""""""""""""""":-:-:-:-:-:; 
+
+. ... .... .... ........ .... . ... ........ .... .... ........ .... . ... ........ .... .... ........ .... . ... ......: 
+
+
+xvxvx“x=xv:°x*x“x°xvx=x<vx«x°^x^°x“x;xv:°x^v^x°x^^*xv:°x“x°xvxvx=xv:°x*x“x°:°x“x=x<vx*x< 
+
+mimm 
+
+
+S33S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S 
+
+
+x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*xvx*x*x*x*x*x*»^^^^ 
+
+: : 
+
+: : 
+
+: : 
+
+
+x*:*:*:*x*:*x*:*x™ : *x*:*:* 
+
+, n“n # »“o nj # # n“n nj n“„ # «“o „> # n“„ # # »“o Q ^ # n“„ # n»» # n“„ # n“n # »“o * # # n“n Su n“„ # «“o „> # n“„ # A . 
+
+
+|W5W5W ™ 5WMW ^^ 
+
+■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■:■ ■: 
+
+:oooooooooooooooooooooooooooooooooooooooooooooooo:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:»oooooooooooooooooooooooooooooooooooooooooooooooo:-:-:-:< 
+
+
+WMMMHMHMMMMMHMHMMMMMMMHMMMMMHMMMMMMMMMOMOMMMMMMMMM* 
+
+. . . ...... .. ....... ....... .. ....... ......... .......... .... .... ..... ....... .. ....... ....... .. ...... ..: 
+
+.. . .... ........ .... . ... ........ .... .... ........ .... . ... ........ .... .... ........ .... . ... ........ .. . .: 
+
+• •«« ^ =■:= * . # * n # . . # . - # .... x-v, 
+
+: 
+
+
+: 
+
+■ 
+
+: 
+
+
+*x*x*x*:*x*:*x*:*x^^ 
+
+: 
+
+
+x*x*x*x*:*:*x*:*x*™ 
+
+: 
+
+
+- ^ =:=:=:=: 
+
+
+5ftSSSSSfiSSSSSSSSSSSSSSSfiSSSfiSSSfiSSSSSSSfiSSSSSfiSSSfiSSSSSfiSSSSSSSfiSSSfiSSSSSSSSSSSSSSSSSSSfiSSSfiSSSfiSfiSS^ 
+
+......................................................................................................................................................................................................... 
+
+
+SMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMOMMMMMMMMMMMMMMMMMO 
+
+XwXwXwXyXyX^^ 
+
+XvXvX Xv3 
+
+5ftSSSfiSSSSSSSfiSSSSSSSfiSSSfiSSSfiSSSSSSSfiSSSSSSSfiSSSSSSSfiSSSfiSSSfiSSSSSSSfiSSfifiSSSfiSSSSSSSfiSSSfiSSSfiSSSSftSS 
+
+XvXvX......................................................................................... Xvi 
+
+......................................................................................................................................................................................................... 
+
+
+512x768 image 
+with a 2x 
+sampling grid 
+
+
+/XvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXwXwXwXwXwXvX 
+
+XwXwXwXwXw:™ 
+
+■ aa :■: - B - «■■ «« > • • < •• ■ ■« « ■ « ■ ■■■ a a a aaB . . aa ;.v 
+
+XyXwXwXwXylyXyXy^^ 
+
+XvXvX Xvi 
+
+......................................................................................................................................................................................................... 
+
+
+II 
+
+
+/XvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXwXwXwXwXwXwXwXwXv 
+
+5ftSfiSflSfiSSSSftflSfiSSSfiSSSfiSSSfiSSSfiSSSfiSfififiSfififiSSSfiSSSfiSSSfiSSSfiSSSfiSSSfiSSfifiSSSfiSSfifiSfififiSfififiSSSfiSSSfiSfifi 
+
+>xvx-x x-x-x 
+
+mw yXwX; yXy w yXwXwXwW KHHHj KHHHj KHHHHHHHj yXwXwXy w yXwX; » 
+yXyXyXyXyXyXyXyXyXyXyXyXyXyXyXyXyXylw^ 
+
+
+/XvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvX’XwX'XvXvX'XwXvX 
+
+..................... ..... ..... ..... ..... . ....... ....................................................j 
+
+XvXvX X-M 
+
+w KOw>Kw wMWWwKg ly yl; gOWOgOgg y y^XwXw> yXy ffififtfifififififififtS S3S3SAS3SAS3S S S3 SfiS 
+
+XvXvX......................................................................................... Xvi 
+
+......................................................................................................................................................................................................... 
+
+
+/XvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXvXwX'X’XwX'XwXwXwXv 
+" V'"''"""' VV" V" V'""' V'""""' 
+
+KftOSSgQgQgOSSgOSSgOSSgQgQgOSSgQgQgOSSgQgQgOSSgOSSgOSSgOSSgOSSgQgQgOSSgQgQgOSSgOSSgOSSgQgQgOSSftQgQfl 
+
+yXyXyXyXyXyXyXyXyXylyXyXyXyXyXyXyXyXw^ 
+
+
+S33S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S33 
+
+
+S33S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S3S 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+53 
+
+
+
+Reconstruction 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+c=4 Gaussian 
+multiplied by 
+sampling grid. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+54 
+
+
+
+Reconstruction 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+55 
+
+
+
+Reconstruction 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+56 
+
+
+
+Reconstruction 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+■ PS from 
+
+cropped FT of 
+sample-grid 
+multiplied a=4 
+Saussian. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+57 
+
+
+
+Reconstruction 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+IFT of cropped 
+sample-grid 
+mpy'd FT of a=4 
+Gaussian. 
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+58 
+
+
+
+Reconstruction 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+59 
+
+
+
+Reconstruction 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+60 
+
+
+
+Reconstruction 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+3 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+61 
+
+
+
