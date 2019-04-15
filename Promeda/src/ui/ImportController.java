@@ -16,19 +16,25 @@ public class ImportController {
 	public ColorTools colorTools = new ColorTools();
 
 	public Dimension lockAspectRatioWidth(Dimension dim, int newHeight) {
+		if (newHeight == dim.getHeight()) {
+			return dim;
+		} else {
 		float factor = (float) newHeight / (float) dim.getHeight();
 		int newWidth = Math.round((float) dim.getWidth() * factor);
 		dim.setSize(newWidth, newHeight);
 		return dim;
+		}
 	}
 	
 	public Dimension lockAspectRatioHeight(Dimension dim, int newWidth) {
+		if (newWidth == dim.getWidth()) {
+			return dim;
+		} else {
 		float factor = (float) newWidth / (float) dim.getWidth();
-		int newHeight = Math.round((float) dim.getWidth() * factor);
+		int newHeight = Math.round((float) dim.getHeight() * factor);
 		dim.setSize(newWidth, newHeight);
 		return dim;
+		}
 	}
-	
-	
 
 }

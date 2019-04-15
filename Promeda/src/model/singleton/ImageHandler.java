@@ -11,8 +11,11 @@ import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.RenderingHints;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
+import java.awt.image.RescaleOp;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -31,6 +34,7 @@ import org.apache.sanselan.SanselanConstants;
 import org.apache.sanselan.common.IBufferedImageFactory;
 import org.imgscalr.Scalr;
 
+import com.jhlabs.image.RescaleFilter;
 import com.mortennobel.imagescaling.AdvancedResizeOp;
 import com.mortennobel.imagescaling.ResampleFilters;
 import com.mortennobel.imagescaling.ResampleOp;
@@ -153,6 +157,12 @@ public class ImageHandler {
 		// BufferedImage rescaledBImage = rescaleOp.filter(bImage,
 		// new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB));
 		return rescaledBImage;
+	}
+	
+	public BufferedImage resizeImageNew(BufferedImage srcImage, float scaleFactor, float offset, RenderingHints hints) {
+		RescaleOp resampleOp = new RescaleOp(scaleFactor, offset, hints);
+		System.out.println(resampleOp.getRenderingHints());
+		return resampleOp.filter(srcImage, resampleOp.createCompatibleDestImage(srcImage, ColorModel.getRGBdefault()));
 	}
 	
 
