@@ -1,0 +1,2975 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes: Introduction and Overview 
+
+
+Richard Alan Peters II 
+
+Department of Electrical Engineering 
+and Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution-Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Introduction and Overview 
+
+This presentation is an 
+overview of some of the 
+ideas and techniques to be 
+covered during the course. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Topics 
+
+
+1. 
+
+2 . 
+
+3 . 
+
+4 . 
+
+5 . 
+
+6 . 
+
+7 . 
+
+8 . 
+9 . 
+
+10 . 
+
+11 . 
+
+
+Image formation 
+
+Point processing and equalization 
+Color correction 
+The Fourier transform 
+Convolution 
+
+Image sampling, warping, and stitching 
+Spatial filtering 
+Noise reduction 
+Mathematical morphology 
+High dynamic range imaging 
+Image compression 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Wallace and Gromit 
+
+
+| reads Electronics for Dogs 
+
+
+1 Gromir^ ^> 
+
+
+
+Tfladiace cutd fowat <mU &e tome the irnttyeny in t&ie iatxactacttixa. 
+
+
+Visit 
+
+
+http ://www. aardman.com/wallaceandgromit/index . shtml 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+projection 
+through lens 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+Image Formation 
+
+
+discrete real- 
+valued image 
+
+
+continuous colors, 
+discrete locations. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Digital Image Formation: Quantization 
+
+
+Q_ 
+
+O 
+
+O 
+O 
+
+o 
+0 ) 
+
+CD 
+
+b 
+
+c/) 
+
+ID 
+
+continuous color input 
+
+
+continuous colors 
+mapped to a finite, 
+discrete set of colors. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Sampling and Quantization 
+
+
+
+real image 
+
+
+sampled 
+
+
+quantized sampled & 
+
+quantized 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Digital Image 
+
+
+Color images have 3 values per 
+pixel; monochrome images have 
+1 value per pixel. 
+
+
+a grid of squares, 
+each of which 
+contains a single 
+color 
+
+
+
+red intensity 
+green intensity 
+blue intensity 
+
+
+each square is 
+called a pixel (for 
+picture element) 
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Images 
+
+• Are constructed from three 
+intensity maps. 
+
+• Each intensity map is projected 
+through a color filter ( e.g red, 
+green, or blue, or cyan, magenta, 
+or yellow) to create a 
+monochrome image. 
+
+• The intensity maps are overlaid 
+to create a color image. 
+
+• Each pixel in a color image is a 
+three element vector. 
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Color 
+Images 
+On a 
+CRT 
+
+
+1 
+
+
+color image 
+
+
+red pixels 
+
+
+vn 
+
+m 
+
+
+red phosphor 
+
+
+
+red 
+
+intensity 
+
+map 
+
+
+green 
+
+intensity 
+
+map 
+
+
+distant appearance combination 
+
+
+n 
+
+
+blue pixels 
+
+
+rn 
+
+
+
+red pixels green pixels blue pixels 
+
+
+blue phosphor 
+
+
+blue 
+
+intensity 
+
+map 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+V Point Processing 
+
+
+ECE 4353 Image Processing 
+
+inderbilt University School of Engineering 
+
+
+
+KM 
+
+
+- gamma 
+
+
+
+histogram mod 
+
+
+
+- contrast 
+
+
+
+original 
+
+
+
++ contrast 
+
+
+
++ gamma 
+
+
+
+histogram EQ 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Yj 
+
+Color Processing 
+
+
+requires some 
+knowledge of 
+how we see 
+colors 
+
+
+
+Sclera 
+
+
+Iris 
+
+
+Choroid 
+
+
+Retina 
+
+
+Cornea 
+
+
+Pupil 
+
+
+Ciliary body 
+
+
+Fig. 1.1. A drawing of a section through the human eye 
+with a schematic enlargement of the retina. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Eye’s Light Sensors 
+
+
+cone density near fovea 
+
+
+
+#(blue) « #(red) < #(green) 
+
+
+
+Fig. 20. Graph to show rod and cone densities along the horizontal meridian. 
+
+
+
+Fig. 1. Human retina as seen through an opthalmoscope. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Color Sensing / Color Perception 
+
+
+
+nj? ft ^ ^ ^ <5? ^ ^ (S^ <cyP ^ 'ft 
+
+
+wavelength (nm) 
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Sensing / Color Perception 
+
+
+These are 
+approximations of 
+the responses to 
+the visible 
+spectrum of the 
+"red", "green", 
+and "blue" 
+receptors of a 
+typical human eye. 
+
+
+Receptor Spectral Sensitivity 
+
+
+
+$ $ «# & $ & / # $ $ & 4 $ $ ^ ^ / # $ $ # ^ ^ 
+
+wavelength (nm) 
+
+
+
+
+The simultaneous red + blue 
+response causes us to 
+perceive a continuous range 
+of hues on a circle. No hue is 
+greater than or less than any 
+other hue. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Sensing / Color Perception 
+
+
+C 
+
+3 
+
+
+& 
+
+o 
+
+CD 
+
+
+CD 
+
+
+C/) 
+
+CD 
+
+
+o' 
+
+
+
+The brain transforms RGB into separate 
+brightness and color channels ( e.g ., LHS). 
+
+
+The eye has 3 types of photoreceptors: 
+sensitive to red, green, or blue light. 
+
+
+brain photo receptors 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+
+
+
+Color Perception 
+
+16 x pixelization of: 
+
+
+
+Van<[ 
+
+
+luminance and chrominance 
+(hue+saturation) are perceived 
+with different resolutions, as 
+are red, green and blue. 
+
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+
+
+Color Perception 
+
+16x pixelization of: 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Balance 
+and Saturation 
+
+
+Uniform changes in color 
+components result in 
+change of tint. 
+
+
+E.g., if all G pixel values are 
+multiplied by a > 1 then the 
+image takes a green cast. 
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Yj 
+
+Color Transformations 
+
+
+
+Image aging: a transformation, ®, that mapped: 
+
+
+17 
+
+
+17 
+
+
+222 
+
+
+222 
+
+
+240 
+
+
+240 
+
+
+236 
+
+
+240 
+
+122 
+
+= <D< 
+
+121 
+
+> 
+
+222 
+
+= 0 >< 
+
+222 
+
+> 
+
+171 
+
+= <D< 
+
+171 
+
+> 
+
+227 
+
+= <D< 
+
+230 
+
+114 
+
+
+171 
+
+
+185 
+
+
+1 
+
+OO 
+
+<N 
+
+l 
+
+
+103 
+
+
+160 
+
+
+106 
+
+
+> 
+
+1 
+
+SO 
+
+so 
+
+1 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The 2D Fourier Transform of a Digital Image 
+
+
+Let I{r, c ) be a single-band (intensity) digital image with R 
+rows and C columns. Then, I(r,c) has Fourier representation 
+
+
+l(r,c) = Z Z S(u,v)e 
+
+u - 0 v=0 
+
+
++ i2jl 
+
+
+^ ur vc ' 
+KR + Cs 
+
+
+where 
+
+
+${ u > v ) = Rc Z Z Hr,c) e 
+
+r = 0 c=0 
+
+
+-iln 
+
+
+( ur vc ' 
+V7? + C, 
+
+
+these complex 
+exponentials are 
+20 sinusoids. 
+
+
+are the Rx C Fourier coefficients. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+period X 0= phase shift 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+2D Sinusoids: 
+
+
+... specific orientations, 
+and phase shifts. 
+
+
+* c 
+
+
+r 
+
+
++ c 
+
+
+r 
+
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The Value of a Fourier Coefficient . . . 
+
+
++ Re[®{/}] 
+
+
+
+^ A 
+
+I 
+
+1 
+
+A 
+
+Y. 
+
+i 
+
+S Re[S{/}] 
+
+
+... is a complex 
+number with a 
+Ipart and an 
+
+
+•real. 
+
+
+
+If you represent 
+that number as a 
+magnitude, A, and 
+a phase, <|>, ... 
+
+
+..these represent the amplitude 
+and offset of the sinusoid with 
+frequency co and direction 0. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Sinusoid from the Fourier Coeff. at (u,v) 
+
+
+
+Here is the same coeff icient plotted as 
+magnitude, A, and a phase, <|>, and displayed 
+in the space domain as a sinusoid. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Fourier Transform of an Image 
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Continuous Fourier Transform 
+
+
+
+The BoingBoing Bloggers 
+
+
+- r>»3i 
+
+
+The continuous Fourier 
+transform assumes a 
+continuous image exists 
+in a finite region of an 
+infinite plane. 
+
+
+oo oo 
+
+S u,v = f f I r,c <r i2 ’ r( “ + ' T> dcdr 
+
+— OO — cxo 
+
+
+OO oo 
+
+I r,c = J J 5 u,v e +l2n ( uc+vr) dudv 
+
+— oo — oo 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Discrete Fourier Transform 
+
+
+
+
+
+
+
+R-lC-l +ilJ — + — 1 
+
+\(r,c)=Y.T.S u,v e lc r) 
+
+v=0 u=0 | 
+
+
+
+R-lC-l 
+
+S u,v = EE I r,c 
+
+r=0c=0 
+
+- i2 nh+™\ 
+
+e [c R > 
+
+
+The Bo/ngBoing Bloggers 
+
+
+Photo: Bart Nagel www.bartnagel.com 
+
+
+The discrete Fourier 
+transform assumes a 
+digital image exists on a 
+closed surface, a torus. 
+
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution 
+
+
+
+| <?( r + 1 6,c+~L6) 
+
+
+| S(r + 1 6,c - US) 
+
+
+
+| S(r-I6,c + 16) 
+
+
+| S(r-\6,c-]6) 
+
+
+Sum times 1/5 
+
+
+Sums of shifted and 
+weighted copies of 
+images or Fourier 
+transforms. 
+
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Convolution Property of the Fourier Transform 
+
+Let functions /(r,c) and g(r,c) have 
+Fourier Transforms F(u,v) and G(w,v). 
+
+Then, 
+
+g{f*g} = FG. 
+
+Moreover, 
+
+g{f-g} = F*G. 
+
+* represents convolutio n 
+
+• represents pointwise multiplication 
+Then, a spatial convolution can be computed by 
+
+f*g = $'{F-G}. 
+
+
+The Fourier Transform of a 
+product equals the 
+convolution of the Fourier 
+Transforms. Similarly, the 
+Fourier Transform of a 
+convolution is the product of 
+Fourier Transforms 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Sampling, Aliasing, & Frequency Convolution 
+
+
+sam P //iv 0’ v ) = £ £ S(w-/)5(v-^-) 
+
+i/iV # =— oo£= — ex' 
+
+
+sam P /w ( M > v ) = £ .2 S(m-/)5(v-^) 
+
+J = — oo ft = — oo 
+
+V t I L... 
+
+
+
+1^1 ^ j ^ I 
+
+t 7 _ f I t 
+
+
+I 
+
+
+I 
+
+
+1 
+
+
+J_ 
+
+N 
+
+
+
+i 
+
+
+1 
+
+
+i 
+
+
+_/_ 
+
+v 
+
+
+aliasing (the jaggies) 
+
+
+no aliasing (smooth lines) 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Sampling, 
+Aliasing, & 
+Frequency 
+Convolution 
+
+
+(a) aliased 
+
+(b) power spectrum 
+
+(c) unaliased 
+
+(d) power spectrum 
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+bicubic interpolation 
+
+
+
+16 x 
+
+
+
+bicubic interpolation 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+39 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Yj 
+
+Image Warping 
+
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+40 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Panorama via Overlay 
+
+
+Originals 
+
+
+
+
+1 »i 
+
+
+n 
+
+1 
+
+
+
+1 ■ ■ 1 
+
+
+
+Merged* 
+
+
+
+dd 
+
+2 
+
+p 
+
+o 
+
+o 
+
+C /5 
+
+r-K 
+
+0 
+dr 
+
+1 
+
+p 
+
+CTQ 
+
+h-k • 
+
+3 
+
+
+c/5 
+
+o 
+
+p 
+
+CD 
+
+3* 
+
+CTQ 
+
+CD 
+
+b 
+
+CD 
+
+
+o 
+
+I— l • 
+
+p 
+
+
+0 
+
+1 
+
+dr 
+
+o 
+
+o 
+
+c/5 
+
+cd" 
+
+P 
+
+C/5 
+
+dr 
+
+
+*not so good. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+41 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Panorama via Stitching 
+
+
+Originals 
+
+
+
+Merged* 
+
+
+
+dd 
+
+2 
+
+p 
+
+o 
+
+o 
+
+C/5 
+
+r-K 
+
+0 
+dr 
+
+1 
+
+p 
+
+CTQ 
+
+h-k • 
+
+3 
+
+
+c/5 
+
+o 
+
+p 
+
+CD 
+
+3* 
+
+CTQ 
+
+CD 
+
+b 
+
+CD 
+
+
+o 
+
+I— l • 
+
+p 
+
+
+0 
+
+1 
+
+dr 
+
+o 
+
+o 
+
+c/5 
+
+cd" 
+
+P 
+
+C/5 
+
+dr 
+
+
+*much better. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+42 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Frequency Domain (FD) Filtering 
+
+
+Image size: 512x512 
+SD filter sigma = 8 
+
+
+
+Original Image 
+
+
+Power Spectrum 
+
+
+Gaussian LPF in FD 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+43 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+FD Filtering: Lowpass 
+
+
+I Image size: 512x512 
+
+SD filter sigma = 8 
+
+
+
+Filtered Image Filtered Power Spectrum 
+
+
+Original Image 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+44 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+FD Filtering: Highpass 
+
+
+I Image size: 512x512 
+
+FD notch sigma = 8 
+
+
+
+Filtered Image 
+
+
+Filtered Power Spectrum 
+
+
+Original Image 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+45 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+FD Filtering: Highpass 
+
+
+I Image size: 512x512 
+
+FD notch sigma = 8 
+
+
+
+Filtered Image Filtered Power Spectrum 
+
+
+Original Image 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+46 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Spatial Filtering 
+
+
+
+blurred original 
+
+
+sharpened 
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+47 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Spatial Filtering 
+
+
+
+bandpass 
+
+filter 
+
+
+original 
+
+
+unsharp 
+
+masking 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+48 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+signed image with 
+0 at middle gray 
+
+
+bandpass 
+
+filter 
+
+
+Spatial Filtering 
+
+
+original unsharp 
+
+masking 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+49 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Motion Blur 
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+50 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Noise Reduction 
+
+
+
+blurred image color noise color-only blur 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+51 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Noise Reduction 
+
+
+
+blurred image color noise 
+
+
+
+5x5 Wiener filter 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+52 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Noise Reduction 
+
+
+
+periodic 
+
+noise 
+
+
+
+original 
+
+
+▲ 
+
+
+frequency 
+tuned filter 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+53 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Shot Noise or Salt & Pepper Noise 
+
+
+
++ shot noise s&p noise - shot noise 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+54 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Nonlinear Filters: the Median 
+
+
+
+original 
+
+
+s&p noise 
+
+
+median filter 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+55 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Nonlinear Filters: Min and Maxmin 
+
+
+
++ shot noise min filter maxmin filter 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+56 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Nonlinear Filters: Max and Minmax 
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+57 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nonlinear Processing: Binary Morphology 
+
+
+
+“L” shaped SE 
+O marks origin 
+
+
+
+Foreground: white pixels 
+Background: black pixels 
+
+
+
+Cross-hatched 
+pixels are 
+indeterminate. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+58 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nonlinear Processing: Binary Reconstruction 
+
+• Used after opening to grow back pieces of the original 
+image that are connected to the opening. 
+
+• Permits the removal of small regions that are disjoint from 
+larger objects without distorting the small features of the 
+large objects. 
+
+
+
+original opened reconstructed 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+59 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Nonlinear Processing: Grayscale Morphology 
+
+
+
+“L” shaped SE 
+O marks origin 
+
+
+
+Foreground: white pixels 
+Background: black pixels 
+
+
+
+Cross-hatched 
+pixels are 
+indeterminate. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+60 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Opening 
+
+
+
+opening: erosion then dilation opened & original 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+61 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Opening 
+
+
+
+erosion & opening erosion & opening & original 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+62 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Nonlinear Processing: Grayscale Reconstruction 
+
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+63 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Forensic Analysis of Photographs 
+
+
+Which came first? 
+
+
+
+Photo Restoration by Dennis Purcell Photo Restoration by Dennis Purcell 
+
+Photographs by Robert Fenton of a battlefield in the Crimean war taken on 23 April 1855. 
+From Morris, Errol, “Which Came First, the Chicken or the Egg?”, Parts 1-3, New York 
+Times , Zoom Editorial Section, 25 Sept. 2007 (pt.l), 7 Oct. 2007 (pt.2), 30 Oct. 2007 (pt.3). 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+64 
+
+
+
+
+
+Which came first? 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Forensic Analysis of Photographs 
+
+
+
+Photo Restoration by Dennis Purcell 
+
+
+Photographs by Robert Fenton of a battlefield in the Crimean war taken on 23 April 1855. From Morris, Errol, “Which Came First, the 
+Chicken or the Egg?”, Parts 1-3, New York Times , Zoom Editorial Section, 25 Sept. 2007 (pt.l), 7 Oct. 2007 (pt.2), 30 Oct. 2007 (pt.3). 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+65 
+
+
+
+Which came first? 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Forensic Analysis of Photographs 
+
+
+
+Photo Restoration by Dennis Purcell 
+
+
+Photographs by Robert Fenton of a battlefield in the Crimean war taken on 23 April 1855. From Morris, Errol, “Which Came First, the 
+Chicken or the Egg?”, Parts 1-3, New York Times , Zoom Editorial Section, 25 Sept. 2007 (pt.l), 7 Oct. 2007 (pt.2), 30 Oct. 2007 (pt.3). 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+66 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Yj 
+
+High Dynamic Range 
+(HDR) Imaging 
+
+
+under exposed 
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+67 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+High Dynamic Range 
+(HDR) Imaging 
+
+
+default exposure 
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+68 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+High Dynamic Range 
+(HDR) Imaging 
+
+
+over exposed 
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+69 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Yj 
+
+High Dynamic Range 
+(HDR) Imaging 
+
+
+combined 
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+70 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Image Compression 
+
+
+Original image is 
+5244w x 4716h 
+@ 1200 ppi: 
+127M Bytes 
+
+
+
+Yoyogi Park, Tokyo, October 1999. Photo by Alan Peters. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+71 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Compression: JPEG 
+
+
+<1) 
+
+> 
+
+(D 
+
+
+
+
+LU 
+
+Q_ 
+
+
+
+
+JPEGQ: 7 22kB 
+
+
+JPEGQ: 6 21kB 
+
+
+
+JPEGQ: 3 
+
+
+16kB 
+
+
+JPEGQ: 2 
+
+
+14kB 
+
+
+
+JPEGQ: 9 31kB 
+
+
+
+JPEGQ: 5 19kB JPEGQ: 4 
+
+
+
+JPEGQ: 1 13kB JPEGQ: 0 
+
+
+17kB 
+
+
+12kB 
+
+
+
+
+C/> 
+
+
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+72 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Image Compression: JPEG 
+
+
+
+JPEGQ: 6 21kB JPGEQ: 0 12kB 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+73 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Compositing 
+
+• Combine parts from separate images to form a new image. 
+
+• It’s difficult to do well. 
+
+• Requires relative positions, orientations, and scales to be 
+correct. 
+
+• Lighting of objects must be consistent within the separate 
+images. 
+
+• Brightness, contrast, color balance, and saturation must 
+match. 
+
+• Noise color, amplitude, and patterns must be seamless. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+74 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Image Compositing Example 
+
+
+
+Prof. Peters in his home office. Needs a better shirt. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+75 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Image Compositing Example 
+
+
+
+This shirt demands a monogram. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+76 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Image Compositing Example 
+
+
+
+He needs some more color. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+77 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Image Compositing Example 
+
+
+
+Nice. Now for the way he’d wear his hair if he had any. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+78 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Image Compositing Example 
+
+
+
+He can’t stay in the office like this. 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+79 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Image Compositing Example 
+
+
+
+Where’s a hepcat Daddy-0 like this belong? 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+80 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Image Compositing Example 
+
+
+
+Collar this jive, 
+Jackson. Like 
+crazy, Man ! 
+
+
+In the studio! 
+
+
+25 August 2016 
+
+
+© 2000-2016 by Richard Alan Peters II 
+
+
+81 
+
+

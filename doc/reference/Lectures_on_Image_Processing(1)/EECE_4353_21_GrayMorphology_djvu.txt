@@ -1,0 +1,1657 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes on Mathematical Morphology: 
+
+Grayscale Images 
+
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution -Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology 
+
+Grayscale morphology is a multidimensional generalization of 
+the binary operations. Binary morphology is defined in terms of 
+set-inclusion of pixel sets. So is the grayscale case, but the pixel 
+sets are of higher dimension. In particular, standard R/ C, 1- 
+band intensity images and the associated structuring elements 
+are defined as 3-D solids wherein the 3 rd axis is intensity and 
+set-inclusion is volumetric. 
+
+A B BA BA 
+
+set inclusion 
+(explained 
+on p. 11 ) 
+
+(a) 
+
+A<2B AczB A<£B AcB A<2B A<2B 
+
+
+1| 
+
+
+
+
+■■■ 
+
+
+TTT 
+
+
+
+
+
+I 1 I 1 
+
+
+(b) 
+
+
+
+
+0 
+
+
+w 
+
+
+(C) 
+
+
+71 
+
+
+m 
+
+
+@ 
+
+
+
+
+(a) binary, 
+
+(b) & (c) 
+grayscale 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Extended Real Numbers 
+
+Let M represent the real numbers. 
+
+Define the extended real numbers, R*, as the real 
+numbers plus two symbols, -oo and co such that 
+
+—oo<x< oo, 
+
+for all numbers xel. 
+
+That is if x is any real number, then oo is always greater 
+than x and -oo is always less than x. Moreover, 
+
+X + oo = oo, x — oo = — oo, oo — oo = 0, 
+
+for all numbers ret 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Real Images 
+
+
+In mathematical morphology a real image, I, is defined as a 
+function that occupies a volume in a Euclidean vector space. 
+
+I comprises a set, S , of coordinate vectors (or pixel locations), 
+p, in an n-dimensional vector space R". Associated with each 
+p is a value from R*. The set of pixel locations together with 
+their associated values form the image - a set in R I1+ 1 : 
+
+
+HMp) 
+
+
+P €S p cl", I(p)er| 
+
+
+Thus, a conventional, 1-band, R / C image is a 3D structure 
+with Sp cz E 2 and I(p) el. By convention in the literature of 
+
+MM, S p = M n , a real image is defined over all of E n . 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Support of an Image 
+
+
+The support of a real image, I, is 
+suppjl} = jp eM"| l(p) eM j. 
+
+That is, the support of a real image is 
+the set pixel locations in R n such that 
+
+I(p) ^ -oc and I(p) ^ oo. 
+
+The complement of the support is, 
+therefore, the set of pixel locations 
+in R n where 
+
+
+I(p) = -oo or I(p) = oo. 
+
+
+
+
+Support of Image 
+
+
+Image 
+
+
+Issued by M it Laiu I" I:ii-| -Jli;:r Cauidl 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Yj 
+
+Grayscale Images 
+
+If over its support, I takes on more than one real value, then I is 
+called grayscale. 
+
+The object commonly known as a black and white photograph is a 
+grayscale image that has support in a rectangular subset of E 2 . 
+
+Within that region, the image has gray values that vary between 
+black and white. If the intensity of each pixel is plotted over the 
+support plane, then 
+
+I = {pd(p)|pesupp{l}}. 
+
+is a volume in E 3 . In the abstraction of MM we assume the image 
+does exist outside the support rectangle, but that I(p) = -oo there. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Grayscale Images 
+
+
+grayscale image 
+
+3D solid representation 
+
+
+In MM, a 2D grayscale image is treated as a 3D solid in space 
+- a landscape - whose height above the surface at a point is 
+proportional to the brightness of the corresponding pixel. 
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Representation of Grayscale Images 
+
+
+
+image landscape 
+
+
+Example: grayscale cones 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Aside: Brightness Perception 
+
+
+250 
+
+The previous slide 
+demonstrates the Weber- 
+
+200 
+
+Fechner relation. The linear 
+slope of the intensity change 
+
+\n 1 50 
+
+is perceived as logarithmic. f 
+
+CD 
+
+> 
+
+CD 
+
+O 
+
+<D 
+
+Q- 100 
+
+The green curve is the actual 50 
+
+intensity; the blue curve is 
+
+the perceived intensity. 0 
+
+
+Apparent Brightness 
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Set Inclusion in Grayscale Images 
+
+
+In grayscale morphology, set inclusion depends on the implicit 3D 
+structure of a 2D image. If I and J are grayscale images then 
+
+J cl«supp( j) c supp(l) AND j j(p) <l(p) | p esupp(j) j. 
+
+
+That is J c I if and only if the support of J is contained in that of 
+I and the value of J is nowhere greater than the value of I on the 
+support of J. 
+
+
+
+
+
+J<2l Jcl 
+
+
+J<Zl Jcl 
+
+
+J<Zl J(2l 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+S p is the set of of all pixel 
+locations in the image. 
+
+
+Recall: Binary Structuring Element (SE) 
+
+
+Let I be an image and Z a SE. 
+
+Z+p means that Z is moved 
+so that its origin coincides 
+with location p in Sp. 
+
+Z+p is the translate of Z to 
+location p in Sp. 
+
+The set of locations in the 
+image delineated by Z+p is 
+called the Z -neighborhood of 
+p in I denoted N{I,Z}(p). 
+
+
+
+Z+p delineates a 
+neighborhood in / 
+with respect to p. 
+
+
+
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Structuring Elements 
+
+A grayscale structuring element is a small image that delineates a volume at 
+each pixel [p , I(p)] through out the image volume. 
+
+
+grayscale 
+
+SE 
+
+
+translated 
+flat SE 
+
+
+flat SE 
+
+
+
+
+
+
+M ;i I 
+
+
+LrE^i -i 
+
+
+Translation of a flat SE on its 
+support plane and in gray value. 
+
+
+
+
+
+[/>'.<)] [p - </,()] 
+
+
+tt\ 
+
+
+SE Translation: x marks the location of the structuring element origin. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Grayscale Structuring Elements 
+
+
+
+flat SE 
+
+
+
+
+; ■ I jx 
+
+
+§£] \ 
+
+■ 
+
+
+immm) 
+
+
+
+i \ \ \[^y-.\o\\; 
+
+It I rv v \ \ \ WWt\ 
+
+
+If Z = [ p, Z(p) ] is a structuring element and if q = [ q s , q g ] is a pixel 
+[location, value] then Z+q = [ p+q s , Z(p)+q g ] for all p e supp{Z}. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Reflected Structuring Elements 
+
+
+
+Note that the 
+SE, Z, is to the 
+bright regions... 
+
+
+
+... as the reflected 
+SE, Z, is to the 
+dark regions. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Basic Operations 
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Dilation: General Definition 
+
+The dilation of image I by structuring element Z at coordinate p GM n is defined by 
+[l®Z](p)= max {l(q) + Z(p-q)}= max (i(q)-Z(q-p)}. 
+
+qesupplZ+pl qesupplZ+pl v ’ 
+
+This can be computed as follows: 
+
+1. Translate Z to p. 
+
+2. Trace out the Z -neighborhood of I at p. 
+
+3. Let p be the origin of I temporarily during the operation 
+
+4. Compute the set of numbers 
+
+® = {l(q) + z (-q)|q esupp(z)| = |l(q)-Z(q)|q esupp(z)j. 
+
+5. The output value, [I 0 Z](p), is the maximum value in the set, 0. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Fast Computation of Dilation 
+
+
+The fastest way to compute grayscale dilation is to use the translates-of- 
+the-image definition of dilation. That is, use 
+
+
+T _ T 7 — ffl<FX 
+
+J 'T' ^ qesuppjZj 
+
+
+
+That is, 
+
+
+Note that if Z is flat 
+— all its foreground 
+elements are 0 — 
+then step (3) is 
+unnecessary. Then it 
+is a maximum filter. 
+
+
+(1) Make a copy of I for each foreground element, q, in Z. 
+
+(2) Translate the qth copy so that its ULHC (origin) is at position q in Z. 
+
+(3) Add Z(q) to every pixel in the qth copy. 
+
+(4) Take the pixelwise maximum of the resultant stack of images. 
+
+(5) Copy out the result starting at the SE origin in the maximum image. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Dilation 
+
+
+
+dilation dilation over original 
+
+
+SE, Z, is a flat disk 
+the size of the tops of 
+the truncated cones. 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+199 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Dilation 
+
+
+
+SE, Z, is a flat disk. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Erosion: General Definition 
+
+The erosion of image I by structuring element Z at coordinate p GM n is defined by 
+
+I 1 e z ](p) = j'(q)- z («I-p))- 
+
+This can be computed as follows: 
+
+1. Translate Z to p. 
+
+2. Trace out the Z - neighborhood of I at p. 
+
+3. Let p be the origin of I temporarily during the operation 
+
+4. Compute the set of numbers 
+
+s = { I (q)- z (q)|q esupp(z)). 
+
+5. The output value, [I © Z](p), is the minimum value in the set, S. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Erosion 
+
+
+
+erosion erosion under original 
+
+
+SE, Z, is the same flat 
+disk as used for the 
+dilation on page 19. 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Fast Computation of Erosion 
+
+The fastest way to grayscale erosion is to create a stack of images translated 
+to minus the values of the reflected SE then take the pixelwise minimum: 
+
+Note that if Z is 
+symmetric and if all 
+the foreground 
+elements are 0, then 
+Z=Z and step (3) is 
+unnecessary. Then it 
+is a minimum filter 
+
+That is, (1) make a copy of I for each foreground element, q, in Z. (Note 
+that if q is a foreground element in Z then -q is a foreground element in Z.) 
+
+(2) Translate each copy so that its ULHC (origin) is at position q in Z (or -q 
+in Z). (3) Then add Z(q) (or subtract Z(-q)) to every pixel in the qth copy. 
+Finally, (4) take the pixelwise minimum of the resultant stack of images. 
+
+
+J = I©Z = q ™?z } {[l + q]+Z(q)}- 
+Z = (-Z(-q) Iq el 2 j 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Erosion 
+
+
+
+SE, Z, is a flat disk. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Opening 
+
+
+
+opening: erosion then dilation opened & original 
+
+
+SE, Z, is a flat disk 
+the size of the tops of 
+the truncated cones. 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Opening 
+
+
+
+erosion & opening erosion & opening & original 
+
+
+SE, Z, is a flat disk 
+the size of the tops of 
+the truncated cones. 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Opening and Closing 
+
+Opening is erosion by Z followed by dilation by Z. 
+
+ioz=(iez)®z 
+
+The opening is the best approximation of the image FG that can be made 
+from copies of the SE, given that the opening is contained in the original. 
+
+I o Z contains no FG features that are smaller than the SE. 
+
+Closing is dilation by Z followed by erosion by Z. 
+
+i*z=(i©z)ez 
+
+The closing is the best approximation of the image BG that can be made 
+from copies of the SE, given that the closing is contained in the image BG. 
+I • Z contains no BG features that are smaller than the SE. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Opening 
+
+
+
+SE, Z, is a flat disk. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Closing 
+
+
+
+closing: dilation then erosion closing & original 
+
+
+SE, Z, is the same flat 
+disk as used for the 
+dilation on page 19. 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Closing 
+
+
+
+dilation over closing dilation & closing & original 
+
+
+SE, Z, is a flat disk 
+the size of the tops of 
+the truncated cones. 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Closing 
+
+
+
+SE, Z, is a flat disk. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Duality Relationships 
+
+Erosion in terms of dilation: I © Z = 
+
+[l c 0Z 
+
+- c 
+
+Dilation in terms of erosion: 1 0 Z = 
+
+[i c ez 
+
+r 
+
+Opening in terms of closing: I°Z = 
+
+[I c . z] 
+
+c 
+
+Closing in terms of opening: I • Z = 
+
+[f° z ] 
+
+c 
+
+I c is the complement of I and Z is the reflected SE. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Duality Relationships 
+
+
+SE, Z, operates on I c as if 
+it were Z operating on I. 
+
+bright 
+
+\ Reflected SE 
+
+i. ji 
+
+
+dark 
+
+SE, Z, operates on I c as if 
+it were Z operating on I. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Gray Ops with Asymmetric SEs 
+
+
+
+“L” shaped SE 
+O marks origin 
+
+
+
+Foreground: white pixels 
+Background: black pixels 
+
+
+
+Cross-hatched 
+pixels are 
+indeterminate. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Tophat 
+
+
+
+tophat + opened = original tophat: original - opening 
+
+
+SE, Z, is the same flat 
+disk as used for the 
+dilation on page 19. 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Tophat 
+
+
+
+
+- SE, Z, is a flat disk. 
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Bothat 
+
+
+
+region added by dilation superimposed on original 
+
+
+SE, Z, is the same flat 
+disk as used for the 
+dilation on page 19. 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Bothat 
+
+
+
+region added by dilation Bothat: closing - original 
+
+
+SE, Z, is the same flat 
+disk as used for the 
+dilation on page 19. 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Bothat 
+
+
+
+- SE, Z, is a flat disk. 
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+39 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Tophat and Bothat 
+
+
+
+- SE, Z, is a flat disk. 
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+40 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Small Feature Detection 
+
+
+
+- SE, Z, is a flat disk. 
+
+1 1 November 2016 © 1 999-20 1 6 by Richard Alan Peters II 41 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Algorithm for Grayscale Reconstruction 
+
+1 . J = I o z , where Z is any SE. 
+
+2. T = J, 
+
+3. J = J © Z k , where k-4 or k=8, 
+
+4. J = min{I, J1 j [pixelwise minimum of l and*}.] 
+
+5. if J * T then go to 2, 
+
+6. else stop 5 [ J is the reconstructed image. ] 
+
+This is the same as binary reconstruction but for grayscale images 
+
+J(r,c) e I if and only if J(r,c) < I(r,c). 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+42 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Algorithm for Graysc 
+1 . J = I o z , where Z i 
+
+
+Usually a program for reconstruction 
+will take both J and I as inputs. E.g, 
+
+K = ReconGray (I , J, Z) ; 
+
+
+Then the algorithm starts at step 2. 
+
+2. T = J, 
+
+3. J = J © Z k , where k-4 or k=8, 
+
+4. J = min{I, J1 j [pixelwise minimum of l and*}.] 
+
+5. if J * T then go to 2, 
+
+6. else stop 5 [ J is the reconstructed image. ] 
+
+
+This is the same as binary reconstruction but for grayscale images 
+
+J(r,c) e I if and only if J(r,c) < I(r,c). 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+43 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Reconstruction 
+
+
+
+opened image opened image & original 
+
+
+SE, Z, is a flat disk 
+the size of the tops of 
+the truncated cones. 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+44 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Reconstruction 
+
+
+
+opened & recon. image opened, recon., & original 
+
+
+SE, Z, is a flat disk 
+the size of the tops of 
+the truncated cones. 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+45 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Morphology: Reconstruction 
+
+
+
+original 
+
+
+
+- SE, Z, is a flat disk. - 
+
+11 November 2016 
+
+
+
+opened 
+
+
+
+
+reconstructed 
+
+
+recon - opened 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+46 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Reconstruction 
+
+
+
+
+- SE, Z, is a flat disk. 
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+47 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Reconstruction 
+
+
+
+- SE, Z, is a flat disk. 
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+48 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Grayscale Reconstruction 
+
+
+
+
+
+opening 
+
+
+
+SE, Z, is a flat disk - 
+
+
+11 November 2016 
+
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+49 
+
+
+

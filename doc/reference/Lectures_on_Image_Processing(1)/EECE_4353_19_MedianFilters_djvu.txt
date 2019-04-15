@@ -1,0 +1,1850 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes on Mathematical Morphology: 
+
+The Median Filter 
+
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution -Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Median Filter 
+
+• Returns the median value of the pixels in a neighborhood 
+
+• Is non-linear 
+
+• Is a morphological filter 
+
+• Is similar to a uniform blurring filter which returns the mean 
+value of the pixels in a neighborhood of a pixel 
+
+• Unlike a mean value filter the median tends to preserve step edges 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Median Filter: General Definition 
+
+
+med(l,Zj(p)= median |l(q 
+
+1 ’ V ’ qesupp(Z+p) 1 V ' 
+
+
+This can be computed as follows: 
+
+1 . Let I be a monochrome ( 1 -band) image. 
+
+2. Let Z define a neighborhood of arbitrary shape. 
+
+3. At each pixel location, p = (r,c), in I ... 
+
+4. ... select the n pixels in the Z-neighborhood of p, 
+
+5. ... sort the n pixels in the neighborhood of p, by 
+
+value, into a list L(j) for j = 1,. . .,n. 
+
+6. The output value at p is L(m), where m = [n!2 \+\ . 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Median Filter: General Definition 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+p 
+
+◄ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sorted intensity 
+values from 
+•neighborhood 
+of p. 
+
+
+median 
+
+assigned to 
+pixel loc p in 
+output image. 
+
+
+131 
+
+133 
+
+133 
+
+136 
+
+140 
+
+143 
+
+147 
+
+
+152 
+
+
+154 
+
+157 
+
+160 
+
+162 
+
+163 
+
+164 
+
+165 
+171 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+A Noisy Step Edge 
+
+
+H(n~: 
+
+H 
+
+(2.5) + 0.25 
+
+[ 0.25 for n< 32 
+[ 1.25 for n>33 
+
+
+
+
+
+0.5 
+
+
+ur 
+
+
+ft 
+
+
+Lr 
+
+
+
+r- 
+
+
+n 
+
+J 
+
+
+I 
+
+Lr- 
+
+- 1 
+
+
+
+
+
+-1 - 
+
+
+H(n- 3: 
+where 
+u[n) = u 
+
+2.5) + m («) 
+
+nif (-0.25, 0.25) 
+
+
+
+
+10 
+
+
+20 
+
+
+30 
+
+
+40 
+
+
+50 
+
+
+60 
+
+
+70 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Blurred Noisy ID Step Edge 
+
+1 .5 1 1 1 1 1 1 
+
+
+
+
+
+r 
+
+_Fh ^ 
+
+n j 
+j -- 
+
+h ( n )=\lL h ( n+k ) 
+
+y k=\ 
+
+
+rj 
+
+~L 
+
+II ^ 
+
+
+j 
+
+
+
+
+
+0.5 
+
+
+
+
+
+
+- 
+
+
+
+I 
+
+I 
+
+j j 
+
+L 
+
+i 
+
+If 
+
+■ 
+
+- 
+
+_r 
+
+_i 
+
+L 
+
+
+
+0 10 20 30 40 50 60 70 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Blurred Noisy ID Step Edge 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Median Filtered Noisy ID Step Edge 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Median Filtered Noisy ID Step Edge 
+
+
+J(32-4:32+4)= 
+
+sorted 
+
+0.1920 
+
+0.0177 
+
+0.3416 
+
+0.0464 
+
+0.0464 
+
+0.1920 
+
+0.0177 
+
+0.3062 
+
+0.3062 
+
+0.3416 
+
+
+1.3043 
+
+1.0079 
+
+1.0079 
+
+1.0082 
+
+1.0082 
+
+1.0950 
+
+1.0950 
+
+1.3043 
+
+
+Ti 
+
+
+median 
+
+
+
+ft 
+
+
+n 
+
+
+ji 
+
+
+sorted 
+
+0.0177 
+
+0.0464 
+
+0.3062 
+
+0.3416 
+
+1.0079 
+
+1.0082 
+
+1.0950 
+
+1.2935 
+
+1.3043 
+
+
+J(33-4:33+4)= 
+
+0.3416 
+
+0.0464 
+
+0.0177 
+
+0.3062 
+
+1.3043 
+
+1.0079 
+
+1.0082 
+
+1.0950 
+
+1.2935 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Median vs. Blurred 
+
+
+
+median 
+
+blurred 
+
+noisy 
+
+step 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Median vs. Blurred 
+
+
+
+blurred 
+
+median 
+
+step 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Median vs. Blurred 
+
+
+
+median 
+
+blurred 
+
+step 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Median Filtering of Binary Images 
+
+
+
+Noisy Original 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Median Filtering of Binary Images 
+
+
+
+Median Filtered Noisy Original 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Filtering of Grayscale Images 
+
+
+
+Noisy 
+
+
+Original 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Filtering of Grayscale Images 
+
+
+
+
+Noisy 
+
+
+Noisy 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Filtering of Grayscale Images 
+
+
+
+
+3x3-blur x 1 
+
+
+3x3-median x 1 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Filtering of Grayscale Images 
+
+
+
+3x3-blur x 2 
+
+
+3x3-median x 2 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Filtering of Grayscale Images 
+
+
+
+3x3-blur x 3 
+
+
+3x3-median x 3 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Filtering of Grayscale Images 
+
+
+
+3x3-blur x 4 
+
+
+3x3-median x 4 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Filtering of Grayscale Images 
+
+
+
+3x3-blur x 5 
+
+
+3x3-median x 5 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Filtering of Grayscale Images 
+
+
+
+3x3-blur x 1 0 3x3-median x 1 0 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Filtering of Grayscale Images 
+
+
+
+
+Noisy 
+
+
+Noisy 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Limit and Root Images 
+
+Fact: if you repeatedly filter an image with the same blurring filter or 
+median filter, eventually the output does not change. That is, let 
+
+I [*h]* = (((i * h) * h) • • • * h) , k times, and 
+I [med zf = (((l med Z) med Z) • • • med Z j , k times. 
+
+
+Then 
+
+
+liml[*h]^ =l[*h]” =I 0 , and 
+liml[med Z]^ = I [med Z] m = I r , 
+
+where n and m are integers (< oo) , I 0 is a single-valued image and I r is 
+called the median root of I. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Limit and Root Images 
+
+
+
+3x3-blur x 1 0 3x3-median x 1 0 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Limit and Root Images 
+
+
+
+3x3-blur x iwoo 3x3-median root 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Median Filter Algorithm in Matlab 
+
+
+function D = median_filt (I, SE, origy, origx) 
+
+[R, C] = size (I); % assumes 1-band image 
+
+[SER,SEC] = size(SE); % SE < 0 => not in nbhd 
+
+N = sum ( sum ( SE>=0 ) ) ; % no. of pixels in nbhd 
+
+A = -ones (R+SER-1 , C+SEC-1 , N) ; % accumulator 
+n=l; % copy I into band n of A for nbhd pix n 
+for j = 1 : SER % neighborhood is def'd in SE 
+for i = 1 : SEC 
+
+if SE(j,i) >= 0 % then is a nbhd pixel 
+A ( j : (R+j-1) , i : (C+i-1) , n) = I; 
+n=n+l; % next accumulator band 
+
+end 
+
+end 
+
+end 
+
+% pixel-wise median across the bands of A 
+A = shif tdim (median ( shif tdim (A, 2 ) ) , 1 ) ; 
+
+D = A( origy: (R+origy-1) , origx: (C+origx-1) ); 
+return; 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Vector Median Filter 
+
+A vector median filter selects 
+from among a set of vectors, 
+the one vector that is closest 
+to all the others. 
+
+That is, if S is a set of vectors, 
+in F" the median, V, is A 
+
+
+
+v = arg n u n < \ k - \ 
+
+k*j 1 
+
+
+A F” is an n-dimensional linear vector space over the field, F.) 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Vector Median Filter 
+
+A vector median filter selects 
+from among a set of vectors, 
+the one vector that is closest 
+to all the others. 
+
+That is, if S is a set of vectors, 
+in F" the median, V, is A 
+
+
+v = arg min 
+
+k*j 
+
+
+
+
+
+eS 
+
+
+
+
+A F” is an n-dimensional linear vector space over the field, F.) 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Median Filter 
+
+
+If we let ¥ n = R 3 then the 
+
+vector median can be used 
+as a color median filter. 
+
+
+(a) original image 
+
+(b) image (a) with sparse noise 
+
+(c) image (b) color median filtered 
+
+(d) image (c) color median filtered 
+
+Median filter performed on 3 X 3 nbhd. 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+original image: Jim Woodring ^ 
+
+www . j imwoodring . com 
+
+
+
+V 
+
+
+Color Median Filter 
+
+original ► 3x3 MF 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+The output 
+
+color at (r,c) is 
+always selected 
+from a nbhd of 
+(r,c) in the 
+input image. 
+
+
+(3x3 MF) 2 
+
+
+
+3 
+
+4 
+
+2 
+
+5 0 
+
+1,7 
+
+8 
+
+■i 
+
+6 
+
+
+
+4 
+
+
+U -r 
+
+3 
+
+
+
+2 
+
+
+0 
+
+1,7 
+
+5 
+
+(X) 
+
+■n 
+
+i 
+
+CS 
+
+
+
+
+4 
+
+3 
+
+2 
+
+5 
+
+0 
+
+1 
+
+6 
+
+7 
+
+8 
+
+
+4 3 2 
+
+5 0 1 
+
+6 7 8 
+
+
+
+noisy ► 3x3 MF ► (3x3 MF) 2 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+V 
+
+
+Color Median Filter 
+
+original ► 3x3 MF 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+The output 
+
+color at (r,c) is 
+always selected 
+from a nbhd of 
+(r,c) in the 
+input image. 
+
+
+(3x3 MF) 2 
+
+
+
+
+
+
+
+noisy ► 3x3 MF ► (3x3 MF) 2 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+
+
+
+
+
+
+
+V 
+
+
+Color Median Filter 
+
+original ► 3x3 MF 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+The output 
+
+color at (r,c) is 
+always selected 
+from a nbhd of 
+(r,c) in the 
+
+► (3x3 MF)* inpUt ima9e ' 
+
+
+
+noisy 
+
+
+4 3 
+
+1 
+
+2 
+
+4 3 2 
+
+5 1 
+
+5 0 1 
+
+0 7 8 
+
+6 7 8 
+
+6 
+
+
+
+
+3 
+
+
+
+| 
+
+4 
+
+2 
+
+4 
+
+3 
+
+2 
+
+5 7 
+
+1 
+
+5 
+
+0 
+
+1 
+
+6 0 8 
+
+
+6 
+
+7 
+
+8 
+
+
+3x3 MF ► (3x3 MF) 2 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+V 
+
+
+Color Median Filter 
+
+original ► 3x3 MF 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+The output 
+
+color at (r,c) is 
+always selected 
+from a nbhd of 
+(r,c) in the 
+
+► (3x3 MF)* inpUt ima9e ' 
+
+
+
+noisy ► 3x3 MF ► (3x3 MF) 2 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Median Filter 
+
+
+
+Jim Woodring - A Warm Shoulder 
+
+www . j imwoodring . com 
+
+
+
+Sparse noise, 32% coverage in each band 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Median Filter 
+
+
+
+3x3 color median filter applied once 3*3 color median filter applied twice 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+original image: Jim Woodring 
+
+36 
+
+www . j lmwoodrmg . com 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Median Filter 
+
+
+
+
+Sparse noise, 32% coverage in each band 
+
+
+Jim Woodring - A Warm Shoulder 
+
+www . j imwoodring . com 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Median Filter 
+
+
+Absolute differences 
+displayed as negatives 
+to enhance visibility 
+
+
+
+(3*3 CMF 2 of noisy) - original 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+original image: Jim Woodring 
+° 38 
+
+www . j lmwoodrmg . com 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+CMF vs. Standard Median on Individual Bands 
+
+A color median filter has to compute the distances between all the color vectors 
+
+in the neighborhood of each pixel. That’s expensive computationally. 
+
+Q: Why not simply take the 1-band median of each color band individually? 
+
+A: The result at a pixel could be a color that did not exist in the pixel’s 
+neighborhood in the input image. The result is not the median of the 
+colors - it is the median of the intensities of each color band treated 
+independently. 
+
+Q: Is that a problem? 
+
+A: Maybe. Maybe not. It depends on the application. It may make little 
+difference visually. If the colors need to be preserved, it could be 
+problematic. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+39 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+CMF vs. Standard Median on Individual Bands 
+
+
+
+
+Jim Woodring - A Warm Shoulder 
+
+www . j imwoodring . com 
+
+
+Sparse noise, 32% coverage in each band 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+40 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+10 November 2016 © 1999-2016 by Richard Alan Peters II original image: Jim Woodring ^ 
+
+www . j imwoodring . com 
+
+
+CMF vs. Standard Median on Individual Bands 
+
+
+3x3 color median filter applied once 
+
+
+3x3 color median filter applied twice 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+10 November 2016 © 1999-2016 by Richard Alan Peters II original image: Jim Woodring 42 
+
+www . j imwoodring . com 
+
+
+CMF vs. Standard Median on Individual Bands 
+
+
+3x3 median filter applied to each band once 
+
+
+3x3 median filter applied to each band twice 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+CMF vs. Standard Median on Individual Bands 
+
+
+
+Sparse noise, 32 % coverage in each band Jim Woodring - A Warm Shoulder 
+
+www . j imwoodring . com 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+43 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+CMF vs. Standard Median on Individual Bands 
+
+
+
+Fraction of pixels in 
+CMF 2 noisy image 
+identical to original: 
+
+0.29 
+
+
+
+Fraction of pixels in 
+CMF 2 noisy image 
+identical to CMF 2 
+original: 0.43 
+
+
+
+Fraction of pixels in 
+MF 2 noisy image 
+identical to original: 
+0.14 
+
+
+
+Fraction of pixels in 
+MF 2 noisy image 
+identical to MF 2 
+original: 0.28 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+original image: Jim Woodring ^ 
+
+www . j imwoodring . com 
+
+
+

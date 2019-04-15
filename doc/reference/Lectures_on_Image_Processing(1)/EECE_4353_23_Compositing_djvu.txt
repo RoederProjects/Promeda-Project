@@ -1,0 +1,414 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes: Image Blending and Compositing 
+
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution -Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+Image Compositing via Resolution Pyramids 
+
+
+Place the Dendrobates Azureus in front of Stonehenge. 
+
+
+Left: Blue Poison Dart Frog (Dendrobates Azureus) in the Frankfurt Zoo, Germany, by Wikimedia contributor, Quartl. 
+Right: Stonehenge from the north, by Gaerth Wiscombe, http://flickr.eom/photos/10173199@N03/1071477228. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Compositing via Resolution Pyramids 
+
+
+
+Resize the foreground image and place it in a zero image the same 
+size as the background image. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Compositing via Resolution Pyramids 
+
+
+
+
+Create a binary mask to extract the foreground object and to zero 
+out the corresponding area in the background. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Image Compositing via Resolution Pyramids 
+
+
+Apply the masks 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Image Compositing via Resolution Pyramids 
+
+
+This is a simple overlay of the frog on the Stonehenge image. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Image Compositing via Resolution Pyramids 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Compositing via Resolution Pyramids 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Image Compositing via Resolution Pyramids 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Image Compositing via Resolution Pyramids 
+
+
+w-' S 2 _v-' „ 
+
+mi\ mtk i h 
+
+
+rMfv 
+
+\Hl, w> 
+
+
+v jri.' 
+
+^ ■ f.’-'v y v u 
+
+i f ■' , I 
+
+■ / i / > ^ ’/ 
+
+' ■. 1 ' & 
+
+■ r • < 1 ! • * 
+
+
+7 *| '' W'" ; 
+
+
+V'i.V'n 
+
+
+k. V: " ' 
+
+H |gf 
+
+
+\ r- ' ij 
+
+X -4 ■ li 
+
+uvc #□ 
+
+
+* : -A .4V\ , 
+
+v /y.- ' \ 
+
+: 0 I 
+
+y" bin , jta 
+
+
+
+«l c i f m 
+
+
+Laplacian 
+
+pyramid 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Image Compositing via Resolution Pyramids 
+
+
+
+Gaussian 
+
+resolution 
+
+pyramid 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Compositing via Resolution Pyramids 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Compositing via Resolution Pyramids 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Image Compositing via Resolution Pyramids 
+
+
+
+Final composite image. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Image Compositing via Resolution Pyramids 
+
+
+Simple overlay. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+

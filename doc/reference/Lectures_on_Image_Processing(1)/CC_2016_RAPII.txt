@@ -1,0 +1,17 @@
+Lecture Notes:  
+Richard Alan Peters II
+Vanderbilt University EECE 4353/5353 Image Processing
+
+Contact Info:
+Richard Alan Peters II
+Associate Professor of Electrical Engineering
+Vanderbilt University School of Engineering
+Box 376091 Station B
+Nashville, TN 37236-6091
+615-322-7924
+Alan.Peters@Vanderbilt.edu
+http://www.vuse.vanderbilt.edu/~rap2/AlsMainPage.html
+
+This work is licensed under the Creative Commons Attribution-Noncommercial 2.5 License.  To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/2.5/ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA.
+
+http://creativecommons.org/licenses/by-nc/2.5/

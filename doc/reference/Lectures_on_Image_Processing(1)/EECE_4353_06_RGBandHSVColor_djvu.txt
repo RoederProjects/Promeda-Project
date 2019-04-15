@@ -1,0 +1,6111 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes: RGB and HSV Color Spaces 
+
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution-Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Images 
+
+• Are constructed from three 
+overlaid intensity maps. 
+
+• Each map represents the 
+intensity of a different 
+“primary” color. 
+
+• The actual hues of the 
+primaries do not matter as 
+long as they are distinct. 
+
+• The primaries are 3 vectors 
+(or axes) that form a 
+“basis” of the color space. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Vector- Valued Pixels 
+
+
+
+Color Coordinates 
+
+
+Pixel Values 
+
+
+/ (a>) = 
+
+
+184 
+
+95 
+
+12 
+
+
+
+
+7 (A>) = + go* + b 0 b 
+
+= 184r + 958 + 12b 
+
+
+Color Vectors 
+
+
+Each color corresponds to a point in a 3D vector space 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+RGB Color Space for standard digital images 
+
+• primary image colors red, green, and blue 
+
+- correspond to R,G, and B axes in color space. 
+
+• 8-bits of intensity resolution per color 
+
+- correspond to integers 0 through 255 on axes. 
+
+• no negative values 
+
+- color “space” is a cube in the first octant of 3-space. 
+
+• color space is discrete 
+
+- 256 3 possible colors = 16,777,216 elements in cube. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+
+The CMY color space is ... 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Color Cube: Faces (White-Point View) 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Cube: Faces (Black-Point View) 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Cube: Faces (inner and outer) 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Cube: Faces (inner and outer) 
+
+
+B 
+
+
+
+Inside and outside faces. Looking down from above. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Cube: Faces (inner and outer) 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Cube: Faces (inner and outer) 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Cube: Faces (inner and outer) 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Cube: Faces (inner and outer) 
+
+
+B 
+
+
+
+Inside and outside faces. Looking down from above. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Cube: Faces (inner and outer) 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Different Axis Sets in Color Space 
+
+
+
+RGB axes 
+
+
+CMY axes 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color With Respect To Different Axes 
+
+
+
+The same color has different RGB and CMY coordinates. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color 
+
+Images 
+
+
+are represented by three bands (not 
+uniquely) e.g., R, G, & B or L, a*, & b*. 
+
+
+
+
+G 
+
+
+
+
+Red 
+
+Green 
+
+Blue 
+
+
+
+Luminance 
+
+a*-chroma 
+
+b*-chroma 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+RGB to LHS: A Perceptual Transformation 
+
+
+C 
+
+3 
+
+3 
+
+CD 
+
+3 
+
+o 
+
+CD 
+
+
+c= 
+
+CD 
+
+
+c n 
+CD 
+
+
+CD 
+
+o 
+
+
+
+The brain transforms RGB into separate 
+brightness and color channels ( e.g ., LHS). 
+
+
+The eye has 3 types of photoreceptors: 
+sensitive to red, green, or blue light. 
+
+
+brain photo receptors 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+| 
+
+Color Representations: Color Spaces 
+
+RGB is the most familiar color representation because our digital 
+imaging devices use them to encode and to display images. 
+Because they have sensors that are sensitive to red, green, and 
+blue light, cameras transduce an image projected onto its sensor 
+array into a matrix of 3 -vectors. 
+
+The vectors may be transformed into other representations for 
+processing or analysis. Here we consider one such representation, 
+the HSV colorspace. It is a cylindrical coordinate representation 
+of colors that separates the brightness (value) from the 
+chrominance (hue and saturation). 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+
+Equivalue 
+Color Triangle 
+
+A plane through the colors 
+
+
+hsv is defined with respect EECE 4353 Image Processing 
+
+to planes that cut the cube . . .. TT . „ , , c „ 
+
+perpendicularly to the gray Vanderbllt Umversit,- School of Engmeenng 
+
+line - c [l 1 1] T where c e 
+{0,...255}. These are called 
+equivalue planes. 
+
+
+G = 255 
+
+
+r 
+
+
+c 
+
+
+r 
+
+
+0 
+
+
+r 
+
+
+0 
+
+8 
+
+— 
+
+0 
+
+9 
+
+8 
+
+— 
+
+c 
+
+, and 
+
+8 
+
+— 
+
+0 
+
+b 
+
+
+0 
+
+
+b 
+
+
+0 
+
+
+b 
+
+
+c 
+
+
+R = 255 
+
+
+forms a triangle inside the color 
+cube if c < 255 or c > 510, or a 
+hexagon if 255 < c < 510. Every 
+color on the planar surface is such 
+that r + g + b = c. Therefore its 
+value is c/3. It is on this equivalue 
+plane that hue and saturation are 
+computed. 
+
+
+
+G = o 
+
+
+B = 0 
+
+
+0=255. v=85 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue 
+Color Triangle 
+
+
+c=255, v=85 
+
+
+On the g = 0 face of the 
+cube the triangle traces 
+the line, r + b = 255. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Color Cube: 
+
+Equivalue 
+
+Triangle 
+
+Notice the dark outline of the 
+triangle. It is not there - not a 
+real feature of the color surface. 
+The planar discontinuities in 3D 
+at the edges of the triangle 
+project to abrupt changes in the 
+color gradient in the 2D image. 
+The change in gradient is a 
+second order effect that is 
+exaggerated by the color- 
+agonist, center-surround edge 
+detectors on the retina. It is an 
+optical illusion. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Color Cube: 
+
+Equivalue 
+
+Triangle 
+
+
+As the cube is faded out over 
+this and the next 2 slides, the 
+discontinuity diminishes and 
+dark outline disappears. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Cube: 
+
+Equivalue 
+
+Triangle 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Color Cube: 
+
+Equivalue 
+
+Triangle 
+
+
+Every point on the equivalue 
+plane has the same value, ("well, 
+duhl") There is one plane for 
+each value (r+g+b)/3. The hue 
+and saturation for all colors with 
+the same value are calculated in 
+the plane. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Equivalue 
+Color Hexagon 
+
+
+A plane through the colors 
+
+
+r 
+
+
+c 
+
+
+r 
+
+
+0 
+
+
+r 
+
+
+0 
+
+8 
+
+— 
+
+0 
+
+9 
+
+8 
+
+— 
+
+c 
+
+, and 
+
+8 
+
+— 
+
+0 
+
+b 
+
+
+0 
+
+
+b 
+
+
+0 
+
+
+b 
+
+
+c 
+
+
+forms a triangle inside the color 
+cube if c < 255 or c > 510, or a 
+hexagon if 255 <c< 510. Every 
+color on the planar surface is such 
+that r + g + b = c. Therefore its 
+value is c/3. It is on this equivalue R 0 
+plane that hue and saturation are 
+computed. 
+
+
+G = 255 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Yj 
+
+Equivalue 
+Color 
+Hexagon 
+
+Outside looking in. 
+c=383,v=128 
+
+On the g = 0 face of the 
+cube the hexagon traces 
+the line, r + b = 383. 
+
+B = 255 B = 0 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Equivalue 
+
+Color 
+
+Hexagon 
+
+
+Outside looking in. 
+c=383, v=128 
+
+
+On the g = 255 face of 
+the cube the hexagon 
+traces the line, 
+r + b + g = 383. 
+
+
+
+LEFT side 
+
+
+B 
+
+
+R = 255 
+
+
+R = 0 
+
+255 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Equivalue Color Hexagon 
+
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Looking down from above. Outside faces. 
+
+Color Cube: ° 
+
+Equivalue 
+
+Hexagon 
+
+Notice the outline of the 
+hexagon. It is not there - not a 
+real feature of the color surface. 
+
+The planar discontinuities in 3D 
+at the edges of the hexagon 
+project to abrupt changes in the 
+color gradient in the 2D image. 
+
+The change in gradient is a 
+second order effect that is 
+exaggerated by the color- 
+agonist, center-surround edge 
+detectors on the retina. It is an 
+optical illusion. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Color Cube: 
+
+Equivalue 
+
+Hexagon 
+
+
+As the cube is faded out over 
+this and the next 2 slides, the 
+discontinuity diminishes and 
+the virtual outline disappears. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Cube: 
+
+Equivalue 
+
+Hexagon 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Looking down from above. Outside faces. 
+
+Color Cube: ° 
+
+Equivalue 
+
+Hexagon 
+
+
+Every point on the equivalue 
+plane has the same value, ("well, 
+duhl") There is one plane for 
+each value (r+g+b)/3. The hue 
+and saturation for all colors with 
+the same value are calculated in 
+the plane. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+Looking down from above. Outside faces. 
+
+Color Cube: ° 
+
+Equivalue 
+
+Hexagon 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Color Cube: 
+
+Equivalue 
+
+Hexagon 
+
+
+Here the hexagon 
+is cut out of the 
+cube to provide 
+another view. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+RGB Components of the Color Hexagon at Value 128 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+Equivalue plane at v = 0: single point, pure black. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+R 
+
+
+
+G 
+
+
+B 
+
+Equivalue plane. 
+
+V = 10. 
+
+Looking down from above. 
+
+
+R 
+
+
+
+G B 
+
+
+Equivalue plane. V = 10. Looking down from above. 
+
+
+R 
+
+
+
+G 
+
+
+B 
+
+Equivalue plane. 
+
+V = 10. 
+
+Looking down from above. 
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+R 
+
+
+
+G 
+
+
+B 
+
+Equivalue plane. 
+
+<N 
+
+II 
+
+> 
+
+Looking down from above. 
+
+
+R 
+
+
+
+G B 
+
+
+Equivalue plane. V = 2 1 . Looking down from above. 
+
+
+R 
+
+
+
+G 
+
+
+B 
+
+Equivalue plane. 
+
+<N 
+
+II 
+
+Looking down from above. 
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+R 
+
+
+
+G B 
+
+
+Equivalue plane. V = 32. Looking down from above. 
+
+
+R 
+
+
+
+G B 
+
+
+Equivalue plane. V = 32. Looking down from above. 
+
+
+R 
+
+
+
+G B 
+
+
+Equivalue plane. V = 32. Looking down from above. 
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+39 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+R 
+
+
+
+G 
+
+
+B 
+
+Equivalue plane. 
+
+V = 42. 
+
+Looking down from above. 
+
+
+R 
+
+
+
+G B 
+
+
+Equivalue plane. V = 42. Looking down from above. 
+
+
+R 
+
+
+
+G B 
+
+
+Equivalue plane. V = 42. Looking down from above. 
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+40 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+
+Equivalue plane. V = 53. Looking down from above. 
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+41 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+42 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+43 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+Equivalue plane at v = 85: largest upright triangle, start of hexagonal intersections. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+44 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+
+Equivalue plane. V = 96. Looking down from above. 
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+45 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+46 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+47 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+Equivalue plane at v = 128 : symmetric hexagon, intersecting plane with largest area. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+48 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+R 
+
+R 
+
+R 
+
+
+. s 
+
+
+
+fata 
+
+
+G B 
+
+V 
+
+A 
+
+\ 
+
+O 
+
+Equivalue plane. V = 1 38. Looking down from above. 
+
+Equivalue plane. V = 138. Looking down from above. 
+
+Equivalue plane. V = 138. Looking down from above. 
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+49 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+50 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+R 
+
+
+
+Equivalue plane. V = 1 60. Looking down from above. 
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+51 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+R 
+
+
+
+Equivalue plane. V= 170. Looking down from above. 
+
+
+
+R 
+
+1 
+
+1 
+
+/ 
+
+
+
+G 
+
+
+B 
+
+Equivalue plane. 
+
+II 
+
+© 
+
+Looking down from above. 
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+Equivalue plane at v = 170: largest inverted triangle, end of hexagonal intersections. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+52 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+53 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+54 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+55 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+56 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+57 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+58 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+R 
+
+
+
+G B 
+
+
+Equivalue plane. V = 245. Looking down from above. 
+
+
+R 
+
+
+
+G B 
+
+
+Equivalue plane. V = 245. Looking down from above. 
+
+
+R 
+
+
+X 
+
+
+/ V J 
+
+G 
+
+\ 
+
+B 
+
+Equivalue plane. V = 245. Looking down from above. 
+
+
+Projection: the gray line is perpendicular to this page. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+59 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Equivalue Plane Intersecting Color Cube 
+
+
+
+Projection: the gray line is perpendicular to this page. 
+
+Equivalue plane at v = 255: single point, pure white. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+60 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+HSV Color Representation 
+
+
+
+intersects k, G, <& B axes at r 0 +g 0 +b 0 , and contains p 0 . 
+
+
+K~^{ [( r o + £o + ^o) ^ - v o]’ S o 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+61 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+A Color Point on its Equivalue Plane* 
+
+
+
+* where all the colors have components r, g, & b such that r+g+b = the same constant c. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+62 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Color Vector Associated with the Color Point 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+63 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Vector’s Coordinates and RGB Component Vectors 
+
+
+B 
+
+
+b 0 
+
+
+R 
+
+
+Color triangle. Looking down from above. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+64 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Color Cube, the Equivalue Plane, & the Gray Line* 
+
+
+
+The point at which the gray line intersects equivalue plane is called the “gray point” . 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+65 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The Color Point and the Gray Line* 
+
+
+
+*“+” marks the gray point on the equivalue plane. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+66 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Saturation Component* of the Color Vector 
+
+
+
+*is a vector in the equivalue plane from the gray point to the color point; its length is the scalar saturation. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+67 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Saturation and Value Components of the Color Vector 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+68 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Hue*, Saturation, and Value of the Color 
+
+
+
+“is the angle in the plane from the red line (in the plane from the gray point to the red axis) to the color point. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+69 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Hue and the Saturation on the Equi value Plane 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+70 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Hue, Saturation, and Value with the Gray Line 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+71 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+HSV Components of the Color Hexagon at Value 128 
+
+
+r+g+b = 384 
+
+
+v= 128 
+
+
+
+he(7t/128)x 
+{0, ,255} 
+
+
+se(l/255)x 
+{0, ,255} 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+72 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+HSV Components of the Color Hexagon at Value 128 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+73 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+HSV Color Representation 
+
+
+
+intersects k, G, <& B axes at r 0 +g 0 +b 0 , and contains p 0 . 
+
+
+/ *o = z {[( r o + £o+^o)r-v 0 ],s 0 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+74 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+RGB to HSV Conversion 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+RGB to HSV Conversion 
+
+
+
+c 
+
+
+
+
+
+
+o 
+
+II 
+
+I — ' 
+
+c 
+
+, where 
+
+c = 
+
+, ... so there is ambiguity 
+
+'0'8 in the definition of v 0 . 
+
+c/3 is the usual value- 
+image intensity (the 
+
+
+Its interpretation is 
+contextual. 
+
+
+average of r 
+
+, g, A b ), ... 
+
+
+= q — s y — 
+
+3 v 0 3 
+
+
+
+v 0 = fc, whereas 
+
+V 
+
+
+• 
+
+
+S 0 =Po-V 0 = 
+
+
+r n - 
+
+
+o 
+
+go 
+
+
+... cJ 3/3 is the 
+^ length of the 
+value vector,... 
+
+
+0 
+
+
+b o~ v o 
+
+
+Po 
+
+
+'0 
+
+8 o 
+
+
+k 
+
+
+o 
+
+
+*0 = 
+
+
+'0 
+
+
+= V( r o - v o ) 2 +(^o ~ v o ) 2 +(^o - v o) 2 - 
+
+
+
+29 September 2016 
+
+
+“9 1999-2016 by Richard Alan Peters II 
+
+
+96 
+
+
+76 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+RGB to HSV Conversion 
+
+
+
+88 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+77 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+RGB to HSV Conversion: The Red Line 
+
+
+
+c 
+
+
+C 
+
+c 
+
+~3 
+
+2 
+
+II 
+
+0 
+
+1 
+
+II 
+
+X 
+
+0 
+
+l 
+
+3 
+
+c 
+
+-1 
+
+
+0 
+
+
+c 
+
+
+-1 
+
+
+Note that: 
+
+(1 ) for c > 85, the red line (vector) x extends 
+beyond the color cube, and 
+
+(2) vector x = 0 if and only if c = 0. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+78 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+RGB to HSV Conversion 
+
+
+In summary, 
+
+
+v 0 =ty 
+
+
+The value is the average of the 
+r, g, & b intensities of the color. 
+
+
+where c = r 0 + g 0 + b 0 , the sum of the components of p 0 . 
+
+
+s o = 
+
+
+^( r o~ v o) 2 + (8 0 -v 0 ) 2 +(b 0 -v 0 ) 2 , 
+
+
+and 
+
+
+K = COS 
+
+
+-l 
+
+
+o 
+
+
+’0 
+
+
+'0 
+
+
+The scalar saturation, s 0/ is the 
+length of the saturation vector, s 0 . 
+
+
+The dot product of (i) the unit vector 
+in the saturation direction and (ii) the 
+unit vector in the direction of the red 
+line is the cosine of the hue. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+79 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Normalizing the Saturation 
+
+
+The scalar saturation, 
+
+
+
+usually is normalized to lie between 0 and 1. There are a 
+number of possible ways to do this. One is to use the largest 
+possible length of a saturation vector in the color cube. That 
+vector lies in the triangle with vertices [r g b] T = 
+
+[255 0 0] T , [0 255 0] T , and [0 0 255] T . There are 3 such 
+vectors, from the gray point to pure red, pure green, or pure 
+blue. The red one is 
+
+
+s max =[255 0 0f-i[255 
+which has length = || s n 
+
+
+255 255] T = [170 -85 
+
+I * 208.2066. 
+
+
+Therefore, s 0 can be replaced by Sq / s Jxsai . 
+
+
+
+See other approaches to 
+normalizing the saturation 
+on slides nnn 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+80 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Other Steps to Include in RGB^HSV 
+
+There are a few places in the algorithm where computation can be problematic. These 
+include division by zero, exceeding limits due to round-off errors, and values returned by 
+library functions that are inconsistent with the RGB^HSV algorithm. 
+
+Recall that the hue calculation for color, p, requires division by the product of the length of 
+the red vector, x(p), and the length of the saturation vector, s(p). If either of these is 0, 
+then the argument could be undefined. Matlab returns NaN for acos (0/0) . 
+
+
+h — Q — cos 1 
+
+
+
+
+
+
+\ 
+
+If, due to finite word-length effects, the dot 
+
+
+s o 
+
+_ a 
+
+X 
+
+
+product evaluates to a number with magnitude 
+
+
+
+V 
+
+
+
+ever-so-slightly greater than one, the inverse 
+
+
+S 0 
+
+
+X 
+
+J 
+
+cosine will return a complex value. 
+
+
+s is the zero vector whenever p is a gray level (all its components are equal). Vector x = 0 
+if and only if color p = 0. The workaround is to add 1 to the denominator at every pixel 
+where either p = 0 or 5 = 0. Then set h = 0 at those same pixel locations. If h is complex, 
+replace it with real(/i). 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+81 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Other Steps to Include in RGB^HSV 
+
+
+Inverse cosine routines, like Matlab’s acos, 
+return angles in the range [0,7i], whereas 
+the RGB^HSV algorithm needs them to be 
+in the range [0,27t). 
+
+
+Note that 0e[O,7t] if and only if b < g in p and 
+
+0e(-7t,O) if and only if b > g. Therefore the 
+workaround is to let: 
+
+
+h = < 
+
+
+0 
+
+2tt-Q 
+
+
+where 
+
+
+if 
+
+if 
+
+
+b< g, 
+b> g. 
+
+
+0 = cos 1 
+
+
+
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+82 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+This algorithm is written in 
+
+V 
+
+
+pseudocode, not Matlab. 
+
+
+RGB to HSV Algorithm 1 A vector-geometric algorithm 
+
+
+1. Compute scalar value image, v, from RGB image, I=[r g b] . 
+
+2. Compute vector value image, V = [v v v] . 
+
+3. Compute vector saturation image, S = I - V. 
+
+4. Compute scalar saturation image, s = ||S||. 
+
+5. Compute red axis vector image, X = [2v -v -v] . 
+
+6. Compute red axis scalar image, x = ||X||. 
+
+7. Create logical image, z(r,c) = (s(r,c)==0) I (x(r,c)==0) . 
+
+8. Compute hue cosine image, c = (S*X) / ((s-x)+z) . 
+
+9. Compute hue angle image, h = cos -1 (c) . 
+
+10. Create logical image, m(r,c) = b(r,c) > g(r,c). 
+
+11. Adjust h = ~m*h + m-(2pi-h). 
+
+12. Normalize the saturation s = s / 208.2066. 
+
+13. Return [h s v] T . 
+
+
+110 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+83 
+
+
+
+
+||- 1| is the norm operator - the 
+square root of the pixel-wise 
+sum of the squares of the 
+image's 3-vector components. 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+RGB to HSV Algorithm 1 A vector-geometric algorithm 
+
+
+1. Compute scalar value image, v, from RGB image, I=[r g b] . 
+
+2. Compute vector value image, V = [v v v] . V =3-band val img 
+
+3. Compute vector saturation image, S = I - V. 
+
+4. Compute scalar saturation image, s 
+
+5. Compute red axis vector image, X = 
+
+6. Compute red axis scalar image, x = 
+
+7. Create logical image, z(r,c) = (s(r 
+
+8. Compute hue cosine image, c = (S*X) , 
+
+9. Compute hue angle image, h = cos -1 (c 
+
+10. Create logical image, m(r,c) = b(r, 
+
+11. Adjust h = -m-h + m-(2pi-h). 
+
+12. Normalize the saturation s = s / 20 
+
+13. Return [h s v] T . 
+
+matlab: ||S|| = sqrt ( sum (S . A 2 , 3 ) ) ; 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+84 
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+A Faster Hue Calculation 
+
+Project color p 0 onto the red line, x, using the dot product, 
+
+c 
+
+
+
+" 2" 
+
+
+r o 
+
+c 
+
+-1 
+
+
+
+X * Po = 3 
+
+• 
+
+#0 
+
+-1 
+
+
+_ b o _ 
+
+
+= z[ 2 r 0 -g 0 -b 0 \ 
+
+
+Vector z = V3f[0 1 -l] is perpendicular to x. Project p 0 on to z to get 
+
+
+z *Po = 
+
+
+cV 3 
+
+
+0 
+
+1 
+
+-1 
+
+
+r o 
+
+
+#0 
+
+
+'y/3 
+
+
+[go~ b o] 
+
+
+The ratio of the second dot product to the first is the tangent of the hue angle. 
+Therefore, 
+
+
+h = tan 
+
+
+-1 
+
+
+^ z*p 0 ^ 
+
+U'PnJ 
+
+
+= tan 
+
+
+( 
+
+
+V 
+
+
+u~K ) 
+
+
+A 
+
+
+2r o-8o~ b , 
+
+
+by 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+85 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+This algorithm is written in 
+
+V 
+
+
+pseudocode, not Matlab. 
+
+
+RGB to HSV Algorithm 2 A vector-geometric algorithm 
+
+Using the expressions on the previous slide reduces the number of variables and the 
+number of computations necessary to compute the hue. Experiments with Matlab show 
+Algorithm 2 to be 2.7 times faster than Algorithm 1 . Both algorithms return the same values. 
+
+
+1. Compute scalar value image, v, from RGB image, I=[r g b] T . 
+
+2. Compute vector value image, V = [v v v] T . 
+
+3. Compute vector saturation image, S = I - V. 
+
+4. Compute scalar saturation image, s = ||S||. 
+
+5. Compute the scalar image, x = 2r-g-b. 
+
+6. Compute the scalar image, y = sqrt(3) (g-b) . 
+
+7. Compute hue angle image, h = atan2(y,x) . 
+
+8. Create a logical image, m(r,c) = b(r,c) > g(r,c) . 
+
+9. Adjust h = ~m*h + m-(2pi+h) . 
+
+10. Normalize s = s / 208.2066. 
+
+11. Return [h s v] T . 
+
+
+atan2 returns angles in (-7r,7r). 
+Negative angles are in the b>g 
+region. They are shifted by 
+adding them to 2 n. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+110 
+
+
+86 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Example RGB Image and HSV Bands 
+
+
+Original image 
+Karen Gillis 
+Taylor, “A Fruit 
+Color Study.” 
+
+
+Value Image 
+
+
+
+Hue image 
+displayed with 
+a primary color 
+color-map 
+
+
+Saturation 
+image scaled 
+to (0 255) 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+87 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+HSV to RGB Conversion 
+
+The equivalue plane is perpendicular 
+to the value vector, v. 
+
+
+This conversion requires a 
+change of coordinates through 
+a rotation and a translation. 
+
+
+/v 
+
+X 
+
+
+The plane contains vector x defined 
+on slide 77. 
+
+Therefore, v is perpendicular to x and 
+y = v x x is also in the plane. 
+
+If we keep the directions but ignore 
+the magnitudes, the unit vectors 
+
+
+/\ 
+
+X = 
+
+T 
+
+0 
+
+II 
+
+0 
+
+1 
+
+, and v = 
+
+0 
+
+0, 
+
+
+0 
+
+
+0 
+
+
+1 
+
+
+
+form an orthonormal basis with respect to the equivalue plane. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+88 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+HSV to RGB Conversion 
+
+Given values h, s, and v, where 
+
+
+Since the x- and y-axes lie in 
+the equivalue plane and the 
+cdt. origin is the gray point, 
+we set v = 0 for now. 
+
+/v 
+
+X 
+
+
+
+with respect to unit vectors x, y, 
+and v, in the equivalue plane. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+89 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+HSV to RGB Conversion If s is in the range 0 to 1, 
+
+then it must be denormalized 
+first by multiplying by smax. 
+
+Given values h, s , and v, where 
+
+/V 
+
+X 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+90 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+HSV to RGB Conversion 
+
+
+x, y, and v, are not in the same 
+directions as the red, green, and 
+blue unit vectors, r, g, and b. 
+
+Therefore, [s] xyv , which we 
+know, is not equal to [s] rgb , 
+which we do not know, but need 
+in order to find the color, p 0 , 
+with respect to r , g, and b. 
+
+[ S ]rgb=[ r 0 SO ^ 0 ] T 
+
+s^'if+gjg+liob, 
+s <-> scos(h)x + l s , sin(/i)y + Ov. 
+
+
+
+We need to find r Q , g 0 , A b Q , ... 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+91 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+HSV to RGB Conversion 
+
+
+... which means we need to find 
+the x, y, <& v unit vectors in terms 
+of the r, g, <& b unit vectors. 
+
+
+Vector s written as a linear combination of vectors, r, g, and b, 
+and s written as a linear combination of vectors, x, y, and v 
+both refer to the same point on the equivalue plane. 
+
+s<->r 0 r + g 0 g + Z? 0 b, 
+
+s <-» scos(h)x + 5sin(/i)y + 0 v. 
+
+The specific numbers in [s] rgb and 
+in [s] xyv (that represent the point 
+w.r.t. the two coordinate systems) 
+are, however, different. 
+
+
+
+[ s L g b = [ r o So ^o] and - 
+
+s 
+
+b 
+
+[ S ]^=[ JCOS ( A ) SS H k ) 0 ] TbUt Mrgb^Hxys 
+
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+92 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+HSV to RGB Conversion 
+
+
+We can find r 0 , g 0 , and b 0 , from h 0 , s 0 , 
+and v 0 , if we know how the unit vectors 
+x, y, and v, are expressed with respect 
+to r, g, and b. That relationship is in 
+the form of a rotation matrix, A, such 
+that, 
+
+[*Lb =/1 [*Lv’ [y]r„b= A [yU. ’ bL =A bU- 
+
+
+Then, 
+
+
+xyv 
+
+
+= A 
+
+
+s cos ( /r) [ xl + ssin(/t)[yl + 0[vl 
+
+V / L J xyv V / L ^ J xyv L J xyv 
+
+= i cos(A)A[x] iiyv + s sin(/ 1 )A[y] iyv + OA[v] 
+= ^ cos ( /? ) [ x] ^ + x sin(A)[y] [i|> + 0[ v] rgb . 
+
+
+
+xyv 
+
+
+29 September 2016 
+
+
+£5 ) 1999-2016 by Richard Alan Peters II 
+
+
+96 
+
+
+93 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+HSV to RGB Conversion 
+
+
+When written w.r.t the xyz 
+coordinate system we have 
+
+
+x = 
+
+
+V 
+
+
+1 
+
+o 
+1 
+
+
+"0" 
+
+0 
+
+II 
+
+1 
+
+, and v = 
+
+0 
+
+i 
+
+o 
+
+1 
+
+
+1 
+
+o 
+
+1 
+
+
+1 
+
+
+So that, 
+
+[*L= A 
+
+
+[y]rgb =A 
+
+
+* [drgb =A 
+
+
+But that implies, 
+
+
+
+A = 
+
+
+[*Lgb hlrgb p] 
+
+
+Irgb 
+
+
+The columns of the rotation matrix, A, are the 
+x, y, & v unit vectors in rgb coordinates. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+94 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+HSV to RGB Conversion 
+
+
+How to find the x, y, <& z unit 
+vectors in rgb coordinates: 
+
+
+v is the unit vector in 
+the direction [1 1 1] T 
+when written w.r.t 
+rgb coordinates. 
+
+
+x is perpendicular to 
+v and has equal g 
+and b components. 
+
+y is the cross 
+product of v [y] rgb 
+
+with x. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+95 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+HSV to RGB Conversion 
+
+
+The x, y, <& z unit vectors in rgb 
+coordinates are the columns of 
+the rotation matrix: 
+
+
+Therefore, the rotation matrix is 
+
+2 0 V2 
+
+-1 ^ a /2 
+
+-1 -y/3 V2 
+
+
+V<5 
+
+A = — 
+6 
+
+
+Substitute that into the 2 nd equation on slide to get: 
+
+
+tsb = S fcos(h) 
+
+2 
+
+-1 
+
+_- l _ 
+
++ 5 ^ sin ( h) 
+
+0 
+
+1 
+
+_- l _ 
+
+= s^§-cos[h) 
+
+2 
+
+-1 
+
+-1 
+
++ s ^ sin ( h) 
+
+0 
+
+1 
+
+-1 
+
+
++0# 
+
+
+Finally, [s] rgb must be translated to the value vector to obtain 
+the rgb color of p 0 : 
+
+
+
+Po = [p] rgb =[ s ] reb + b'L,. where So = [s] rg b and [v] rgb = v 0 as def ’d. on slide 75. 
+
+
+I rgb 
+
+
+I rgb 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+96 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+HSV to RGB Algorithm A vector-geometric algorithm 
+
+This inverts the outputs of both Algorithm 1 and Algorithm 2. 
+
+
+1. 
+
+Reshape RxC images h, s, and v into RCxl column 
+
+vectors . 
+
+2. 
+
+Denormalize the saturation image, s = 208.2066-s. 
+
+
+3. 
+
+Compute the x-coordinate image, x = s*cos (h) . 
+
+
+4. 
+
+Compute the y-coordinate image, y = s*sin (h) . 
+
+
+5. 
+
+Construct the value vector image, V = [v v v] T 
+
+
+6. 
+
+Construct the 1 st two columns of rotation matrix 
+
+A 
+
+7 . 
+
+Rotate the saturation image S = [s 1 s 2 s 3 ] T = A[x 
+
+y] T - 
+
+8. 
+
+Add the result to V to recover I RGB = S + V. 
+
+
+9. 
+
+Round I RGB , convert it to uint8, and reshape it to RxCx3 . 
+
+
+Note: if size(X) " [R C B], Note: V is 3xRC, since v is an RCxl 
+
+then size(X(:)) == [RCB 1]. column vector and V = [v v v] T . 
+
+A 3x2 multiplies [x y] T which is 2xRC. 
+Lines 7 <& 8: S, V, and I R6B are 3xRC. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+97 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Alternative HSV Representations 
+
+
+The HSV algorithms presented in the 
+first part of this lecture are direct 
+implementations of the vector math. 
+
+One of the problems with the direct 
+approach is that it is that the presence 
+of transcendental functions increases 
+the time necessary to convert an 
+image. 
+
+To use HSV at video frame rate 
+requires a simpler algorithm that yields 
+a reasonable approximation to the 
+direct implementation. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+98 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Hexagonal Projection Representations 
+
+Faster algorithms use a hexagonal projection of the color cube. To generate the hexagon, 
+rotate the color cube in 3-space then project it along its gray line (the diagonal from white 
+to black) onto a chromaticity plane. The result is a hexagon that has the 6 primary colors - 
+red, yellow, green, cyan, blue, and magenta - at its vertices. 
+
+
+
+rgb color vector, p, is projected on the hexagon where its hue and saturation are computed. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+99 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Hexagonal Projection Representations 
+
+Faster algorithms use a hexagonal projection of the color cube. To generate the hexagon, 
+rotate the color cube in 3-space then project it along its gray line (the diagonal from white 
+to black) onto a chromaticity plane. The result is a hexagon that has the 6 primary colors - 
+red, yellow, green, cyan, blue, and magenta - at its vertices. 
+
+
+
+rgb color vector, p, is projected on the hexagon where its hue and saturation are computed. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+100 
+
+
+V 
+
+
+This algorithm is based 
+on the hex projection. 
+
+
+EECE 4353 Image Processing 
+
+
+Vanderbilt University School of Engineering 
+
+
+A Fast RGB to HSV Algorithm 
+
+
+Given color p 0 = [RGB] J where R, G, B e{0,...,255}, to compute [h s v] T where s, 
+v e[0,1] and h e[0,360) the algorithm proceeds as follows: 
+
+
+R,G,B are 
+numbers here 
+not images. 
+
+
+1. Compute [r g b] = [R G B]/255. 
+
+2. Set m = min(r,g,b) , M = max (r,g,b) . 
+
+3. Set v = M. 
+
+
+4. Compute C = M - m. 
+
+5. If C == 0 then s=0, h=0 . Return [h s v] T . 
+
+6. s = C/M. 
+
+7. If M==r then h = ((g-b)/c) modulo 6. 
+
+8. else if M==g then h = 2 + (b-r)/c. 
+
+9. else h = 4 + (r-g)/c. 
+
+10. h = 60h . 
+
+
+Experiments with Matlab show this algorithm to be 3 times faster than Algorithm 
+1 and 1 .13 faster than Algorithm 2. The numbers output by this one differ from 
+the other two. 
+
+Reference: HSL and HSV - Wikipedia, the free encyclopedia 
+
+
+111 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+101 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+This algorithm is the 
+inverse of the previous one. 
+
+
+A Fast HSV to RGB Algorithm 
+
+Given vector h 0 T = [h s v] where h e [0, 360), s e [0, 1], and v e [0, 
+to compute p 0 T = [r g b] where r, g, b e {0, ...,255}: 
+
+
+1. 
+
+H = 
+
+h/ 60 
+
+• 
+
+
+
+
+
+
+
+
+
+
+
+
+2 . 
+
+C = 
+
+v-s . 
+
+
+
+
+
+
+
+
+
+
+
+
+
+3. 
+
+D = 
+
+v-C . 
+
+
+
+
+
+
+
+
+
+
+
+
+
+4 . 
+
+X = 
+
+C- (1 
+
+- 
+
+1 
+
+(H 
+
+mod 
+
+2) -1 
+
+1 ) • 
+
+
+
+
+
+
+5. 
+
+if 
+
+
+0 
+
+< 
+
+H 
+
+< 
+
+1 
+
+then 
+
+[r 
+
+g 
+
+b] 
+
+= [C 
+
+X 
+
+0] 
+
+
+else 
+
+if 
+
+1 
+
+< 
+
+H 
+
+< 
+
+2 
+
+then 
+
+[r 
+
+g 
+
+b] 
+
+= [X 
+
+c 
+
+0] 
+
+
+else 
+
+if 
+
+2 
+
+< 
+
+H 
+
+< 
+
+3 
+
+then 
+
+[r 
+
+g 
+
+b] 
+
+= [0 
+
+c 
+
+X] 
+
+
+else 
+
+if 
+
+3 
+
+< 
+
+H 
+
+< 
+
+4 
+
+then 
+
+[r 
+
+g 
+
+b] 
+
+= [0 
+
+X 
+
+C] 
+
+
+else 
+
+if 
+
+4 
+
+< 
+
+H 
+
+< 
+
+5 
+
+then 
+
+[r 
+
+g 
+
+b] 
+
+= [X 
+
+0 
+
+C] 
+
+
+else 
+
+if 
+
+5 
+
+< 
+
+H 
+
+< 
+
+6 
+
+then 
+
+[r 
+
+g 
+
+b] 
+
+= [C 
+
+0 
+
+X] 
+
+
+else 
+
+[r 
+
+g 
+
+b] 
+
+
+
+[0 
+
+0 0] 
+
+
+
+
+
+
+
+6 . 
+
+[r g 
+
+b] 
+
+= 
+
+255* 
+
+i 1 
+
++ 
+
+u 
+
++ 
+
+o 
+
+b+D] 
+
+
+
+
+
+
+Reference: HSL and HSV - Wikipedia, the free encyclopedia 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+h, s, A v are 
+numbers here 
+not images. 
+
+
+102 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Comparison of the Two Algorithms 
+
+
+
+Geometric representation 
+on the equivalue plane 
+
+
+120 ° 60 ° 
+
+
+
+Projection of the color on 
+the choma-hexagon. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+103 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Geometric Hexagonal Projection 
+
+
+Given a color, its value is the projection, 
+parallel to the hexagon, of the rob point 
+onto the gray line scaled by V3/3 . 
+
+Its hue is the angular distance around the 
+hexagon from the projection of the red axis 
+to the color, projected parallel to the gray 
+line. 
+
+The saturation is the ratio of the distance 
+from the gray line to the projected color, 
+[0,p 0 ], to the distance from the gray line to 
+one of the vertices of the hexagon. 
+
+
+120 ° 60 ° 
+
+
+
+240 ° 300 ° 
+
+
+Reference: HSL and HSV - Wikipedia, the free encyclopedia 
+
+
+To compute the projection of 
+a color we must find the 
+rotation matrix for the cube. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+104 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Rotation of 
+the Color 
+Cube 
+
+Rotations for projection 
+
+onto the hexagon: 
+
+(a) Original cube viewed 
+along the green axis. 
+
+(b) Rotated 45° around 
+the green axis. 
+
+(c) Rotated cube viewed 
+along the red axis. 
+
+(d) Rotated 35.26° 
+around the red axis. 
+
+(e) Final pose viewed 
+along the green axis. 
+
+
+[0 1 V2] [0 1 V2] 
+
+
+
+(e) (d) 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+105 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Here's the math. 
+
+
+Rotation of the Color Cube 
+
+Rotation matrix: 
+
+
+D _ D D _ J_ 
+
+v hex ^ red ^ green ^ 
+
+
+’3V2 0 -3V2" 
+
+— a /6 2 a /6 - a /6 
+
+2V3 2V3 2V3 
+
+
+, where i? green = i 
+
+
+" a /2 0 - a / 2 ~ 
+
+. & ^,=1 
+
+CO 
+
+O 
+
+O 
+
+1 
+
+0 2 0 
+
+0 a /6 - a /3 
+
+_ a /2 0 a /2 _ 
+
+3 
+
+_0 a /3 a /6 _ 
+
+
+Cube corners: 
+
+S cc = {K,R,Y,G,C,B,M ,W) = 255 
+
+Rotated cube corners: 
+
+255 
+
+
+1 
+
+0 
+
+0 
+
+
+tfZcc — 
+
+
+3 V 2 " 
+
+— a /6 
+
+2 V 3 
+
+
+3 a /2 
+
+a /6 
+
+4 V 3 
+
+
+0 
+
+2 a /6 
+
+2 V 3 
+
+
+- 3 a /2 
+
+a /6 
+
+4 V 3 
+
+
+-3a/2 
+
+— a /6 
+
+2 V 3 
+
+
+0 
+
+-2a/6 
+
+4 a /3 
+
+
+0 
+
+0 
+
+6 a /3 
+
+
+Projected, rotated cube corners: 
+
+255 
+
+
+o{*s cc } = 
+
+
+0 
+
+0 
+
+
+3 a / 2 _ 
+
+— a /6 
+
+
+3 a /2 
+
+a /6 
+
+
+0 
+
+2 a /6 
+
+
+- 3 a /2 
+
+a /6 
+
+
+- 3 a /2 
+
+— a /6 
+
+
+0 
+
+- 2 a /6 
+
+
+29 September 2016 
+
+
+£5/ 1999-2016 by Richard Alan Peters II 
+
+
+110 
+
+
+106 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Here's the math. 
+
+
+Rotation of the Color Cube 
+
+
+Rotation matrix: 
+
+
+D _ D D _ J_ 
+
+v hex ^ red ^ green ^ 
+
+
+45° around green 35.26° around red 
+
+
+’3V2 0 -3V2 
+
+—a/6 2a/6 -a/6 
+
+2V3 2V3 2V3 
+
+
+, where i? green = i 
+
+
+"a/2 0 —A [T 
+
+. & R^=\ 
+
+CO 
+
+o 
+
+o 
+
+1 
+
+0 2 0 
+
+0 a/6 -a/3 
+
+_a/2 0 a/2 _ 
+
+3 
+
+_0 a/3 a/6 _ 
+
+
+Cube corners: 
+
+S cc = {K,R,Y,G,C,B,M ,W) = 255 
+
+Rotated cube corners: 
+
+255 
+
+
+1 
+
+0 
+
+0 
+
+
+tfZcc — 
+
+
+3V2" 
+
+—a/6 
+
+2V3 
+
+
+3a/2 
+
+a/6 
+
+4V3 
+
+
+0 
+
+2 a/6 
+
+2V3 
+
+
+-3a/2 _ 
+
+a/6 
+
+4V3 
+
+
+- 3 a /2 
+
+—a/6 
+
+2V3 
+
+
+0 
+
+-2a/6 
+
+4a/3 
+
+
+0 
+
+0 
+
+6a/3 
+
+
+6 primaries 
++ black and 
+white 
+
+Now the 3 rd 
+dimension is 
+along the 
+gray line. 
+
+
+Projected, rotated cube corners: 
+
+
+Projection: 
+set 3 rd dim 
+to 0. 
+
+®{«Ac) = 2 f { 
+
+A 
+
+A' 
+
+" 3 V 2 " 
+
+—a/6 
+
+" 3 V 2 " 
+
+'_V6_ 
+
+1 1 
+
+CM 
+
+1 1 
+
+1 1 
+
+1 
+
+osl 
+
+tol 
+
+1 1 
+
+1 1 
+
+7 ' 
+
+1 1 
+
+1 1 
+
+Lo 
+
+0 A 
+
+1 
+
+1 1 
+
+"oil 
+
+loj’j 
+
+i 
+
+
+
+29 September 2016 
+
+
+“9 1999-2016 by Richard Alan Peters II 
+
+
+107 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Rotation and Projection of the Color Cube 
+
+
+The origin of this rectangular 
+coordinate system is at the 
+gray point in the center of the 
+hexagon. The y-axis is 
+vertical through the green 
+point; the x-axis is to the right 
+through orange. 
+
+
+255 
+
+
+0 ' 
+2x/6 
+
+
+
+255 
+
+
+255 
+
+
+3^2 
+
+yfE 
+
+
+3a/2 
+
+-76 
+
+
+Chromaticity-plane hexagon with red, yellow, green, cyan, blue, and magenta vertices. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+108 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Rotation and Projection of the Color Cube 
+
+
+The green axis of the hexagon 
+remains aligned with the green 
+axis of the original color cube, ... 
+
+
+The origin of this rectangular 
+coordinate system is at the 
+gray point in the center of the 
+hexagon. The y-axis is 
+vertical through the green 
+point; the x-axis is to the right 
+through orange. 
+
+
+... but the red and blue 
+axes project 60° on 
+either side of green. 
+
+
+255 
+
+
+0 ' 
+2x/6 
+
+
+
+255 
+
+
+255 
+
+
+3^2 
+
+yfE 
+
+
+3a/2 
+
+-76 
+
+
+Chromaticity-plane hexagon with red, yellow, green, cyan, blue, and magenta vertices. 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+109 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Geometric Hexagonal Projection 
+
+
+Use color p 0 = [128 50 206] T as an example. Rotating p 0 with 
+the matrix on slide yields 
+
+
+" 3 V 2 0 - 3 V 2 " 
+
+“128“ 
+
+
+“-55.1543“ 
+
+S 2 V 6 S 
+
+50 
+
+= 
+
+-95.5301 
+
+2 V 3 2 V 3 2 J 3 
+
+206 
+
+
+_221.7025_ 
+
+
+The red axis is -30° from the hexagon’s x-axis and p 0 ’s blue 
+component is larger than its green. Therefore, 
+
+h 0 =360 + atan2d(-95.5301,-55.1543) + 30 =270°. 
+
+v 0 « 221.7025^3/3 = 128. s max = ~ 208.2066 
+
+* 110.3807 5 = -WL~ 0.5298 
+
+"max 
+
+So we get (h,s,v) = (270°, 0.5298, 128) which is exactly what we 
+got from the geometric algorithms (slides & ). 
+
+
+s = 
+
+
+-55.1543 
+
+-95.5301 
+
+
+
+color projection onto the hexagon 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+110 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Fast Algorithm for RGB to HSV 
+
+The fast algorithm on slide uses the hex 
+projection without rotating the color. First the 
+RGB values are normalized by dividing them by 
+the maximum intensity. The test color then scales to 
+
+
+128 
+
+
+0.5020 
+
+50 
+
+
+0.1961 
+
+206 
+
+
+0.8078 
+
+
+The value of the color is taken to be simply the 
+maximum of the normalized rgb values. Therefore 
+v 0 = 0.8078, whereas the geometric algorithm, if 
+normalized would have yielded v 0 = 0.5. 
+
+
+
+color projection onto the hexagon 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+111 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Fast Algorithm for RGB to HSV 
+
+To project the color onto the hexagon the fast 
+algorithm subtracts the minimum of the rgb 
+intensities from all three. The reasoning is: 
+
+Let p 0 ' = p 0 ± mx for v, the unit vector in the 
+direction of the gray line and m a real number. 
+The value of m shifts p 0 up or down in the 
+direction of the gray line. The result projects 
+to the same point, p 0 pr °j, in the hexagon 
+independent of the value of m. 
+
+If m is min(r,g,b), then the color is shifted to 
+one of the faces of the original color cube. 
+
+
+
+color projection onto the hexagon 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+112 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Fast Algorithm for RGB to HSV 
+
+
+For our test color, m = min { r, g, b\ 
+
+= min {0.5020, 0.1961, 0.8078} 
+= 0.1961. 
+
+
+Subtract m from p 0 to get 
+p; =p 0 -mv 
+
+
+"0.5020" 
+
+
+T 
+
+
+"0.3059“ 
+
+0.1961 
+
+-0.1961 
+
+1 
+
+— 
+
+0 
+
+_0.8078_ 
+
+
+1 
+
+
+0.6118 
+
+
+which is in the BR - plane of the color cube, since 
+G = 0. (See slide 100 .) Note that p 0 ' projects to the 
+same point on the hexagon as does p 0 . 
+
+
+O 
+
+
+t 
+
+
+
+color projection onto the hexagon 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+113 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Fast Algorithm for RGB to HSV 
+
+Define the chroma as C = M - m. This definition is 
+justified by noting that 
+
+1 . Chroma C = 0 for any color on the gray line 
+
+2. any color with two zero components is a primary, 
+
+3. for any color with one zero component the 
+formula makes C equal the maximum of the two 
+nonzero values. 
+
+Hue is defined with respect to chroma as 
+
+0, if C = 0, 
+
+mod 6, if M=R , 
+
+H' = \ 
+
+^ + 2, if M=G, 
+
+^ + 4, if M=B. 
+
+H = 60° x H f 
+
+
+o 
+
+
+78 
+
+
+
+color projection onto the hexagon 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+114 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Fast Algorithm for RGB to HSV 
+
+128' 
+
+50 
+206 
+206 
+
+
+So, for P 0 = 
+
+
+We get M = 
+
+
+1 
+
+255 
+
+B 
+
+
+& v n = * 0.8078, 
+
+0 255 
+
+
+0.8078 
+
+
+m = 
+
+
+C = 
+
+
+255 255 
+
+— = — *0.1961, 
+
+255 255 
+
+M-m 206-50 156 
+
+
+255 
+
+
+255 
+
+
+255 
+
+
+0.6118, 
+
+
+R-G A 128-50 1 9 
+
+H’ = + 4 = + 4 = - + 4 = - 
+
+C 156 2 2 
+
+
+H = 60° x H' = 60° x - = 270°. 
+
+2 
+
+
+
+which is exactly the hue from the geometric algorithms. color projection onto the hexagon 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+115 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Fast Algorithm for RGB to HSV 
+
+
+Value is defined as either 
+
+V = }(tf + G + 5) or V = max(/?, G, B). 
+
+Saturation is defined with respect to chroma and 
+value as 
+
+
+r 
+
+
+r 
+
+
+s = 
+
+
+0 , 
+
+
+if V = 0 
+
+
+or S = 
+
+
+m 
+
+
+1 , if V*0 
+
+V 
+
+
+0, if V = 0 
+
+— , if V*0 
+V 
+
+
+O 
+
+
+78 
+
+
+
+color projection onto the hexagon 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+116 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Fast Algorithm for RGB to HSV 
+
+
+Therefore with the color p 0 we have 
+
+
+V = !(fl + G + £) 
+
+= ^(l28 + 50 + 206) = ff *0.5020, or 
+
+V = ma x(R,G,B) 
+
+= %£* 0.8078. 
+
+
+Saturation is defined with respect to 
+chroma and value as 
+
+
+5 = 
+
+5 = 
+
+
+1 m 50/255 
+
+" V " 384/765 
+
+C 156/255 156 
+
+V ~~ 206/255 " 206 
+
+
+« 0.6094, or 
+« 0.7573. 
+
+
+120 ° 60 ° 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+117 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Hue and Saturation via Projection onto the Hexagon 
+
+
+For color p 0 = [128 50 206] T we have 
+three different HSV triples, 
+
+by vector math, 
+
+v 0 = 0.5000, Sq = 0.5298, and h 0 = 270°. 
+by the first hexagon projection, 
+
+180 ° 
+
+v 0 = 0.5020, Sq = 0.6094, and h 0 = 270°. 
+
+and by the second hexagon projection, 
+
+v 0 = 0.8078, Sq = 0.7573, and h 0 = 270°. 
+
+
+128 
+
+50 
+
+206 
+
+
+120 ° 60 ° 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+118 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Fast Algorithm 
+
+
+Example RGB Image and HSV Bands 
+
+
+Original image 
+Karen Gillis 
+Taylor, “A Fruit 
+Color Study.” 
+
+
+Value Image 
+
+
+
+Hue image 
+displayed with 
+a primary color 
+color-map 
+
+
+Saturation 
+image scaled 
+to (0 255) 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+119 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Algorithms 1 & 2 
+
+
+Example RGB Image and HSV Bands 
+
+
+Original image 
+Karen Gillis 
+Taylor, “A Fruit 
+Color Study.” 
+
+
+Value Image 
+
+
+
+Hue image 
+displayed with 
+a primary color 
+color-map 
+
+
+Saturation 
+image scaled 
+to (0 255) 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+120 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Maxwell’s Triangle 
+
+
+Green 
+
+
+Probably the first attempts to produce 
+color curves describing the trichromatic 
+theory of color were those by Maxwell 
+(1857, I860).... [The] first chromaticity 
+diagram was a circle devised by Newton. 
+Later, Maxwell used an equilateral 
+triangle.... In his trichromatic theory, 
+each of the three primary colors— red, 
+green, and blue — is located at a corner 
+of the triangle. The white color is in the 
+middle. Other colors are formed by a 
+combination of the r, g, b components 
+depending on the distances from each of 
+the three sides of the triangle. This 
+triangular representation has been used 
+often with several modifications. 
+
+
+D. Malacara-Hernandez, Color Vision and Colorimetry: 
+Theory and Applications, SPIE Press, (2002). 
+
+
+
+Blue 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+121 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Brightness + Chrominance Representation 
+
+
+There are many different ways to 
+encode color in terms of 1 D brightness 
+and 2D chrominance. Chrominance 
+is often represented in terms of hue 
+and saturation. A given brightness 
+measure ( e.g . value or NTSC 
+luminance) defines a planar surface in 
+the color cube on which the brightness 
+is constant. One point on that surface 
+is gray. The saturation of any color 
+with the given brightness is defined as 
+the distance on the plane from the 
+color to the gray point. The hue is 
+defined as the angular deviation from 
+red measured in the same plane. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+122 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Brightness + Chrominance Representation 
+
+
+The HSV encoding scheme presented in 
+the first part of this lecture is a direct 
+implementation of the vector math. Although 
+it is nonstandard, it demonstrates the ideas 
+that underlie most of these representations. 
+
+For a good explanation of more standard 
+HSV and LHS representations please see: 
+
+HSL and HSV - Wikipedia, the free encyclopedia . 
+
+
+An explanation of the hexagonal 
+representation of HSV is given 
+later in this lecture. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+123 
+
+
+V 
+
+
+C.I.E. 1931 Color Space 
+
+Commission Internationale de 
+I'Eclairage Uniform Color Scale 
+
+"The CIE system characterizes colors 
+by a luminance parameter Y and 
+two color coordinates x and y which 
+specify the point on the chroma- 
+ticity diagram. This system['s] ... 
+parameters are based on the 
+spectral power distribution ... of the 
+light emitted from a colored object 
+and are factored by sensitivity 
+curves which have been measured 
+for the human eye ." 1 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+This is not a simple slice 
+through the color cube. 
+
+It is a continuous mapping 
+from the 3D cube onto a 
+2D plane that warps the 
+color distribution. 
+
+
+
+1 http : / /hyperphysics . phy-astr . gsu . edu/hbase/vision/ cie . html 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+124 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+C.I.E. 1931 
+
+
+C.I.E. 1931 Chromaticity Diagram 
+
+
+This 1931 chromaticity diagram shows a 
+single xy plane in the xyY color space. 
+
+
+~x“ 
+
+Y 
+
+1 
+
+I 
+
+z 
+
+_ 0.17697 
+
+
+0.49 0.31 0.20 
+
+0.17697 0.81240 0.01063 
+0.00 0.01 0.99 
+
+
+R 
+
+G 
+
+B 
+
+
+X 
+
+
+x ■ 
+
+
+X+Y + Z 
+
+
+y- 
+
+
+x + r+z 
+
+
+X + Y + Z 
+
+
+"The CIE 1931 color space chromaticity 
+diagram rendered in terms of the colors of 
+lower saturation and value than those 
+displayed in the diagram above that can be 
+produced by pigments, such as those used 
+in printing. The color names are from the 
+Munsell color system." 2 ' 3 
+
+
+
+2 https : //en . wikipedia . org/wiki/CIE 1931 color space 
+
+3 https : //en . wikipedia . org/wiki/Munsell color system 
+
+
+29 September 2016 
+
+
+£5 ) 1999-2016 by Richard Alan Peters II 
+
+
+127 
+
+
+125 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+C.I.E. 1976 U.C.S. 
+
+
+This diagram, produced by the 
+C.I.E. in 1976 specifies the range of 
+colors perceptible at a single 
+luminance, L', by an average 
+person. On the periphery the 
+colors are monochromatic colors 
+labeled with the corresponding 
+wave-lengths of light. The white 
+point is intersected by a curve that 
+displays the corresponding black 
+body temperature. (iT, v') are the 
+CIE chromaticity coordinates. The 
+distance between points is related 
+to the perceptual difference in 
+color. 
+
+
+
+http: / /hyperphysics .phy-astr.gsu.edu/hbase/vision/ cie!976 . html 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+126 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+C.I.E. 1976 U.C.S. 
+
+
+Color regions on a slightly 
+desaturated CIE 1976 L'uV 
+color space similar to those on 
+the CIE 1931 xyY digram on 
+slide 125 . 
+
+Point c 0 on the line between 
+colors q and c t is the color that 
+would be obtained by mixing 
+the two endpoint colors in 
+proportion to the distances 
+from the endpoints. E.g. 
+
+c 0 = ac x +(l-a)c 2 
+
+where 0 <a< 1. 
+
+
+
+Yellowish 
+
+Green 
+
+
+Yellow 
+
+.Green 
+
+
+Reddish 
+
+grange 
+
+
+Bluish Green 
+
+
+Purplish 
+
+Pink 
+
+
+20000 - 
+
+
+White 
+
+
+Greenish 
+
+Blue 
+
+
+Reddish 
+
+Purple 
+
+
+Purple 
+
+
+Orange 
+
+
+. ... I .. i i I .. i i I i i i i I 
+
+Orange 
+Yellow 
+
+
+Green 
+
+
+• 640 650 
+
+
+~ 680 
+
+700-780nm 
+
+
+Purplish 
+
+Red 
+
+
+(L',u',v') I 
+color space — 
+regions 
+
+
+http: / /hyperphysics .phy-astr.gsu.edu/hbase/vision/ cie!976 . html 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+127 
+
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Gamuts 
+
+
+A color gamut is the range of colors that can be represented by a 
+given display. The pure R, G, and B values are plotted on a CIE 
+chromaticity diagram. The colors inside the triangle are the ones 
+that can be displayed by the device. 
+
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+128 
+
+
+
+
+
+
+Since the display 
+you are looking 
+at is probably 
+sRGB ... © 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Color Gamuts 
+
+
+
+...inside this 
+triangle ... ® 
+
+
+0.8 
+
+
+: : Z 
+
+
+0.1 - 
+
+
+...the colors 
+you see in the 
+CIE diagram 
+are actually ... 
+
+
+... even though you 
+could see them on a 
+better display (like 
+reality!) © 
+
+
+...and all the colors © 
+outside the triangle 
+cannot be displayed ... 
+
+
+29 September 2016 
+
+
+0) 1999-2016 by Richard Alan Peters II 
+
+
+129 
+
+
+
+

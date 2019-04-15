@@ -1,0 +1,1676 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes: Reduction of Correlated Noise 
+
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution-Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Pratt & Whitney Rocketdyne J-2 rocket engines 
+on Apollo 18’s Saturn V second stage. 
+
+
+
+
+Periodic Noise 
+
+
+
+original image image + noise 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+
+V 
+
+
+Pratt & Whitney Rocketdyne J-2 rocket engines I 
+on Apollo 1 8 ’s Saturn V second stage. 1 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Noise Reduction through Directional Blurring 
+
+
+
+image + noise blurred image 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Power Spectrum of Image with Periodic Noise 
+
+
+original image 
+
+
+image + noise 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Low Frequency Region 
+
+
+
+original image 
+
+
+image + noise 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Noise Reduction through Notch Filtering 
+
+
+
+noise mask 
+
+
+masked power spectrum 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+
+
+
+Pratt & Whitney Rocketdyne J-2 rocket engines 
+
+EECE 4353 Image Processing 
+
+V 
+
+
+on Apollo 18’s Saturn V second stage. 
+
+Vanderbilt University School of Engineering 
+
+
+Inverse of Masked Fourier Transform 
+
+
+
+
+original image 
+
+
+noise reduced image 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Notch filter reduction of periodic noise 
+
+1. Take the FFT of the input image. F = f f t2 (I) . 
+
+2. Display the log power spectrum of the fftshift-edF. 
+
+3. Find the locations, x^, of the spikes that correspond to the periodic distortion. 
+
+4. Create a 1-band image, M, of class double the same size as I. 
+
+5. Set all M’s pixels to 1.0. 
+
+6. Let 0t(x-) be a neighborhood of x- with area sufficient to cover the spike at x-. 
+
+7. For each x- do: for each g 0t(x-), set M(y^) = 0. 
+
+8. Blur M with a Gaussian whose a is smaller than Vi the radius of 0t(x-). 
+
+9. Take the if ft shift of M. 
+
+10. For each band, k, of the image let = F^ .*M. 
+
+1 1 . Then the noise-reduced image is: J=real(ifft2 (G) ). 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+How to determine the frequency and period of a 
+point in the log power spectrum of an image (ex.): 
+
+
+
+original image quadrant partition of PS loc of (0,0) in fftshift(PS) 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+
+
+
+480 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+How to determine the frequency and period of a 
+point in the log power spectrum of an image (ex.): 
+
+
+
+original image quadrant partition of PS loc of (0,0) in fftshift(PS) 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+How to determine the frequency and period of 
+a point in the log power spectrum of an image: 
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+How to determine the frequency and period of 
+a point in the log power spectrum of an image: 
+
+
+-u 
+
+
+
+u 
+
+
+v = r,-lRI2\-l 
+
+-V = ^R 1 2\ + \- 
+
+u = c^-[CI2\-l 
+-w = [C/2j + l-q 
+
+
+= 
+
+
+'wf 
+
+
+®wf = 
+
+
+
+
+1 
+
+
+A 
+
+
+wf 
+
+
+6*.,. = tan 
+
+
+-1 
+
+
+wf 
+
+
+\ur) 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Points on the Fourier Plane (of a Digital Image) 
+
+
+In the Fourier transform of an R^C digital 
+image the wavelengths, and represent a 
+
+fraction of the R and C values. That is, 
+
+=— and A=— pixels. 
+
+U u V ^ 
+
+
+V V 
+
+
+The wavefront direction is given by 
+
+and the wavelength is 
+
+
+^wf 
+
+
+
+
+The frequencies represent fractions of R & C, 
+
+
+
+
+0 ) 
+
+
+wf 
+
+
+C 
+
+= 1 
+
+
+1(7) -(7) 
+
+
+-V direction 
+
+
+
+s 
+
+9. 
+
+CD 
+
+O 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+EECE/CS 253 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+How to determine the frequency 
+plane location of a sinusoid: 
+
+
+COS 
+
+
+
+
+Orientation, 
+
+9, is measured 
+‘CW from c. 
+
+
+cosine grating X = 32\/2, 0 = -ttM ^ = 64 = 512/v, X^ = 64 = 512/v 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+How to determine the frequency 
+plane location of a sinusoid: 
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Sinusoidal grating image with 
+an even number or rows and 
+an odd number of columns. 
+
+
+
+512x767 sine grating 
+X = 20, orient. = Stt/O 
+X = 20/cos(5'tc/6) w -23 
+X = 20/sin(5'TC/6) = 40 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+FT of Sinusoidal 
+Grating Image 
+
+
+
+752x937 sine grating 
+X = 20, orient. = 57r/6 
+= ±5 12/X^ ±22 , 
+
+uj,= ±767/X,^±19 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+
+Vanderbilt University School of Engineering 
+
+
+Processing Scanned Press-Printed Images 
+
+4-color printing: 
+
+
+1 . A photograph or other color image is separated into four 
+intensity band images: cyan, magenta, yellow, and black. 
+
+2. Each of these is multiplied by a halftone screen^ - a dot mask 
+with a unique orientation. 
+
+3. Each of the resulting four images shows a pattern of dots 
+whose individual sizes indicate the amount of ink to be 
+applied at each point. 
+
+4. The four images are printed, one atop the other, in the 
+corresponding color. 
+
+
+^Merriam- Webster Dictionary: half- tone 2 (1): a photoengraving made from an image photographed 
+through a screen and then etched so that the details of the image are reproduced in dots. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+frequency space 
+
+
+m 
+
+Halftone Screen (45°) 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+Is the pointwise product of 
+
+2 sinusoidal gratings with 
+perpendicular orientations. 
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+
+
+frequency space 
+
+
+m 
+
+Halftone Screens (90°) 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+The orientation of the 
+
+screen is the average of 
+the grating orientations. 
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Standard Halftone Screen Angles 
+
+
+
+Cyan: 
+
+IQS'-' 
+
+Yellow: 
+
+90® 
+
+Magenta: 
+
+75® 
+
+Black: 
+
+45° 
+
+
+Image from Adobe Photoshop CS2 documentation. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Each band has Z perpendicular 
+sinusoids + a UC component... 
+
+
+CMYK Standard Halftone Screens 
+
+
+cyan 
+
+■ 
+
+« 
+
+■ 
+
+• 
+
+■ 
+
+105° 
+
+
+magenta 
+
+75° 
+
+
+D 
+
+
+yellow ' 
+
+1 
+
+black 
+
+O 
+
+O 
+
+
+
+1 
+
+45“ 
+
+
+Power Spectra 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+
+
+
+
+
+
+... which creates rectangular 
+grids at 4 different angles. 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+CMYK Standard Halftone Screens 
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+
+When the 4 are summed, the 
+result is a "rosette" image. 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+CMYK Standard Halftone Screens 
+
+
+
+
+space domain images 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+To print an image, it is 
+separated into 4 color bands ... 
+
+
+Example: Color Separation / Halftoning 
+
+
+
+That is, an intensity image 
+is created for each of the 
+four color bands. 
+
+
+
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+
+
+... each of which is multiplied by 
+a corresponding screen. 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Color Separation / Halftoning 
+
+
+Each intensity image is multiplied 
+by a corresponding screen, then 
+
+
+
+each screened image is printed in 
+its own color on the same page. 
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+To print an image, it is 
+separated into 4 color bands ... 
+
+
+Example: Color Separation / Halftoning 
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+
+... each of which is multiplied by 
+a corresponding screen ... 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Example: Color Separation / Halftoning 
+
+
+
+Here the screens tinted in 
+their corresponding colors. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+
+
+...to get dot patterns for printing. EECE 4353 Image Processing 
+
+The 4 are printed over each other Vanderbilt University School of Engineering 
+
+to get the final result. 
+
+
+Example: Color Separation / Halftoning 
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Halftone Dots 
+
+
+
+Image scanned (600 dpi) 
+from a magazine 
+
+
+
+Detail: Circular patterns, the rosettes, 
+are the result of the halftone dots. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Filtering Out Halftone Dot Distortion 
+
+
+
+original 
+
+
+
+
+log power spectrum 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Filtering Out Halftone Dot El .^o^esjonds tof 
+
+
+
+sinusoidal sub-pattern 
+in the HTD pattern. 
+
+
+
+original 
+
+
+log power spectrum 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Blurring with a Gaussian (a = 1) 
+
+
+
+
+log power spectrum a=1 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Blurring with a Gaussian (a = 2) 
+
+
+
+blurred image a=2 
+
+
+-m 
+
+
+log power spectrum a=2 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Blurring with a Gaussian (a = 4) 
+
+
+
+blurred image a=4 
+
+
+
+
+log power spectrum a=4 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Blurring with a Gaussian (a = 8) 
+
+
+
+blurred image a=8 
+
+
+
+log power spectrum a=8 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Blurring with a Gaussian (a = 1) 
+
+
+
+original difference blurred o = 1 
+
+middle gray = 0, normalized 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Blurring with a Gaussian (a = 2) 
+
+
+
+blurred o = 2 difference original 
+
+middle gray = 0, normalized 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Blurring with a Gaussian (a = 4) 
+
+
+
+original difference blurred o = 4 
+
+middle gray = 0, normalized 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+39 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Blurring with a Gaussian (a = 8) 
+
+
+
+blurred o = 8 difference original 
+
+middle gray = 0, normalized 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+40 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Problem with Blurring to Reduce HTD Distortion 
+
+^ It blurs everything. 
+
+Better to remove the HTD frequency components selectively: 
+
+1 . Read in the image. 
+
+2. Compute the log power spectrum of the image. 
+
+3. Find the locations of the HTD spectrum peaks. 
+
+4. Mark these on a mask. 
+
+5. Enlarge the points to regions that cover most of the energy. 
+
+6. Blur the mask for used as a notch filter. 
+
+7. Multiply the Fourier transform of the image hy the mask. 
+
+8. Take the inverse Fourier transform of the result. 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+41 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Remove HTD Distortion Selectively 
+
+
+... through notch 
+filtering. 
+
+
+1 . 
+
+
+2 . 
+
+
+3. 
+
+
+
+HTDIocs= 499 297 
+545 320 
+571 358 
+569 400 
+542 438 
+493 458 
+439 457 
+393 434 
+367 396 
+369 354 
+396 316 
+445 296 
+
+
+4. 
+
+
+
+
+
+1 . Read in image; 2. Compute power spectrum; 3. Locate HTD frequency components; 4. Mark Iocs on a mask; 
+5. Enlarge points to regions; 6. Blur the mask; 7. Multiply FT of image by mask; 8. Take inverse FT of result; 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+42 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Notch Filtering of Halftone Dot Distortion 
+
+
+
+original 
+
+
+
+
+log power spectrum 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+43 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Notch Filtering 
+
+
+frequency masked 1 
+
+
+Since not much distortion was 
+removed, these must be subharmonics 
+of the true dot frequencies 
+
+
+
+log power spectrum 
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+44 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Notch Filtering 
+
+
+The outer ring are the actual HTb 
+frequencies. Can we do any better? 
+
+
+
+frequency masked 2 log power spectrum 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+45 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Notch Filtering 
+
+
+Not much. The harmonics contribute 
+little energy to the image. 
+
+
+
+frequency masked 3 log power spectrum 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+46 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Notch Filter Difference Images 
+
+
+original 
+
+
+
+difference 
+
+middle gray = 0, normalized 
+
+
+frequency masked 1 
+
+
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+47 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Notch Filter Difference Images 
+
+
+
+frequency masked 2 difference original 
+
+middle gray = 0, normalized 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+48 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Notch Filter Difference Images 
+
+
+
+
+
+middle gray = 0, normalized 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+49 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Notch Filter Difference Images 
+
+
+
+frequency masked 1 difference frequency masked 2 
+
+middle gray = 0, normalized 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+50 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Notch Filter Difference Images 
+
+
+
+frequency masked 2 difference frequency masked 3 
+
+middle gray = 0, normalized 
+
+
+11 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+51 
+
+

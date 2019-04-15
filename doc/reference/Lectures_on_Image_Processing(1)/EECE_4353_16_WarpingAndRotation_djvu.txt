@@ -1,0 +1,2976 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes: Warping and Rotating Images 
+
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+kniSHlij 
+
+
+This work is licensed under the Creative Commons Attribution-Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Geometric Remapping 
+
+
+
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+2 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Geometric Remapping 
+
+1 . Assume the input image, I, has infinite spatial resolution. 
+
+2. Calculate the size, of the output image, J, and 
+
+allocate it. 
+
+3. Create an image map (a warping function, O) as follows: 
+
+a) Allocate an array, O. 
+
+b) For every pixel location (r,c) in J find the corresponding 
+real-valued pixel location in I. 
+
+c) Set 0(r,c, 1) = and set 0(r,c,2) = . 
+
+4. Create an interpolation function, 0, that generates a pixel 
+value from the values of I on a neighborhood, 9l(ry^,cy). 
+
+5. Then set J(r,c) = 0{I; 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+3 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Linear Warping of Images 
+
+
+
+Original image with perspective distortion. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+4 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Linear Warping of Images 
+
+
+
+Image warped to correct perspective distortion. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+5 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Linear Warping of Images 
+
+
+
+(52, 632) 
+
+
+Select at least 4 key (412, 34) 
+points that are easy 
+to correct. 
+
+
+(80, 326) 
+
+
+E.g. in this case, 
+the lines should be 
+perfectly vertical. 
+
+
+(872, 239) 
+
+
+Selected correction points. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+6 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Linear Warping of Images 
+
+
+
+(52, 632) 
+
+
+Here, align the top (403, 34) 
+points with the 
+bottom points. 
+
+
+(52, 326) 
+
+
+I.e. the top column 
+coordinates == the 
+bottom col. Cdts. 
+
+
+(913, 239) 
+
+
+Target correction points. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+7 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Linear Warping of Images 
+
+
+
+(52, 632) 
+
+
+Now the building 
+corners are vertical. 
+
+
+(913, 239) 
+
+
+(52, 326) 
+
+
+The top part of the 
+image has been 
+stretched more than 
+the bottom 
+
+
+(403, 34) 
+
+
+Result of linear LMS point remapping. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+8 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Linear Warping of Images 
+
+
+
+The top part of the 
+image has been 
+stretched more than 
+the bottom 
+
+
+Now the building 
+corners are vertical. 
+
+
+Image warped to correct perspective distortion. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+9 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+I'lot 
+
+
+Linear Warping of Images - HowyiTo Do It 
+
+
+Given a set, X, of points from image I and 
+a set, Y, of target points find H such that: 
+
+
+Y = HX where 
+
+
+X = 
+
+
+Xi X2 
+
+
+Y = 
+
+
+P \ 
+
+
+yi Yi ■■■ y 
+
+
+P \ 
+
+
+yi yi 
+
+
+Vi V2 
+
+
+X 
+
+
+p 
+
+
+y 
+
+
+p\ 
+
+
+u 
+
+
+V 
+
+
+p J 
+
+
+and H 
+
+
+^1 ^2 
+^21 ^22 
+
+
+H 
+
+
+o’ 
+
+1 
+
+
+
+0 
+
+
+
+
+then j(rj,Cj) = I 
+
+
+r 
+
+
+\ 
+
+
+H 
+
+
+L^J 
+
+
+
+
+J 
+
+
+is the warped 
+innage. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+10 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+I'lot 
+
+
+Linear Warping of Images - HowyiTo Do It 
+
+
+Given a set, X, of points from 
+image I and a set, Y, of target 
+points find H such that: 
+
+Y = HK 
+
+The H that minimizes the 
+square of the difference 
+between Y and HX is: 
+
+H = YX'^(XX^)''. 
+
+
+Then for each pixei in the 
+output image, seiect the 
+corresponding input pixei: 
+
+
+where 
+
+
+h 
+
+
+
+0 . 5 " 
+
+
+r 
+
+
+
+— 
+
+
+
++ H ‘ 
+
+
+
+yh_ 
+
+
+
+0.5 
+
+
+c 
+
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+11 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+I'lo't 
+
+Linear Warping of Images - HowyiTo Do It 
+
+Example: 
+
+
+52 80 403 412 913 872 
+632 326 652 34 624 239 
+
+
+
+1.0285 -0.0228 
+0 1 
+
+
+52 52 403 403 913 913 
+632 326 652 34 624 239 
+
+
+
+0.9723 0.0221 
+0 1 
+
+
+HX = 
+
+
+39 75 400 423 925 891 
+632 326 652 34 624 239 
+
+
+65 58 406 393 902 893 
+632 326 652 34 624 239 
+
+
+Next 2 images: 
+p. 13 original; 
+p. 14 result of warping 
+the image with the H 
+above. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+12 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+I'lo't 
+
+Linear Warping of Images - HowyiTo Do It 
+
+
+
+
+J 
+
+
+Original image with distorted (red) and undistorted (blue) lines. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+13 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+I'lo't 
+
+Linear Warping of Images - HowyiTo Do It 
+
+
+
+This is pretty bad! 
+
+Why? 
+
+Because the stretch that 
+we want to perform is not 
+linear in 2D. 
+
+
+Warped image with distorted (red) and undistorted (blue) lines. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+14 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+I'fo't 
+
+Linear Warping of Images - Howy{To Do It 
+
+Multiplication of a vector by an arbitrary matrix rotates the vector, 
+stretches the result along its coordinates and rotates the result of that. 
+
+H = USV^, 
+
+
+where U and V are rotations and S is diagonal. For the example: 
+
+
+
+0.9419 - 0.3359 
+0.3359 0.9419 
+
+
+CW rotation 19.6293° 
+
+
+Recall: 
+
+
+H = 
+
+
+1.0285 -0.0228 
+0 1 
+
+
+u = 
+
+5 = 
+
+
+0.9456 
+
+- 0.3253 
+
+
+0.3253 
+
+0.9456 
+
+
+CCW rotation -18.9863° 
+
+
+
+
+
+Next 3 images: 
+
+1.0326 
+
+0 
+
+Stretch rotated columns by 3./ 
+
+p. 16 rotated by V"'"; 
+p. 17 rot. V'*', scaled by S; 
+
+0 
+
+0.9961 
+
+compress rotated rows by 99. ( 
+
+p. 18 rot. V'*', scaled S, rot. U; 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+15 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+lVo“t 
+
+Linear Warping of Images - HowyiTo Do It 
+
+
+Original image rotated by 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+16 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+lVo“t 
+
+Linear Warping of Images - HowyiTo Do It 
+
+
+Original image rotated by and stretched by S. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+17 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+lVo“t 
+
+Linear Warping of Images - HowyiTo Do It 
+
+
+
+Original image rotated by V^, stretched by S, and rotated by U. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+18 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+1'lo‘t 
+
+Linear Warping of Images - HowyiTo Do It 
+
+points from image I and 
+
+
+Given a set, X, of 
+a set, Y, of target 
+
+
+X = 
+
+
+Xi X2 
+
+
+Y = 
+
+
+yi Yi ■ 
+
+
+There is a problem, however. 
+This does not work very well. 
+This is Q 2C) linear transform. 
+What we need is a 3C) project- 
+tive transform. A dimension 
+enables us to model more ge- 
+neral projections. Thus we use 
+3D “homogeneous" coordinates. 
+
+
+
+
+where 
+
+
+\\ ^2 
+
+/?2i /?22 j 
+
+
+H 
+
+
+1 
+
+1 
+
+
+1 
+
+ihJ 
+
+
+1 
+
+1 
+
+
+
+
+then J r,,c, =I 
+
+
+H 
+
+
+c, 
+
+
+L'J 
+
+
+is the warped 
+image. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+19 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+A Hierarchy of Transformations 
+
+
+Generality Isometry: 
+
+Similarity: 
+
+Affine: 
+
+Projective: 
+
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+20 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Projective Transformation 
+
+
+2-D: 
+
+x' = H^x 
+
+
+^11 ^12 
+^21 ^22 
+
+
+Vi V2 V 
+
+
+3 J 
+
+
+Invariants: 
+cross ratio of four 
+points on a line (ratio 
+of ratio of lengths) 
+
+
+n-D: 
+
+x' = HpX 
+
+
+A 
+
+t 
+
+
+
+
+
+X, 
+
+
+V 
+
+V 
+
+
+
+
+
+Important: In the 
+slides that follow, 
+
+X = c, the column 
+location of a pixel 
+and y = r, the pixel's 
+row location. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+21 
+
+
+
+
+Transformations 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Projective 
+
+
+Invariants: 
+cross ratio of four 
+points on a line (ratio 
+of ratio of lengths) 
+
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+22 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Homographies 
+
+The projective transformation that represents 
+the mapping between two planes in 3 -space. 
+
+
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+23 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Homographies 
+
+The projective transformation that represents 
+the mapping between two planes in 3 -space. 
+
+Object points 
+w.r.t. the object 
+coordinate system. 
+
+
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+24 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Homographies 
+
+The projective transformation that represents 
+
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+25 
+
+
+m 
+
+Homographies 
+
+
+
+Image points 
+w.r.t. the image 
+coordinate system. 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The projective transformation that represents 
+the mapping between two planes in 3-space. 
+
+
+
+ix 
+
+
+4>y )Ohj 
+
+
+Object points 
+w.r.t. the object 
+coordinate system. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+26 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Homographies in 3-D projective space 
+
+
+
+
+y,- 
+
+Zi 
+
+
+
+Place a 1 in the 4^^ 
+dimension of each 
+input pixel location. 
+
+
+
+H is 
+4x4. 
+
+
+
+The remapped pixel Iocs are 
+also 4-b. Call each 4^*^ element 
+kj and write the other three as 
+proportional to k, 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+27 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Homographies in 3-D projective space 
+
+So, in general the homography looks like an ordinary 4D linear transform: 
+
+
+kiUi 
+
+
+^I ^2 ^3 ^4 
+
+X,. 
+
+
+
+^21 ^22 ^23 ^24 
+
+yi 
+
+kiW, 
+
+
+/I3I /I32 /I33 /^34 
+
+Zi 
+
+. ki . 
+
+
+^41 ^42 ^43 ^44 
+
+1 
+
+
+This would require a minimum of 16 equations to solve for all the parameters. If, 
+however, we consider the geometry and make some reasonable assumptions, 
+the problem becomes far simpler. We can set z,=0 and i/i/,=0 and drop one 
+dimension from the computation 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+28 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Homographies in 3-D projective space 
+
+We are mapping from one plane into another. Therefore we can assume the 
+two coordinate systems have their x- and y-axes in the plane with z = 0. 
+
+
+
+
+(X 
+
+
+4>ydobj 
+
+
+^Obj _ Q _ Q 
+
+
+
+
+So the mapping is from 2-D to 
+2-D between projective planes. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+29 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Linear Warping of Images - Homogeneous Cdts. 
+
+
+
+
+Place a 1 in the 3^^ 
+dimension of each 
+input pixel location. 
+
+
+
+H is 
+3x3. 
+
+
+Important: In the in 
+these equations and 
+those that follow 
+X = Cj„ and u = 
+
+the column locations 
+of a pixel; y = rj^ and 
+V = the the 
+pixels' row location. 
+
+
+
+The remapped pixel Iocs are 
+also 3b. Call each 3^^ element 
+kj and write the other two as 
+proportional to k, 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+30 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Linear Warping of Images - Homogeneous Cdts. 
+
+
+
+Xi X2 ••• 
+
+^2 ••• yp 
+
+1 1 ••• 1 
+
+
+Input pixel locations 
+
+in homogeneous form ^ 
+
+written as a 3^3 ^ xlA. 3^3 
+
+matrix. 
+
+
+Remapped pixel locations In 
+homogeneous form written as 
+a 3 x 3 matrix. Note that 
+usually each k, is different. 
+
+
+
+K 
+
+
+^2^2 
+
+
+
+
+
+
+k.u. 
+
+
+Kl ^2 ^3 
+
+x/ 
+
+
+
+— 
+
+^21 ^22 ^23 
+
+
+
+. . 
+
+
+/Z3I /I32 /I33 
+
+1 
+
+
+
+Here, for vectors x, 
+and y, are the elements 
+of the transform. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+31 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Linear Warping of Images - Derivation 
+
+
++ Kiyi + 
+
++ KiVi + ^3 
+
+k- = /?3jX,. + 7/32 + /Tjj 
+
+
+^^^Xl+ hj2y i+ 1 
+
+_ 7t2i-y,+ ^22yi+ Ki 
+
+/ijlXty /Z32y,-|- 1 
+
+
+For each pixel 
+location there 
+are 3 equations 
+in 3 unknowns. 
+
+Divide the and 2*^^ 
+equations by the 3^^. 
+
+
+Divide both numerator 
+and denominator by 
+/733. Then relabel the 
+coefficients. 
+
+
+_ ^l-^i+^2.y;+^3 
+/Z32yi+ 7*33 
+
+_ 7?2iXty 7^22 y,-l- 7?23 
+
+TljiXty 7/32^,+ 7?33 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+32 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Linear Warping of Images - Derivation 
+
+
+Kyi + 1 ^ 2 ^,+ h. Multiply both sides by 
+
+1 V, = h,, +he right's denominator. 
+
+-h^^x — J\ 2 y~ ^3 + + ^23^, “i + M, = 0 Subtract the right 
+
+-Kx- Ky - ^3 + K^i^i + Kyi^i + v, = o ^Ide from both sides 
+
+
+V — y, —1 0 0 0 XU. V,M, M, 
+
+I I I I I I I 
+
+0 0 0 -X,. -y. -1 X.v,. y,.v,. v,._ 
+
+
+h = 0 
+
+
+Write as a matrix 
+equation where ... 
+
+
+h — [/Zji hy2 /^21 ^22 ^23 ^31 ^32 
+
+
+... the elements of matrix H 
+are written as vector h. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+33 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Linear Warping of Images - Derivation 
+
+
+— Xj 
+
+-Jl 
+
+-1 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+-Xi 
+
+-3’i 
+
+-1 
+
+-X2 
+
+-3^2 
+
+-1 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+-X2 
+
+-3^2 
+
+• 
+
+• 
+
+-1 
+
+-V 
+
+
+-1 
+
+0 
+
+• 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+
+- 3 ^/> 
+
+-1 
+
+
+x^u^ 
+
+JlMl 
+
+Mj 
+
+
+XiVi 
+
+
+b 
+
+Collect p > 4 
+
+
+^2^2 
+
+M 2 
+
+pixel locations, 
+
+X2V2 
+
+y2'l^2 
+
+b 
+
+remap them as 
+desired, and 
+form the 
+
+XpUp 
+
+yp^p 
+
+^P 
+
+matrix A. 
+
+X V 
+p p 
+
+yp^p 
+
+b. 
+
+
+
+Solve for h 
+such that, 
+
+
+
+Ah = 0. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+34 
+
+
+
+If the previous def of A 
+led to H that gave wrong 
+results, try this one: 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Linear Warping of Images - Derivation 
+
+
+
+0 
+
+0 
+
+0 
+
+— Xi 
+
+-Jl • 
+
+-1 
+
+XjVi 
+
+Xi 
+
+
+1 
+
+0 
+
+0 
+
+0 
+
+— XjMj 
+
+0 
+
+0 
+
+0 
+
+-X2 ■ 
+
+-3^2 ■ 
+
+-1 
+
+X 2 V 2 
+
+X2 
+
+>^2 
+
+1 
+
+0 
+
+0 
+
+• 
+
+• 
+
+0 
+
+*^2^2 
+
+0 
+
+0 
+
+0 
+
+— X - 
+
+p 
+
+• 
+
+-yp ■ 
+
+-1 
+
+
+V 
+
+
+1 
+
+0 
+
+0 
+
+0 
+
+-X U 
+
+P P 
+
+
+Solve for h 
+such that, 
+
+
+h h^2 ^3 
+
+Ah = 0. 
+
+
+Ab b 
+
+
+-JlMj -U^ 
+
+This matrix 
+
+y^Vi V 2 
+
+follows from 
+
+^ 2^2 ^2 
+
+the fact that 
+
+
+If y = Hx, then 
+
+V V V 
+
+^ P P P 
+
+yxHx = 0. 
+
+1 
+
+
+^21 ^22 ^23 ^31 ^32 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+35 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Linear Warping of Images - Derivation 
+
+
+svd A 
+
+
+= USV^ 
+
+
+To find h compute the singular 
+value decomposition (svd) of A. 
+
+
+5 Is a diagonal matrix 
+of singular values. 
+
+
+
+
+0 ••• 0 
+
+(72 ••• 0 
+
+
+
+Vi V2 
+
+
+
+Write matrix V In 
+terms of Its columns. 
+
+
+
+
+Find Ok, the . | 
+
+smallest sv. ^ | ’ ^ 2 ’ • • • ’ 
+
+
+h = v, 
+
+
+Then vector h Is given by 
+the column vector, v^. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+36 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Linear Warping of Images - Derivation 
+
+
+If Vk is the column vector 
+of V that corresponds to 
+the smallest singular 
+value, then H Is given by 
+
+Now (ri,Ci) maps to (rj,Cj) 
+through H so that. 
+
+But we want to scan the 
+output image, J, and at 
+each location (rj,Cj) take 
+a value from I at location 
+so we do this: 
+
+
+hi 
+
+^2k 
+
+^3k 
+
+V4k 
+
+V5k 
+
+^6k 
+
+
+^8k 
+
+^9k. 
+
+
+
+
+
+
+H ' 
+
+‘'j 
+
+
+\ 
+
+J ^ ^ J ^ 
+
+N- 
+
+6 
+
+
+
+
+
+
+1 
+
+
+/ 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+37 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Linear Warping of Images - Remapping 
+
+
+The Inverse mapping 
+of (rj.Cj.l) through 
+is (kri,kcj,k)... 
+
+
+
+1 
+
+1 
+
+
+1 
+
+HH 
+
+c 
+
+1 
+
+H ‘ 
+
+rj 
+
+— 
+
+h 
+
+[r,c) 1 
+
+
+1 
+
+
+1 
+
+1 
+
+
+
+
+
+...and that must be 
+normalized as follows: 
+
+
+Thus for each pixel 
+location (rj,Cj) In the 
+warped Image, 
+
+
+
+
+
+h ^Cj 
+
+(r,c) I 
+
+
+■< 
+
+h .Vj 
+
+[r,c) I 
+
+> 
+
+
+h X 
+
+
+V 
+
+L J 
+
+> 
+
+
+_ 1 
+
+
+
+
+h .Cj 
+
+[r,c) I 
+
+h xty 
+
+(r,c) I 
+
+
+f 
+
+
+
+
+
+
+\ 
+
+
+H 
+
+
+-1 
+
+
+j 
+
+
+'j 
+
+1 
+
+
+
+
+J 
+
+
+17 November 2016 © 1999-2015 by Richard Alan Peters II 
+
+
+38 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+
+Vanderbilt University School of Engineering 
+
+
+Linear Warping of Images - Steps 
+
+1 . Select at least four pixel locations from I, the image to be warped. 
+
+2. Create target locations by aitering the values of the selected Iocs. 
+
+3. Construct from the location pairs, matrix A as described on slide 34. 
+
+4. Compute the singular value decomposition of A = USV^. 
+
+5. Select the vector vj. that corresponds to the smallest singular value. 
+
+6. Construct H from Vj^ . homogrophic tronsformation uses pixel 
+
+
+coordinates in (column, row) order whereas 
+the images are indexed (row, column). 
+
+
+7. Compute H-'. 
+
+
+8. Create an output image J. — — — — 
+
+9. For each (cj , rj ) in J, select (c, , ) from I using the eqns. on slide 38. 
+
+1 0. Since (c, , rj ) is fractional, interpolate on the neighborhood of (q , r, ) 
+in I to compute J(rj , cj ). 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+39 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Pixel Locations and Planar Coordinates 
+
+Matlab function, ginput ( ) can be used to obtain coordinates in a figure 
+window that contains either a graph or an image. However its behavior is 
+different in each case. 
+
+When it is used to select a point in a figure window that contains a plot, 
+ginput ( ) returns real number locations in the form (x,y) where x and j are the 
+usual right-hand-rule rectangular coordinates indexed from the lower left with 
+origin (x,j) = (0,0). 
+
+When it is used to select a point in a figure window that contains an image, 
+ginput ( ) returns real number locations in the form (c,r) where c and r are the 
+column and row sub-pixel coordinates of the selected pixel indexed from the 
+upper left with origin (c,r) = (1,1) - the usual left-handed image coordinate 
+system. 
+
+When collecting points for a homography, computing it, and remapping an 
+image, if you substitute (c,r) for (x,j) consistently, the transformations will be 
+correct. If the transform is wildly wrong you may have gotten them switched. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+40 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Image Rotation 
+
+
+image size: 
+
+
+
+
+= Size 
+
+
+aspect angle: 
+
+
+0^ = tan 
+
+
+-1 
+
+
+R 
+
+
+in 
+
+
+C: 
+
+
+in 
+
+
+length of diagonal: 
+
+
+D = jR^ +C 
+
+A/ in 1 
+
+
+in 
+
+
+Input Image 
+
+
+
+
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+41 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Image Rotation 
+
+
+angle of rotation: 0 
+
+
+rotation matrix: 
+
+
+p(e) = 
+
+
+COS0 sin0 
+- sin0 COS0 
+
+
+transforms input image cdts."' 
+to output image cdts. 
+
+
+r 
+
+c 
+
+
+=p(0) 
+
+
+^in ^ inO 
+
+
++ 
+
+
+R 
+
+C 
+
+
+outO 
+
+
+outO 
+
+
+
+cdts. measured w.r.t. the center of the image: (^ino^Qnoj^ (Li^inJ+l’LiQnJ+l) 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+42 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Rotation 
+
+
+Compute the dimensions 
+of the output image: 
+number of rows. 
+
+
+CD 
+
+
++ 
+
+
+
+• ^ 
+
+GO 
+
+
+Q 
+
+
+^ou, = round ( 
+
+
+Dsin(6+6^)|), 
+
+
+if0°<e<90°. 
+
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+43 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Rotation 
+
+Compute the dimensions 
+of the output image: 
+number of columns. 
+
+
+<^out = round( | Dcos(0- 0^) | ) , 
+
+
+ifO°<0<9O°. 
+
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+44 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Image Rotation 
+
+
+The output dimension calculation depends on the value of 0 as follows: 
+
+
+If0°<e<90°: 
+
+^out =round(|Dsin(9+e^)| j, 
+C„„. = round (|Dcos(e-e^)|). 
+
+
+If -90°<e<0°: 
+
+
+Km = round 
+
+
+C , = round! 
+
+
+out 
+
+
+Dsin(0- 0^) 
+Dcos(0+ 0^) 
+
+
+If9O°<0< 180°: 
+
+
+Rom = round 
+
+
+Com = round 
+
+
+Dcos(0-90- 0^) 
+Dsin(0-90+0^) 
+
+
+If -180° <0 <-90 
+
+
+o. 
+
+
+= round I Dcos(0+90+ 0^) | ) , 
+
+
+Com = round I 
+
+
+Dsin(0+9O- 0^) 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+45 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Rotation . 
+
+
+
+and Qyt below are valid for 0° < 0 < 90°. Otherwise see slide 45. 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+46 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Rotation , 
+
+
+COS0 - sin0 
+sin0 COS0 
+
+= p(-e) 
+
+Work backward. For 
+every output loc. (r,c) 
+select an input loc. 
+by rotating (r,c) around 
+the image center by -0. 
+
+
+
+p-'(0)= 
+
+
+= p-‘(e) 
+
+
+r-R 
+
+c-C 
+
+
+outO 
+
+
+outO 
+
+
+-^inO 
+
+^inO 
+
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+47 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+48 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+49 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Image Rotation 
+
+
+After rotation by -0, 
+J(r,c) is in nearly 
+the same position 
+as 
+
+
+0(r,c,:) = 
+
+
+7 
+
+
+Y 
+
+
+= p-(e) 
+R 
+
+
+r-R 
+
+c-C 
+
+
+outO 
+
+
+outO 
+
+
++ 
+
+
+"inO 
+
+
+c. 
+
+
+inO 
+
+
+
+R 
+
+
+m 
+
+
+Ci 
+
+
+in 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+50 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Image Rotation 
+
+
+After rotation by -0, 
+J(r,c) is in nearly 
+the same position 
+as 
+
+
+0(r,c,:) = 
+
+
+7 
+
+
+Y 
+
+
+= p-(e) 
+R 
+
+
+r-R 
+
+c-C 
+
+
+outO 
+
+
+outO 
+
+
++ 
+
+
+"inO 
+
+
+c. 
+
+
+inO 
+
+
+
+
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+51 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Image Rotation 
+
+
+Interpolation: 
+
+The output pixel value is 
+(usually) a function of the 
+values on a neighborhood 
+- a set of pixels that 
+surrounds - (^^,9). 
+
+Bilinear Interp. uses a 2x2 
+neighborhood, bicubic 
+uses a 4 x 4 . 
+
+Nearest neighbor is simply, 
+
+J(r,c) = I(r.,9) where 
+(r.,9) = round(9,9). 
+
+
+a 
+
+
+
+
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+52 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Image Rotation with Interpolation 
+
+
+Original image: San Francisco financial district 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+53 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Rotation with Nearest Neighbor Interpolation 
+
+
+
+Bicubic - Nearest Neighbor 
+
+
+Nearest Neighbor - Bilinear 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+54 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Rotation with Bilinear Interpolation 
+
+
+
+Nearest Neighbor - Bilinear 
+
+
+Bilinear - Bicubic 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+55 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Rotation with Bicubic Interpolation 
+
+
+
+Bilinear - Bicubic 
+
+
+Bicubic - Nearest Neighbor 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+56 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Example of Warping: Map Image to Sphere 
+
+
+For the output image, 
+Po=^minKu,.Qu,)- 
+
+For each output pixel, 
+
+P ~ V^out ^out ’ 
+
+
+
+For the input image, 
+
+\ 
+
+4o=-maxty„,Ci„). 
+
+For each output pixel, 
+the input pixel loc is, 
+
+'in =4sin(6») 
+
+C.J, = Jcos(^) 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+57 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Example of Warping: Map Image to Sphere 
+
+
+
+< ► 
+
+Po 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+58 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Example of Warping: Map Image to Sphere 
+
+
+
+Pixel Map: (r„„„ 
+
+Coul) ^ (hn’C,n) 
+
+P^=rlui+cL 
+
+d = do(|)/(7i/2) 
+
+e = tan-'(r„„,/c„J 
+
+rjn = dsinG 
+
+(|) = sm-'(p/po) 
+
+Cjn = dcos0 
+
+
+17 November 2016 
+
+
+© 1999-2015 by Richard Alan Peters II 
+
+
+59 
+
+

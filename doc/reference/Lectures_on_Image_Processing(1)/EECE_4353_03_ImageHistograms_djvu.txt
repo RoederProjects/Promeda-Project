@@ -1,0 +1,1539 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE/CS 4353 Image Processing 
+
+Lecture Notes: Image Histograms 
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution-Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Histograms 
+
+The histogram of an image is a tally of the number of pixels 
+at each intensity level or color. The shape of the histogram is 
+related to the ranges and groupings of intensity values in the 
+image. 
+
+In the following monochrome examples notice how the 
+peaks of in the histogram correspond to concentrations of 
+intensities in the image globally. 
+
+In the color examples the primary that has the largest value 
+at any intensity dominates the image. 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Monochrome Intensity Distributions 
+
+
+
+This image is a small, monochrome 
+version of a huge color mosaic made by 
+the ESOb It contains both celestial 
+hemispheres; it is what you would see in 
+360° from empty space in the plane of the 
+galaxy above or below the earth. 
+
+
+
+^The Euopean Southern Observatory in the Atacama desert of Chile, http://www.eso.ora/public/usa/imaaes/eso0932a/ 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Monochrome Intensity Distributions 
+
+
+
+This picture, taken in the morning fog, 
+displays low contrast - a narrow range of 
+intensities - with energy at the extremes. 
+
+
+
+Photographer unknown, downloaded from http://hawallbase.com/21 961 -trees-foq-wallpaper-[21/ 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Monochrome Intensity Distributions 
+
+
+
+Castner glacier in the Delta mountains, Alaska. 
+Monochrome extracted from original color 
+image. Note how the peaks in the histogram 
+correspond to regions in the image. 
+
+
+
+Photographer unknown, downloaded from https://contest.thesca.ora/snow2012/zia-zaas-snow 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Intensity Distributions 
+
+
+
+Castle Rock, Sedona, Arizona. There is 
+one histogram for each of red, green, 
+and blue. The red rock’s color is in the 
+midrange of intensities while the 
+greenery is darker. Blue peaks corres- 
+pond to the haze on the mountainside 
+(dark) and the sky (bright). 
+
+
+
+Photo by Edward Chavez, http://www.zensoulstvle.conn 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Intensity Distributions 
+
+
+
+Unidentified place in a photo from the website 
+below. Notice that the intensity of green 
+dominates the others over much of the range. 
+Red dominant corresponds to yellow-green 
+regions. Blue dominates in the shadows. 
+
+
+
+Photographer Unknown, downloaded from httD://forum. baboo.com. br/index.DhD?/aallerv/imaae/20033-floresta-80/ 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Intensity Distributions 
+
+
+
+Blue Poison Dart Frog (Dendrobates azureus) 
+in the Frankfurt Zoo, Germany. Dominant 
+colors in increasing intensity: brown, blue, tan 
+brown, blue. 
+
+
+
+Photo by Wikipedia user, QuartI: httD://en.wikiDedia.ora/wiki/File:Dendrobates azureus atll-ioa/ . 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Intensity Distributions 
+
+
+
+Photo taken in the gardens at Keukenhof, 
+Holland, The Netherlands. RGB primaries 
+dominant at different intensities: blue 
+shadows, green tulip stems, blue hyacinths, 
+red tulip flowers. 
+
+
+
+Photo by Jim Pyre: httD://thedude.com/archives/2005/04/amsterdam.html 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+
+Color 
+
+
+The video, ColorHistogram3D_c.mp4, goes here. 
+
+
+
+The video is a 3D true histogram (unique 
+index for 1 RGB 3-tuple / color) of the image. 
+The color of each occupied voxel corresponds 
+to a color in the image. This is for visuali- 
+zation only. The actual 3D histogram contains 
+scalar counts of the colors at each location. 
+
+
+ge Processing 
+
+:hool of Engineering 
+
+
+Notice the Necker 
+cube illusion^ as the 
+virtual cube rotates. 
+
+
+mage 
+
+
+
+Intensity 
+
+
+httD://en.wikiDedia.ora/wiki/Necker cube 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Histograms: Monochrome 
+
+
+The histogram of an image is a tally of the number of pixels at each 
+intensity level or color. For a monochrome image G, 
+
+
+H^{g) = #{p\G = g 
+
+
+The value of the histogram at g is the number of pixels for which 
+image G has intensity level g. For an 8-bit image, H has 256 values 
+
+If G is an RxC image and all its pixels have the same intensity, g^, 
+then H(gQ) = RC and H(g) = 0 for all intensities g ^ g^. 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+II 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Histograms: Monochrome 
+
+
+• If I is a 1-band (monochrome) image, then 
+
+• the pixel I(r,c) is an 8-bit integer between 0 and 255. 
+
+• The histogram, hj, of I is: 
+
+- a 256-element array, hj, where 
+
+- hj(g) is an integer for g = 1, 2, 3, . . ., 256, such that 
+
+- ^i(^) = number of pixels in I that have value g- 1 . 
+
+
+In Matlab an array of length n has indices from 1 to n. 
+In many computer languages, e.g. "C" or "C++" an n- 
+element array is indexed from 0 to 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Histogram of a Monochrome Image 
+
+
+
+/zj(g+l) = the number of pixels 
+in I with intensity 
+level, g. 
+
+
+I — Channel: Luminosity 
+
+
+Level: 207 
+Count: 496 
+Percentile: 94.47 
+Cache Level: 1 
+
+
+Mean: 105 .SB 
+Std Dev: 45.32 
+Median: 96 
+Pixels: 514500 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Giant Mesquite Bug 
+
+a.k.a. Banjo Beetle 
+
+
+24-bit truecolor image 
+
+Photo by Alan Peters, 
+Tucson, Arizona 1986. 
+
+
+
+During early summer in the Sonoran 
+Desert of Southern Arizona, clusters 
+of large, strange-looking, red and 
+white bugs can be spotted on the 
+foliage of mesquite trees (Prosopis 
+spp.). These colorful bugs are the 
+immature, wingless nymphs of the 
+Giant Mesquite Bug or Leaf-footed 
+Bug (Thasus neocalifornicus). 
+
+Photo and description by T. Beth Kinsey 
+http://fireflvforest.net , 2008 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Histogram of a 
+Monochrome Image 
+
+
+
+16-level (4-bit) image 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The Histogram of a Monochrome Image 
+
+
+- . ^ 
+
+
+-^^32 
+
+
+*' ” y V V 
+
+
+
+
+g^2 . 
+
+"r'?fc 
+
+
+
+
+g = 3.^ 
+
+3 - t 
+
+
+
+
+
+
+5' t 
+
+
+151 
+
+
+
+
+
+
+
+
+^?37| 
+
+
+g-6 
+
+
+■^500 
+
+
+X = 7 
+
+
+P-,;: / 
+
+'^371 
+
+
+
+r|(T ■•? 
+
+
+*=I5 
+
+
+503 
+
+
+Plot of histogram: 
+
+number of pixels with intensity g 
+
+
+Black marks 
+pixels with 
+intensity g 
+
+
+□J 
+
+
+2032 2454 2343 2125 2151 2237 2500 2037 3131 4850 0026 12700 11380 3806 244 603 
+h{\) h{2) M3) M4) MS) M6) M7) M8) MO) MIO) Mil) MI2) MI3) M14) MIS) M16) 
+g = 0 g=l g = 2 g = 3 g = 4 g = 5 g = 6 g = 7 g = 8 g = 0g= 10g= llg= 12g= 13g= 14g= 15 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Histogram of a Monochrome Image 
+
+
+
+LV^937 
+
+
+Plot of histogram: 
+
+number of pixels with intensity g 
+
+
+s=t> 
+
+
+*“3 
+
+
+Black marks 
+pixels with 
+intensity g 
+
+
+
+
+
+
+
+
+im 
+
+
+
+
+g-6 
+
+
+Qgsoo 
+
+
+151 
+
+
+
+
+
+
+
+
+g= 14 
+
+
+g= 15 
+
+
+□ J 
+
+
+2W2 2454 2343 2125 2151 2237 2500 2037 3131 4850 0026 12700 11380 3806 244 603 
+h{\) h{2) M3) M4) M3) M6) h{l) h{») MO) MIO) M>l) MI2) MI3) M14) MIS) M16) 
+g = 0 g=l g = 2 g = 3 g = 4 g = 5 g = 6 g = 7 g = 8 g = 0g= 10g= llg= 12g= 13g= 14g= 15 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Histograms of a Color Image 
+
+• If I is a 3 -band image (truecolor, 24-bit) 
+
+• then l(r,c,b) is an integer between 0 and 255. 
+
+• Either I has 3 histograms: 
+
+- /zr( g + 1 ) = # of pixels in I( : , : , 1 ) with red intensity value g 
+
+- /iG(<^+l) = of in I(:,:,2) with green intensity value g 
+
+- /zg(g+l) = # of pixels in I(:,:,3) with blue intensity value g 
+
+• or 1 vector-valued histogram, h(g+l, I,Z?) where 
+
+- h(g+l,l,l) = #of pixels in I with red intensity value g 
+
+- h(g+l, 1,2) = # of pixels in I with green intensity value g 
+
+- h(g+l, 1,3) = # of pixels in I with blue intensity value g 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+10000 
+
+The Histograms 
+
+^ 9000 
+
+of a Color Image 
+
+^ 8000 
+
+7000 
+
+6000 
+
+5000 
+
+4000 
+
+1000 
+
+0 
+
+0 50 100 150 200 250 
+
+20 September 2016 © 1999-2016 by Richard Alan Peters II 19 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Value Image 
+
+
+How to extract a monochrome 
+intensity image from a color image. 
+
+
+If I is an rgb image, then I’s value image, V, has one band that is 
+the pixel-wise average of I’s R, G, & B bands: 
+
+
+V(r,c) = i[R(r,c)-l-G(r,c)-l-B(r,c)]. 
+
+
+This is easily computed in Matlab by 
+
+
+V=sum(I,3)/3; 
+
+The 3 in the argument of sum tells it to act along dimension 3 
+of the image - across the color bands. 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+How to extract a monochrome 
+
+Luminance Image intensity image from a color image. 
+
+I’s luminance image, L, is a 1-band image that is a specific, weighted, pixel- 
+wise average of I’s R, G, and B bands: 
+
+L(r,c) = 0.299-R(r,c) + 0.587-G(r,c) + 0.114-B(r,c) 
+
+The numbers were derived by the NTSC^ to weight each color band according 
+to the relative intensity resolution that color by the human eye. The following 
+Matlab code will compute it (very quickly) 
+
+L = uint8(sum(bsxfun(@timeS;double(I) , . . . 
+
+reshape( [0.299 0.587 0.114], [1 1 3])), 3)); 
+
+but it is not obvious how it does. That is explained on the next slide. 
+
+
+1 National Television System Committee, 1953, http://en.wikipedia.org/wiki/NTSC 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Computing the Luminance Image in Matlab 
+
+
+The first steps are to create a 1 x 1 x 3 matrix (vector) containing the weights 
+w = reshape! [0.299 0.587 0.114], [1 1 3]); 
+and to convert the uintS, 3-band image, I, to class double, 
+
+J = double(I) ; 
+
+bsxf un combines image J and vector W using (dtimes, a multiplication 
+operator. Effectively, it makes an image, W, the same size as J with a copy of 
+W in every pixel location. Then it multiplies the 2 images together pointwise. 
+
+T = bsxfun((atimes, J,w) ; 
+
+
+T has bands 0.299R, 0.587G, and 0.144B, which are then summed and 
+
+converted (rounded) to class U in 1 8. ,, , , , ^ 
+
+All the steps are combined into 1 
+
+L = uint8(sum(T,3) ) ; line of code on the previous page. 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Value Histogram 
+
+
+
+Value image, V. 
+
+
+X 10^* 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Luminance Histogram 
+
+
+
+Luminance image, L. 
+
+
+Histogram of the luminance image. 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+
+
+The value histogram is not the 
+average of the three 1-D color 
+intensity histograms. 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Value Histogram vs. Average of R,G,&B Histograms 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Multi-Band Histogram Calculator in Matlab 
+
+
+% Multi-band histogram calculator 
+function h=histogram(I) 
+
+
+[R C B]=size(I) ; 
+
+This is an old, slow 
+version. See pp 28-29. 
+
+% allocate the histogram 
+h=zeros(256; 1,B) ; 
+
+
+% range through the intensity values 
+for g=0:255 
+
+h(g+l,l;:) = sum(sum(I==g) ) ; % accumulate 
+end 
+
+return ; 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Multi-Band Histogram Calculator in Matlab 
+
+
+b Multi-band histogram calc;'' 
+
+^ Loop through all intensity levels (0-255) 
+
+
+function h=histogram(I) 
+
+[R C B]=size(I) ; 
+
+% allocate the histogram 
+h=zeros(256; 1,B) ; 
+
+% range through the intensi 
+for g=0:255 
+
+h(g+l,l;:) = sum(sum(I==g) ) ; % accumulate 
+
+
+Tag the elements that have value g. 
+
+The result is an RxCxB logical that 
+has a 1 wherever I(r,c,/?) = g and O's 
+everywhere else. 
+
+Compute the number of ones in each band of 
+the image for intensity g. 
+
+Store that value In the 256xlxB histogram 
+
+at h(g+l,l,b). 
+
+
+end 
+
+I If B==3, then h (g+l, 1, : ) contains 
+I 3 numbers: the number of pixels In 
+l^ands 1, 2, <& 3 that have Intensity g. 
+
+
+sum (sum (i==g) ) computes one 
+number for each band In the Image. 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Vectorized Single-Band Histogram Calculator 
+
+
+% Vectorized single-band histogram calculator using 
+% Matlab's built-in histogram calculator, histcounts ( ) . 
+
+
+% Result, h, is 256x1 for a 
+function h = histogram(I) 
+h = histcounts(I, (0:256) 
+end; 
+
+
+one-band, uintS image. 
+
+(0:256) are the bin boundaries. 
+# of pixels < 1 is in the bin. 
+
+) ' ; # of pixels > 255 & < 256 are 
+
+In the last bln 
+
+
+histcounts Is a new function 
+In version 2014b of Matalab 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Vectorized Multi-Band Histogram Calculator 
+
+
+% Vectorized multi-band histogram calculator using 
+% Matlab's built-in histogram calculator, histcounts ( ) . 
+% Result, h, is 256x1 for a one-band image and 256x1x3 
+% for a three-band, uintS image. 
+
+function h = histogram(I) 
+
+B] = size(I) ; 
+h = zeros(256, 1,B) ; 
+for b = 1:B 
+
+h(:,l,b) = histcounts(I( ,b) , [0:256] )' ; 
+end; 
+
+end; 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The Probability Density Function of an Image 
+
+
+255 
+
+
+Let A = X\(? + 1) . 
+
+^=0 
+
+Note that since + 1 is the number of pixels in 
+
+(the ^th color band of image I) with value g, 
+
+A is the number of pixels in I. That is if I is 
+R rows by C columns then A = RxC. 
+
+
+pdf 
+
+[lower case] 
+
+
+Then, 
+
+
+1 
+
+
+Piig+^) = -K{s+^) 
+
+
+This is the probability 
+that an arbitrary pixel 
+from \ has value g. 
+
+
+is the graylevel probability density function of I, . 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The Probability Density Function of an Image 
+
+
+• Pband(^+l) the fraction of pixels in (a specific band of) an 
+image that have intensity value g. 
+
+• Pbanci(^+ 1 ) is the probability that a pixel randomly selected 
+from the given band has intensity value g. 
+
+• Whereas the sum of the histogram 1 ) over all g from 
+
+1 to 256 is equal to the number of pixels in the image, the 
+sum of Pbandl^+i) ^ver all g is 1. 
+
+• Pband is the normalized histogram of the band. 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The Probability Distribution Function of an Image 
+
+
+Let q = [q^ q2 q3] = I(r,c) be the value of a 
+randomly selected pixel from I. Let g be a 
+specific graylevel. The probability that q^ < g 
+is given by 
+
+
+r=o ^ Y=o 
+
+
+^ PDF 
+[upper case] 
+
+
+Y=0 
+
+'255 
+
+Y=0 
+
+
+where + 1 ) is 
+the histogram of 
+the kth band of I. 
+
+
+This is the probability that any 
+given pixel from I;, has value less 
+than or equal to g. 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+The Probability Distribution Function of an Image 
+
+
+Let q = [q^ q2 q3] = I(r,c) be the value of a 
+randomly selected pixel from I. Let g be a 
+specific graylevel. The probability that q^ < g 
+is given by 
+
+
+r=o ^ Y=o 
+
+
+Also called CDF 
+for "Cumulative 
+Distribution 
+Function". 
+
+
+Y=0 
+
+'255 
+
+Y=0 
+
+
+where + 1 ) is 
+the histogram of 
+the kth band of I. 
+
+
+This is the probability that any 
+given pixel from I;, has value less 
+than or equal to g. 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The Cumulative Distribution Function of an Image 
+
+• tyand(.?+ 1 ) is the fraction of pixels in (a specific band of) an 
+image that have intensity values less than or equal to g. 
+
+• tyand(.?+ 1 ) is the probability that a pixel randomly selected from 
+the given band has an intensity value less than or equal to g. 
+
+• tyand(.?+ 1 ) is the cumulative (or running) sum of Pband(.?+ i ) 
+from 0 through g inclusive. 
+
+• ^band(l) = Pband(l) ^ud P^andUSb) = 1 ; Pband(g+1) is 
+nondecreasing. 
+
+Note: the Probability Distribution Function (PDF, capital letters) and the Cumulative Distribution Function (CDF) 
+are exactly the same things. Both PDF and CDF will refer to it. However, pdf (small letters) is the density function. 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The pdf vs. the CDF 
+
+
+pdf = backward 
+difference of CDF. 
+
+
+
+CUF = running sum 
+of pdf. 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+
+Vanderbilt University School of Engineering 
+
+
+Simple Matlab Code for 1-Band Images 
+
+
+% Matlab code for histogram (h), pdf (p), and CDF (C) 
+
+% of a 1-band image, I. 
+
+% I's 256-bin histogram 
+h = histcounts(I, [0:256] )' ; 
+
+% I's pixel-intensity probability density function 
+p = h/length(I( : ) ) ; 
+
+% I's pixel-intensity cumulative distribution function 
+C = cumsum(p) ; 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Code for Histograms of 3 -Band Images 
+
+
+% Matlab code for red, green, blue, value, and luminance 
+% histograms of a 3-band image, I. 
+
+hr = histcounts(I( ,1) , [0:256] )' ; % red-band histogram 
+hg = histcounts(I( : , : ,2) , [0:256] ) ' ; % green-band histogram 
+hb = histcounts(I( : , : ,3) , [0:256] ) ' ; % blue-band histogram 
+
+V = uint8(sum(I,3)/3) ; % value image 
+
+hk = histcounts (V, [0 : 256] ) ' ; % value histogram 
+
+L = uint8(0.299*I( : , : , 1) + ... % luminance image 
+
+0.587*I(:, :,2) + 0.114*I(:, :,3); 
+
+Ik = histcounts (L, [0 : 256] ) ' ; % luminance histogram 
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Histogram Shapes 
+
+The histogram of a continuous tone image is usually a relatively 
+smooth curve with peaks at the most frequently occurring 
+intensities: 
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Histogram Shapes 
+
+If an image has had its contrast altered, often that can be seen in 
+its histogram. 
+
+
+
+
+20 September 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+39 
+
+

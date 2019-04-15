@@ -1,0 +1,4054 @@
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Lecture Notes: JPEG Image Compression 
+Richard Alan Peters II 
+
+Department of Electrical Engineering and 
+
+Computer Science 
+
+Fall Semester 2016 
+
+
+© 
+
+
+This work is licensed under the Creative Commons Attribution-Noncommercial 2.5 License. To view a copy of this license, visit http://creativecommons.Org/licenses/by-nc/2.5/ or 
+
+send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA. 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+From the Article by Wallace: 
+
+
+Title: 
+
+Source: 
+
+
+Pages: 
+
+Year: 
+
+ISSN: 
+
+Author: 
+
+Publisher: 
+
+
+The JPEG Still Picture Compression Standard 
+Communications of the ACM archive 
+Volume 34, Issue 4 (April 1991) 
+
+Special issue on digital multimedia systems 
+
+30-44 
+
+1991 
+
+0001-0782 
+Gregory K. Wallace 
+
+Digital Equipment Corp., Maynard, MA 
+ACM Press New York, NY, USA 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+2 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+The JPEG Still Picture Compression Standard 
+
+• Joint Photographic Experts Group 
+
+• A standards committee set up by the CCITT and the ISO. 
+
+• Tasked in the late 1980’s to generate a general-purpose 
+standard for compression of almost all continuous tone and 
+still-image applications. 
+
+• Published Standard: “Digital Compression and Coding of 
+Continuous-tone Still Images - Requirements and 
+Guidelines,” ISO/IEC 109 18- 1: 1993(E) 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+3 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+JPEG’s Goals for the Standard 
+
+• Be at or near the state of the art in compression rate and 
+image fidelity. 
+
+• User decides on the trade-off between image fidelity and 
+compression ratio. 
+
+• Be applicable to any kind of continuous-tone digital image 
+source (unrestricted with respect to content, complexity, 
+color-range, statistics, etc.) 
+
+• Have tractable computational complexity for 
+implementation on a wide range of computational 
+hardware. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+4 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+JPEG’s Modes of Operation 
+
+1. Sequential encoding: each component (band) encoded in a 
+single raster scan 
+
+2. Progressive encoding: progressive coarse-to-fine encoding 
+and decoding of entire image 
+
+3. Lossless encoding: exact recovery of original image 
+
+4. Hierarchical encoding: multiresolution compression with 
+independently retrievahle lower-resolution versions 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+5 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+JPEG Codec 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+6 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+JPEG Baseline Process 
+
+• DCT-based process 
+
+• Source image: 8-bit samples within each component 
+
+• Sequential 
+
+• Huffman coding: 2 AC and 2 DC tables 
+
+• Decoders process scans with 1, 2, 3, or 4 components 
+
+• Interleaved and non-interleaved scans 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+7 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Entropy Encoding 
+
+• Set A = {^1, is called an alphabet. 
+
+• Each G A is called a symbol. 
+
+• A string over the alphabet is a sequence of symbols, e.g. 
+
+• ‘^ll‘^4‘^105‘^105‘^47‘^86‘^86‘^3 * ’ ’^ 30 ' 
+
+• A codeword is a sequence of bits that represents a symbol or string, e.g. 
+1011000010110111101. 
+
+• Pi = P(^i) is the probability of occurrence of symbol in a string. 
+
+• is the length of the codeword for in bits. 
+
+In the context of Information Theory the entropy is the number of bits on the 
+average need to represent a symbol in set A. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+8 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Information Content of a Symbol 
+
+If in a signal or message, the symbol has occurrence probability p(s^) then a 
+measure of the extraordinariness of the event occurs” is l/p(s^) - the less 
+likely the event, the more extraordinary it is. The information content of the 
+event is defined as the number of bits required to code the measure of its 
+extraordinariness. That is 
+
+
+
+
+
+= -10g2p(5,.). 
+
+
+is the information content of symbol — the number of bits needed to code it. 
+l(s^) is a real number, not necessarily an integer. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+9 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Entropy Encoding 
+
+Given a finite set of symbols 
+with associated probabilities of 
+occurrence, 
+
+such that 
+
+Zp(^,) = 1- 
+
+i=l 
+
+Then the entropy of A is the 
+expected value 
+
+
+Hty)=£ (ity):, 
+
+
+N 
+
+
+
+
+i=\ 
+
+N 
+
+
+= E(“l0g2P('^,))p('^,) 
+
+
+i=\ 
+
+
+N 
+
+
+= -Zp(^/)lOg2P(^,)> 
+
+
+/=! 
+
+
+the mean information content 
+of the symbols. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+10 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Entropy Examples 
+
+1. A = {a,b}', p(a) = 0.5; p(Z?) = 0.5. 
+
+H(a,U = -p(a)log2 p(a)-p(Z?)log2 p(U 
+= -0.5 log2 0.5 - 0.5 log2 0.5 
+= -0.5(-l)-0.5(-l) 
+
+= 1 
+
+2. A = {a,b}', p(a) = 0.8; pty) = 0.2. 
+
+H(a,U = -p(a)log2 p(a)-pU)log2 p(U 
+= -0.81og2 0.8 - 0.21og2 0.2 
+= -0.8(-0.3219)-0.2(-2.3219) 
+
+= 0.7219 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+11 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Entropy Examples 
+
+3. A = {a,b,c,d}', p(a) = 0.25; p(b) = 0.125; p(c) = 0.2917; p(d) = 0.3333. 
+
+H(fl,Z7,c,r/) = -p(a)log2p(a)-p(Z?)log2p(Z7)-p(c)log2p(c)-p(r/)log2p(r/) 
+
+= -0.25 log 2 0.25 -0.125 log 2 0.125 -0.2917 log 2 0.2917 -0.33331og2 0.3333 
+= -0.25(-2)-0.125(-3)-0.2917(-1.7776)-0.3333(-1.585) 
+
+= 1.9218 
+
+The entropy is usually not integral. How, then can it be coded? 
+
+Entropy encoding finds a mapping from the alphabet to the code words such that 
+the average number of bits per symbol (bps) approaches the entropy as the 
+number of symbols increases without bound. 
+
+lim bps = H(A) 
+
+N^oo ^ ’ 
+
+bps = (size of encoded message)/(size of original message). 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+12 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Code Types 
+
+Fixed length: all codewords have the same length (number of 
+bits). E.g. letters A through H encoded as 3 -bit binary numbers. 
+
+A 000, B 001, C -eA 010, ..., H -eA 111 
+
+Variable length: different codewords may have different lengths 
+depending on, for example, their probability of occurrence. 
+
+A 0, B 10, C 110, ..., H 11111110 
+
+That variable length code is an example of a prefix code, no code 
+is the prefix of another code. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+13 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+Huffman Coding 
+
+• Each symbol is assigned a specific code with a length 
+dependent on its frequency of occurrence. 
+
+• There is a prefix code - no codeword is a prefix of any other 
+codeword. 
+
+• Is uniquely decodable - only one possible source message. 
+
+• A Huffman code is the optimal prefix+variable-length code 
+given the probability of occurrence of the symbols inb the 
+message. 
+
+• Generated with a Huffman tree. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+14 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Huffman Tree 
+
+
+0 
+
+d: 0.3333 
+
+
+10 
+
+c: 0.2917 
+
+
+110 
+
+a: 0.2500 
+
+111 
+
+b: 0.1250 
+
+
+11 
+
+0.3750 
+
+
+1 
+
+0.6667 
+
+
+1.0000 
+
+
+Symbols 
+
+Probabilities 
+
+Codewords 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+15 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+A Standard Color Test Chart 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+16 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+We’ll use the image in some of the following slides. 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+17 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Color Conversion: RGB YCbCr 
+
+
+
+RGB Y Cb Cr 
+
+
+Y 
+
+
+0.25678824 
+
+0.50412941 
+
+0.09790588 
+
+R 
+
+
+16 
+
+Cb 
+
+
+-0.14822290 
+
+- 0.29099279 
+
+0.43921596 
+
+G 
+
+-p 
+
+128 
+
+Cr 
+
+
+0.43921569 
+
+-0.36778831 
+
+-0.07142737 
+
+B 
+
+
+128 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+18 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Downsample Color Bands 
+
+
+
+Y Cb Cr 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+19 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Partition Each Band into 8x8 Blocks 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+20 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Prep for Forward Discrete Cosine Transform 
+
+
+• Each image band is operated on independently. 
+
+• Each 8x8 image block is operated on independently. 
+
+• Shift all image values from le [0, 2^-1] to 
+Ie[-2^-i, 2^1-1]. E.g. [0, 255] ^ [-128, 127]. 
+
+• The FDCT decomposes each block into a set of 
+coefficients with respect to the 64 orthogonal basis 
+functions shown on the next slide. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+21 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+DCT Functions and V ariables 
+
+
+w ; r,c) - DCT of 8x8 block from I starting at (r,c) 
+
+- Normalization Factor 
+
+(|)(v,w ; p,z ) " 2D Cosine Basis Function, (v,u) 
+
+r - image row index (vertical, increasing down) 
+
+c - image column index (horizontal, increasing right) 
+
+p - DCT row index (horizontal wave fronts, vertical propagation down) 
+
+X - DCT column index (vertical wave fronts, horizontal propagation right) 
+V - DCT row frequency index (vertical, increasing down) 
+u - DCT column frequency index (horizontal, increasing right) 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+22 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+DCT Basis Functions 
+
+
+v = 0 
+
+
+
+
+v = 7 
+
+
+M = 0 
+
+
+U = 1 
+
+
+j jj u li lu lu mi 
+
+M JIDUAUUI 
+
+nOinnj 
+
+
+
+
+
+
+white = 1 
+black = -1 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+23 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Forward Discrete Cosine Transform 
+
+
+;r,c) = 
+
+
+7 7 
+
+
+
+jA{v)A[u)^[v,u-, p,x)^{r + p,c + x) 
+
+^ for^ = 0 (rc) 6 {0,8 ,16 R}x {0,8,16 C}, I 
+
+1 otherwise 
+
+(|) ( V, M ; A ;r) = COS (2/7 + 1) ;rv] COS (2 J + 1) ;rM] 
+
+
+A(fl = 
+
+
+(,v,u) .{p,x) ^ X 
+
+
+f {I}(4,4; r,c) 
+
+
+X- 
+
+
+X- 
+
+
+X 
+
+
+c+Z- 
+
+
+Z- 
+
+
+
+
+
+p 
+
+i 
+
+
+
+r+p\ 
+
+i 
+
+X 
+
+
+Vjn 
+
+
+
+zz 
+
+PZ 
+
+
+u 
+
+
+m 
+
+1 
+
+r 
+
+■ 1 
+
+
+row cos: (v=4, /?) col cos: (m=4, /) O = col cos x row cos 8x8 block of I @ (r,c) p.w. product 
+
+
+^(v,u;r,c) 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+24 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Forward Discrete Cosine Transform 
+
+
+F{I}(0A’^/^) is the 
+bC component of 
+the 8x8 block 
+from I at (r,c ) ... 
+
+
+/ J 
+
+M ^4 
+
+...the others are 
+
+1 V 
+
+
+the AC components, 
+
+
+e.g. F{I}(4,4;r,c*). 
+
+
+dct xform 
+
+
+dct basis 
+
+
+original, I 
+
+
+
+5(4,4;r,c) 
+
+11 t 
+
+P X 
+
+(t)(4,4;p,x) 
+
+X t 
+
+8x8 block at (r,c) 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+25 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Forward Discrete Cosine Transform 
+
+
+j j A u u ui lu mi 
+
+
+Input 
+
+
+
+MsasimBm 
+
+
+
+
+
+
+
+
+
+Negative 
+
+
+Output 
+
+
+-log Out. 
+
+
+Neg. <& neg. log 
+just for 
+visibility here. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+26 
+
+
+
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Forward Discrete Cosine Transform 
+
+
+Each value, ?{v,u: r,c), in the 8x8 output 
+is the sum of the pixel-wise product of 
+the 8x8 block that starts at {r,c) In the 
+image and the cosine basis function at 
+row K column u In the table. 
+
+
+Input 
+
+
+
+(r,c)e {0.8.16 R}x {0,8,16 Q. 
+
+(^',^/)e{0 7}x{0 7}. 
+
+
+
+Negative 
+
+
+Output 
+
+
+-log Out. 
+
+
+Neg. &. neg. log 
+just for 
+visibility here. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+27 
+
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Example FDCT Quantization Tables 
+
+
+Luminance Quantization Table Chrominance Quantization Table 
+
+
+2 
+
+2 
+
+3 
+
+4 
+
+5 
+
+6 
+
+8 
+
+11 
+
+2 
+
+2 
+
+2 
+
+4 
+
+5 
+
+7 
+
+9 
+
+11 
+
+3 
+
+2 
+
+3 
+
+5 
+
+7 
+
+9 
+
+11 
+
+12 
+
+4 
+
+4 
+
+5 
+
+7 
+
+9 
+
+11 
+
+12 
+
+12 
+
+5 
+
+5 
+
+7 
+
+9 
+
+11 
+
+12 
+
+12 
+
+12 
+
+6 
+
+7 
+
+9 
+
+11 
+
+12 
+
+12 
+
+12 
+
+12 
+
+8 
+
+9 
+
+11 
+
+12 
+
+12 
+
+12 
+
+12 
+
+12 
+
+11 
+
+11 
+
+12 
+
+12 
+
+12 
+
+12 
+
+12 
+
+12 
+
+
+Precision: 8 bits 
+
+Approximate quality factor: 91.64 
+Scaling: 16.71 Variance: 22.54 
+
+
+3 
+
+3 
+
+7 
+
+13 
+
+15 
+
+15 
+
+15 
+
+15 
+
+3 
+
+4 
+
+7 
+
+13 
+
+14 
+
+12 
+
+12 
+
+12 
+
+7 
+
+7 
+
+13 
+
+14 
+
+12 
+
+12 
+
+12 
+
+12 
+
+13 
+
+13 
+
+14 
+
+12 
+
+12 
+
+12 
+
+12 
+
+12 
+
+15 
+
+14 
+
+12 
+
+12 
+
+12 
+
+12 
+
+12 
+
+12 
+
+15 
+
+12 
+
+12 
+
+12 
+
+12 
+
+12 
+
+12 
+
+12 
+
+15 
+
+12 
+
+12 
+
+12 
+
+12 
+
+12 
+
+12 
+
+12 
+
+15 
+
+12 
+
+12 
+
+12 
+
+12 
+
+12 
+
+12 
+
+12 
+
+
+Precision: 8 bits 
+
+Approximate quality factor: 92.57 
+Scaling: 14.85 Variance: 23.00 
+
+
+10 November 2016 © 1999-2016 by Richard Alan Peters II 
+
+
+28 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+FDCT Quantization Procedure 
+
+
+255 
+
+23 
+
+34 
+
+13 
+
+44 
+
+11 
+
+44 
+
+6 
+
+19 
+
+4 
+
+19 
+
+12 
+
+18 
+
+9 
+
+16 
+
+15 
+
+58 
+
+10 
+
+11 
+
+2 
+
+14 
+
+6 
+
+12 
+
+7 
+
+22 
+
+18 
+
+9 
+
+12 
+
+7 
+
+11 
+
+12 
+
+9 
+
+42 
+
+26 
+
+19 
+
+9 
+
+23 
+
+15 
+
+16 
+
+6 
+
+9 
+
+6 
+
+23 
+
+14 
+
+20 
+
+10 
+
+19 
+
+21 
+
+48 
+
+13 
+
+13 
+
+11 
+
+15 
+
+12 
+
+18 
+
+10 
+
+3 
+
+0 
+
+13 
+
+18 
+
+16 
+
+4 
+
+11 
+
+14 
+
+
+1 
+
+1 
+
+1 
+
+2 
+
+3 
+
+6 
+
+8 
+
+10 
+
+1 
+
+1 
+
+2 
+
+3 
+
+4 
+
+8 
+
+9 
+
+8 
+
+2 
+
+2 
+
+2 
+
+3 
+
+6 
+
+8 
+
+10 
+
+8 
+
+2 
+
+2 
+
+3 
+
+4 
+
+7 
+
+12 
+
+11 
+
+9 
+
+3 
+
+3 
+
+8 
+
+11 
+
+10 
+
+16 
+
+15 
+
+11 
+
+3 
+
+5 
+
+8 
+
+10 
+
+12 
+
+15 
+
+16 
+
+13 
+
+7 
+
+10 
+
+11 
+
+12 
+
+15 
+
+17 
+
+17 
+
+14 
+
+14 
+
+13 
+
+13 
+
+15 
+
+15 
+
+14 
+
+14 
+
+14 
+
+
+255 
+
+23 
+
+34 
+
+7 
+
+15 
+
+2 
+
+6 
+
+1 
+
+19 
+
+4 
+
+10 
+
+4 
+
+5 
+
+1 
+
+2 
+
+2 
+
+29 
+
+5 
+
+6 
+
+1 
+
+2 
+
+1 
+
+1 
+
+1 
+
+11 
+
+9 
+
+3 
+
+3 
+
+1 
+
+1 
+
+1 
+
+1 
+
+14 
+
+9 
+
+2 
+
+1 
+
+2 
+
+1 
+
+1 
+
+1 
+
+3 
+
+1 
+
+3 
+
+1 
+
+2 
+
+1 
+
+1 
+
+2 
+
+7 
+
+1 
+
+1 
+
+1 
+
+1 
+
+1 
+
+1 
+
+1 
+
+0 
+
+0 
+
+1 
+
+1 
+
+1 
+
+0 
+
+1 
+
+1 
+
+
+Output of FDCT, at 
+
+image pixel location (r,c). 
+
+
+(r,c) e 
+
+{0,8,16 R) X {0,8,16 C), 
+
+
+Quantization Table, Q(u,v) Quantized Result, at 
+
+image pixel location (r,c). 
+
+
+(m,v) = round 
+
+/ \ 
+
+V ’ / 
+
+KQ{u,v)J 
+
+
+This Q(u,v) is yet another 
+quantization table. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+29 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image DC Components (8x8 constant blocks) 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+30 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+DC Component Coding (DPCM) 
+
+
+60 
+
+40 
+
+20 
+
+0 
+
+-20 
+
+-40 
+
+5 10 15 20 25 30 
+
+DC components from 32 blocks Differential PCM coding of same 
+
+
+
+
+DC components are coded separately from the AC components. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+31 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Quantized 
+
+coefficient 
+
+encoding 
+
+order 
+
+
+23 34 7 15 2 6 1 
+4 10 4 5 1 2 2 
+29 5612111 
+
+11 9331111 
+
+14 9212111 
+
+31312112 
+71111111 
+00111011 
+
+
+255 
+
+19 
+
+
+start 
+
+
+
+end 
+
+
+AC: 23 19 29 4 34 7105 11 14 964152513937123216121113100112112111211111 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+32 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Entropy Encoding of AC Coefficients 
+
+Two step process: 
+
+1 . Convert zigzag sequence of quantized 
+coefficients into a sequence of symbols. 
+
+2. Convert symbols to a data stream of 
+variable length codes. 
+
+
+Symbol 1 = (Runlength, Size) 
+Symbol 2 = Amplitude 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+33 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Entropy Encoding of Coefficients 
+
+Symbol 1: (Runlength, Size); 
+
+Symbol 2: Amplitude 
+
+AC: 
+
+Runlength: number of consecutive zero values (0-15) 
+Size: number of bits used to encode amplitude (1-10) 
+Amp 1 i t u de : quantized value 
+
+DC: 
+
+Runlength: not included 
+
+Size: number of bits used to encode amplitude (1-11) 
+Amp 1 1 1 u de : quantized value 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+34 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+V ariable Length Entropy Encoding 
+
+
+size 
+
+amplitude 
+
+1 
+
+-1,1 
+
+2 
+
+-3,-2, 2,3 
+
+3 
+
+“7 . . . ... 7 
+
+4 
+
+-15. . .-8,8. . . 15 
+
+5 
+
+-31. ..-16, 16. ..31 
+
+6 
+
+-63. . .-32,32. . .63 
+
+7 
+
+-127... -64,64... 128 
+
+8 
+
+-255. ..-128,128. ..255 
+
+9 
+
+-511. ..-256,256. ..511 
+
+10 
+
+-1023. ..-512,512. ..1023 
+
+DC only H 
+
+-2047... -1024, 1024... 2047 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+35 
+
+
+File size (bytes) 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+Effects of Quality Settings 
+
+
+
+Image: http : / / en . wikipedia . org/ wiki /File : Quality_comparison_j pg_vs_savef orweb . j pg 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+36 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+JPEG Compression 
+
+
+Original image is 
+5244W X 471 6h 
+@ 1200 ppi: 
+127M Bytes 
+
+
+
+Yoyogi Park, Tokyo, October 1999. Photo by Alan Peters. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+37 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+BMP 
+
+Original Image 
+
+File size in bytes 
+3 , 145,784 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+38 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+JPEG 
+
+Matlab’s quality 100 
+
+File size in bytes 
+632,210 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+39 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+JPEG 
+
+Matlab’s quality 50 
+
+File size in bytes 
+56,541 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+40 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+JPEG 
+
+Matlab’s quality 10 
+
+File size in bytes 
+
+26,262 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+41 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+JPEG 
+
+Matlab’s quality 0 
+
+File size in bytes 
+19,117 
+
+
+Quality numbers are 
+different between 
+programs... 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+42 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+JPEG 
+
+
+Photoshop’s quality 0 
+
+File size in bytes 
+47,800 
+
+
+Photoshop's quality 
+zero is similar to 
+Matlab's quality 40... 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+43 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+JPEG 
+
+Matlab’s quality 40 
+
+File size in bytes 
+49,115 
+
+
+Does not matter because 
+the quantization tables 
+are in the file with the 
+data. Each program uses 
+that table when decoding 
+the data. 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+44 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+JPEG 
+
+Magnitude of 
+Gradient of 
+Original image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+45 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+JPEG 
+
+Magnitude of 
+gradient of jpeg 
+quality 100 image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+46 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+JPEG 
+
+Magnitude of 
+gradient of jpeg 
+quality 50 image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+47 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+JPEG 
+
+Magnitude of 
+gradient of jpeg 
+quality 10 image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+48 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+JPEG 
+
+Magnitude of 
+gradient of jpeg 
+quality 0 image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+49 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+JPEG 
+
+
+Gradient enhanced 
+original image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+50 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+JPEG 
+
+
+Gradient enhanced 
+quality 100 image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+51 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+JPEG 
+
+
+Gradient enhanced 
+quality 50 image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+52 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+JPEG 
+
+
+Gradient enhanced 
+quality 10 image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+53 
+
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+JPEG 
+
+
+Gradient enhanced 
+quality 0 image 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+54 
+
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Image Compression: JPEG 
+
+
+CD 
+
+> 
+
+CD 
+
+
+
+
+LU 
+
+0 - 
+
+
+
+
+JPEGQ: 7 22kB 
+
+
+JPEGQ: 6 21kB 
+
+
+
+JPEGQ: 3 
+
+
+16kB 
+
+
+JPEGQ: 2 
+
+
+14kB 
+
+
+
+JPEGQ: 9 31kB 
+
+
+
+JPEGQ: 5 19kB JPEGQ: 4 
+
+
+
+JPEGQ: 1 13kB JPEGQ: 0 
+
+
+17kB 
+
+
+12kB 
+
+
+
+
+C/) 
+
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+55 
+
+
+V 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Image Compression: JPEG 
+
+
+
+JPEGQ:6 21kB JPGEQ; 0 12kB 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+56 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+JFIF Information Display Program 
+
+JPEGsnoop - JPEG File Decoding Utility 
+by Calvin Hass © 201 0 
+
+From the web page: 
+
+Every digital photo contains a wealth of hidden information — JPEGsnoop was written 
+to expose these details to those who are curious. Not only can one determine the 
+various settings that were used in the digital camera in taking the photo (EXIF 
+metadata, IPTC), but one can also extract information that indicates the quality and 
+nature of the JPEG image compression used by the camera in saving the file. Digital 
+cameras specify compression quality levels, many of them wildly different, leading to 
+the fact that some cameras produce far better JPEG images than others. 
+
+http : / / WWW . impulseadventure . com/ photo/ 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+57 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+Example: JPEG/JFIF Encoded Image 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+58 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+Data Markers from the JPEG File Interchange Format (JFIF) 
+
+
+Short name 
+
+Code 
+
+Payload 
+
+Name 
+
+Comments 
+
+SOI 
+
+OxFFDS 
+
+none 
+
+Start Of Image 
+
+
+SOFO 
+
+OxFFCO 
+
+variable size 
+
+Start Of Frame 
+(Baseline) 
+
+Indicates that this is a baseline DCT-based JPEG, and specifies the width, height, number of components, and 
+component subsampling (e.g., 4:2:0). 
+
+SOF2 
+
+0xFFC2 
+
+variable size 
+
+Start Of Frame 
+(Progressive) 
+
+Indicates that this is a progressive DCT-based JPEG, and specifies the width, height, number of components, 
+and component subsampling (e.g., 4:2:0). 
+
+DHT 
+
+0xFFC4 
+
+variable size 
+
+Define Huffman 
+Table(s) 
+
+Specifies one or more Huffman tables. 
+
+DOT 
+
+OxFFDB 
+
+variable size 
+
+Define 
+
+Quantization 
+
+Table(s) 
+
+Specifies one or more quantization tables. 
+
+DRI 
+
+OxFFDD 
+
+2 bytes 
+
+Define Restart 
+Interval 
+
+Specifies the interval between RSTn markers, in macroblocks. This marker is followed by two bytes indicating 
+the fixed size so it can be treated like any other variable size segment. 
+
+SOS 
+
+OxFFDA 
+
+variable size 
+
+Start Of Scan 
+
+Begins a top-to-bottom scan of the image. In baseline DCT JPEG images, there is generally a single scan. 
+Progressive DCT JPEG images usually contain multiple scans. This marker specifies which slice of data it will 
+contain, and is immediately followed by entropy-coded data. 
+
+RSTn 
+
+0XFFD0...D7 
+
+none 
+
+Restart 
+
+Inserted every r macroblocks, where r is the restart interval set by a DRI marker. Not used if there was no DRI 
+marker. The low 3 bits of the marker code cycle in value from 0 to 7. 
+
+APPn 
+
+OxFFEn 
+
+variable size 
+
+Application- 
+
+specific 
+
+For example, an Exit JPEG file uses an APP1 marker to store metadata, laid out in a structure based closely 
+on TIFF. 
+
+COM 
+
+OxFFFE 
+
+variable size 
+
+Comment 
+
+Contains a text comment. 
+
+EOl 
+
+0xFFD9 
+
+none 
+
+End Of Image 
+
+
+
+10 November 2016 
+
+
+Source: ISO/]lB@91:Q918-bylSSbh^($6^1aiaBfitp:^Hi.wikipedia.org/wiki/JPEG 
+
+
+59 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+JPEG / JFIF Information (via JPEGsnoop) 
+
+
+Filename: [Saoirse Ronan - Ember.jpg] 
+
+
+*** Marker: APP2 (xFFE2) *** 
+
+
+Filesize: [3156857] Bytes 
+
+
+OFFSET: 0x00000264 
+
+
+
+
+length = 576 
+
+
+Start Offset: 0x00000000 
+
+
+Identifier = [ICC_PROFIFE] 
+
+
+*** Marker: SOI (xFFD8) *** 
+
+
+ICC Profile: 
+
+
+OFFSET: 0x00000000 
+
+
+Marker Number = 1 of 1 
+
+
+
+
+Profile Size : 560 bytes 
+
+
+*** Marker: APP13 (xFFED) *** 
+
+
+Preferred CMM Type 
+
+'ADBE' (0x41444245) 
+
+OFFSET: 0x00000002 
+
+
+Profile Version 
+
+0.2. 1.0 (0x02100000) 
+
+length = 28 
+
+
+Profile Device/Class 
+
+Display Device profile ('mntr' (0x6D6E7472)) 
+
+Identifier = [Photoshop 3.0] 
+
+
+Data Colour Space 
+
+rgbData ('RGB ' (0x52474220)) 
+
+8BIM: [0x0404] Name=[] Fen=[0x0000] 
+
+1 
+
+Profile connection space (PCS) 
+
+: 'XYZ ' (0x5 8595 A20) 
+
+IPTC [OxFFEl :002] ? size=12392 
+
+1 
+
+Profile creation date 
+
+1999-06-03 00:00:00 
+
+
+
+Profile file signature 
+
+'aesp' (0x61637370) 
+
+*** Marker: APPl (xFFEl) *** 
+
+
+Primary platform 
+
+Apple Computer, Inc. ('APPF' (0x4150504C)) 
+
+OFFSET: 0x00000020 . 
+
+1 
+
+Profile flags 
+
+0x00000000 
+
+length =560 1 
+
+1 
+
+Profile flags > Profile not embedded 
+
+Identifier = [http://ns.adobe.eom/xap/l.0/] 
+
+
+Profile flags > Profile can't be used independently of embedded 
+
+XMP = 
+
+
+Device Manufacturer 
+
+'none' (0x6E6F6E65) 
+
+
+
+Device Model 
+
+'....' (0x00000000) 
+
+*** Marker: APPO (xFFEO) *** 
+
+
+Device attributes 
+
+0x00000000_00000000 
+
+OFFSET: 0x00000252 
+
+
+Device attributes > Reflective 
+
+length =16 
+
+
+Device attributes > Glossy 
+
+identifier = [JFIF] 
+
+
+Device attributes > Media polarity = negative 
+
+version = [1 .2] 
+
+
+Device attributes > Black & white media 
+
+density = 300 x 300 DPI (dots per inch) 
+
+
+Rendering intent 
+
+Perceptual 
+
+thumbnail =0x0 
+
+
+Profile creator 
+
+'ADBE' (0x41444245) 
+
+
+
+Profile ID 
+
+0x00000000_00000000_00000000 
+
+
+
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+60 
+
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+JPEG / JFIF Inform ation (via JPEGsnoop) 
+
+
+*** Marker: DQT (xFFDB) *** 
+
+
+
+
+Define a Quantization Table. 
+
+
+
+
+OFFSET: 0x000004B6 
+
+
+
+
+Table length =132 
+
+
+
+
+Precision=8 bits 
+
+
+
+
+
+Destination ID= 
+
+0 (Luminance) 
+
+
+
+
+DQT, Row #0 
+
+2 2 3 4 5 
+
+6 
+
+8 
+
+11 
+
+DQT, Row #1 
+
+2 2 2 4 5 
+
+7 
+
+9 
+
+11 
+
+DQT, Row #2 
+
+3 2 3 5 7 
+
+9 
+
+11 
+
+12 
+
+DQT, Row #3 
+
+4 4 5 7 9 
+
+11 
+
+12 
+
+12 
+
+DQT, Row #4 
+
+5 5 7 9 11 
+
+12 
+
+12 
+
+12 
+
+DQT, Row #5 
+
+6 7 9 11 12 
+
+12 
+
+12 
+
+12 
+
+DQT, Row #6 
+
+8 9 11 12 12 
+
+12 
+
+12 
+
+12 
+
+DQT, Row #7 
+
+11 11 12 12 12 
+
+12 
+
+12 
+
+12 
+
+Approx quality factor = 91.64 (scaling: 
+
+=16.71 variance=22.54) 
+
+Precision=8 bits 
+
+
+
+
+
+Destination ID= 
+
+1 (Chrominance) 
+
+
+
+
+DQT, Row #0 
+
+3 3 7 13 15 
+
+15 
+
+15 
+
+15 
+
+DQT, Row #1 
+
+3 4 7 13 14 
+
+12 
+
+12 
+
+12 
+
+DQT, Row #2 
+
+7 7 13 14 12 
+
+12 
+
+12 
+
+12 
+
+DQT, Row #3 
+
+13 13 14 12 12 
+
+12 
+
+12 
+
+12 
+
+DQT, Row #4 
+
+15 14 12 12 12 
+
+12 
+
+12 
+
+12 
+
+DQT, Row #5 
+
+15 12 12 12 12 
+
+12 
+
+12 
+
+12 
+
+DQT, Row #6 
+
+15 12 12 12 12 
+
+12 
+
+12 
+
+12 
+
+DQT, Row #7 
+
+15 12 12 12 12 
+
+12 
+
+12 
+
+12 
+
+Approx quality factor = 92.57 (scaling 
+
+:=14.85 variance=23.00) 
+
+
+*** Marker: SOFO (Baseline DCT) (xFFCO) *** 
+
+OFFSET: 0x0000053C 
+
+Frame header length =17 
+
+Precision = 8 
+
+Number of Lines = 2592 
+
+Samples per Line = 3872 
+
+Image Size = 3872 x 2592 
+
+Raw Image Orientation = Landscape 
+
+Number of Img components = 3 
+
+Comp[l]: ID=0x01, Samp Fac=0xll (Subsamp 1 x 1), Quant Tbl Sel=0x00 (Lum: Y) 
+
+Comp[2]: ID=0x02, Samp Fac=0xll (Subsamp 1 x 1), Quant Tbl Sel=0x01 (Chrom: Cb) 
+
+Comp[3]: ID=0x03, Samp Fac=0xll (Subsamp 1 x 1), Quant Tbl Sel=0x01 (Chrom: Cr) 
+
+*** Marker: DRI (Restart Interval) (xFFDD) *** 
+
+OFFSET: 0x0000054F 
+length = 4 
+interval = 484 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+61 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+JPEG / JFIF Information (via JPEGsnoop) 
+
+
+*** Marker: DHT (Define Huffman Table) (xFFC4) *** 
+OFFSET: 0x00000555 
+Huffman table length = 418 
+
+
+Destination ID = 0 
+Class = 0 (DC / Fossless Table) 
+Codes of length 01 bits (000 total) 
+Codes of length 02 bits (000 total) 
+Codes of length 03 bits (007 total) 
+Codes of length 04 bits (001 total) 
+Codes of length 05 bits (001 total) 
+Codes of length 06 bits (001 total) 
+Codes of length 07 bits (001 total) 
+Codes of length 08 bits (001 total) 
+Codes of length 09 bits (000 total) 
+Codes of length 10 bits (000 total) 
+Codes of length 1 1 bits (000 total) 
+Codes of length 12 bits (000 total) 
+Codes of length 13 bits (000 total) 
+Codes of length 14 bits (000 total) 
+Codes of length 15 bits (000 total) 
+Codes of length 16 bits (000 total) 
+Total number of codes: 012 
+
+
+04 05 03 02 06 01 00 
+
+07 
+
+08 
+09 
+OA 
+OB 
+
+
+
+
+Destination ID = 1 
+
+
+Class = 0 (DC / Fossless Table) 
+
+
+Codes of length 01 bits (000 total) 
+
+
+Codes of length 02 bits (002 total) 
+
+01 00 
+
+Codes of length 03 bits (002 total) 
+
+02 03 
+
+Codes of length 04 bits (003 total) 
+
+04 05 06 
+
+Codes of length 05 bits (001 total) 
+
+07 
+
+Codes of length 06 bits (001 total) 
+
+08 
+
+Codes of length 07 bits (001 total) 
+
+09 
+
+Codes of length 08 bits (001 total) 
+
+OA 
+
+Codes of length 09 bits (001 total) 
+
+OB 
+
+Codes of length 10 bits (000 total) 
+
+
+Codes of length 1 1 bits (000 total) 
+
+
+Codes of length 12 bits (000 total) 
+
+
+Codes of length 13 bits (000 total) 
+
+
+Codes of length 14 bits (000 total) 
+
+
+Codes of length 15 bits (000 total) 
+
+
+Codes of length 16 bits (000 total) 
+
+
+Total number of codes: 012 
+
+
+
+10 November 2016 © 1999-2016 by Richard Alan Peters II 
+
+
+62 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+
+JPEG / JFIF Information (via JPEGsnoop) 
+
+
+Destination ID = 0 
+Class = 1 (AC Table) 
+
+Codes of length 01 bits (000 total): 
+
+Codes of length 02 bits (002 total): 01 02 
+
+Codes of length 03 bits (001 total): 03 
+
+Codes of length 04 bits (003 total): 1 1 04 00 
+
+Codes of length 05 bits (003 total): 05 21 12 
+
+Codes of length 06 bits (002 total): 31 41 
+
+Codes of length 07 bits (004 total): 51 06 13 61 
+
+Codes of length 08 bits (002 total): 22 71 
+
+Codes of length 09 bits (006 total): 81 14 32 91 A1 07 
+
+Codes of length 10 bits (007 total): 15 B1 42 23 Cl 52 D1 
+
+Codes of length 11 bits (003 total): El 33 16 
+
+Codes of length 12 bits (004 total): 62 FO 24 72 
+
+Codes of length 13 bits (002 total): 82 FI 
+
+Codes of length 14 bits (006 total): 25 43 34 53 92 A2 
+
+Codes of length 15 bits (002 total): B2 63 
+
+Codes of length 16 bits (115 total): 
+
+73 C2 35 44 27 93 A3 B3 36 17 54 64 74 C3 D2 E2 
+08 26 83 09 OA 18 19 84 94 45 46 A4 B4 56 D3 55 
+28 1 A F2 E3 F3 C4 D4 E4 F4 65 75 85 95 A5 B5 C5 
+D5 E5 F5 66 76 86 96 A6 B6 C6 D6 E6 F6 37 47 57 
+67 77 87 97 A7 B7 Cl D7 E7 F7 38 48 58 68 78 88 
+98 A8 B8 C8 D8 E8 F8 29 39 49 59 69 79 89 99 A9 
+B9 C9 D9 E9 F9 2A 3A 4A 5A 6A 7A 8A 9A AA BA CA 
+DA EA FA 
+
+Total number of codes: 162 
+
+■ 
+
+
+Destination ID = 1 
+Class = 1 (AC Table) 
+
+Codes of length 01 bits (000 total): 
+
+Codes of length 02 bits (002 total): 01 00 
+
+Codes of length 03 bits (002 total): 02 11 
+
+Codes of length 04 bits (001 total): 03 
+
+Codes of length 05 bits (002 total): 04 21 
+
+Codes of length 06 bits (003 total): 12 31 41 
+
+Codes of length 07 bits (005 total): 05 51 13 61 22 
+
+Codes of length 08 bits (005 total): 06 71 81 91 32 
+
+Codes of length 09 bits (004 total): A1 B1 FO 14 
+
+Codes of length 10 bits (005 total): Cl D1 El 23 42 
+
+Codes of length 11 bits (006 total): 15 52 62 72 FI 33 
+
+Codes of length 12 bits (004 total): 24 34 43 82 
+
+Codes of length 13 bits (008 total): 16 92 53 25 A2 63 B2 C2 
+
+Codes of length 14 bits (003 total): 07 73 D2 
+
+Codes of length 15 bits (003 total): 35 E2 44 
+
+Codes of length 16 bits (109 total): 
+
+83 17 54 93 08 09 OA 18 19 26 36 45 lA 27 64 74 
+55 37 F2 A3 B3 C3 28 29 D3 E3 F3 84 94 A4 B4 C4 
+D4 E4 F4 65 75 85 95 A5 B5 C5 D5 E5 F5 46 56 66 
+76 86 96 A6 B6 C6 D6 E6 F6 47 57 67 77 87 97 A7 
+B7 Cl D7 E7 F7 38 48 58 68 78 88 98 A8 B8 C8 D8 
+E8 F8 39 49 59 69 79 89 99 A9 B9 C9 D9 E9 F9 2A 
+3A 4A 5A 6A 7A 8A 9A AA BA CA DA EA FA 
+Total number of codes: 162 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+63 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+JPEG / JFIF Information (via JPEGsnoop) 
+
+
+*** Marker: SOS (Start of Scan) (xFFDA) *** 
+OFFSET: 0x000006F9 
+Scan header length =12 
+Number of img components = 3 
+
+Component[l]: selector=0x01, table=0x00 
+Component[2]: selector=0x02, table=Oxll 
+Component[3]: selector=0x03, table=Oxll 
+Spectral selection = 0 .. 63 
+Successive approximation = 0x00 
+
+*** Decoding SCAN Data *** 
+
+OFFSET: 0x00000707 
+
+Scan Decode Mode: No IDCT (DC only) 
+
+NOTE: Fow-resolution DC component shown. 
+
+Scan Data encountered marker 
+0xFFD9 @ 0x00302B77.0 
+
+Compression stats: 
+
+Compression Ratio: 3028.43:1 
+Bits per pixel: 0.01:1 
+
+
+Huffman code histogram stats: 
+
+Huffman Table: (Dest ID: 0, Class: DC) 
+
+# codes of length 01 bits: 
+
+0 ( 0%) 
+
+# codes of length 02 bits: 
+
+0 ( 0%) 
+
+# codes of length 03 bits: 
+
+142702(91%) 
+
+# codes of length 04 bits: 
+
+8490 ( 5%) 
+
+# codes of length 05 bits: 
+
+3974 ( 3%) 
+
+# codes of length 06 bits: 
+
+1649 ( 1%) 
+
+# codes of length 07 bits: 
+
+1 ( 0%) 
+
+# codes of length 08 bits: 
+
+0 ( 0%) 
+
+# codes of length 09 bits: 
+
+0 ( 0%) 
+
+# codes of length 10 bits: 
+
+0 ( 0%) 
+
+# codes of length 1 1 bits: 
+
+0 ( 0%) 
+
+# codes of length 12 bits: 
+
+0 ( 0%) 
+
+# codes of length 13 bits: 
+
+0 ( 0%) 
+
+# codes of length 14 bits: 
+
+0 ( 0%) 
+
+# codes of length 15 bits: 
+
+0 ( 0%) 
+
+# codes of length 16 bits: 
+
+0 ( 0%) 
+
+
+Huffman Table: (Dest ID: ] 
+
+, Class: DC) 
+
+# codes of length 01 bits: 
+
+0 ( 0%) 
+
+# codes of length 02 bits: 
+
+162056 ( 52%) 
+
+# codes of length 03 bits: 
+
+128895 (41%) 
+
+# codes of length 04 bits: 
+
+22673 ( 7%) 
+
+# codes of length 05 bits: 
+
+8 ( 0%) 
+
+# codes of length 06 bits: 
+
+0 ( 0%) 
+
+# codes of length 07 bits: 
+
+0 ( 0%) 
+
+# codes of length 08 bits: 
+
+0 ( 0%) 
+
+# codes of length 09 bits: 
+
+0 ( 0%) 
+
+# codes of length 10 bits: 
+
+0 ( 0%) 
+
+# codes of length 11 bits: 
+
+0 ( 0%) 
+
+# codes of length 12 bits: 
+
+0 ( 0%) 
+
+# codes of length 13 bits: 
+
+0 ( 0%) 
+
+# codes of length 14 bits: 
+
+0 ( 0%) 
+
+# codes of length 15 bits: 
+
+0 ( 0%) 
+
+# codes of length 16 bits: 
+
+0 ( 0%) 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+64 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+Y 
+
+JPEG / JFIF Information (via JPEGsnoop) 
+
+
+Huffman Table: (Best ID: 0, Class: AC) 
+
+# codes of length 01 bits: 
+
+0( 0%) 
+
+# codes of length 02 bits: 
+
+2103874 ( 53%) 
+
+# codes of length 03 bits: 
+
+393151 ( 10%) 
+
+# codes of length 04 bits: 
+
+712367 ( 18%) 
+
+# codes of length 05 bits: 
+
+368952 ( 9%) 
+
+# codes of length 06 bits: 
+
+148211 ( 4%) 
+
+# codes of length 07 bits: 
+
+116694 ( 3%) 
+
+# codes of length 08 bits: 
+
+52460 ( 1%) 
+
+# codes of length 09 bits: 
+
+49772 ( 1%) 
+
+# codes of length 10 bits: 
+
+19533 ( 0%) 
+
+# codes of length 1 1 bits: 
+
+2118 ( 0%) 
+
+# codes of length 12 bits: 
+
+2566 ( 0%) 
+
+# codes of length 13 bits: 
+
+726 ( 0%) 
+
+# codes of length 14 bits: 
+
+367 ( 0%) 
+
+# codes of length 15 bits: 
+
+24 ( 0%) 
+
+# codes of length 16 bits: 
+
+1861 ( 0%) 
+
+
+Huffman Table: (Dest ID: 1, Class: AC) 
+
+# codes of length 01 bits: 
+
+0 ( 0%) 
+
+# codes of length 02 bits: 
+
+580346 ( 62%) 
+
+# codes of length 03 bits: 
+
+209085 ( 22%) 
+
+# codes of length 04 bits: 
+
+25344 ( 3%) 
+
+# codes of length 05 bits: 
+
+50682 ( 5%) 
+
+# codes of length 06 bits: 
+
+50395 ( 5%) 
+
+# codes of length 07 bits: 
+
+10862 ( 1%) 
+
+# codes of length 08 bits: 
+
+2482 ( 0%) 
+
+# codes of length 09 bits: 
+
+2378 ( 0%) 
+
+# codes of length 10 bits: 
+
+941 ( 0%) 
+
+# codes of length 1 1 bits: 
+
+273 ( 0%) 
+
+# codes of length 12 bits: 
+
+0 ( 0%) 
+
+# codes of length 13 bits: 
+
+1 ( 0%) 
+
+# codes of length 14 bits: 
+
+0 ( 0%) 
+
+# codes of length 15 bits: 
+
+0 ( 0%) 
+
+# codes of length 16 bits: 
+
+0 ( 0%) 
+
+
+
+YCC clipping in DC: 
+
+
+Y component: [<0= 0] [>255= 
+
+0] 
+
+Cb component: [<0= 0] [>255= 
+
+0] 
+
+Cr component: [<0= 0] [>255= 
+
+0] 
+
+RGB clipping in DC: 
+
+
+R component: [<0= 0] [>255= 
+
+0] 
+
+G component: [<0= 0] [>255= 
+
+0] 
+
+B component: [<0= 0] [>255= 
+
+0] 
+
+Average Pixel Luminance (Y): 
+
+
+Y=[ 86] (range: 0..255) 
+
+
+Brightest Pixel Search: 
+
+
+YCC=[ 1016, 0, 0] 
+
+
+RGB=[255,255,255] @ MCU[ 94, 
+
+1] 
+
+Finished Decoding SCAN Data 
+
+
+Number of RESTART markers decoded: 323 
+
+Next position in scan buffer: 
+
+
+Offset 0x00302B75.1 
+
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+65 
+
+
+EECE 4353 Image Processing 
+
+Vanderbilt University School of Engineering 
+
+
+V 
+
+
+JPEG / JFIF Information (via JPEGsnoop) 
+
+
+*** Marker: EOI (End of Image) (xEED9) *** 
+OEESET: 0x00302B77 
+
+
+*** Searching Compression Signatures *** 
+
+
+Signature: 
+
+Signature (Rotated): 
+Eile Offset: 
+
+Chroma subsampling: 
+EXIE Make/Model: 
+EXIE Makernotes: 
+EXIE Software: 
+
+
+0166B0BC0B82C8233430BE67EA31C829 
+0166B0BC0B82C8233430BE67EA31C829 
+0 bytes 
+1x1 
+
+NONE 
+
+NONE 
+
+NONE 
+
+
+Searching Compression Signatures: (3327 built-in, 0 user(*) ) 
+
+EXIE.Make / Software EXIE.Model Quality Subsamp Match? 
+
+
+SW : [Adobe Photoshop] [Save As 10] 
+
+Based on the analysis of compression characteristics and EXIE metadata: 
+ASSESSMENT: Class 1 - Image is processed/edited 
+Position Marked @ MCU=[ 177, 52](0,0) YCC=[ -468, -60, 30] 
+
+
+10 November 2016 
+
+
+© 1999-2016 by Richard Alan Peters II 
+
+
+66 
+
+
