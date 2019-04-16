@@ -123,6 +123,7 @@ public class ProdImgImpWzrdView extends JFrame {
 																								
 																										checkBoxListStores = new CheckBoxList();
 																										scrollPane_1.setViewportView(checkBoxListStores);
+																										checkBoxListStores.addListSelectionListener(controller);
 																										checkBoxListStores.setBackground(new Color(240, 248, 255));
 																										checkBoxListStores.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 																										
@@ -225,6 +226,7 @@ public class ProdImgImpWzrdView extends JFrame {
 		panelButtonBar.add(btnCardBack);
 
 		btnCardNext = new JButton("NEXT");
+		btnCardNext.setEnabled(false);
 		btnCardNext.addActionListener(controller);
 		btnCardNext.setOpaque(false);
 		btnCardNext.setFont(new Font("Segoe UI", Font.BOLD, 14));

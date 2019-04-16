@@ -26,6 +26,8 @@ import javax.imageio.ImageWriter;
 import javax.imageio.stream.ImageOutputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
@@ -48,7 +50,8 @@ import model.singleton.Executor;
 import model.singleton.PropertiesModel;
 import model.singleton.SFTPClientModel;
 
-public class ProdImgImpWzrdController extends ImportController implements ActionListener, ComponentListener {
+public class ProdImgImpWzrdController extends ImportController
+		implements ActionListener, ComponentListener, ListSelectionListener {
 
 	private ProdImgImpWzrdView view;
 	private FTPClient ftp = null;
@@ -60,43 +63,45 @@ public class ProdImgImpWzrdController extends ImportController implements Action
 	private Vector<File> psdFileList = new Vector<File>();
 	Vector<ImageSize> imageSizeList = new Vector<ImageSize>();
 	private BufferedImage srcImage;
+	private String configPrefix;
 
 	public ProdImgImpWzrdController() {
 		initProperties();
 		initView();
-		initStores();
+		// initStores();
+		this.configPrefix = "product";
 	}
 
 	public ProdImgImpWzrdController(Vector<File> psdFileList) {
 		initProperties();
 		initView();
-		initStores();
+		// initStores();
 		this.psdFileList = psdFileList;
 		view.fileListSourceFiles.setListData(psdFileList);
 	}
 
+	public ProdImgImpWzrdController(String configPrefix) {
+		initProperties();
+		initView();
+		// initStores();
+		this.configPrefix = configPrefix;
+	}
 	private void initProperties() {
 		propApp = new PropertiesModel();
 		propApp.loadAppProperties();
 	}
 
 	private void initView() {
-
 		view = new ProdImgImpWzrdView(this);
 		view.setVisible(true);
-		
-		Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName("JPEG");
-		ImageWriter writer = writers.next();
-	    while (writers.hasNext()) {
-		    System.out.println("reader: " + writers.next());
-	    }
 	}
 
 	public void initStores() {
+		stores = new Vector<StoreDataModel>();
+		selectedStores = new Vector<StoreDataModel>();
 		File f = new File(propApp.get("locNetworkRes") + "stores");
 		File[] files = f.listFiles();
-		stores = new Vector<StoreDataModel>();
-
+		
 		try {
 			for (File file : files) {
 				if (!file.isDirectory() && FilenameUtils.isExtension(file.getName(), "properties")) {
@@ -105,10 +110,10 @@ public class ProdImgImpWzrdController extends ImportController implements Action
 					stores.add(new StoreDataModel(configStore.getString("url"), configStore.getString("ftp.host"),
 							Integer.parseInt(configStore.getString("ftp.port")), configStore.getString("ftp.protocol"),
 							configStore.getString("ftp.user"), configStore.getString("ftp.pswd"),
-							configStore.getString("ftp.dir.default"), 
-							configStore.getBoolean("product.image.compression.enabled"),
-							configStore.getString("product.image.compression.command"),
-							configStore.getList("product.image.size")));
+							configStore.getString("ftp.dir.default"),
+							configStore.getBoolean(configPrefix + ".image.compression.enabled"),
+							configStore.getString(configPrefix + ".image.compression.command"),
+							configStore.getList(configPrefix + ".image.size")));
 				}
 			}
 		} catch (ConfigurationException cex) {
@@ -119,7 +124,6 @@ public class ProdImgImpWzrdController extends ImportController implements Action
 	public void process() {
 
 		File imgFile;
-		BufferedImage img;
 		DateTimeFormatter fmt = DateTimeFormat.forPattern("_yyyyMMdd");
 		String currentDate = LocalDate.now().toString(fmt);
 
@@ -159,10 +163,15 @@ public class ProdImgImpWzrdController extends ImportController implements Action
 						// *** IMAGE SCALING ***
 						progressLabelUpdate("Resize " + FilenameUtils.getBaseName(psdFile.getName()) + " to "
 								+ imgSize.getWidth() + "px");
-						//BufferedImage scaledImage = imageHandler.resizeImage(imgSize.getWidth(), imgSize.getHeight(), srcImage);
-						BufferedImage scaledImage = imageHandler.resizeImage(lockAspectRatioHeight(new Dimension(srcImage.getWidth(), srcImage.getHeight()), imgSize.getWidth()), srcImage);
-						//BufferedImage scaledImage = imageHandler.resizeImage3(srcImage, imgSize.getWidth());
-						
+						BufferedImage scaledImage = imageHandler.resizeImage(imgSize.getWidth(),
+						imgSize.getHeight(), srcImage);
+						//BufferedImage scaledImage = imageHandler.resizeImage(
+						//		lockAspectRatioHeight(new Dimension(srcImage.getWidth(), srcImage.getHeight()),
+						//				imgSize.getWidth()),
+						//		srcImage);
+						// BufferedImage scaledImage = imageHandler.resizeImage3(srcImage,
+						// imgSize.getWidth());
+
 //						BufferedImage scaledImage = null;
 //						BufferedImageOp[] imageOp = null;
 //						BufferedImage paddedImage = null;
@@ -182,9 +191,9 @@ public class ProdImgImpWzrdController extends ImportController implements Action
 //							// TODO Auto-generated catch block		
 //							e.printStackTrace();
 //						}
-						
+
 						// *** IMAGE CONVERSION ***
-							// TODO method call convertToRGB
+						// TODO method call convertToRGB
 						progressLabelUpdate("Remove Alpha Channel from " + FilenameUtils.getBaseName(psdFile.getName())
 								+ " (" + imgSize.getWidth() + "px)");
 						BufferedImage rgbImage = imageHandler.removeAlphaChannel(scaledImage);
@@ -198,16 +207,15 @@ public class ProdImgImpWzrdController extends ImportController implements Action
 
 						imgFile = new File(
 								directory.getPath() + "/" + FilenameUtils.getBaseName(psdFile.getName()) + ".jpg");
-						//ImageIO.write(rgbImage, "jpg", imgFile);
-						//imageHandler.imageWriteSanselan(rgbImage, imgFile);
-						writeFile(rgbImage, imgFile);
-					    
-						
+						ImageIO.write(rgbImage, "jpg", imgFile);
+						// imageHandler.imageWriteSanselan(rgbImage, imgFile);
+						//writeFile(rgbImage, imgFile);
+
 						// *** IMAGE FILE COMPRESSION ***
 						if (store.isCompressionEnabled()) {
-							
-							//File workingDir=new File(System.getProperty("user.dir"));
-							//Executor.compressImage(imgFile, workingDir, store.getCompressionCommand());
+
+							// File workingDir=new File(System.getProperty("user.dir"));
+							// Executor.compressImage(imgFile, workingDir, store.getCompressionCommand());
 							Executor.exec(imgFile, store.getCompressionCommand());
 						}
 
@@ -254,7 +262,7 @@ public class ProdImgImpWzrdController extends ImportController implements Action
 	public BufferedImage initSrcFile(File srcFile) {
 		this.srcFile = srcFile;
 		String fileExt = FilenameUtils.getExtension(srcFile.getName());
-		BufferedImage srcImage = null;
+		srcImage = null;
 		try {
 			if (fileExt.equalsIgnoreCase("psd") || fileExt.equalsIgnoreCase("psb")) {
 //				Psd psd = new Psd(srcFile);
@@ -275,58 +283,58 @@ public class ProdImgImpWzrdController extends ImportController implements Action
 	}
 
 	public void writeFile(BufferedImage image, File destFile) {
-		
+
 		String format = "JPEG";
 		// Get the writer
-	    Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName(format);
+		Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName(format);
 
 //	    if (!writers.hasNext()) {
 //	        throw new IllegalArgumentException("No writer for: " + format);
 //	    }
-	    
-	    ImageWriter writer = writers.next();
-	    System.out.println("reader: " + writer);
+
+		ImageWriter writer = writers.next();
+		System.out.println("reader: " + writer);
 //	    while (writers.hasNext()) {
 //	    	writer = writers.next();
 //		    System.out.println("reader: " + writer);
 //		    
 //	    }
-	    
-	    try {
-	        // Create output stream
-	        ImageOutputStream output = ImageIO.createImageOutputStream(destFile);
 
-	        try {
-	            writer.setOutput(output);
+		try {
+			// Create output stream
+			ImageOutputStream output = ImageIO.createImageOutputStream(destFile);
 
-	            // Optionally, listen to progress, warnings, etc.
+			try {
+				writer.setOutput(output);
 
-	            ImageWriteParam param = writer.getDefaultWriteParam();
-	            param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
-	            System.out.println(param.getProgressiveMode());
-	            System.out.println(param.getCompressionMode());
-	            System.out.println(param.getCompressionQuality());
-	            System.out.println(param.getBitRate(1f));
+				// Optionally, listen to progress, warnings, etc.
 
-	            // Optionally, control format specific settings of param (requires casting), or
-	            // control generic write settings like sub sampling, source region, output type etc.
+				ImageWriteParam param = writer.getDefaultWriteParam();
+				param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+				System.out.println(param.getProgressiveMode());
+				System.out.println(param.getCompressionMode());
+				System.out.println(param.getCompressionQuality());
+				System.out.println(param.getBitRate(1f));
 
-	            // Optionally, provide thumbnails and image/stream metadata
-	            writer.write(writer.getDefaultStreamMetadata(param), new IIOImage(image, null, null), param);
-	        }
-	        finally {
-	            // Close stream in finally block to avoid resource leaks
-	            output.close();
-	        }
-	    } catch (IOException e) {
+				// Optionally, control format specific settings of param (requires casting), or
+				// control generic write settings like sub sampling, source region, output type
+				// etc.
+
+				// Optionally, provide thumbnails and image/stream metadata
+				writer.write(writer.getDefaultStreamMetadata(param), new IIOImage(image, null, null), param);
+			} finally {
+				// Close stream in finally block to avoid resource leaks
+				output.close();
+			}
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			// Dispose writer in finally block to avoid memory leaks
+			writer.dispose();
 		}
-	    finally {
-	        // Dispose writer in finally block to avoid memory leaks
-	        writer.dispose();
-	    }
 	}
+
 	public void compress(BufferedImage srcImage, File destFile) throws IOException {
 		OutputStream os = new FileOutputStream(destFile);
 		Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName("jpeg");
@@ -373,28 +381,44 @@ public class ProdImgImpWzrdController extends ImportController implements Action
 
 	public void addFiles() {
 		psdFiles = openFiles();
-
-		for (File file : psdFiles) {
-			psdFileList.add(file);
+		if (psdFiles != null || psdFiles.length >= 0) {
+			for (File file : psdFiles) {
+				psdFileList.add(file);
+			}
 		}
-		view.fileListSourceFiles.setListData(psdFileList);
+		updatePanelCardSourceFiles();
 	}
 
 	public void removeFiles() {
 		psdFileList.remove(view.fileListSourceFiles.getSelectedIndex());
-		view.fileListSourceFiles.setListData(psdFileList);
+		updatePanelCardSourceFiles();
 	}
 
 	public void clearList() {
 		psdFileList.clear();
+		updatePanelCardSourceFiles();
+	}
+
+	private void updatePanelCardSourceFiles() {
 		view.fileListSourceFiles.setListData(psdFileList);
+		System.out.println(psdFileList.isEmpty() + " -+- " + psdFileList.size());
+		if (!psdFileList.isEmpty() || psdFileList.size() > 0) {
+			view.btnCardNext.setEnabled(true);
+		} else {
+			view.btnCardNext.setEnabled(false);
+		}
 	}
 
 	public void initSelectedStoreList() {
-		selectedStores = new Vector<StoreDataModel>();
+		selectedStores.clear();
 		for (StoreDataModel store : stores) {
 			if (store.getSelectStatus())
 				selectedStores.add(store);
+		}
+		if (!selectedStores.isEmpty() || selectedStores.size() > 0) {
+			view.btnCardNext.setEnabled(true);
+		} else {
+			view.btnCardNext.setEnabled(false);
 		}
 	}
 
@@ -431,8 +455,10 @@ public class ProdImgImpWzrdController extends ImportController implements Action
 			clearList();
 		} else if (ae.getSource() == view.btnSelectAll) {
 			view.checkBoxListStores.selectAll();
+			initSelectedStoreList();
 		} else if (ae.getSource() == view.btnDeselectAll) {
 			view.checkBoxListStores.deselectAll();
+			initSelectedStoreList();
 		}
 	}
 
@@ -441,6 +467,8 @@ public class ProdImgImpWzrdController extends ImportController implements Action
 		if (ce.getSource() == view.panelCardSourceFiles) {
 			view.btnCardBack.setVisible(false);
 		} else if (ce.getSource() == view.panelCardTargetStores) {
+			initStores();
+			initSelectedStoreList();
 			view.checkBoxListStores.setListData(stores);
 		} else if (ce.getSource() == view.panelCardSummary) {
 			view.btnCardNext.setText("Import");
@@ -477,6 +505,14 @@ public class ProdImgImpWzrdController extends ImportController implements Action
 	@Override
 	public void componentHidden(ComponentEvent e) {
 		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void valueChanged(ListSelectionEvent lse) {
+		if (lse.getSource() == view.checkBoxListStores) {
+			initSelectedStoreList();
+		}
 
 	}
 

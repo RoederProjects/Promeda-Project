@@ -33,6 +33,7 @@ public class AppView extends JFrame {
 	public JButton btnImageProcessingSandBox;
 	public JButton btnSysInfo;
 	public JMenuItem mntmFromList;
+	public JMenuItem mntmKombiProduct;
 
 	/**
 	 * Create the frame.
@@ -118,6 +119,10 @@ public class AppView extends JFrame {
 		mntmProduct.addActionListener(controller);
 		popupMenuImageImport.add(mntmProduct);
 
+		mntmKombiProduct = new JMenuItem("Kombiproduct");
+		mntmKombiProduct.addActionListener(controller);
+		popupMenuImageImport.add(mntmKombiProduct);
+		
 		mntmBanner = new JMenuItem("Banner");
 		mntmBanner.addActionListener(controller);
 		popupMenuImageImport.add(mntmBanner);
