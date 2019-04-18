@@ -17,6 +17,7 @@ public class ImageSize {
 	private int width;
 	private int height;
 	private String name;
+	private float scalingFactor;
 
 	public ImageSize(int sideLength, String name) {
 		this.sideLength = sideLength;
@@ -36,9 +37,18 @@ public class ImageSize {
 	}
 	
 	public ImageSize(String[] params) {
-		this.width = Integer.parseInt(params[0]);
-		this.height = Integer.parseInt(params[1]);
-		this.name = params[2];
+		this.setWidth(Integer.parseInt(params[0]));
+		this.setHeight(Integer.parseInt(params[1]));
+		try
+	    {
+			this.setScalingFactor(Float.valueOf(params[2].trim()).floatValue());
+			this.setName(params[3]);
+	    }
+	    catch (NumberFormatException nfe)
+	    {
+	      nfe.printStackTrace();
+	      this.setName(params[2]);
+	    }		
 	}
 	
 	public int getSideLength() {
@@ -71,6 +81,14 @@ public class ImageSize {
 
 	public void setHeight(int height) {
 		this.height = height;
+	}
+
+	public float getScalingFactor() {
+		return scalingFactor;
+	}
+
+	public void setScalingFactor(float scalingFactor) {
+		this.scalingFactor = scalingFactor;
 	}
 	
 }

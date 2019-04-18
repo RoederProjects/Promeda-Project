@@ -163,8 +163,14 @@ public class ProdImgImpWzrdController extends ImportController
 						// *** IMAGE SCALING ***
 						progressLabelUpdate("Resize " + FilenameUtils.getBaseName(psdFile.getName()) + " to "
 								+ imgSize.getWidth() + "px");
-						BufferedImage scaledImage = imageHandler.resizeImage(imgSize.getWidth(),
-						imgSize.getHeight(), srcImage);
+						
+						
+						BufferedImage scaledImage = imageHandler.improvedMultiStepRescale(imgSize.getWidth(),
+								imgSize.getHeight(), srcImage);
+						
+//						BufferedImage scaledImage = imageHandler.resizeImage(imgSize.getWidth(),
+//						imgSize.getHeight(), srcImage);
+						
 						//BufferedImage scaledImage = imageHandler.resizeImage(
 						//		lockAspectRatioHeight(new Dimension(srcImage.getWidth(), srcImage.getHeight()),
 						//				imgSize.getWidth()),

@@ -36,8 +36,10 @@ import org.imgscalr.Scalr;
 
 import com.jhlabs.image.RescaleFilter;
 import com.mortennobel.imagescaling.AdvancedResizeOp;
+import com.mortennobel.imagescaling.MultiStepRescaleOp;
 import com.mortennobel.imagescaling.ResampleFilters;
 import com.mortennobel.imagescaling.ResampleOp;
+import com.mortennobel.imagescaling.experimental.ImprovedMultistepRescaleOp;
 
 import psd.model.Psd;
 
@@ -165,7 +167,16 @@ public class ImageHandler {
 		return resampleOp.filter(srcImage, resampleOp.createCompatibleDestImage(srcImage, ColorModel.getRGBdefault()));
 	}
 	
+	public BufferedImage multiStepRescale(int width, int height, BufferedImage srcImage) {
+		final BufferedImage rescaledImage = new MultiStepRescaleOp(width, height, RenderingHints.VALUE_INTERPOLATION_BILINEAR).filter(srcImage, null);
+		return rescaledImage;
+	}
 
+	public BufferedImage improvedMultiStepRescale(int width, int height, BufferedImage srcImage){
+		final BufferedImage rescaledImage = new ImprovedMultistepRescaleOp(width, height, RenderingHints.VALUE_INTERPOLATION_BILINEAR).filter(srcImage, null);
+		return rescaledImage;
+	}
+	
 	/**
 	 *
 	 * @param width
