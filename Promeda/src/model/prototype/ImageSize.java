@@ -18,6 +18,7 @@ public class ImageSize {
 	private int height;
 	private String name;
 	private float scalingFactor;
+	private boolean squerePadding;
 
 	public ImageSize(int sideLength, String name) {
 		this.sideLength = sideLength;
@@ -39,16 +40,19 @@ public class ImageSize {
 	public ImageSize(String[] params) {
 		this.setWidth(Integer.parseInt(params[0]));
 		this.setHeight(Integer.parseInt(params[1]));
-		try
-	    {
-			this.setScalingFactor(Float.valueOf(params[2].trim()).floatValue());
-			this.setName(params[3]);
-	    }
-	    catch (NumberFormatException nfe)
-	    {
-	      nfe.printStackTrace();
-	      this.setName(params[2]);
-	    }		
+		this.setName(params[2]);
+		if(params.length >= 4) {
+			try
+		    {
+				this.setScalingFactor(Float.valueOf(params[3].trim()).floatValue());
+		    }
+		    catch (NumberFormatException nfe)
+		    {
+		      nfe.printStackTrace();
+		      this.setSquerePadding(params[3].equalsIgnoreCase("PAD_TO_SQUERE") ? true : false);
+		    }
+			
+		}
 	}
 	
 	public int getSideLength() {
@@ -89,6 +93,14 @@ public class ImageSize {
 
 	public void setScalingFactor(float scalingFactor) {
 		this.scalingFactor = scalingFactor;
+	}
+
+	public boolean isSquerePadding() {
+		return squerePadding;
+	}
+
+	public void setSquerePadding(boolean squerePadding) {
+		this.squerePadding = squerePadding;
 	}
 	
 }

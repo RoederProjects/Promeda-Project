@@ -165,8 +165,8 @@ public class ProdImgImpWzrdController extends ImportController
 								+ imgSize.getWidth() + "px");
 						
 						
-						BufferedImage scaledImage = imageHandler.improvedMultiStepRescale(imgSize.getWidth(),
-								imgSize.getHeight(), srcImage);
+//						BufferedImage scaledImage = imageHandler.improvedMultiStepRescale(imgSize.getWidth(),
+//								imgSize.getHeight(), srcImage);
 						
 //						BufferedImage scaledImage = imageHandler.resizeImage(imgSize.getWidth(),
 //						imgSize.getHeight(), srcImage);
@@ -178,31 +178,24 @@ public class ProdImgImpWzrdController extends ImportController
 						// BufferedImage scaledImage = imageHandler.resizeImage3(srcImage,
 						// imgSize.getWidth());
 
-//						BufferedImage scaledImage = null;
-//						BufferedImageOp[] imageOp = null;
-//						BufferedImage paddedImage = null;
-//						BufferedImage croppedImage = null;
-//						int padding = 0;
-//						try {
-//							scaledImage = imageHandler.resizeImage(lockAspectRatioHeight(Sanselan.getImageSize(srcFile), imgSize.getWidth()), srcImage);
-//							System.out.println(lockAspectRatioHeight(Sanselan.getImageSize(srcFile), imgSize.getWidth()));
-//							System.out.println(scaledImage.getWidth() + " " + scaledImage.getHeight());
-//							padding = Math.abs((scaledImage.getWidth() - scaledImage.getHeight()) * 1/2);
-//							System.out.println(padding);
-//							paddedImage = Scalr.pad(scaledImage, padding, Color.PINK, imageOp);
-//							progressThumbUpdate(imageHandler.createThumbnail(paddedImage, 150));
-//							croppedImage = Scalr.crop(paddedImage, 0, padding, paddedImage.getWidth(), scaledImage.getHeight(), imageOp);
-//							progressThumbUpdate(imageHandler.createThumbnail(croppedImage, 150));
-//						} catch (ImageReadException e) {
-//							// TODO Auto-generated catch block		
-//							e.printStackTrace();
-//						}
+						BufferedImage scaledImage = null;
+						BufferedImage croppedImage = null;
+						try {
+							scaledImage = imageHandler.resizeImage(lockAspectRatioHeight(Sanselan.getImageSize(srcFile), imgSize.getWidth()), srcImage);
+							System.out.println(lockAspectRatioHeight(Sanselan.getImageSize(srcFile), imgSize.getWidth()));
+						} catch (ImageReadException e) {
+							// TODO Auto-generated catch block		
+							e.printStackTrace();
+						}
 
+						// *** IMAGE TRANSFORMATION
+						croppedImage = imgSize.isSquerePadding() ? padImageToSquere(scaledImage) : scaledImage;
+						
 						// *** IMAGE CONVERSION ***
 						// TODO method call convertToRGB
 						progressLabelUpdate("Remove Alpha Channel from " + FilenameUtils.getBaseName(psdFile.getName())
 								+ " (" + imgSize.getWidth() + "px)");
-						BufferedImage rgbImage = imageHandler.removeAlphaChannel(scaledImage);
+						BufferedImage rgbImage = imageHandler.removeAlphaChannel(croppedImage);
 
 						// *** IMAGE WRITING ***
 						File directory = new File(
@@ -366,6 +359,22 @@ public class ProdImgImpWzrdController extends ImportController
 		os.close();
 		ios.close();
 		writer.dispose();
+	}
+	
+	public BufferedImage padImageToSquere(BufferedImage scaledImage) {
+		
+		BufferedImageOp[] imageOp = null;
+		BufferedImage paddedImage = null;
+		BufferedImage croppedImage = null;
+		int padding = 0;
+		System.out.println(scaledImage.getWidth() + " " + scaledImage.getHeight());
+		padding = Math.abs((scaledImage.getWidth() - scaledImage.getHeight()) * 1/2);
+		System.out.println(padding);
+		paddedImage = Scalr.pad(scaledImage, padding, Color.WHITE, imageOp);
+		progressThumbUpdate(imageHandler.createThumbnail(paddedImage, 150));
+		croppedImage = Scalr.crop(paddedImage, 0, padding, paddedImage.getWidth(), scaledImage.getHeight(), imageOp);
+		progressThumbUpdate(imageHandler.createThumbnail(croppedImage, 150));
+		return croppedImage;
 	}
 
 	public File[] openFiles() {
