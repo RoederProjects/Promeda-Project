@@ -37,6 +37,8 @@ public class AppController implements ActionListener {
 			new CustomImgImpWzrdController();
 		} else if (ae.getSource() == view.mntmFromList) {
 			new MassImgImpWzrdController();
+		} else if (ae.getSource() == view.btnBrands) {
+			new BrandsController();
 		} else if (ae.getSource() == view.btnSettings) {
 			new SettingsController();
 		} else if (ae.getSource() == view.btnSysInfo) {

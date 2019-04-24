@@ -63,5 +63,10 @@
 			<attribute name="javadoc_location" value="jar:platform:/resource/Promeda/lib/commons-lang-2.6-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="lib/commons-dbutils-1.7/commons-dbutils-1.7.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/Promeda/lib/commons-dbutils-1.7/commons-dbutils-1.7-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
