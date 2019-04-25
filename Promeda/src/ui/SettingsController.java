@@ -103,6 +103,7 @@ public class SettingsController implements ActionListener {
 		 * Integer.parseInt(prop.get("ftp.port")), prop.get("ftp.user"),
 		 * prop.get("ftp.pswd"), imgSizes)); } }
 		 */
+		 
 		view.listStoreSettings.setListData(stores);
 		view.listStoreSettings.setSelectedIndex(0);
 	}

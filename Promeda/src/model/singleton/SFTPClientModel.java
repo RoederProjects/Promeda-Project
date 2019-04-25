@@ -28,8 +28,8 @@ public final class SFTPClientModel {
 	private String dirDefault;
 
 	public Session session = null;
-	private Channel channel = null;
-	private ChannelSftp channelSftp = null;
+	public Channel channel = null;
+	public ChannelSftp channelSftp = null;
 
 	/**
 	 * Logger for Debugging/Output for Log-File set up logger so that we get some
