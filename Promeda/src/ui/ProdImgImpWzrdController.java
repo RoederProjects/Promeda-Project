@@ -86,6 +86,7 @@ public class ProdImgImpWzrdController extends ImportController
 		// initStores();
 		this.configPrefix = configPrefix;
 	}
+	
 	private void initProperties() {
 		propApp = new PropertiesModel();
 		propApp.loadAppProperties();

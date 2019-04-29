@@ -12,14 +12,14 @@ public class Brand {
 	}
 	
 	public Brand(String name) {
-		setLogoBrandName(name);
+		setBrandName(name);
 	}
 
 	public String getBrandName() {
 		return brandName;
 	}
 
-	public void setLogoBrandName(String name) {
+	public void setBrandName(String name) {
 		this.brandName = name;
 	}
 
