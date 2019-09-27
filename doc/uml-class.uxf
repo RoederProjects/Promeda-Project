@@ -1,0 +1,1670 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>2</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>370</x>
+      <y>320</y>
+      <w>96</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>model.singleton::PSDParser
+--
++STATUS_OK = 0: int
++STATUS_FORMAT_ERROR = 1: int
++STATUS_OPEN_ERROR = 2: int
++STATUS_UNSUPPORTED = 3: int
++ImageType = BufferedImage.TYPE_INT_ARGB: int
+#input: BufferedInputStream
+#frameCount: int
+#frames: BufferedImage[]
+#status = 0: int
+#nChan: int
+#width: int
+#height: int
+#nLayers: int
+#miscLen: int
+#hasLayers: boolean
+#layers: LayerInfo[]
+#lineLengths: short[]
+#lineIndex: int
+#rleEncoded: boolean
+--
++getFrameCount(): int
+#setInput(InputStream stream): void
+#setInput(String name): void
++getDelay(int forFrame): int
++getFrame(int n): BufferedImage
++getFrameSize(): Dimension
++getImage(): BufferedImage
++getLayer(int n): BufferedImage
++getLayerOffset(int n): Point
++read(InputStream stream): int
++read(String name): int
++reset(): void
+#close(): void
+#err(): boolean
+#fillBytes(int size, int value): byte[]
+#init(): void
+#makeDummyLayer(): void
+#readLineLengths(int nLines): void
+#makeImage(int w, int h, byte[] r, byte[] g, byte[] b, byte[] a): BufferedImage
+#process(): void
+#readByte(): int
+#readBytes(byte[] bytes, int n): int
+#readHeader(): void
+#readInt(): int
+#readLayerInfo(): void
+#readLayers(): void
+#readPlane(int w, int h): byte[]
+#readPlaneCompressed(int w, int h): byte[]
+#decodeRLE(byte[] src, int sindex, int slen, byte[] dst, int dindex): void
+#readShort(): short
+#readString(int len): String
+#skipBytes(int n): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>468</x>
+      <y>320</y>
+      <w>326</w>
+      <h>158</h>
+    </coordinates>
+    <panel_attributes>model.prototype::StoreDataModel
+--
+-storeName: String
+-storeFtpServer: String
+-storeFtpPort: int
+-storeFtpUser: String
+-storeFtpPass: String
+-storeFtpProtocol: String
+-dirDefault: String
+-compressionEnabled: boolean
+-storeImageSizes: ImageSize[]
+-storeImageSizeList = new Vector&lt;ImageSize&gt;(): Vector&lt;ImageSize&gt;
+-storeImageSizeListNew = new Vector&lt;ImageSize&gt;(): List&lt;ImageSize&gt;
+-selectStatus: Boolean
+-compressionCommand: String
+--
++StoreDataModel(String storeName, String storeFtpServer, int storeFtpPort, String storeFtpUser, String storeFtpPass, ImageSize[] storeImageSizes): ctor
++StoreDataModel(String storeName, String storeFtpServer, int storeFtpPort, String storeFtpUser, String storeFtpPass, Vector&lt;ImageSize&gt; storeImageSizeList): ctor
++StoreDataModel(String storeName, String storeFtpServer, int storeFtpPort, String storeFtpProtocol, String storeFtpUser, String storeFtpPass, List&lt;Object&gt; storeImageSizeList): ctor
++StoreDataModel(String storeName, String storeFtpServer, int storeFtpPort, String storeFtpProtocol, String storeFtpUser, String storeFtpPass, String dirDefault, boolean compressionEnabled, String compressionCommand, List&lt;Object&gt; storeImageSizeList): ctor
++getSelectStatus(): Boolean
++setSelectStatus(Boolean selectStatus): void
++getStoreName(): String
++setStoreName(String storeName): void
++setStoreFtpServer(String storeFtpServer): void
++setStoreFtpPort(int storeFtpPort): void
++setStoreFtpUser(String storeFtpUser): void
++setStoreFtpPass(String storeFtpPass): void
++getStoreFtpServer(): String
++getStoreFtpPort(): int
++getStoreFtpUser(): String
++getStoreFtpPass(): String
++getStoreFtpProtocol(): String
++setStoreFtpProtocol(String storeFtpProtocol): void
++getDirDefault(): String
++setDirDefault(String dirDefault): void
++getStoreImageSizes(): ImageSize[]
++setStoreImageSizes(ImageSize[] storeImageSizes): void
++getStoreImageSizeList(): Vector&lt;ImageSize&gt;
++setStoreImageSizeList(Vector&lt;ImageSize&gt; storeImageSizeList): void
++getStoreImageSizeListNew(): List&lt;ImageSize&gt;
++setStoreImageSizeListNew(List&lt;ImageSize&gt; storeImageSizeListNew): void
++isCompressionEnabled(): boolean
++setCompressionEnabled(boolean compressionEnabled): void
++getCompressionCommand(): String
++setCompressionCommand(String compressionCommand): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>796</x>
+      <y>320</y>
+      <w>90</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>ui::MassImgImpWzrdController
+--
+-view: MassImgImpWzrdView
+-propApp: PropertiesModel
+-configApp: Configuration
+-stores: Vector&lt;StoreDataModel&gt;
+-selectedStores: Vector&lt;StoreDataModel&gt;
+-psdFilesPath: File
+-psdFileList = new Vector&lt;File&gt;(): Vector&lt;File&gt;
+-psdStringList = new Vector&lt;String&gt;(): Vector&lt;String&gt;
+-imageSizeList = new Vector&lt;ImageSize&gt;(): Vector&lt;ImageSize&gt;
+-ftp = null: FTPClient
+-sftp = null: SFTPClientModel
+-psdParseError: int
+-configPrefix: String
+--
++MassImgImpWzrdController(): ctor
++MassImgImpWzrdController(String configPrefix): ctor
++MassImgImpWzrdController(Vector&lt;File&gt; psdFileList): ctor
++initView(): void
++readCsvOld(File csvFile): void
++readCsv(File csvFile): void
++getPsdFileAdditionals(final String productID, File psdFilesPath): File[]
++sortByNumber(File[] files): File[]
++getLatestPSDFileVersion(File psdFiles, String productID): File
++process(): void
++processPsdFiles(): void
++processJpegFiles(): void
++buildImage(String fileName, File psdFile, StoreDataModel store): void
++chooseFile(): File
++openFiles(): File[]
++chooseDir(): File
++addFilesPath(): void
++removeFiles(): void
++clearList(): void
++initSelectedStoreList(): void
++progressBarUpdate(int progressStepSize): void
++progressLabelUpdate(String LabelText): void
++progressThumbUpdate(BufferedImage previewThumb): void
++actionPerformed(ActionEvent ae): void
++componentShown(ComponentEvent ce): void
++componentResized(ComponentEvent e): void
++componentMoved(ComponentEvent e): void
++componentHidden(ComponentEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>888</x>
+      <y>320</y>
+      <w>94</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>ui::CustomImgImpWzrdView
+--
+-controller: CustomImgImpWzrdController
+-contentPane: JPanel
++btnCardBack: JButton
++btnCardNext: JButton
++panelContentContainer: JPanel
++cardLayoutContentContainer: CardLayout
++panelCardImageOptions: JPanel
++panelCardTargetStores: JPanel
++panelCardSummary: JPanel
++panelCardProcessing: JPanel
++labelProgressStep: JLabel
++progressBar: JProgressBar
++labelProgressThumb: JLabel
++checkBoxListStores: CheckBoxList
++btnSelectAll: JButton
++btnDeselectAll: JButton
++fileListSourceFilesSummary: FileList
++storeListTargetStoresSummary: StoreList
++labelLoadManMoving: JLabel
++lblImageOptions: JLabel
++lblSetupYourPreferred: JLabel
++textFieldBannerFileName: JTextField
++panel_1: JPanel
++listBannerModels: BannerCheckBoxList
++scrollPane: JScrollPane
++panelCardRemoteDir: JPanel
++lblThemenweltOptions: JLabel
++lblSetupAnExisting: JLabel
++panel_3: JPanel
++panelCardSourceFiles: JPanel
++btnAddFiles: JButton
++button_1: JButton
++label: JLabel
++label_1: JLabel
++button_2: JButton
++fileListSourceFiles: FileList
++scrollPane_5: JScrollPane
+--
++CustomImgImpWzrdView(CustomImgImpWzrdController controller): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>984</x>
+      <y>320</y>
+      <w>114</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>ui::BannerImgImpWzrdController
+--
+-view: BannerImgImpWzrdView
+-propApp: PropertiesModel
+-stores: Vector&lt;StoreDataModel&gt;
+-selectedStores: Vector&lt;StoreDataModel&gt;
+-srcFile: File
+-srcFileList = new Vector&lt;File&gt;(): Vector&lt;File&gt;
+-imageSizeList = new Vector&lt;ImageSize&gt;(): Vector&lt;ImageSize&gt;
+-bannerTemplates = new Vector&lt;BannerModel&gt;(): Vector&lt;BannerModel&gt;
+-selectedBannerTemplates = new Vector&lt;BannerModel&gt;(): Vector&lt;BannerModel&gt;
+-srcImage: BufferedImage
+-ftp = null: FTPClient
+-sftp = null: SFTPClientModel
+-imgHandler = new ImageHandler(): ImageHandler
+--
++BannerImgImpWzrdController(): ctor
++BannerImgImpWzrdController(File psdFile): ctor
+-initProperties(): void
+-initView(): void
++initBannerDim(): void
++initStores(): void
++parsePsdLayers(): void
++process(): void
++compress(BufferedImage srcImage, File destFile, boolean isCompressionEnabled): void
++libJpegTurboCompress(): void
++openFile(): File
++openFiles(): File[]
++initSelectedBannerList(): void
++initSelectedStoreList(): void
++initSrcFile(File srcFile): void
++progressBarUpdate(int progressStepSize): void
++progressLabelUpdate(String LabelText): void
++progressThumbUpdate(BufferedImage previewThumb): void
++actionPerformed(ActionEvent ae): void
++componentShown(ComponentEvent ce): void
+-updateBannerTemplateList(): void
++componentResized(ComponentEvent e): void
++componentMoved(ComponentEvent e): void
++componentHidden(ComponentEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>370</x>
+      <y>506</y>
+      <w>106</w>
+      <h>134</h>
+    </coordinates>
+    <panel_attributes>ui::CustomImgImpWzrdController
+--
+-view: CustomImgImpWzrdView
+-propApp: PropertiesModel
+-stores: Vector&lt;StoreDataModel&gt;
+-selectedStores: Vector&lt;StoreDataModel&gt;
+-srcFile: File
+-srcFileList = new Vector&lt;File&gt;(): Vector&lt;File&gt;
+-imageSizeList = new Vector&lt;ImageSize&gt;(): Vector&lt;ImageSize&gt;
+-bannerTemplates = new Vector&lt;BannerModel&gt;(): Vector&lt;BannerModel&gt;
+-selectedBannerTemplates = new Vector&lt;BannerModel&gt;(): Vector&lt;BannerModel&gt;
+-srcImage: BufferedImage
+-ftp = null: FTPClient
+-sftp = null: SFTPClientModel
+-imgHandler = new ImageHandler(): ImageHandler
+--
++CustomImgImpWzrdController(): ctor
++CustomImgImpWzrdController(File srcFile): ctor
+-initProperties(): void
+-initView(): void
++initBannerDim(): void
++initStores(): void
++process(): void
++openFile(): File
++openFiles(): File[]
++initThemenwelten(File psdFilesPath): File[]
++initRemainingFolder(final String productID, File psdFilesPath): File[]
++initSelectedBannerList(): void
++initSelectedStoreList(): void
++initSrcFile(File srcFile): BufferedImage
++progressBarUpdate(int progressStepSize): void
++progressLabelUpdate(String LabelText): void
++progressThumbUpdate(BufferedImage previewThumb): void
++actionPerformed(ActionEvent ae): void
++componentShown(ComponentEvent ce): void
+-updateBannerTemplateList(): void
++componentResized(ComponentEvent e): void
++componentMoved(ComponentEvent e): void
++componentHidden(ComponentEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>478</x>
+      <y>506</y>
+      <w>106</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>ui::BannerImgImpWzrdController
+--
+-view: BannerImgImpWzrdView
+-propApp: PropertiesModel
+-stores: Vector&lt;StoreDataModel&gt;
+-selectedStores: Vector&lt;StoreDataModel&gt;
+-srcFile: File
+-srcFileList = new Vector&lt;File&gt;(): Vector&lt;File&gt;
+-imageSizeList = new Vector&lt;ImageSize&gt;(): Vector&lt;ImageSize&gt;
+-bannerTemplates = new Vector&lt;BannerModel&gt;(): Vector&lt;BannerModel&gt;
+-selectedBannerTemplates = new Vector&lt;BannerModel&gt;(): Vector&lt;BannerModel&gt;
+-srcImage: BufferedImage
+-ftp = null: FTPClient
+-sftp = null: SFTPClientModel
+-imgHandler = new ImageHandler(): ImageHandler
+--
++BannerImgImpWzrdController(): ctor
++BannerImgImpWzrdController(File psdFile): ctor
+-initProperties(): void
+-initView(): void
++initBannerDim(): void
++initStores(): void
++parsePsdLayers(): void
++process(): void
++openFile(): File
++openFiles(): File[]
++initSelectedBannerList(): void
++initSelectedStoreList(): void
++initSrcFile(File srcFile): void
++progressBarUpdate(int progressStepSize): void
++progressLabelUpdate(String LabelText): void
++progressThumbUpdate(BufferedImage previewThumb): void
++actionPerformed(ActionEvent ae): void
++componentShown(ComponentEvent ce): void
+-updateBannerTemplateList(): void
++componentResized(ComponentEvent e): void
++componentMoved(ComponentEvent e): void
++componentHidden(ComponentEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>586</x>
+      <y>506</y>
+      <w>84</w>
+      <h>124</h>
+    </coordinates>
+    <panel_attributes>ui::ProdImgImpWzrdController
+--
+-view: ProdImgImpWzrdView
+-ftp = null: FTPClient
+-sftp = null: SFTPClientModel
+-propApp: PropertiesModel
+-psdFiles: File[]
+-psdFileList = new Vector&lt;File&gt;(): Vector&lt;File&gt;
+~imageSizeList = new Vector&lt;ImageSize&gt;(): Vector&lt;ImageSize&gt;
+-srcImage: BufferedImage
+-configPrefix: String
+--
++ProdImgImpWzrdController(): ctor
++ProdImgImpWzrdController(String configPrefix): ctor
++ProdImgImpWzrdController(Vector&lt;File&gt; psdFileList): ctor
+-initView(): void
++process(): void
++initSrcFile(File srcFile): BufferedImage
++writeFile(BufferedImage image, File destFile): void
++compress(BufferedImage srcImage, File destFile): void
++padImageToSquere(BufferedImage scaledImage): BufferedImage
++openFiles(): File[]
++addFiles(): void
++removeFiles(): void
++clearList(): void
+-updatePanelCardSourceFiles(): void
++initSelectedStoreList(): void
++progressBarUpdate(int progressStepSize): void
++progressLabelUpdate(String LabelText): void
++progressThumbUpdate(BufferedImage previewThumb): void
++actionPerformed(ActionEvent ae): void
++componentShown(ComponentEvent ce): void
++componentResized(ComponentEvent e): void
++componentMoved(ComponentEvent e): void
++componentHidden(ComponentEvent e): void
++valueChanged(ListSelectionEvent lse): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>672</x>
+      <y>506</y>
+      <w>94</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>ui::BannerImgImpWzrdView
+--
+-controller: BannerImgImpWzrdController
+-contentPane: JPanel
++btnCardBack: JButton
++btnCardNext: JButton
++panelContentContainer: JPanel
++cardLayoutContentContainer: CardLayout
++panelCardSourceFiles: JPanel
++panelCardImageOptions: JPanel
++panelCardTargetStores: JPanel
++panelCardSummary: JPanel
++panelCardProcessing: JPanel
++labelProgressStep: JLabel
++progressBar: JProgressBar
++labelProgressThumb: JLabel
++checkBoxListStores: CheckBoxList
++btnSelectAll: JButton
++btnDeselectAll: JButton
++fileListSourceFiles: JTextField
++btnAddFiles: JButton
++fileListSourceFilesSummary: FileList
++storeListTargetStoresSummary: StoreList
++labelLoadManMoving: JLabel
++lblImageOptions: JLabel
++lblSetupYourPreferred: JLabel
++textFieldBannerFileName: JTextField
++panel_1: JPanel
++labelPreviewPsdImage: JLabel
++listBannerModels: BannerCheckBoxList
+-scrollPane: JScrollPane
+--
++BannerImgImpWzrdView(BannerImgImpWzrdController controller): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>768</x>
+      <y>506</y>
+      <w>104</w>
+      <h>106</h>
+    </coordinates>
+    <panel_attributes>model.prototype::BannerModel
+--
+-name: String
+-dirname: String
+-dimSM: Dimension
+-dimMD: Dimension
+-dimLG: Dimension
+~dimensions: HashMap&lt;String, Dimension&gt;
+-selectStatus: Boolean
+-matchSrcStatus: Boolean
+--
++BannerModel(): ctor
++BannerModel(String name, Configuration props): ctor
++BannerModel(String name, Dimension srcImageSize, Configuration props): ctor
++GetDimensionsKeys(): String
++getDimSM(): Dimension
++setDimSM(Dimension dimSM): void
++getDimMD(): Dimension
++setDimMD(Dimension dimMD): void
++getDimLG(): Dimension
++setDimLG(Dimension dimLG): void
++getDimensions(): HashMap&lt;String, Dimension&gt;
++setDimensions(HashMap&lt;String, Dimension&gt; dimensions): void
++getName(): String
++setName(String name): void
++getDirname(): String
++setDirname(String dirname): void
++getSelectStatus(): Boolean
++setSelectStatus(Boolean selectStatus): void
++getMatchSrcStatus(): Boolean
++setMatchSrcStatus(Boolean matchSrcStatus): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>874</x>
+      <y>506</y>
+      <w>80</w>
+      <h>106</h>
+    </coordinates>
+    <panel_attributes>ui.archives::ProdImgImpWzrdController
+--
+-view: ProdImgImpWzrdView
+-ftp: FtpClientModel
+-propApp: PropertiesModel
+-stores: Vector&lt;StoreDataModel&gt;
+-selectedStores: Vector&lt;StoreDataModel&gt;
+-psdFiles: File[]
+-psdFileList = new Vector&lt;File&gt;(): Vector&lt;File&gt;
+--
++ProdImgImpWzrdController(): ctor
++ProdImgImpWzrdController(Vector&lt;File&gt; psdFileList): ctor
+-initProperties(): void
+-initView(): void
++initStores(): void
++initStores2(): void
++process(): void
++process2(): void
++openFiles(): File[]
++addFiles(): void
++removeFiles(): void
++clearList(): void
++initSelectedStoreList(): void
++progressBarUpdate(int progressStepSize): void
++progressLabelUpdate(String LabelText): void
++progressThumbUpdate(BufferedImage previewThumb): void
++actionPerformed(ActionEvent ae): void
++componentShown(ComponentEvent ce): void
++componentResized(ComponentEvent e): void
++componentMoved(ComponentEvent e): void
++componentHidden(ComponentEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>956</x>
+      <y>506</y>
+      <w>92</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>ui::ProdImgImpWzrdController_20180813
+--
+-view: ProdImgImpWzrdView
+-ftp: FtpClientModel
+-propApp: PropertiesModel
+-stores: Vector&lt;StoreDataModel&gt;
+-selectedStores: Vector&lt;StoreDataModel&gt;
+-psdFiles: File[]
+-psdFileList = new Vector&lt;File&gt;(): Vector&lt;File&gt;
+~imageSizeList = new Vector&lt;ImageSize&gt;(): Vector&lt;ImageSize&gt;
+--
++ProdImgImpWzrdController_20180813(): ctor
++ProdImgImpWzrdController_20180813(Vector&lt;File&gt; psdFileList): ctor
+-initProperties(): void
+-initView(): void
++initStores(): void
++process(): void
++openFiles(): File[]
++addFiles(): void
++removeFiles(): void
++clearList(): void
++initSelectedStoreList(): void
++progressBarUpdate(int progressStepSize): void
++progressLabelUpdate(String LabelText): void
++progressThumbUpdate(BufferedImage previewThumb): void
++actionPerformed(ActionEvent ae): void
++componentShown(ComponentEvent ce): void
++componentResized(ComponentEvent e): void
++componentMoved(ComponentEvent e): void
++componentHidden(ComponentEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1050</x>
+      <y>506</y>
+      <w>90</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>ui::MassImgImpWzrdView
+--
+-controller: MassImgImpWzrdController
+-contentPane: JPanel
++btnCardBack: JButton
++btnCardNext: JButton
++panelContentContainer: JPanel
++cardLayoutContentContainer: CardLayout
++panelCardSourceFiles: JPanel
++panelCardTargetStores: JPanel
++panelCardSummary: JPanel
++panelCardProcessing: JPanel
++labelProgressStep: JLabel
++progressBar: JProgressBar
++labelProgressThumb: JLabel
++checkBoxListStores: CheckBoxList
++btnSelectAll: JButton
++btnDeselectAll: JButton
++fileListSourceFiles: JList
++fileListSourceFilesSummary: FileList
++storeListTargetStoresSummary: StoreList
++textFieldProductsCsv: JTextField
++textFieldPsdFilesPath: JTextField
++btnBrowseCsvFile: JButton
++btnBrowsePsdFilesPath: JButton
++btnGrpImageFormat = new ButtonGroup(): ButtonGroup
++rdbtnJpeg: JRadioButton
++rdbtnPsd: JRadioButton
+--
++MassImgImpWzrdView(MassImgImpWzrdController controller): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>370</x>
+      <y>642</y>
+      <w>132</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>model.singleton::DatabaseModel
+--
+-db_host: String
+-db_port: String
+-db_user: String
+-db_pass: String
+-db_name: String
+-DRIVER = "com.mysql.jdbc.Driver": String
+-connection = null: Connection
+-statement = null: Statement
+-prepStatement: PreparedStatement
+-resultSet: ResultSet
+-result: ArrayList&lt;String[]&gt;
+--
++DatabaseModel(String db_host, String db_port, String db_user, String db_pass, String db_name): ctor
+-createConnection(): void
++createStatement(): void
++selectQuery(String query): ResultSet
++selectQueryArrayList(String query): ArrayList&lt;String[]&gt;
++updateQuery(String query): boolean
++insertQuery(String query): boolean
++deleteBoilerplates(String storeviewId): void
++deleteBoilerplate(String boilerplateId): void
++insertBoilerplate(String storeviewId, String boilerplateUri, String boilerplateValue): void
++selectGroupArticlesAsArrayList(String searchQuery): ArrayList&lt;String[]&gt;
++selectGroupArticlesAsResultSet(String searchQuery): ResultSet
++selectChildArticlesAsArrayList(String parent_id): ArrayList&lt;String[]&gt;
++selectChildArticlesAsResultSet(String parent_id): ResultSet
++closeConnection(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>504</x>
+      <y>642</y>
+      <w>98</w>
+      <h>92</h>
+    </coordinates>
+    <panel_attributes>ui::ProdImgImpWzrdViewNew
+--
+-controller: ProdImgImpWzrdControllerNew
+-contentPane: JPanel
++btnCardBack: JButton
++btnCardNext: JButton
++panelContentContainer: JPanel
++cardLayoutContentContainer: CardLayout
++panelCardSourceFiles: JPanel
++panelCardTargetStores: JPanel
++panelCardSummary: JPanel
++panelCardProcessing: JPanel
++labelProgressStep: JLabel
++progressBar: JProgressBar
++labelProgressThumb: JLabel
++checkBoxListStores: CheckBoxList
++btnSelectAll: JButton
++btnDeselectAll: JButton
++fileListSourceFiles: FileList
++btnAddFiles: JButton
++btnRemoveFiles: JButton
++btnClearFileList: JButton
++fileListSourceFilesSummary: FileList
++storeListTargetStoresSummary: StoreList
++labelLoadManMoving: JLabel
+--
++ProdImgImpWzrdViewNew(ProdImgImpWzrdControllerNew controller): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>604</x>
+      <y>642</y>
+      <w>88</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>ui::ProdImgImpWzrdView
+--
+-controller: ProdImgImpWzrdController
+-contentPane: JPanel
++btnCardBack: JButton
++btnCardNext: JButton
++panelContentContainer: JPanel
++cardLayoutContentContainer: CardLayout
++panelCardSourceFiles: JPanel
++panelCardTargetStores: JPanel
++panelCardSummary: JPanel
++panelCardProcessing: JPanel
++labelProgressStep: JLabel
++progressBar: JProgressBar
++labelProgressThumb: JLabel
++checkBoxListStores: CheckBoxList
++btnSelectAll: JButton
++btnDeselectAll: JButton
++fileListSourceFiles: FileList
++btnAddFiles: JButton
++btnRemoveFiles: JButton
++btnClearFileList: JButton
++fileListSourceFilesSummary: FileList
++storeListTargetStoresSummary: StoreList
+--
++ProdImgImpWzrdView(ProdImgImpWzrdController controller): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>694</x>
+      <y>642</y>
+      <w>66</w>
+      <h>86</h>
+    </coordinates>
+    <panel_attributes>model.prototype::ImageSize
+--
+-sideLength: int
+-width: int
+-height: int
+-name: String
+-scalingFactor: float
+-squerePadding: boolean
+--
++ImageSize(int sideLength, String name): ctor
++ImageSize(int width, int height, String name): ctor
++ImageSize(List&lt;Object&gt; params): ctor
++ImageSize(String[] params): ctor
++getSideLength(): int
++setSideLength(int width): void
++getName(): String
++setName(String name): void
++getWidth(): int
++setWidth(int width): void
++getHeight(): int
++setHeight(int height): void
++getScalingFactor(): float
++setScalingFactor(float scalingFactor): void
++isSquerePadding(): boolean
++setSquerePadding(boolean squerePadding): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>762</x>
+      <y>642</y>
+      <w>142</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>model.singleton::ImageHandler
+--
+~prop: PropertiesModel
+--
++ImageHandler(): ctor
++getImageFromPsd(File psdFile): BufferedImage
++getImageFromPsd2(File psdFile): BufferedImage
++getImageFromPsd3(File psdFile): BufferedImage
++resizeImage(int width, int height, BufferedImage bImage): BufferedImage
++resizeImage(Dimension dim, BufferedImage bImage): BufferedImage
++resizeImageNew(BufferedImage srcImage, float scaleFactor, float offset, RenderingHints hints): BufferedImage
++multiStepRescale(int width, int height, BufferedImage srcImage): BufferedImage
++improvedMultiStepRescale(int width, int height, BufferedImage srcImage): BufferedImage
++resizeImage2(BufferedImage srcImage, int width): BufferedImage
++resizeImage3(BufferedImage thumbnail, int size): BufferedImage
++removeAlphaChannel(BufferedImage imageARGB): BufferedImage
++readBufferedImage(File srcFile): BufferedImage
++createThumbnail(File srcFile, int size): BufferedImage
++createThumbnail(BufferedImage thumbnail, int size): BufferedImage
++createTile(BufferedImage thumbnail, int size): BufferedImage
++imageReadSanselan(File file): BufferedImage
++imageWriteSanselan(BufferedImage image, File destFile): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>906</x>
+      <y>642</y>
+      <w>100</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>model.singleton::FtpClientModel
+--
+-host: String
+-port: int
+-user: String
+-password: String
++ftp: FileTransferClient
++session = null: Session
+-channel = null: Channel
+-channelSftp = null: ChannelSftp
+-log = Logger.getLogger(FtpClientModel.class): Logger
+--
++FtpClientModel(String ftpHost, int ftpPort, String ftpUser, String ftpPwd): ctor
++connect(): void
++changeDir(String dir): void
++upload(String localFile, String remoteFile): void
++download(String localFileName, String remoteFileName): void
++disconnect(): void
++sftpConnect(): void
++sftpUpload(File localFile, File remoteFile): void
++sftpDisconnect(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1008</x>
+      <y>642</y>
+      <w>88</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>ui::AppView
+--
++controller: AppController
++contentPane: JPanelWithBackgroundImage
++btnSearch: JButton
++btnSettings: JButton
++btnExit: JButton
++textFieldProdNr: JTextField
++popupMenuImageImport: JPopupMenu
++mntmProduct: JMenuItem
++mntmBanner: JMenuItem
++mntmThemenwelt: JMenuItem
++btnMenuImageImport: JButton
++btnImageProcessingSandBox: JButton
++btnSysInfo: JButton
++mntmFromList: JMenuItem
++mntmKombiProduct: JMenuItem
++btnBrands: JButton
+--
++AppView(AppController controller): ctor
+-addPopup(Component component, final JPopupMenu popup): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>370</x>
+      <y>744</y>
+      <w>62</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>ui::SettingsView
+--
+-controller: SettingsController
+-contentPane: JPanel
+-textField: JTextField
+-textField_1: JTextField
+-textField_2: JTextField
+-textField_3: JTextField
+-textField_4: JTextField
++textFieldLocNetworkRes: JTextField
++textFieldLocMediaBackup: JTextField
++textFieldMediaBackupDirOriginals: JTextField
++textFieldMediaBackupDirLive: JTextField
++listStoreSettings: StoreList
++btnSettingsCancel: JButton
++btnSettingsSave: JButton
++btnBrowseNetworkMedia: JButton
++btnBrowseNetworkRes: JButton
+--
++SettingsView(SettingsController controller): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>434</x>
+      <y>744</y>
+      <w>74</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>model.prototype::Brand
+--
+-brandName: String
+-brandLogoFileName: String
+-brandLogoDirName: String
+-brandLogoFilePath: String
+-hasBrandLogoFileName: boolean
+--
++Brand(): ctor
++Brand(String name): ctor
++getBrandName(): String
++setBrandName(String name): void
++getBrandLogoFileName(): String
++setBrandLogoFileName(String logoFile): void
++getBrandLogoDirName(): String
++setBrandLogoDirName(String logoPath): void
++hasBrandLogoFileName(): boolean
++getBrandLogoFilePath(): String
++setBrandLogoFilePath(String brandLogoFilePath): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>510</x>
+      <y>744</y>
+      <w>128</w>
+      <h>62</h>
+    </coordinates>
+    <panel_attributes>model.singleton::SFTPClientModel
+--
+-host: String
+-port: int
+-user: String
+-password: String
+-dirDefault: String
++session = null: Session
++channel = null: Channel
++channelSftp = null: ChannelSftp
+--
++SFTPClientModel(String ftpHost, int ftpPort, String ftpUser, String ftpPwd, String ftpDirDefault): ctor
++connect(): void
++changeDir(File remoteFile): void
++changeDir(String dir): void
++makeDir(String dir): void
++upload(File localFile, File remoteFile): void
++disconnect(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>640</x>
+      <y>744</y>
+      <w>78</w>
+      <h>58</h>
+    </coordinates>
+    <panel_attributes>model.prototype::GroupArticle
+--
+-number: String
+-articles: Article[]
+-articlesList: List&lt;Article&gt;
+--
++GroupArticle(String number): ctor
++GroupArticle(String number, Article[] articles): ctor
++GroupArticle(String number, List&lt;Article&gt; articlesList): ctor
++GroupArticle(String number, ResultSet articlesList): ctor
++getNumber(): String
++setNumber(String number): void
++getArticles(): Article[]
++setArticles(Article[] articles): void
++getArticlesList(): List&lt;Article&gt;
++setArticlesList(List&lt;Article&gt; articlesList): void
+-initArticles(ResultSet articlesList): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>720</x>
+      <y>744</y>
+      <w>106</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>model.singleton::JpegReader
+--
++COLOR_TYPE_RGB = 1: int
++COLOR_TYPE_CMYK = 2: int
++COLOR_TYPE_YCCK = 3: int
+-colorType = COLOR_TYPE_RGB: int
+-hasAdobeMarker = false: boolean
+--
++readImage(byte[] bytes): BufferedImage
++readImage(File file): BufferedImage
++checkAdobeMarker(File file): void
++checkAdobeMarker(byte[] bytes): void
++convertYcckToCmyk(WritableRaster raster): void
++convertInvertedColors(WritableRaster raster): void
++convertCmykToRgb(Raster cmykRaster, ICC_Profile cmykProfile): BufferedImage
+~intToBigEndian(int value, byte[] array, int index): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>828</x>
+      <y>744</y>
+      <w>74</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>ui::BrandsController
+--
+-view: BrandsView
+-stores: Vector&lt;StoreDataModel&gt;
+-selectedStores: Vector&lt;StoreDataModel&gt;
+-propApp: PropertiesModel
+--
++BrandsController(): ctor
++initView(): void
++initStores(): void
++initBrands(): void
+-createConnection(): Connection
++connectMsSql(): void
++scanRemoteFiles(StoreDataModel store): Vector&lt;File&gt;
++actionPerformed(ActionEvent e): void
++valueChanged(ListSelectionEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>904</x>
+      <y>744</y>
+      <w>72</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>model.singleton::MultipartUtility
+--
+-boundary: String
+-LINE_FEED = "\r\n": String
+-httpConn: HttpURLConnection
+-charset: String
+-outputStream: OutputStream
+-writer: PrintWriter
+--
++MultipartUtility(String requestURL, String charset): ctor
++addFormField(String name, String value): void
++addFilePart(String fieldName, File uploadFile): void
++addHeaderField(String name, String value): void
++finish(): List&lt;String&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>978</x>
+      <y>744</y>
+      <w>110</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>ui::ImageProcessingSandBoxView
+--
++controller: ImageProcessingSandBoxController
++contentPane: JPanel
++textField: JTextField
++btnOpenSrcFile: JButton
++lblViewportSrcFile: JLabel
++panelSidebarLeft: JPanel
++panelSidebarRight: JPanel
++tabbedPaneViewport: JTabbedPane
++panel: JPanel
++panel_1: JPanel
+--
++ImageProcessingSandBoxView(ImageProcessingSandBoxController controller): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>370</x>
+      <y>816</y>
+      <w>86</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>ui::ImportController
+--
++imageHandler = new ImageHandler(): ImageHandler
++srcFile: File
++srcImage: BufferedImage
++colorTools = new ColorTools(): ColorTools
++configApp: Configuration
++stores: Vector&lt;StoreDataModel&gt;
++selectedStores: Vector&lt;StoreDataModel&gt;
+--
++initAppConfig(): void
++initStores(String configPrefix): void
++lockAspectRatioWidth(Dimension dim, int newHeight): Dimension
++lockAspectRatioHeight(Dimension dim, int newWidth): Dimension
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>458</x>
+      <y>816</y>
+      <w>68</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>ui::SettingsController
+--
+-view: SettingsView
+-propApp = new PropertiesModel(): PropertiesModel
+-configApp: Configuration
+-stores: Vector&lt;StoreDataModel&gt;
+--
++SettingsController(): ctor
+-initView(): void
+-initAppProperties(): void
++initStores(): void
+-initStoreProperties(): void
++chooseDir(): File
++actionPerformed(ActionEvent ae): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>528</x>
+      <y>816</y>
+      <w>50</w>
+      <h>46</h>
+    </coordinates>
+    <panel_attributes>model.singleton::PropertiesModel
+--
+-prop: Properties
+-config: PropertiesConfiguration
+--
++PropertiesModel(): ctor
++load(): void
++loadAppProperties(): void
++loadAppProperties2(): Configuration
++load(String propFile): void
++get(String key): String
++write(String[] propInputData): void
++write(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>580</x>
+      <y>816</y>
+      <w>106</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>model.singleton::CsvModel
+--
+-DEFAULT_SEPARATOR = ',': char
+-DEFAULT_QUOTE = '"': char
+--
++writeLine(Writer w, List&lt;String&gt; values): void
++writeLine(Writer w, List&lt;String&gt; values, char separators): void
+-followCVSformat(String value): String
++writeLine(Writer w, List&lt;String&gt; values, char separators, char customQuote): void
++parseLine(String cvsLine): List&lt;String&gt;
++parseLine(String cvsLine, char separators): List&lt;String&gt;
++parseLine(String cvsLine, char separators, char customQuote): List&lt;String&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>688</x>
+      <y>816</y>
+      <w>68</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>ui::ArticleController
+--
+-view: ArticleView
+-propApp = new PropertiesModel(): PropertiesModel
+--
++ArticleController(String articleNr): ctor
+-initView(): void
++initPsdFiles(final String filename): void
++initThumbSlider(): void
++saveFile(): File
++actionPerformed(ActionEvent ae): void
++valueChanged(ListSelectionEvent lse): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>758</x>
+      <y>816</y>
+      <w>60</w>
+      <h>38</h>
+    </coordinates>
+    <panel_attributes>ui::ArticleView
+--
+-contentPane: JPanel
++listPsdFiles: PsdFileList
++labelPsdPreview: JLabel
++btnSavePsdFile: JButton
++labelSearchQuery: JLabel
++btnRestoreFromPsd: JButton
++btnRemoveFromLive: JButton
+--
++ArticleView(ArticleController controller): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>820</x>
+      <y>816</y>
+      <w>110</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>model.singleton::Executor
+--
+--
++Executor(): ctor
++compressImage(File imageFile, File workingDir): void
++compressImage(File imageFile, File workingDir, String compressionCommand): void
++runExecution(List&lt;String&gt; command, File workingDir): void
++exec(File imageFile, String cmd): void
++exec(File imageFile): void
+~isWindows(): boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>932</x>
+      <y>816</y>
+      <w>148</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>ui::BannerCheckBoxList
+--
+-checked = new ImageIcon(BannerCheckBoxList.class.getResource("/img/checkbox-checked.png")): ImageIcon
+-unchecked = new ImageIcon(BannerCheckBoxList.class.getResource("/img/checkbox-unchecked.png")): ImageIcon
+--
++BannerCheckBoxList(): ctor
++selectAll(): void
++deselectAll(): void
++checkFixedStores(StoreDataModel store): StoreDataModel
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1082</x>
+      <y>816</y>
+      <w>140</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>ui::CheckBoxList
+--
+-checked = new ImageIcon(CheckBoxList.class.getResource("/img/checkbox-checked.png")): ImageIcon
+-unchecked = new ImageIcon(CheckBoxList.class.getResource("/img/checkbox-unchecked.png")): ImageIcon
+--
++CheckBoxList(): ctor
++selectAll(): void
++deselectAll(): void
++checkFixedStores(StoreDataModel store): StoreDataModel
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>370</x>
+      <y>866</y>
+      <w>140</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>ui::JListBrands
+--
+-checked = new ImageIcon(CheckBoxList.class.getResource("/img/checkbox-checked.png")): ImageIcon
+-unchecked = new ImageIcon(CheckBoxList.class.getResource("/img/checkbox-unchecked.png")): ImageIcon
+--
++JListBrands(): ctor
++selectAll(): void
++deselectAll(): void
++checkFixedStores(StoreDataModel store): StoreDataModel
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>512</x>
+      <y>866</y>
+      <w>54</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>ui::AppController
+--
+-view: AppView
+--
++AppController(): ctor
+-initView(): void
++initProdImgImpWzrd(): void
++actionPerformed(ActionEvent ae): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>568</x>
+      <y>866</y>
+      <w>62</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>ui::BrandsView
+--
+-controller: BrandsController
+-contentPane: JPanel
++listBrands: JListBrands
++listStores: JList
+--
++BrandsView(BrandsController controller): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>632</x>
+      <y>866</y>
+      <w>58</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>ui::ImageProcessingSandBoxController
+--
+-view: ImageProcessingSandBoxView
+--
++ImageProcessingSandBoxController(): ctor
+-initView(): void
++openFile(): File
++actionPerformed(ActionEvent ae): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>692</x>
+      <y>866</y>
+      <w>46</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>model.prototype::Article
+--
+-number: String
+--
++Article(String number): ctor
++getNumber(): String
++setNumber(String number): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>740</x>
+      <y>866</y>
+      <w>66</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>ui::JPanelWithBackgroundImage
+--
+-backgroundImage: Image
+--
++JPanelWithBackgroundImage(): ctor
++JPanelWithBackgroundImage(URL fileURL): ctor
++paintComponent(Graphics g): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>808</x>
+      <y>866</y>
+      <w>62</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>ui::SysInfoView
+--
++controller: SysInfoController
++contentPane: JPanel
++txtpnSystemProperties: JTextPane
+--
++SysInfoView(SysInfoController controller): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>872</x>
+      <y>866</y>
+      <w>34</w>
+      <h>22</h>
+    </coordinates>
+    <panel_attributes>ui::SysInfoController
+--
+-view: SysInfoView
+--
++SysInfoController(): ctor
+-initView(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>908</x>
+      <y>866</y>
+      <w>106</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>ui::ConnectMSSQLServer
+--
+--
++dbConnect(String db_connect_string, String db_userid, String db_password): void
++main(String[] args): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1016</x>
+      <y>866</y>
+      <w>126</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>ui::DirList
+--
+-psdFileIcon = new ImageIcon(CheckBoxList.class.getResource("/img/icon-folder.png")): ImageIcon
+--
++DirList(): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>370</x>
+      <y>900</y>
+      <w>130</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>ui::PsdFileList
+--
+-psdFileIcon = new ImageIcon(CheckBoxList.class.getResource("/img/psd-file-32px.png")): ImageIcon
+--
++PsdFileList(): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>502</x>
+      <y>900</y>
+      <w>24</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>ui::StoreList
+--
++index: int
+--
++StoreList(): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>528</x>
+      <y>900</y>
+      <w>36</w>
+      <h>14</h>
+    </coordinates>
+    <panel_attributes>::Launch
+--
+--
++main(String[] args): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>566</x>
+      <y>900</y>
+      <w>34</w>
+      <h>14</h>
+    </coordinates>
+    <panel_attributes>ui.archives::SFTPinJava
+--
+--
++main(String[] args): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>602</x>
+      <y>900</y>
+      <w>22</w>
+      <h>14</h>
+    </coordinates>
+    <panel_attributes>ui::FileList
+--
+--
++FileList(): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>626</x>
+      <y>900</y>
+      <w>32</w>
+      <h>14</h>
+    </coordinates>
+    <panel_attributes>ui::SampleUsage
+--
+--
++SampleUsage(): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>660</x>
+      <y>900</y>
+      <w>34</w>
+      <h>14</h>
+    </coordinates>
+    <panel_attributes>ui::StoreSettingsList
+--
+--
++StoreSettingsList(): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>696</x>
+      <y>900</y>
+      <w>26</w>
+      <h>14</h>
+    </coordinates>
+    <panel_attributes>ui::ThumbList
+--
+--
++ThumbList(): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

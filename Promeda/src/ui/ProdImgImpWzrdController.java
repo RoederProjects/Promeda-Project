@@ -56,9 +56,6 @@ public class ProdImgImpWzrdController extends ImportController
 	private ProdImgImpWzrdView view;
 	private FTPClient ftp = null;
 	private SFTPClientModel sftp = null;
-	private PropertiesModel propApp;
-	private Vector<StoreDataModel> stores;
-	private Vector<StoreDataModel> selectedStores;
 	private File[] psdFiles;
 	private Vector<File> psdFileList = new Vector<File>();
 	Vector<ImageSize> imageSizeList = new Vector<ImageSize>();
@@ -66,60 +63,30 @@ public class ProdImgImpWzrdController extends ImportController
 	private String configPrefix;
 
 	public ProdImgImpWzrdController() {
-		initProperties();
-		initView();
-		// initStores();
 		this.configPrefix = "product";
-	}
-
-	public ProdImgImpWzrdController(Vector<File> psdFileList) {
-		initProperties();
+		initAppConfig();
 		initView();
-		// initStores();
-		this.psdFileList = psdFileList;
-		view.fileListSourceFiles.setListData(psdFileList);
+		initStores(configPrefix);
 	}
 
 	public ProdImgImpWzrdController(String configPrefix) {
-		initProperties();
-		initView();
-		// initStores();
 		this.configPrefix = configPrefix;
+		initAppConfig();
+		initView();
+		initStores(configPrefix);
 	}
-	
-	private void initProperties() {
-		propApp = new PropertiesModel();
-		propApp.loadAppProperties();
+
+	public ProdImgImpWzrdController(Vector<File> psdFileList) {
+		initAppConfig();
+		initView();
+		// initStores(configPrefix);
+		this.psdFileList = psdFileList;
+		view.fileListSourceFiles.setListData(psdFileList);
 	}
 
 	private void initView() {
 		view = new ProdImgImpWzrdView(this);
 		view.setVisible(true);
-	}
-
-	public void initStores() {
-		stores = new Vector<StoreDataModel>();
-		selectedStores = new Vector<StoreDataModel>();
-		File f = new File(propApp.get("locNetworkRes") + "stores");
-		File[] files = f.listFiles();
-		
-		try {
-			for (File file : files) {
-				if (!file.isDirectory() && FilenameUtils.isExtension(file.getName(), "properties")) {
-					Configuration configStore = new PropertiesConfiguration(file);
-
-					stores.add(new StoreDataModel(configStore.getString("url"), configStore.getString("ftp.host"),
-							Integer.parseInt(configStore.getString("ftp.port")), configStore.getString("ftp.protocol"),
-							configStore.getString("ftp.user"), configStore.getString("ftp.pswd"),
-							configStore.getString("ftp.dir.default"),
-							configStore.getBoolean(configPrefix + ".image.compression.enabled"),
-							configStore.getString(configPrefix + ".image.compression.command"),
-							configStore.getList(configPrefix + ".image.size")));
-				}
-			}
-		} catch (ConfigurationException cex) {
-			// Something went wrong
-		}
 	}
 
 	public void process() {
@@ -151,7 +118,7 @@ public class ProdImgImpWzrdController extends ImportController
 
 					// COPY PSD FILE TO ORIGINALS FOLDER
 					copyFile(psdFile,
-							new File(propApp.get("locMediaBackup") + propApp.get("mediaBackupDirOriginals")
+							new File(configApp.getString("dir.media.image.product.src")
 									+ FilenameUtils.getBaseName(psdFile.getName()) + File.separator
 									+ FilenameUtils.getBaseName(psdFile.getName()) + currentDate + "."
 									+ FilenameUtils.getExtension(psdFile.getName())));
@@ -164,34 +131,37 @@ public class ProdImgImpWzrdController extends ImportController
 						// *** IMAGE SCALING ***
 						progressLabelUpdate("Resize " + FilenameUtils.getBaseName(psdFile.getName()) + " to "
 								+ imgSize.getWidth() + "px");
-						
-						
+
 //						BufferedImage scaledImage = imageHandler.improvedMultiStepRescale(imgSize.getWidth(),
 //								imgSize.getHeight(), srcImage);
-						
+
 //						BufferedImage scaledImage = imageHandler.resizeImage(imgSize.getWidth(),
 //						imgSize.getHeight(), srcImage);
-						
-						//BufferedImage scaledImage = imageHandler.resizeImage(
-						//		lockAspectRatioHeight(new Dimension(srcImage.getWidth(), srcImage.getHeight()),
-						//				imgSize.getWidth()),
-						//		srcImage);
+
+						// BufferedImage scaledImage = imageHandler.resizeImage(
+						// lockAspectRatioHeight(new Dimension(srcImage.getWidth(),
+						// srcImage.getHeight()),
+						// imgSize.getWidth()),
+						// srcImage);
 						// BufferedImage scaledImage = imageHandler.resizeImage3(srcImage,
 						// imgSize.getWidth());
 
 						BufferedImage scaledImage = null;
 						BufferedImage croppedImage = null;
 						try {
-							scaledImage = imageHandler.resizeImage(lockAspectRatioHeight(Sanselan.getImageSize(srcFile), imgSize.getWidth()), srcImage);
-							System.out.println(lockAspectRatioHeight(Sanselan.getImageSize(srcFile), imgSize.getWidth()));
+							scaledImage = imageHandler.resizeImage(
+									lockAspectRatioHeight(Sanselan.getImageSize(srcFile), imgSize.getWidth()),
+									srcImage);
+							System.out
+									.println(lockAspectRatioHeight(Sanselan.getImageSize(srcFile), imgSize.getWidth()));
 						} catch (ImageReadException e) {
-							// TODO Auto-generated catch block		
+							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 
 						// *** IMAGE TRANSFORMATION
 						croppedImage = imgSize.isSquerePadding() ? padImageToSquere(scaledImage) : scaledImage;
-						
+
 						// *** IMAGE CONVERSION ***
 						// TODO method call convertToRGB
 						progressLabelUpdate("Remove Alpha Channel from " + FilenameUtils.getBaseName(psdFile.getName())
@@ -200,7 +170,7 @@ public class ProdImgImpWzrdController extends ImportController
 
 						// *** IMAGE WRITING ***
 						File directory = new File(
-								propApp.get("locMediaBackup") + propApp.get("mediaBackupDirLive") + imgSize.getName());
+								configApp.getString("dir.media.image.product.dist") + imgSize.getName());
 						if (!directory.exists()) {
 							directory.mkdirs();
 						}
@@ -209,7 +179,7 @@ public class ProdImgImpWzrdController extends ImportController
 								directory.getPath() + "/" + FilenameUtils.getBaseName(psdFile.getName()) + ".jpg");
 						ImageIO.write(rgbImage, "jpg", imgFile);
 						// imageHandler.imageWriteSanselan(rgbImage, imgFile);
-						//writeFile(rgbImage, imgFile);
+						// writeFile(rgbImage, imgFile);
 
 						// *** IMAGE FILE COMPRESSION ***
 						if (store.isCompressionEnabled()) {
@@ -361,15 +331,15 @@ public class ProdImgImpWzrdController extends ImportController
 		ios.close();
 		writer.dispose();
 	}
-	
+
 	public BufferedImage padImageToSquere(BufferedImage scaledImage) {
-		
+
 		BufferedImageOp[] imageOp = null;
 		BufferedImage paddedImage = null;
 		BufferedImage croppedImage = null;
 		int padding = 0;
 		System.out.println(scaledImage.getWidth() + " " + scaledImage.getHeight());
-		padding = Math.abs((scaledImage.getWidth() - scaledImage.getHeight()) * 1/2);
+		padding = Math.abs((scaledImage.getWidth() - scaledImage.getHeight()) * 1 / 2);
 		System.out.println(padding);
 		paddedImage = Scalr.pad(scaledImage, padding, Color.WHITE, imageOp);
 		progressThumbUpdate(imageHandler.createThumbnail(paddedImage, 150));
@@ -426,7 +396,7 @@ public class ProdImgImpWzrdController extends ImportController
 	}
 
 	public void initSelectedStoreList() {
-		selectedStores.clear();
+		if(!selectedStores.isEmpty()) selectedStores.clear();
 		for (StoreDataModel store : stores) {
 			if (store.getSelectStatus())
 				selectedStores.add(store);
@@ -483,7 +453,6 @@ public class ProdImgImpWzrdController extends ImportController
 		if (ce.getSource() == view.panelCardSourceFiles) {
 			view.btnCardBack.setVisible(false);
 		} else if (ce.getSource() == view.panelCardTargetStores) {
-			initStores();
 			initSelectedStoreList();
 			view.checkBoxListStores.setListData(stores);
 		} else if (ce.getSource() == view.panelCardSummary) {

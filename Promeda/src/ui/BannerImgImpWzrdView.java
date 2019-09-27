@@ -19,6 +19,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.JCheckBox;
 
 public class BannerImgImpWzrdView extends JFrame {
 
@@ -52,6 +53,8 @@ public class BannerImgImpWzrdView extends JFrame {
 	public JLabel labelPreviewPsdImage;
 	public BannerCheckBoxList listBannerModels;
 	private JScrollPane scrollPane;
+	public JTextField textFieldCompressionCommand;
+	public JCheckBox checkboxCompressionEnabled;
 
 	/**
 	 * Create the frame.
@@ -140,16 +143,26 @@ public class BannerImgImpWzrdView extends JFrame {
 		
 		panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Banner Templates", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_1.setBounds(10, 124, 399, 195);
+		panel_1.setBounds(10, 165, 399, 154);
 		panelCardImageOptions.add(panel_1);
 		panel_1.setLayout(null);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 24, 379, 160);
+		scrollPane.setBounds(10, 24, 379, 119);
 		panel_1.add(scrollPane);
 		
 		listBannerModels = new BannerCheckBoxList();
 		scrollPane.setViewportView(listBannerModels);
+		
+		textFieldCompressionCommand = new JTextField();
+		textFieldCompressionCommand.setColumns(10);
+		textFieldCompressionCommand.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Compression Command", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		textFieldCompressionCommand.setBounds(10, 115, 260, 39);
+		panelCardImageOptions.add(textFieldCompressionCommand);
+		
+		checkboxCompressionEnabled = new JCheckBox("Compression Enabled");
+		checkboxCompressionEnabled.setBounds(276, 127, 133, 23);
+		panelCardImageOptions.add(checkboxCompressionEnabled);
 		panelCardTargetStores.setLayout(null);
 		panelCardTargetStores.setBackground(new Color(255, 255, 255));
 		panelContentContainer.add(panelCardTargetStores, "panelCardTargetStores");

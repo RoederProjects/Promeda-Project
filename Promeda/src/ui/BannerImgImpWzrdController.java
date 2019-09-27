@@ -46,6 +46,7 @@ import model.prototype.BannerModel;
 
 import model.prototype.ImageSize;
 import model.prototype.StoreDataModel;
+import model.singleton.Executor;
 import model.singleton.ImageHandler;
 import model.singleton.PropertiesModel;
 import model.singleton.SFTPClientModel;
@@ -55,9 +56,6 @@ import psd.model.Psd;
 public class BannerImgImpWzrdController extends ImportController implements ActionListener, ComponentListener {
 
 	private BannerImgImpWzrdView view;
-	private PropertiesModel propApp;
-	private Vector<StoreDataModel> stores;
-	private Vector<StoreDataModel> selectedStores;
 	private File srcFile;
 	private Vector<File> srcFileList = new Vector<File>();
 	private Vector<ImageSize> imageSizeList = new Vector<ImageSize>();
@@ -66,27 +64,28 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 	private BufferedImage srcImage;
 	private FTPClient ftp = null;
 	private SFTPClientModel sftp = null;
-	private ImageHandler imgHandler = new ImageHandler();
+	private String configPrefix;
 
 	public BannerImgImpWzrdController() {
-		initProperties();
+		this.configPrefix = "product";
+		initAppConfig();
 		initView();
-		// initBannerDim();
-		initStores();
+		initStores(this.configPrefix);
+	}
+
+	public BannerImgImpWzrdController(String configPrefix) {
+		this.configPrefix = configPrefix;
+		initAppConfig();
+		initView();
+		initStores(this.configPrefix);
 	}
 
 	public BannerImgImpWzrdController(File psdFile) {
-		initProperties();
-		// initBannerDim();
+		initAppConfig();
 		initView();
-		initStores();
+		initStores(this.configPrefix);
 		this.srcFile = psdFile;
 		view.fileListSourceFiles.setText(psdFile.getAbsolutePath());
-	}
-
-	private void initProperties() {
-		propApp = new PropertiesModel();
-		propApp.loadAppProperties();
 	}
 
 	private void initView() {
@@ -96,12 +95,15 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 	}
 
 	public void initBannerDim() {
+		System.out.println("jetzt gehts los");
 		Dimension srcImageSize = new Dimension(srcImage.getWidth(), srcImage.getHeight());
-		System.out.println("asdasd" + propApp.get("locNetworkRes"));
-		File filePropBanner = new File(propApp.get("locNetworkRes") + "banner" + File.separator + "banner.properties");
+		File filePropBanner = new File(configApp.getString("dir.config.banner") + "banner.properties");
 		try {
 			Configuration config = new PropertiesConfiguration(filePropBanner);
 			List<Object> templates = config.getList("template");
+			view.textFieldCompressionCommand.setText(config.getString("compression.command"));
+			view.checkboxCompressionEnabled.setSelected(config.getBoolean("compression.enabled"));
+			System.out.println("compression.enabled:" + config.getBoolean("compression.enabled"));
 			Configuration templateProps;
 			for (Object template : templates) {
 				templateProps = config.subset(template.toString());
@@ -109,45 +111,9 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 			}
 			updateBannerTemplateList();
 			view.listBannerModels.setListData(bannerTemplates);
+			
 		} catch (ConfigurationException e) {
 			e.printStackTrace();
-		}
-	}
-
-	public void initStores() {
-		File f = new File(propApp.get("locNetworkRes") + "stores");
-		File[] files = f.listFiles();
-		stores = new Vector<StoreDataModel>();
-
-		try {
-			for (File file : files) {
-				if (!file.isDirectory() && FilenameUtils.isExtension(file.getName(), "properties")) {
-					Configuration config = new PropertiesConfiguration(file);
-					/*
-					 * String[] imgSizeParams = config.getStringArray("banner.image.size"); for
-					 * (String param : imgSizeParams) { imageSizeList.add(new
-					 * ImageSize(param.split(","))); System.out.println(new
-					 * ImageSize(param.split(",")).getName()); System.out.println( "Groesse: " +
-					 * imageSizeList.size() + " - " + imageSizeList.lastElement().getWidth()); }
-					 */
-					// System.out.println("imageSizeList.size() " + imageSizeList.size() + " - " +
-					// imageSizeList.get(0).getName());
-					/*
-					 * stores.add(new StoreDataModel(config.getString("url"),
-					 * config.getString("ftp.host"), Integer.parseInt(config.getString("ftp.port")),
-					 * config.getString("ftp.user"), config.getString("ftp.pswd"), imageSizeList));
-					 */
-					stores.add(new StoreDataModel(config.getString("url"), config.getString("ftp.host"),
-							Integer.parseInt(config.getString("ftp.port")), config.getString("ftp.protocol"),
-							config.getString("ftp.user"), config.getString("ftp.pswd"),
-							config.getString("ftp.dir.banner"), 
-							config.getBoolean("product.image.compression.enabled"),
-							config.getString("product.image.compression.command"),
-							config.getList("product.image.size")));
-				}
-			}
-		} catch (ConfigurationException cex) {
-			// Something went wrong
 		}
 	}
 
@@ -175,7 +141,6 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 	public void process() {
 
 		String bannerName = view.textFieldBannerFileName.getText();
-		imgHandler = new ImageHandler();
 		File imgFile;
 		DateTimeFormatter fmt = DateTimeFormat.forPattern("_yyyyMMdd");
 		String currentDate = LocalDate.now().toString(fmt);
@@ -202,13 +167,16 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 				}
 
 				// COPY PSD FILE TO ORIGINALS FOLDER
-				copyFile(srcFile, new File(propApp.get("locMediaBackup") + propApp.get("mediaBackupDirOriginals")
-						+ bannerName + currentDate + "." + FilenameUtils.getExtension(srcFile.getName())));
+				copyFile(srcFile,
+						new File(configApp.getString("dir.media.image.template.src")
+								+ FilenameUtils.getBaseName(srcFile.getName()) + File.separator
+								+ FilenameUtils.getBaseName(srcFile.getName()) + currentDate + "."
+								+ FilenameUtils.getExtension(srcFile.getName())));
 
 				// GET BUFFEREDIMAGE FROM PSD FILE
 				// img = imgHandler.getImageFromPsd(psdFile);
 
-				progressThumbUpdate(imgHandler.resizeImage(100, 100, srcImage));
+				progressThumbUpdate(imageHandler.resizeImage(100, 100, srcImage));
 				for (BannerModel banner : selectedBannerTemplates) {
 
 					Vector<BufferedImage> scaledImages = new Vector<BufferedImage>();
@@ -219,28 +187,33 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 						// RESIZE BUFFEREDIMAGE
 						progressLabelUpdate("Resize " + FilenameUtils.getBaseName(srcFile.getName()) + " to "
 								+ dim.getValue().width + " " + dim.getValue().height + " px");
-						BufferedImage scaledImage = imgHandler.resizeImage(dim.getValue().width, dim.getValue().height,
+						BufferedImage scaledImage = imageHandler.resizeImage(dim.getValue().width, dim.getValue().height,
 								srcImage);
 
 						// REMOVE ALPHA CHANNEL FROM BUFFEREDIMAGE ( ARGB -> RGB )
 						progressLabelUpdate("Remove Alpha Channel from " + FilenameUtils.getBaseName(srcFile.getName())
 								+ dim.getValue().width + " " + dim.getValue().height + " px");
-						BufferedImage rgbImage = imgHandler.removeAlphaChannel(scaledImage);
+						BufferedImage rgbImage = imageHandler.removeAlphaChannel(scaledImage);
 
-						// WRITE IMAGE FILE TO MEDIA/LIVE FOLDER
-						File directory = new File(propApp.get("locMediaBackup") + propApp.get("mediaBackupDirLive")
+					// *** IMAGE WRITING ***
+						File directory = new File(configApp.getString("dir.media.image.template.dist")
 								+ banner.getDirname() + File.separator + dim.getKey());
 						if (!directory.exists()) {
 							directory.mkdirs();
 						}
 
 						imgFile = new File(directory.getPath() + File.separator + bannerName + ".jpg");
-						// ImageIO.write(scaledImage, "jpg", imgFile);
+						ImageIO.write(rgbImage, "jpg", imgFile);
+						
+					// *** IMAGE FILE COMPRESSION ***
+						if (store.isCompressionEnabled()) {
 
-						// COMPRESS and WRITE JPEG FILE
-						compress(rgbImage, imgFile, store.isCompressionEnabled());
+							// File workingDir=new File(System.getProperty("user.dir"));
+							// Executor.compressImage(imgFile, workingDir, store.getCompressionCommand());
+							Executor.exec(imgFile, store.getCompressionCommand());
+						}
 
-						// UPLOAD TO (REMOTE-)WEBSERVER
+					// UPLOAD TO (REMOTE-)WEBSERVER
 						progressLabelUpdate(
 								"Upload " + bannerName + " (" + banner.getName() + ") to " + store.getStoreName());
 
@@ -298,11 +271,11 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 
 		ImageWriteParam param = writer.getDefaultWriteParam();
 
-		if(isCompressionEnabled) {
+		if (isCompressionEnabled) {
 			if (param.canWriteProgressive()) {
 				param.setProgressiveMode(ImageWriteParam.MODE_DEFAULT);
 			}
-	
+
 			if (param.canWriteCompressed()) {
 				param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
 				// param.setCompressionType("JPEG-LS");
@@ -376,10 +349,10 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 		String fileExt = FilenameUtils.getExtension(srcFile.getName());
 		try {
 			if (fileExt.equalsIgnoreCase("psd") || fileExt.equalsIgnoreCase("psb")) {
-				//Psd psd = new Psd(srcFile);
-				//srcImage = psd.getImage();
-				srcImage = imgHandler.imageReadSanselan(srcFile);
-				ImageIcon iconHelper = new ImageIcon(imgHandler.createThumbnail(srcFile, 300));
+				// Psd psd = new Psd(srcFile);
+				// srcImage = psd.getImage();
+				srcImage = imageHandler.imageReadSanselan(srcFile);
+				ImageIcon iconHelper = new ImageIcon(imageHandler.createThumbnail(srcFile, 300));
 				view.labelPreviewPsdImage.setIcon(iconHelper);
 				Sanselan.dumpImageFile(srcFile);
 				ImageInfo imageInfo = Sanselan.getImageInfo(srcFile);
@@ -389,7 +362,7 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 				srcImage = ImageIO.read(srcFile);
 				float factor = (float) 300 / (float) srcImage.getHeight();
 				int newWidth = Math.round((float) srcImage.getWidth() * factor);
-				ImageIcon iconHelper = new ImageIcon(imgHandler.resizeImage(newWidth, 300, srcImage));
+				ImageIcon iconHelper = new ImageIcon(imageHandler.resizeImage(newWidth, 300, srcImage));
 				view.labelPreviewPsdImage.setIcon(iconHelper);
 			}
 		} catch (IOException e) {
@@ -403,7 +376,6 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 
 	public void progressBarUpdate(int progressStepSize) {
 		view.progressBar.setValue(view.progressBar.getValue() + progressStepSize);
-		view.labelLoadManMoving.setLocation(view.progressBar.getValue() * 4, 95);
 	}
 
 	public void progressLabelUpdate(String LabelText) {
@@ -447,8 +419,8 @@ public class BannerImgImpWzrdController extends ImportController implements Acti
 		if (ce.getSource() == view.panelCardSourceFiles) {
 			view.btnCardBack.setVisible(false);
 		} else if (ce.getSource() == view.panelCardImageOptions) {
-//			updateBannerTemplateList();
-//			view.listBannerModels.setListData(bannerTemplates);
+			updateBannerTemplateList();
+			view.listBannerModels.setListData(bannerTemplates);
 		} else if (ce.getSource() == view.panelCardTargetStores) {
 			initSelectedBannerList();
 			view.checkBoxListStores.setListData(stores);

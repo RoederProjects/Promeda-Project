@@ -40,7 +40,7 @@ import model.singleton.ImageHandler;
 import model.singleton.PropertiesModel;
 import model.singleton.SFTPClientModel;
 
-public class MassImgImpWzrdController implements ActionListener, ComponentListener {
+public class MassImgImpWzrdController extends ImportController implements ActionListener, ComponentListener {
 
 	private MassImgImpWzrdView view;
 	private PropertiesModel propApp;
@@ -54,31 +54,29 @@ public class MassImgImpWzrdController implements ActionListener, ComponentListen
 	private FTPClient ftp = null;
 	private SFTPClientModel sftp = null;
 	private int psdParseError;
+	private String configPrefix;
 
 	public MassImgImpWzrdController() {
-		initProperties();
+		this.configPrefix = "product";
+		initAppConfig();
 		initView();
-		initStores();
+		initStores(configPrefix);
 	}
 
-	public MassImgImpWzrdController(Vector<File> psdFileList) {
-		initProperties();
+	public MassImgImpWzrdController(String configPrefix) {
+		this.configPrefix = configPrefix;
+		initAppConfig();
 		initView();
-		initStores();
+		initStores(configPrefix);
+	}
+	
+	public MassImgImpWzrdController(Vector<File> psdFileList) {
+		initAppConfig();
+		initView();
+		initStores(configPrefix);
 		this.psdFileList = psdFileList;
 		view.fileListSourceFiles.setListData(psdFileList);
-	}
-
-	public void initProperties() {
-		propApp = new PropertiesModel();
-		propApp.loadAppProperties();
-		try {
-			configApp = new PropertiesConfiguration("properties" + File.separator + "app.properties");
-		} catch (ConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	}	
 
 	public void initView() {
 
@@ -86,43 +84,7 @@ public class MassImgImpWzrdController implements ActionListener, ComponentListen
 		view.setVisible(true);
 	}
 
-	public void initStores() {
-		File f = new File(
-				configApp.getString("dir.config") + File.separator + configApp.getString("dir.config.stores"));
-		File[] files = f.listFiles();
-		stores = new Vector<StoreDataModel>();
-
-		try {
-			for (File file : files) {
-				if (!file.isDirectory() && FilenameUtils.isExtension(file.getName(), "properties")) {
-					Configuration configStore = new PropertiesConfiguration(file);
-					/*
-					 * String[] imgSizeParams = config.getStringArray("banner.image.size"); for
-					 * (String param : imgSizeParams) { imageSizeList.add(new
-					 * ImageSize(param.split(","))); System.out.println(new
-					 * ImageSize(param.split(",")).getName()); System.out.println( "Groesse: " +
-					 * imageSizeList.size() + " - " + imageSizeList.lastElement().getWidth()); }
-					 */
-					// System.out.println("imageSizeList.size() " + imageSizeList.size() + " - " +
-					// imageSizeList.get(0).getName());
-					/*
-					 * stores.add(new StoreDataModel(config.getString("url"),
-					 * config.getString("ftp.host"), Integer.parseInt(config.getString("ftp.port")),
-					 * config.getString("ftp.user"), config.getString("ftp.pswd"), imageSizeList));
-					 */
-					stores.add(new StoreDataModel(configStore.getString("url"), configStore.getString("ftp.host"),
-							Integer.parseInt(configStore.getString("ftp.port")), configStore.getString("ftp.protocol"),
-							configStore.getString("ftp.user"), configStore.getString("ftp.pswd"),
-							configStore.getString("ftp.dir.default"),
-							configStore.getBoolean("product.image.compression.enabled"),
-							configStore.getString("product.image.compression.command"),
-							configStore.getList("product.image.size")));
-				}
-			}
-		} catch (ConfigurationException cex) {
-			// Something went wrong
-		}
-	}
+	
 
 	public void readCsvOld(File csvFile) {
 		String productID;
@@ -504,9 +466,9 @@ public class MassImgImpWzrdController implements ActionListener, ComponentListen
 					// COMPRESS IMAGE FILE - if enabled in {store}.properties
 					if (store.isCompressionEnabled()) {
 						
-						File workingDir=new File(System.getProperty("user.dir"));
-						//Executor.compressImage(imgFile, workingDir, store.getCompressionCommand());
-						Executor.exec(imgFile);
+						// File workingDir=new File(System.getProperty("user.dir"));
+						// Executor.compressImage(imgFile, workingDir, store.getCompressionCommand());
+						Executor.exec(imgFile, store.getCompressionCommand());
 					}
 
 					// UPLOAD TO WEBSERVER
@@ -718,7 +680,7 @@ public class MassImgImpWzrdController implements ActionListener, ComponentListen
 	@Override
 	public void componentHidden(ComponentEvent e) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }

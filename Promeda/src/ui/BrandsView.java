@@ -10,6 +10,7 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import java.awt.Dimension;
 import java.awt.Component;
+import javax.swing.JLabel;
 
 public class BrandsView extends JFrame {
 
@@ -17,6 +18,7 @@ public class BrandsView extends JFrame {
 	private JPanel contentPane;
 	public JListBrands listBrands;
 	public JList listStores;
+	public JLabel lblLogo;
 
 	/**
 	 * Create the frame.
@@ -34,6 +36,11 @@ public class BrandsView extends JFrame {
 		
 		JPanel panelNorth = new JPanel();
 		contentPane.add(panelNorth, BorderLayout.NORTH);
+		
+		lblLogo = new JLabel("logo");
+		lblLogo.setPreferredSize(new Dimension(150, 50));
+		lblLogo.setSize(new Dimension(150, 50));
+		panelNorth.add(lblLogo);
 		
 		JPanel panelCenter = new JPanel();
 		contentPane.add(panelCenter, BorderLayout.CENTER);

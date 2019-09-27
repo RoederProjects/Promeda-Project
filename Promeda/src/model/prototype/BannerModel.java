@@ -15,6 +15,8 @@ public class BannerModel {
 	HashMap<String, Dimension> dimensions;
 	private Boolean selectStatus;
 	private Boolean matchSrcStatus;
+	private String compressionCommand;
+	private Boolean compressionEnabled;
 
 	public BannerModel() {
 
@@ -47,7 +49,9 @@ public class BannerModel {
 
 		this.name = name;
 		this.dirname = props.getString("dirname");
-
+		this.compressionCommand = props.getString("compression.command");
+		this.compressionEnabled = props.getBoolean("compression.enabled");
+		
 		if (props.containsKey("sm.width") && props.containsKey("sm.height")) {
 			if (props.getProperty("sm.height").toString().equals(new String("auto"))
 					|| props.getProperty("sm.height").toString() == "auto") {
@@ -208,5 +212,22 @@ public class BannerModel {
 	public void setMatchSrcStatus(Boolean matchSrcStatus) {
 		this.matchSrcStatus = matchSrcStatus;
 	}
+	
+	public String getCompressionCommand() {
+		return compressionCommand;
+	}
+
+	public void setCompressionCommand(String compressionCommand) {
+		this.compressionCommand = compressionCommand;
+	}
+
+	public Boolean getCompressionEnabled() {
+		return compressionEnabled;
+	}
+
+	public void setCompressionEnabled(Boolean compressionEnabled) {
+		this.compressionEnabled = compressionEnabled;
+	}
+
 
 }
